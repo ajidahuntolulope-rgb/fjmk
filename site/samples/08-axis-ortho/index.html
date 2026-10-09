@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Axis Orthopaedic &amp; Spine Centre — Lagos</title>
+<meta name="description" content="Axis is an orthopaedic and spine centre in Lagos. Joint replacement, spinal surgery and sports orthopaedics, documented like an engineering drawing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   AXIS ORTHOPAEDIC & SPINE CENTRE
+   Design movement: STRUCTURAL / BLUEPRINT / SWISS ENGINEERING
+
+   The governing rule: the body is an engineered structure.
+   Everything is annotated like a technical drawing — dimension
+   lines, callouts, part numbers, specification tables. The grid
+   is visible on purpose. Precision is the aesthetic.
+   ============================================================ */
+
+:root{
+  --paper:#F4F6F8;
+  --paper-2:#E9EDF1;
+  --ink:#0E1726;
+  --blue:#1B3A6B;
+  --blue-2:#2A5296;
+  --red:#E63946;
+  --grey:#6B7A8F;
+  --grey-lt:#9AA8B8;
+  --hair:#C9D2DC;
+  --hair-2:#DDE3EA;
+
+  --sans:'Inter Tight',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --gut:clamp(18px,3.4vw,52px);
+  --grid:20px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-weight:400;line-height:1.55;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased}
+
+/* the blueprint grid — visible, measured, labelled */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(27,58,107,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(27,58,107,.055) 1px,transparent 1px),
+    linear-gradient(rgba(27,58,107,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(27,58,107,.03) 1px,transparent 1px);
+  background-size:
+    calc(var(--grid)*5) calc(var(--grid)*5),
+    calc(var(--grid)*5) calc(var(--grid)*5),
+    var(--grid) var(--grid),
+    var(--grid) var(--grid);
+}
+::selection{background:var(--red);color:#fff}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.above{position:relative;z-index:1}
+.wrap{max-width:1600px;margin:0 auto;padding:0 var(--gut)}
+
+/* ---------- type ---------- */
+.mono{font-family:var(--mono);font-size:.68rem;font-weight:400;
+  letter-spacing:.06em;text-transform:uppercase}
+.mono-sm{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--grey)}
+.h1{font-family:var(--sans);font-weight:600;line-height:.98;
+  letter-spacing:-.036em;font-size:clamp(2.2rem,5.6vw,5.2rem)}
+.h2{font-family:var(--sans);font-weight:600;line-height:1.02;
+  letter-spacing:-.032em;font-size:clamp(1.7rem,3.8vw,3.2rem)}
+.h3{font-weight:600;line-height:1.1;letter-spacing:-.024em;
+  font-size:clamp(1.05rem,1.5vw,1.32rem)}
+.lead{font-size:clamp(.98rem,1.2vw,1.1rem);line-height:1.68;color:#39465A;
+  max-width:58ch}
+.small{font-size:.86rem;line-height:1.64;color:var(--grey)}
+
+/* ---------- nav ---------- */
+header{position:sticky;top:0;z-index:80;background:rgba(244,246,248,.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--hair)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;
+  max-width:1600px;margin:0 auto;padding:0 var(--gut);gap:20px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:600;
+  letter-spacing:-.02em;font-size:1.02rem;white-space:nowrap}
+.brand .ax{width:26px;height:26px;flex:none;position:relative}
+.brand .ax::before,.brand .ax::after{content:"";position:absolute;background:var(--blue)}
+.brand .ax::before{left:50%;top:0;bottom:0;width:1.5px;margin-left:-.75px}
+.brand .ax::after{top:50%;left:0;right:0;height:1.5px;margin-top:-.75px}
+.brand .ax i{position:absolute;inset:6px;border:1.5px solid var(--red);
+  border-radius:50%;animation:spin 8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.navlinks{display:flex;align-items:center;gap:clamp(12px,1.7vw,28px);list-style:none}
+.navlinks a{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--grey);padding:5px 0;position:relative;
+  transition:color .25s}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+  background:var(--red);transition:width .3s var(--ease)}
+.navlinks a:hover{color:var(--ink)}
+.navlinks a:hover::after{width:100%}
+.nav-cta{background:var(--blue);color:#fff !important;padding:10px 16px !important;
+  border-radius:2px;transition:background .25s}
+.nav-cta::after{display:none}
+.nav-cta:hover{background:var(--red)}
+.burger{display:none;flex-direction:column;gap:4px;padding:8px;z-index:90}
+.burger span{display:block;width:22px;height:1.5px;background:var(--ink);
+  transition:transform .34s var(--ease),opacity .24s}
+.burger.on span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+
+/* ---------- sheet header (drawing title block) ---------- */
+.sheet{border-bottom:1px solid var(--hair);padding:clamp(26px,3.4vw,54px) 0
+  clamp(18px,2.4vw,34px)}
+.sheet-top{display:flex;align-items:flex-start;justify-content:space-between;
+  gap:24px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--hair-2)}
+.titleblock{display:flex;flex-wrap:wrap;gap:clamp(16px,2.6vw,44px)}
+.tb{display:flex;flex-direction:column;gap:4px}
+.tb .k{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--grey-lt)}
+.tb .v{font-family:var(--mono);font-size:.76rem;color:var(--ink);font-weight:500}
+.hero{padding-top:clamp(30px,4vw,62px);display:grid;
+  grid-template-columns:1.32fr .68fr;gap:clamp(26px,4vw,72px);align-items:end}
+.hero h1{margin-bottom:24px}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);
+  font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;
+  padding:14px 22px;border:1px solid var(--blue);color:var(--blue);
+  background:transparent;border-radius:2px;
+  transition:background .25s,color .25s,border-color .25s,transform .25s var(--ease)}
+.btn:hover{background:var(--blue);color:#fff;transform:translateY(-1px)}
+.btn-fill{background:var(--blue);color:#fff}
+.btn-fill:hover{background:var(--red);border-color:var(--red)}
+.btn .ar{transition:transform .28s var(--ease)}
+.btn:hover .ar{transform:translateX(4px)}
+
+/* ---------- sections ---------- */
+section{padding:clamp(52px,6.6vw,108px) 0;position:relative}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.eyebrow::before{content:"";width:8px;height:8px;background:var(--red);flex:none}
+.eyebrow .mono{color:var(--blue)}
+
+/* ---------- interactive body diagram ---------- */
+.diagram-sec{background:var(--paper-2);border-top:1px solid var(--hair);
+  border-bottom:1px solid var(--hair)}
+.dg-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(26px,4vw,72px);
+  align-items:start}
+.dg-panel{border:1px solid var(--hair);background:var(--paper);border-radius:3px;
+  overflow:hidden}
+.dg-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:12px 18px;border-bottom:1px solid var(--hair);background:#fff;flex-wrap:wrap}
+.dg-bar .mono-sm{color:var(--grey)}
+.dg-bar .live{display:flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.dg-bar .live i{width:6px;height:6px;background:var(--red);border-radius:50%;
+  animation:blink 2s steps(2) infinite}
+@keyframes blink{50%{opacity:.25}}
+.dg-body{padding:clamp(18px,2.4vw,34px);display:grid;
+  grid-template-columns:minmax(180px,1fr) 1.05fr;gap:clamp(18px,2.6vw,40px);
+  align-items:center}
+
+/* the figure: an SVG skeleton, regions are clickable */
+.figure{position:relative}
+.figure svg{width:100%;height:auto;max-height:520px;display:block}
+.bone{fill:none;stroke:var(--blue);stroke-width:2;stroke-linecap:round;
+  opacity:.5;transition:stroke .3s,opacity .3s,stroke-width .3s}
+.region{cursor:pointer}
+.region .hit{fill:transparent}
+.region .zone{fill:var(--red);opacity:0;transition:opacity .3s}
+.region:hover .zone,.region.on .zone{opacity:.22}
+.region:hover .bone,.region.on .bone{stroke:var(--red);opacity:1;stroke-width:2.6}
+.region .tick{stroke:var(--red);stroke-width:1;opacity:0;
+  stroke-dasharray:3 3;transition:opacity .3s}
+.region:hover .tick,.region.on .tick{opacity:1}
+
+/* the readout */
+.readout{border:1px solid var(--hair);background:#fff;border-radius:3px;
+  padding:clamp(16px,2vw,28px);min-height:280px}
+.readout .part{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--red);display:block;margin-bottom:8px}
+.readout h3{margin-bottom:12px}
+.readout p{font-size:.9rem;color:#39465A;line-height:1.65;margin-bottom:16px}
+.readout .specs{border-top:1px solid var(--hair-2);margin-top:16px;padding-top:14px;
+  display:flex;flex-direction:column;gap:9px}
+.readout .specs div{display:flex;justify-content:space-between;gap:12px;
+  align-items:baseline;font-size:.82rem}
+.readout .specs .k{font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--grey)}
+.readout .specs .v{font-family:var(--mono);font-size:.76rem;color:var(--ink);
+  font-weight:500;text-align:right}
+.hint{font-family:var(--mono);font-size:.56rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--grey-lt);margin-top:14px;display:block}
+
+/* ---------- datasheets ---------- */
+.sheets{display:flex;flex-direction:column;gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:3px;overflow:hidden;
+  margin-top:clamp(28px,3.6vw,52px)}
+.sheet-row{background:var(--paper);display:grid;
+  grid-template-columns:clamp(120px,14vw,190px) 1.1fr 1.4fr;
+  gap:clamp(14px,2.4vw,40px);padding:clamp(18px,2.4vw,34px);align-items:start;
+  transition:background .3s}
+.sheet-row:hover{background:#fff}
+.sheet-row .code{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;
+  color:var(--red);font-weight:500}
+.sheet-row h3{margin-bottom:8px}
+.sheet-row .desc{font-size:.88rem;color:#39465A;line-height:1.62}
+.spec-table{width:100%;border-collapse:collapse;font-size:.8rem}
+.spec-table td{padding:7px 0;border-bottom:1px solid var(--hair-2);
+  vertical-align:baseline}
+.spec-table tr:last-child td{border-bottom:0}
+.spec-table td:first-child{font-family:var(--mono);font-size:.55rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--grey);
+  width:44%;padding-right:12px}
+.spec-table td:last-child{font-family:var(--mono);font-size:.74rem;color:var(--ink)}
+
+/* ---------- outcomes table ---------- */
+.otable{width:100%;border:1px solid var(--hair);border-collapse:collapse;
+  background:var(--paper);margin-top:clamp(28px,3.6vw,52px);border-radius:3px;
+  overflow:hidden}
+.otable th,.otable td{padding:12px 16px;text-align:left;
+  border-bottom:1px solid var(--hair-2);font-size:.86rem}
+.otable th{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--grey);background:var(--paper-2);
+  font-weight:500;border-bottom:1px solid var(--hair)}
+.otable td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;
+  font-size:.8rem;white-space:nowrap}
+.otable tr:last-child td{border-bottom:0}
+.bar{height:6px;background:var(--blue);border-radius:3px;min-width:2px;
+  transition:width 1.6s var(--ease)}
+
+/* ---------- pathway ---------- */
+.path{margin-top:clamp(28px,3.6vw,52px);display:grid;
+  grid-template-columns:repeat(5,1fr);gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:3px;overflow:hidden}
+.pstep{background:var(--paper);padding:clamp(16px,2vw,30px);
+  display:flex;flex-direction:column;gap:10px;position:relative}
+.pstep::before{content:"";position:absolute;top:0;left:0;height:2px;width:0;
+  background:var(--red);transition:width .9s var(--ease)}
+.pstep.in::before{width:100%}
+.pstep .n{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;
+  color:var(--grey-lt)}
+.pstep h4{font-size:.95rem;font-weight:600;letter-spacing:-.02em}
+.pstep p{font-size:.8rem;color:var(--grey);line-height:1.58}
+
+/* ---------- team ---------- */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--hair);border:1px solid var(--hair);border-radius:3px;
+  overflow:hidden;margin-top:clamp(28px,3.6vw,52px)}
+.tc{background:var(--paper);padding:clamp(20px,2.4vw,34px);
+  display:flex;flex-direction:column;gap:9px}
+.tc .role{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--blue)}
+.tc p{font-size:.86rem;color:#39465A;line-height:1.62}
+.tc .cred{margin-top:12px;padding-top:12px;border-top:1px solid var(--hair-2);
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;color:var(--grey);
+  line-height:1.9}
+
+/* ---------- booking ---------- */
+.book{background:var(--blue);color:#fff}
+.book .eyebrow::before{background:var(--red)}
+.book .eyebrow .mono{color:rgba(255,255,255,.72)}
+.book h2{color:#fff}
+.book .lead{color:rgba(255,255,255,.72)}
+.book-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(26px,4vw,68px);
+  align-items:start}
+form{border:1px solid rgba(255,255,255,.24);background:rgba(0,0,0,.14);
+  border-radius:3px;padding:clamp(20px,2.8vw,40px)}
+.fg{margin-bottom:18px}
+.fg label{display:block;font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:8px}
+.fg input,.fg select,.fg textarea{width:100%;background:transparent;border:0;
+  border-bottom:1px solid rgba(255,255,255,.3);padding:10px 0;
+  font-family:var(--sans);font-size:.94rem;color:#fff;transition:border-color .25s}
+.fg textarea{resize:vertical;min-height:90px;line-height:1.6}
+.fg select{appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,#fff 50%),
+                   linear-gradient(135deg,#fff 50%,transparent 50%);
+  background-position:calc(100% - 12px) 18px,calc(100% - 7px) 18px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:0;border-color:#fff}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.4)}
+.fg option{background:var(--blue);color:#fff}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.submit{width:100%;justify-content:center;background:#fff;color:var(--blue);
+  border-color:#fff;margin-top:6px}
+.submit:hover{background:var(--red);border-color:var(--red);color:#fff}
+.fnote{margin-top:12px;color:rgba(255,255,255,.86)}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:rgba(255,255,255,.62);
+  padding:clamp(40px,5vw,72px) 0 22px}
+.ft{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:clamp(18px,2.6vw,44px);
+  padding-bottom:clamp(26px,3.2vw,44px);border-bottom:1px solid rgba(255,255,255,.14)}
+.ft-brand .brand{color:#fff;margin-bottom:14px}
+.ft-brand .brand .ax::before,.ft-brand .brand .ax::after{background:#fff}
+.ft-brand p{font-size:.85rem;line-height:1.68;color:rgba(255,255,255,.5);max-width:34ch}
+.ft h4{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;
+  text-transform:uppercase;color:#fff;margin-bottom:14px;font-weight:500}
+.ft ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ft a{font-size:.85rem;color:rgba(255,255,255,.5);transition:color .25s}
+.ft a:hover{color:var(--red)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  padding-top:18px;font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;
+  text-transform:uppercase;color:rgba(255,255,255,.32)}
+
+/* ---------- reveal + line-draw ---------- */
+.rv{opacity:0;transform:translateY(18px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+/* SVG paths draw themselves in */
+.draw{stroke-dasharray:var(--len,1000);stroke-dashoffset:var(--len,1000);
+  transition:stroke-dashoffset 2.2s var(--ease)}
+.in .draw{stroke-dashoffset:0}
+:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+
+/* ---------- responsive ---------- */
+@media(max-width:1120px){
+  .hero,.dg-grid,.book-grid{grid-template-columns:1fr;gap:clamp(22px,3.4vw,42px)}
+  .dg-body{grid-template-columns:1fr}
+  .figure svg{max-height:400px}
+  .path{grid-template-columns:1fr 1fr}
+  .team{grid-template-columns:1fr}
+  .sheet-row{grid-template-columns:1fr;gap:14px}
+}
+@media(max-width:720px){
+  .navlinks{position:fixed;inset:64px 0 auto 0;background:rgba(244,246,248,.99);
+    flex-direction:column;align-items:flex-start;gap:0;padding:10px var(--gut) 24px;
+    border-bottom:1px solid var(--hair);transform:translateY(-12px);opacity:0;
+    pointer-events:none;transition:opacity .34s var(--ease),transform .34s var(--ease)}
+  .navlinks.on{transform:none;opacity:1;pointer-events:auto}
+  .navlinks li{width:100%;border-bottom:1px solid var(--hair-2)}
+  .navlinks a{display:block;padding:15px 0;font-size:.64rem}
+  .nav-cta{border-radius:0;padding:15px 0 !important;text-align:center}
+  .burger{display:flex}
+  .path,.f2{grid-template-columns:1fr}
+  .ft{grid-template-columns:1fr 1fr}
+}
+@media(max-width:460px){.ft{grid-template-columns:1fr}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+  .draw{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="brand"><span class="ax" aria-hidden="true"><i></i></span>Axis</a>
+    <ul class="navlinks" id="nav">
+      <li><a href="#anatomy">Anatomy</a></li>
+      <li><a href="#procedures">Procedures</a></li>
+      <li><a href="#outcomes">Outcomes</a></li>
+      <li><a href="#team">Surgeons</a></li>
+      <li><a href="#book" class="nav-cta">Book consultation</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="above">
+
+<!-- ============ TITLE BLOCK + HERO ============ -->
+<section class="sheet" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sheet-top">
+      <span class="mono" style="color:var(--blue)">Axis Orthopaedic &amp; Spine Centre — Lagos</span>
+      <div class="titleblock">
+        <div class="tb"><span class="k">Drawing</span><span class="v">AX-2026-001</span></div>
+        <div class="tb"><span class="k">Revision</span><span class="v">C</span></div>
+        <div class="tb"><span class="k">Scale</span><span class="v">1:1</span></div>
+        <div class="tb"><span class="k">Units</span><span class="v">mm</span></div>
+      </div>
+    </div>
+    <div class="hero">
+      <div>
+        <div class="eyebrow"><span class="mono">Structural medicine</span></div>
+        <h1 class="h1">The body is a<br>structure. We<br><em>engineer it.</em></h1>
+        <p class="lead">Joint replacement, spinal surgery and sports orthopaedics.
+          Every procedure is specified, measured and documented — because a
+          patient who understands what is about to happen to their body recovers
+          better than one who does not.</p>
+        <div class="hero-cta">
+          <a href="#anatomy" class="btn btn-fill">Explore the anatomy <span class="ar">&rarr;</span></a>
+          <a href="#procedures" class="btn">See specifications</a>
+        </div>
+      </div>
+      <div>
+        <div class="readout" style="border-color:var(--hair)">
+          <span class="part">Centre specification</span>
+          <h3 class="h3">Axis Orthopaedic &amp; Spine</h3>
+          <p>Four consultant orthopaedic surgeons and one spinal surgeon, operating
+            from a dedicated orthopaedic theatre in Lagos.</p>
+          <div class="specs">
+            <div><span class="k">Procedures / year</span><span class="v">640+</span></div>
+            <div><span class="k">Theatres</span><span class="v">2 dedicated</span></div>
+            <div><span class="k">Revision rate</span><span class="v">1.4% at 5yr</span></div>
+            <div><span class="k">Implant registry</span><span class="v">Tracked</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTERACTIVE ANATOMY ============ -->
+<section class="diagram-sec" id="anatomy">
+  <div class="wrap">
+    <div class="rv" style="max-width:820px">
+      <div class="eyebrow"><span class="mono">Fig. 01 — Interactive anatomy</span></div>
+      <h2 class="h2">Select a region.</h2>
+      <p class="lead" style="margin-top:18px">Five regions we operate on. Click any
+        part of the figure to read what we treat there, and what the procedure
+        involves.</p>
+    </div>
+
+    <div class="dg-grid" style="margin-top:clamp(26px,3.4vw,50px)">
+      <div class="dg-panel rv">
+        <div class="dg-bar">
+          <span class="mono-sm">Fig. 01 · Anterior skeletal view</span>
+          <span class="live"><i></i>Interactive</span>
+        </div>
+        <div class="dg-body">
+          <div class="figure">
+            <svg viewBox="0 0 200 420" role="img" aria-label="Interactive skeletal diagram">
+              <!-- head + spine -->
+              <g class="region" data-region="spine" tabindex="0" role="button"
+                 aria-label="Spine">
+                <ellipse class="bone" cx="100" cy="26" rx="20" ry="24"/>
+                <path class="bone draw" style="--len:520"
+                      d="M100 50 L100 70 M100 72 L100 92 M100 94 L100 114 M100 116 L100 136
+                         M100 138 L100 158 M100 160 L100 180 M100 182 L100 202"/>
+                <rect class="zone" x="86" y="48" width="28" height="158" rx="8"/>
+                <line class="tick" x1="114" y1="60" x2="150" y2="60"/>
+                <line class="tick" x1="114" y1="160" x2="150" y2="160"/>
+              </g>
+
+              <!-- shoulders + arms -->
+              <g class="region" data-region="shoulder" tabindex="0" role="button"
+                 aria-label="Shoulder">
+                <path class="bone draw" style="--len:340"
+                      d="M74 74 L48 84 M126 74 L152 84"/>
+                <circle class="bone" cx="46" cy="88" r="9"/>
+                <circle class="bone" cx="154" cy="88" r="9"/>
+                <path class="bone draw" style="--len:420"
+                      d="M46 97 L40 170 M154 97 L160 170"/>
+                <rect class="zone" x="30" y="70" width="34" height="40" rx="10"/>
+                <rect class="zone" x="136" y="70" width="34" height="40" rx="10"/>
+                <line class="tick" x1="30" y1="76" x2="8" y2="76"/>
+                <line class="tick" x1="170" y1="76" x2="192" y2="76"/>
+              </g>
+
+              <!-- ribcage -->
+              <g class="region" data-region="spine" tabindex="0" role="button"
+                 aria-label="Thoracic spine">
+                <path class="bone draw" style="--len:620"
+                      d="M74 90 Q60 130 74 170 M126 90 Q140 130 126 170
+                         M76 118 Q60 150 76 182 M124 118 Q140 150 124 182"/>
+              </g>
+
+              <!-- pelvis + hips -->
+              <g class="region" data-region="hip" tabindex="0" role="button"
+                 aria-label="Hip">
+                <path class="bone draw" style="--len:480"
+                      d="M70 200 Q100 190 130 200 Q134 222 118 230
+                         Q100 236 82 230 Q66 222 70 200"/>
+                <circle class="bone" cx="76" cy="228" r="12"/>
+                <circle class="bone" cx="124" cy="228" r="12"/>
+                <rect class="zone" x="62" y="212" width="30" height="32" rx="12"/>
+                <rect class="zone" x="108" y="212" width="30" height="32" rx="12"/>
+                <line class="tick" x1="62" y1="216" x2="26" y2="216"/>
+                <line class="tick" x1="138" y1="216" x2="174" y2="216"/>
+              </g>
+
+              <!-- legs -->
+              <g class="region" data-region="knee" tabindex="0" role="button"
+                 aria-label="Knee">
+                <path class="bone draw" style="--len:560"
+                      d="M76 240 L72 300 M124 240 L128 300"/>
+                <circle class="bone" cx="72" cy="308" r="9"/>
+                <circle class="bone" cx="128" cy="308" r="9"/>
+                <path class="bone draw" style="--len:520"
+                      d="M72 317 L68 380 M128 317 L132 380"/>
+                <rect class="zone" x="58" y="294" width="30" height="30" rx="12"/>
+                <rect class="zone" x="112" y="294" width="30" height="30" rx="12"/>
+                <line class="tick" x1="58" y1="300" x2="22" y2="300"/>
+                <line class="tick" x1="142" y1="300" x2="178" y2="300"/>
+              </g>
+
+              <!-- ankles -->
+              <g class="region" data-region="knee" tabindex="0" role="button"
+                 aria-label="Ankle">
+                <circle class="bone" cx="68" cy="388" r="7"/>
+                <circle class="bone" cx="132" cy="388" r="7"/>
+                <path class="bone draw" style="--len:180"
+                      d="M60 398 L78 398 M122 398 L140 398"/>
+              </g>
+            </svg>
+            <span class="hint">Click a highlighted region</span>
+          </div>
+
+          <div class="readout" id="readout">
+            <span class="part" id="ro-part">Region 00</span>
+            <h3 class="h3" id="ro-title">Select a region</h3>
+            <p id="ro-desc">Click any highlighted area on the figure to see what we
+              treat there, how the procedure is performed, and what recovery
+              involves.</p>
+            <div class="specs" id="ro-specs"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rv">
+        <div class="eyebrow"><span class="mono">How to read this</span></div>
+        <h3 class="h3" style="margin-bottom:16px">Specified, not described.</h3>
+        <p class="lead">Most orthopaedic websites tell you that a knee replacement
+          "restores mobility". That is not information. This page tells you the
+          implant material, the approach, the anaesthetic, the length of stay, and
+          the expected return to work — because those are the things a patient
+          actually needs to decide.</p>
+        <p class="lead" style="margin-top:18px">We publish our revision rate. Not
+          every centre will. We think a surgeon who will not tell you how often
+          their operations need redoing has not earned your trust yet.</p>
+        <div style="margin-top:26px;padding-top:22px;border-top:1px solid var(--hair)">
+          <span class="mono-sm" style="display:block;margin-bottom:10px">Data note</span>
+          <p class="small">All figures on this page are illustrative and typical for
+            a centre of this kind. Individual outcomes depend on the patient,
+            the indication and the implant used.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCEDURE DATASHEETS ============ -->
+<section id="procedures">
+  <div class="wrap">
+    <div class="rv" style="max-width:820px">
+      <div class="eyebrow"><span class="mono">Fig. 02 — Procedure specifications</span></div>
+      <h2 class="h2">Datasheets.</h2>
+      <p class="lead" style="margin-top:18px">Each procedure specified the way a
+        component would be: approach, materials, anaesthesia, stay, and return to
+        function.</p>
+    </div>
+
+    <div class="sheets">
+      <article class="sheet-row rv">
+        <span class="code">PRC-01<br>Total knee</span>
+        <div>
+          <h3 class="h3">Total knee replacement</h3>
+          <p class="desc">Resurfacing the three compartments of the knee with
+            metal and polyethylene components. For end-stage osteoarthritis where
+            conservative management has failed.</p>
+        </div>
+        <table class="spec-table">
+          <tr><td>Approach</td><td>Medial parapatellar</td></tr>
+          <tr><td>Implant</td><td>Cobalt-chrome femoral, titanium tibial, XLPE insert</td></tr>
+          <tr><td>Fixation</td><td>Cemented</td></tr>
+          <tr><td>Anaesthesia</td><td>Spinal + adductor canal block</td></tr>
+          <tr><td>Hospital stay</td><td>2–3 nights</td></tr>
+          <tr><td>Weight bearing</td><td>Full, day of surgery</td></tr>
+          <tr><td>Return to driving</td><td>6 weeks</td></tr>
+          <tr><td>Return to work (sedentary)</td><td>6–8 weeks</td></tr>
+        </table>
+      </article>
+
+      <article class="sheet-row rv">
+        <span class="code">PRC-02<br>Total hip</span>
+        <div>
+          <h3 class="h3">Total hip replacement</h3>
+          <p class="desc">Replacing the femoral head and acetabular socket. One of
+            the most reliable operations in medicine, with a long documented
+            survival profile.</p>
+        </div>
+        <table class="spec-table">
+          <tr><td>Approach</td><td>Posterior or direct lateral</td></tr>
+          <tr><td>Implant</td><td>Titanium stem, ceramic or metal head, XLPE liner</td></tr>
+          <tr><td>Fixation</td><td>Cemented or uncemented</td></tr>
+          <tr><td>Anaesthesia</td><td>Spinal</td></tr>
+          <tr><td>Hospital stay</td><td>2–3 nights</td></tr>
+          <tr><td>Weight bearing</td><td>Full, day of surgery</td></tr>
+          <tr><td>Return to driving</td><td>6 weeks</td></tr>
+          <tr><td>Dislocation risk</td><td>&lt;2% with modern bearings</td></tr>
+        </table>
+      </article>
+
+      <article class="sheet-row rv">
+        <span class="code">PRC-03<br>Decompression</span>
+        <div>
+          <h3 class="h3">Spinal decompression</h3>
+          <p class="desc">Relieving pressure on nerve roots or the spinal cord
+            caused by disc herniation or stenosis. Performed where conservative
+            treatment has not resolved radicular symptoms.</p>
+        </div>
+        <table class="spec-table">
+          <tr><td>Approach</td><td>Posterior, minimally invasive where suitable</td></tr>
+          <tr><td>Levels</td><td>Usually 1–2</td></tr>
+          <tr><td>Anaesthesia</td><td>General</td></tr>
+          <tr><td>Hospital stay</td><td>1–2 nights</td></tr>
+          <tr><td>Mobilisation</td><td>Day of surgery</td></tr>
+          <tr><td>Return to desk work</td><td>3–4 weeks</td></tr>
+          <tr><td>Return to manual work</td><td>8–12 weeks</td></tr>
+          <tr><td>Success rate</td><td>80–90% for leg pain</td></tr>
+        </table>
+      </article>
+
+      <article class="sheet-row rv">
+        <span class="code">PRC-04<br>Arthroscopy</span>
+        <div>
+          <h3 class="h3">Knee &amp; shoulder arthroscopy</h3>
+          <p class="desc">Keyhole surgery for meniscal tears, ligament
+            reconstruction and shoulder impingement. Diagnostic and therapeutic in
+            the same procedure.</p>
+        </div>
+        <table class="spec-table">
+          <tr><td>Portals</td><td>2–3, each ~5mm</td></tr>
+          <tr><td>Anaesthesia</td><td>Spinal or general</td></tr>
+          <tr><td>Hospital stay</td><td>Day case</td></tr>
+          <tr><td>Weight bearing</td><td>Depends on procedure</td></tr>
+          <tr><td>Return to sport</td><td>6 weeks (meniscectomy) to 9 months (ACL)</td></tr>
+          <tr><td>Wound care</td><td>Waterproof dressings, shower next day</td></tr>
+        </table>
+      </article>
+
+      <article class="sheet-row rv">
+        <span class="code">PRC-05<br>Fixation</span>
+        <div>
+          <h3 class="h3">Fracture fixation</h3>
+          <p class="desc">Internal fixation of long bone and periarticular
+            fractures using plates, screws, nails or external fixation depending
+            on the fracture pattern and soft tissue envelope.</p>
+        </div>
+        <table class="spec-table">
+          <tr><td>Implant</td><td>Titanium or stainless steel</td></tr>
+          <tr><td>Fixation type</td><td>Plate / intramedullary nail / ex-fix</td></tr>
+          <tr><td>Anaesthesia</td><td>Spinal or general</td></tr>
+          <tr><td>Hospital stay</td><td>1–5 nights depending on injury</td></tr>
+          <tr><td>Union time</td><td>6–12 weeks</td></tr>
+          <tr><td>Implant removal</td><td>Only if symptomatic</td></tr>
+        </table>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUTCOMES ============ -->
+<section id="outcomes" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:800px">
+      <div class="eyebrow"><span class="mono">Fig. 03 — Measured outcomes</span></div>
+      <h2 class="h2">Our numbers.</h2>
+      <p class="lead" style="margin-top:18px">Collected prospectively and audited
+        annually. We publish the revision rate because it is the number that
+        matters most over the long term.</p>
+    </div>
+
+    <table class="otable rv">
+      <thead>
+        <tr><th>Measure</th><th>Axis</th><th>Benchmark</th><th style="width:26%">Relative</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Knee implant survival at 10 years</td>
+          <td class="num">96.2%</td><td class="num">94.0%</td>
+          <td><div class="bar" data-w="96" style="width:0"></div></td>
+        </tr>
+        <tr>
+          <td>Hip implant survival at 10 years</td>
+          <td class="num">97.1%</td><td class="num">95.5%</td>
+          <td><div class="bar" data-w="97" style="width:0"></div></td>
+        </tr>
+        <tr>
+          <td>Spinal decompression — leg pain relief</td>
+          <td class="num">86%</td><td class="num">80%</td>
+          <td><div class="bar" data-w="86" style="width:0"></div></td>
+        </tr>
+        <tr>
+          <td>Return to driving after knee replacement</td>
+          <td class="num">6 wks</td><td class="num">7 wks</td>
+          <td><div class="bar" data-w="86" style="width:0"></div></td>
+        </tr>
+        <tr>
+          <td>Revision rate at 5 years</td>
+          <td class="num">1.4%</td><td class="num">2.6%</td>
+          <td><div class="bar" data-w="54" style="width:0"></div></td>
+        </tr>
+        <tr>
+          <td>Surgical site infection</td>
+          <td class="num">0.4%</td><td class="num">1.0%</td>
+          <td><div class="bar" data-w="40" style="width:0"></div></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="small" style="margin-top:14px">Illustrative figures for a centre of
+      this kind. Benchmarks drawn from published national joint registry data.</p>
+  </div>
+</section>
+
+<!-- ============ PATHWAY ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:800px">
+      <div class="eyebrow"><span class="mono">Fig. 04 — Treatment pathway</span></div>
+      <h2 class="h2">From referral<br>to discharge.</h2>
+    </div>
+    <div class="path">
+      <div class="pstep rv"><span class="n">01</span>
+        <h4>Consultation</h4>
+        <p>History, examination, and imaging review. We tell you what is wrong and
+          what the options are.</p></div>
+      <div class="pstep rv"><span class="n">02</span>
+        <h4>Workup</h4>
+        <p>Bloods, ECG, anaesthetic review, and templating of the implant against
+          your own imaging.</p></div>
+      <div class="pstep rv"><span class="n">03</span>
+        <h4>Pre-hab</h4>
+        <p>Strength and education before surgery. Patients who pre-hab recover
+          measurably faster.</p></div>
+      <div class="pstep rv"><span class="n">04</span>
+        <h4>Procedure</h4>
+        <p>Performed to the specification in Fig. 02. Implant details recorded to
+          your file and the registry.</p></div>
+      <div class="pstep rv"><span class="n">05</span>
+        <h4>Rehabilitation</h4>
+        <p>Physiotherapy from day one, then structured follow-up at 2, 6 and 12
+          weeks, then annually.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section id="team" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:800px">
+      <div class="eyebrow"><span class="mono">Fig. 05 — Surgical team</span></div>
+      <h2 class="h2">Who operates.</h2>
+    </div>
+    <div class="team">
+      <article class="tc rv">
+        <span class="role">Consultant &middot; Hip &amp; Knee</span>
+        <h3 class="h3">Dr. Adebayo Ogunlesi</h3>
+        <p>Primary hip and knee arthroplasty. Performs the majority of the centre's
+          joint replacement work, with a particular interest in revision surgery.</p>
+        <div class="cred">MBBS &middot; FWACS &middot; FRCS (Orth)<br>Arthroplasty fellowship, UK</div>
+      </article>
+      <article class="tc rv">
+        <span class="role">Consultant &middot; Spine</span>
+        <h3 class="h3">Dr. Nnamdi Eze</h3>
+        <p>Degenerative spine, disc surgery and minimally invasive decompression.
+          Runs the centre's spinal outcome audit.</p>
+        <div class="cred">MBBS &middot; FWACS<br>Spinal fellowship, South Africa</div>
+      </article>
+      <article class="tc rv">
+        <span class="role">Consultant &middot; Sports &amp; Trauma</span>
+        <h3 class="h3">Dr. Fatima Suleiman</h3>
+        <p>Arthroscopy, ligament reconstruction and fracture fixation. Team
+          physician to two Lagos football clubs.</p>
+        <div class="cred">MBBS &middot; FMCS (Orth)<br>Sports surgery fellowship</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section class="book" id="book">
+  <div class="wrap">
+    <div class="book-grid">
+      <div class="rv">
+        <div class="eyebrow"><span class="mono">Consultation</span></div>
+        <h2 class="h2">Bring your<br>imaging.</h2>
+        <p class="lead" style="margin-top:18px">A consultation is 45 minutes with
+          the consultant who would perform your surgery. Bring any X-rays, MRI or
+          CT imaging, and any previous operative notes.</p>
+        <p class="small" style="margin-top:18px;color:rgba(255,255,255,.6)">
+          Consultation &#8358;60,000 &middot; Imaging review included &middot;
+          Second opinions welcome</p>
+      </div>
+      <form id="axisform" class="rv" novalidate>
+        <div class="f2">
+          <div class="fg">
+            <label for="nm">Full name</label>
+            <input id="nm" name="nm" type="text" placeholder="Chukwuemeka Obi" required>
+          </div>
+          <div class="fg">
+            <label for="ph">Phone</label>
+            <input id="ph" name="ph" type="tel" placeholder="0803 000 0000" required>
+          </div>
+        </div>
+        <div class="f2">
+          <div class="fg">
+            <label for="region">Region</label>
+            <select id="region" name="region">
+              <option value="">Select&hellip;</option>
+              <option>Knee</option>
+              <option>Hip</option>
+              <option>Spine / back</option>
+              <option>Shoulder</option>
+              <option>Ankle / foot</option>
+              <option>Fracture</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="imaging">Imaging available?</label>
+            <select id="imaging" name="imaging">
+              <option value="">Select&hellip;</option>
+              <option>X-ray</option>
+              <option>MRI</option>
+              <option>CT</option>
+              <option>X-ray and MRI</option>
+              <option>None yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label for="ms">What is the problem, and how long?</label>
+          <textarea id="ms" name="ms" placeholder="Right knee pain for two years. Worse on stairs. X-ray last month showed narrowing."></textarea>
+        </div>
+        <p id="fnote" class="small fnote" aria-live="polite"></p>
+        <button type="submit" class="btn submit">Request consultation <span class="ar">&rarr;</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div class="ft-brand">
+        <a href="index.html" class="brand"><span class="ax" aria-hidden="true"><i></i></span>Axis</a>
+        <p>Orthopaedic and spine surgery in Lagos. Joint replacement, spinal
+          surgery, sports orthopaedics and trauma.</p>
+      </div>
+      <div class="ft">
+        <h4>Procedures</h4>
+        <ul>
+          <li><a href="#procedures">Total knee replacement</a></li>
+          <li><a href="#procedures">Total hip replacement</a></li>
+          <li><a href="#procedures">Spinal decompression</a></li>
+          <li><a href="#procedures">Arthroscopy</a></li>        </ul>
+      </div>
+      <div class="ft">
+        <h4>Centre</h4>
+        <ul>
+          <li><a href="#anatomy">Anatomy</a></li>
+          <li><a href="#outcomes">Outcomes</a></li>
+          <li><a href="#team">Surgeons</a></li>
+        </ul>
+      </div>
+      <div class="ft">
+        <h4>Consult</h4>
+        <ul>
+          <li><a href="#book">Book consultation</a></li>
+          <li><a href="#book">Second opinion</a></li>
+          <li><a href="#book">Bring imaging</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>&copy; 2026 Axis Orthopaedic &amp; Spine Centre &middot; Lagos</span>
+      <span>Outcomes vary by patient. All surgery carries risk and requires individual assessment.</span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /above -->
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- nav ---------- */
+  var burger = document.getElementById('burger'), nav = document.getElementById('nav');
+  burger.addEventListener('click', function(){
+    var on = nav.classList.toggle('on');
+    burger.classList.toggle('on', on);
+    burger.setAttribute('aria-expanded', on ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('on'); burger.classList.remove('on');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+
+  /* ---------- reveal + line draw ---------- */
+  var rvs = document.querySelectorAll('.rv, .pstep');
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.14, rootMargin:'0px 0px -6% 0px'});
+    rvs.forEach(function(el, i){
+      el.style.transitionDelay = (Math.min(i % 4, 3) * 80) + 'ms';
+      io.observe(el);
+    });
+  } else { rvs.forEach(function(el){ el.classList.add('in'); }); }
+
+  /* ---------- outcome bars ---------- */
+  var bars = document.querySelectorAll('.bar[data-w]');
+  if ('IntersectionObserver' in window){
+    var bo = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if (e.isIntersecting){
+          var w = e.target.getAttribute('data-w');
+          setTimeout(function(){ e.target.style.width = w + '%'; }, 120);
+          bo.unobserve(e.target);
+        }
+      });
+    }, {threshold:.4});
+    bars.forEach(function(b){ bo.observe(b); });
+  } else {
+    bars.forEach(function(b){ b.style.width = b.getAttribute('data-w') + '%'; });
+  }
+
+  /* ============================================================
+     INTERACTIVE ANATOMY — click a region, read the spec
+     ============================================================ */
+  var REGIONS = {
+    spine: {
+      part: 'REGION 01 — SPINE',
+      title: 'Spine &amp; spinal cord',
+      desc: 'We treat degenerative disc disease, spinal stenosis, disc herniation and vertebral fracture. Surgery is considered only when radicular pain or neurological signs persist despite a proper course of conservative treatment.',
+      specs: [
+        ['Common procedures', 'Decompression, discectomy, fusion'],
+        ['Approach', 'Posterior, minimally invasive where suitable'],
+        ['Typical stay', '1–2 nights'],
+        ['Return to desk work', '3–4 weeks'],
+        ['Return to manual work', '8–12 weeks']
+      ]
+    },
+    shoulder: {
+      part: 'REGION 02 — SHOULDER',
+      title: 'Shoulder &amp; rotator cuff',
+      desc: 'Rotator cuff tears, impingement, instability and frozen shoulder. Most cuff problems improve without surgery; we operate where the tear is full-thickness and function is genuinely limited.',
+      specs: [
+        ['Common procedures', 'Arthroscopy, cuff repair, stabilisation'],
+        ['Approach', 'Keyhole, 2–3 portals'],
+        ['Typical stay', 'Day case'],
+        ['Sling', '3–6 weeks'],
+        ['Return to sport', '4–9 months']
+      ]
+    },
+    hip: {
+      part: 'REGION 03 — HIP',
+      title: 'Hip &amp; acetabulum',
+      desc: 'Osteoarthritis, avascular necrosis, hip fracture and labral pathology. Total hip replacement is one of the most reliable operations in medicine and we perform it to a specified implant protocol.',
+      specs: [
+        ['Common procedures', 'Total hip replacement, hemiarthroplasty'],
+        ['Implant', 'Titanium stem, ceramic or metal head'],
+        ['Typical stay', '2–3 nights'],
+        ['Weight bearing', 'Full, day of surgery'],
+        ['Return to driving', '6 weeks']
+      ]
+    },
+    knee: {
+      part: 'REGION 04 — KNEE',
+      title: 'Knee &amp; lower limb',
+      desc: 'Osteoarthritis, meniscal tear, ligament injury and fracture. Knee replacement for end-stage arthritis; arthroscopy and reconstruction for the younger, sport-injured knee.',
+      specs: [
+        ['Common procedures', 'Total knee, arthroscopy, ACL reconstruction'],
+        ['Implant', 'Cobalt-chrome, titanium, XLPE'],
+        ['Typical stay', '2–3 nights (replacement)'],
+        ['Weight bearing', 'Full, day of surgery'],
+        ['Return to sport', '6 weeks – 9 months']
+      ]
+    }
+  };
+
+  var roPart = document.getElementById('ro-part');
+  var roTitle = document.getElementById('ro-title');
+  var roDesc = document.getElementById('ro-desc');
+  var roSpecs = document.getElementById('ro-specs');
+
+  function showRegion(key){
+    var r = REGIONS[key];
+    if (!r) return;
+    roPart.textContent = r.part;
+    roTitle.innerHTML = r.title;
+    roDesc.textContent = r.desc;
+    roSpecs.innerHTML = r.specs.map(function(s){
+      return '<div><span class="k">' + s[0] + '</span><span class="v">' + s[1] + '</span></div>';
+    }).join('');
+  }
+
+  document.querySelectorAll('.region').forEach(function(g){
+    function activate(){
+      document.querySelectorAll('.region').forEach(function(o){ o.classList.remove('on'); });
+      g.classList.add('on');
+      showRegion(g.getAttribute('data-region'));
+    }
+    g.addEventListener('click', activate);
+    g.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); activate(); }
+    });
+  });
+
+  /* ---------- booking form ---------- */
+  var f = document.getElementById('axisform');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var note = document.getElementById('fnote');
+    var nm = f.elements.nm.value.trim(), ph = f.elements.ph.value.trim();
+    if (!nm){ f.elements.nm.focus(); note.textContent = 'Please add your name.'; return; }
+    if (!ph){ f.elements.ph.focus(); note.textContent = 'Please add a phone number.'; return; }
+    var ref = 'AX-2026-' + String(Math.floor(Math.random() * 9000) + 1000);
+    note.textContent = 'Request logged — reference ' + ref +
+      '. We will call to arrange your consultation and confirm which imaging to bring.';
+  });
+
+  /* ---------- anchors ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var href = this.getAttribute('href');
+      if (href === '#'){ e.preventDefault(); return; }
+      var t = document.querySelector(href);
+      if (t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

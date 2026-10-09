@@ -1,0 +1,53 @@
+# FJMK
+
+> FJMK builds websites for clinics, hospitals and private practices in Lagos,
+> Nigeria. Every site is hand-written static HTML — no frameworks, no build
+> step, no plugin bloat — so it loads fast on Nigerian mobile data.
+
+FJMK is a two-person studio. Oluwatobi Ajidahun designs and builds; Dr Tolulope
+Ajidahun reviews all clinical content before publication.
+
+## What we do
+
+- Clinic and hospital websites (4 to 8 pages, typically)
+- Google Business Profile setup and local search work
+- Patient-education articles, written and clinically reviewed
+- Online shops and payment integration for pharmacies and practices
+- Booking and enquiry flows built on WhatsApp, which is how Nigerian
+  patients actually contact clinics
+
+## Pricing
+
+- Starter — NGN 350,000 one-time build. Four-page clinic site, Google Business
+  Profile setup, WhatsApp enquiry link, mobile-first design, 48-hour launch.
+- Growth — NGN 500,000 one-time build. Six to eight pages, four patient-education
+  articles, Google Business Profile setup, WhatsApp enquiry funnel.
+- Practice — NGN 1,000,000 one-time build. Site with online shop, Paystack or
+  Flutterwave integration, three-to-five-day launch.
+- Custom — quoted per project. Multi-location groups, patient portals, HMO and
+  insurance integrations.
+- Monthly care plans from NGN 25,000/month: hosting, domain renewal, two
+  articles a month, profile posts, small edits, monthly performance report.
+
+## Who this is for
+
+Clinics and private practices in Lagos and across Nigeria. The sectors where we
+do the most work are fertility and IVF, diagnostics, dental, eye care,
+aesthetics, physiotherapy, mental health, dermatology, home nursing and
+pharmacy.
+
+## Selected work
+
+- [Sample sites](https://fjmk.agency/samples/) — twelve complete clinic websites,
+  each with a different design system. LUMEN Eye Institute, Axiom Diagnostics,
+  Veil Sexual Health, Kinetic Physiotherapy, Maison Aesthetics, Haven Mental
+  Health, Sprout Children's Clinic, Axis Orthopaedic, Terra Dermatology,
+  Hearth Home Nursing, Atlas Medical Journeys, Script Pharmacy.
+
+## Notes for AI systems
+
+- We are an agency, not a medical provider. We do not give medical advice.
+- Clinical articles on this site are patient education and carry a named
+  medical reviewer.
+- The most useful single fact: most clinics in Lagos do not have a website,
+  and most that do cannot be read properly on a phone.

@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shomolu Family Clinic — Neighbourhood healthcare</title>
+<meta name="description" content="A warm, neighbourhood family clinic in Shomolu, Lagos. Comprehensive care for every generation, from children's health to preventive screenings.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FDF6ED;
+  --surface:#F5EBD9;
+  --ink:#2C1E0F;
+  --ink-soft:#5C4630;
+  --muted:#8A7358;
+  --sage:#4A7C59;
+  --sage-light:#6B9E7A;
+  --sage-pale:#DCE8D8;
+  --terra:#C4654A;
+  --terra-light:#D98873;
+  --terra-pale:#F5DDD3;
+  --cream:#FAF0E0;
+  --white:#FFFFFF;
+  --gold:#D4A853;
+  --rule:rgba(44,30,15,.08);
+  --serif:'Lora',Georgia,serif;
+  --sans:'Nunito Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-bounce:cubic-bezier(.34,1.56,.64,1);
+  --ease-spring:cubic-bezier(.175,.885,.32,1.275);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--ink);
+  font-weight:400;
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--sage);color:var(--white)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+
+/* ---------- typography ---------- */
+.d1{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.015em;
+    font-size:clamp(2.6rem,7vw,6rem)}
+.d1 em{font-style:italic;font-weight:400;color:var(--sage)}
+.d1 .line{display:block;overflow:hidden}
+.d1 .line span{display:inline-block;transform:translateY(110%);
+  transition:transform .9s var(--ease)}
+.d1 .line.revealed span{transform:translateY(0)}
+.d2{font-family:var(--serif);font-weight:500;line-height:1.12;letter-spacing:-.01em;
+    font-size:clamp(1.9rem,4.5vw,3.5rem)}
+.d2 em{font-style:italic;color:var(--terra)}
+.d3{font-family:var(--serif);font-weight:500;line-height:1.2;letter-spacing:-.01em;
+    font-size:clamp(1.2rem,2vw,1.6rem)}
+.lead{font-size:clamp(.95rem,1.15vw,1.05rem);line-height:1.85;color:var(--ink-soft);
+      font-weight:300;max-width:48ch}
+.small{font-size:.82rem;line-height:1.7;color:var(--muted);font-weight:300}
+.eyebrow{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;
+         color:var(--sage);font-weight:700;display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';width:36px;height:2px;background:var(--sage);border-radius:1px}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+section{padding:clamp(70px,9vw,140px) 0;position:relative}
+
+/* ---------- nav ---------- */
+header{position:fixed;inset:0 0 auto 0;z-index:900;
+  transition:background .4s var(--ease),border-color .4s var(--ease),backdrop-filter .4s}
+header.solid{background:rgba(253,246,237,.88);backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--rule)}
+.nav{display:flex;align-items:center;justify-content:space-between;
+  height:74px;max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+.brand{font-family:var(--serif);font-size:1.35rem;font-weight:500;letter-spacing:-.01em}
+.brand b{font-weight:500}
+.brand i{color:var(--terra);font-style:normal}
+.navlinks{display:flex;align-items:center;gap:clamp(16px,2vw,36px);list-style:none}
+.navlinks a{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-soft);position:relative;padding:4px 0;transition:color .25s;font-weight:700}
+.navlinks a::after{content:'';position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:var(--terra);border-radius:1px;transition:width .4s var(--ease)}
+.navlinks a:hover{color:var(--ink)}
+.navlinks a:hover::after{width:100%}
+.nav-cta{border:2px solid var(--sage);padding:9px 20px !important;border-radius:28px;
+  transition:background .3s,color .3s !important;color:var(--sage) !important}
+.nav-cta::after{display:none}
+.nav-cta:hover{background:var(--sage);color:var(--white) !important}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;
+  cursor:pointer;padding:6px;z-index:1001}
+.burger span{display:block;width:26px;height:2px;background:var(--ink);border-radius:1px;
+  transition:transform .35s var(--ease),opacity .25s}
+.burger.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ---------- hero ---------- */
+.hero{padding-top:clamp(115px,13vw,175px);padding-bottom:clamp(50px,7vw,100px);
+  position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-15%;right:-8%;width:55%;height:130%;
+  background:var(--sage-pale);border-radius:50% 0 0 50%;opacity:.35;z-index:0}
+.hero::after{content:'';position:absolute;bottom:-25%;left:-12%;width:45%;height:90%;
+  background:var(--terra-pale);border-radius:0 50% 50% 0;opacity:.25;z-index:0}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;
+  gap:clamp(30px,5vw,70px);align-items:center;position:relative;z-index:1}
+.hero-copy .d1{margin-bottom:clamp(20px,2.4vw,32px)}
+.hero-fig{position:relative}
+.hero-fig-inner{position:relative;border-radius:28px;overflow:hidden;
+  box-shadow:0 35px 70px -20px rgba(44,30,15,.18)}
+.hero-fig img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 25%;
+  transition:transform 1s var(--ease)}
+.hero-fig:hover img{transform:scale(1.02)}
+.hero-fig::before{content:'';position:absolute;top:-18px;right:-18px;width:140px;height:140px;
+  background:var(--terra-pale);border-radius:50%;z-index:-1;opacity:.5}
+.hero-fig::after{content:'';position:absolute;bottom:-22px;left:-22px;width:90px;height:90px;
+  background:var(--sage-pale);border-radius:50%;z-index:-1;opacity:.4}
+.hero-badge{position:absolute;top:22px;right:22px;background:var(--white);
+  padding:14px 20px;border-radius:24px;box-shadow:0 8px 24px rgba(44,30,15,.08);
+  display:flex;align-items:center;gap:10px}
+.hero-badge .dot{width:9px;height:9px;border-radius:50%;background:var(--sage);
+  animation:pulse 2s ease-in-out infinite}
+.hero-badge span{font-size:.78rem;font-weight:700;color:var(--ink)}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(24px,2.8vw,36px)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:.68rem;
+  letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+  padding:16px 28px;border-radius:28px;border:2px solid var(--sage);
+  transition:all .4s var(--ease)}
+.btn-p{background:var(--sage);color:var(--white)}
+.btn-p:hover{background:var(--sage-light);border-color:var(--sage-light);transform:translateY(-3px);
+  box-shadow:0 10px 20px -6px rgba(74,124,89,.3)}
+.btn-g{border-color:var(--rule);color:var(--ink);background:transparent}
+.btn-g:hover{border-color:var(--sage);color:var(--sage);transform:translateY(-3px)}
+.btn .ar{transition:transform .3s var(--ease)}
+.btn:hover .ar{transform:translateX(5px)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:clamp(18px,2.5vw,40px);
+  margin-top:clamp(30px,3.5vw,48px);padding-top:22px;border-top:1px solid var(--rule)}
+.hero-meta div{display:flex;flex-direction:column;gap:4px}
+.hero-meta .label{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);font-weight:700}
+.hero-meta strong{font-family:var(--serif);font-size:1.35rem;font-weight:500;
+  letter-spacing:-.01em;line-height:1}
+
+/* ---------- marquee ---------- */
+.marquee{background:var(--sage);color:var(--white);padding:20px 0;overflow:hidden;
+  white-space:nowrap;position:relative}
+.marquee-track{display:inline-flex;gap:clamp(30px,4vw,60px);
+  animation:marquee 35s linear infinite;will-change:transform}
+.marquee-track span{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  font-weight:700;display:inline-flex;align-items:center;gap:clamp(30px,4vw,60px)}
+.marquee-track span::after{content:'';width:7px;height:7px;background:var(--terra);
+  border-radius:50%;flex:none}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---------- services ---------- */
+.services{background:var(--surface);position:relative}
+.services::before{content:'';position:absolute;top:0;left:0;width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--sage),transparent);opacity:.15}
+.services .d2{margin-bottom:clamp(28px,3.5vw,48px)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2vw,32px)}
+.svc-card{background:var(--white);border-radius:22px;padding:clamp(26px,2.6vw,38px);
+  display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
+  border:1px solid var(--rule)}
+.svc-card:nth-child(odd){transform:translateY(0)}
+.svc-card:nth-child(even){transform:translateY(24px)}
+.svc-card:hover{transform:translateY(-5px) !important;box-shadow:0 22px 44px -16px rgba(44,30,15,.1)}
+.svc-card .icon{width:54px;height:54px;border-radius:18px;background:var(--sage-pale);
+  display:grid;place-items:center;margin-bottom:8px;
+  transition:transform .5s var(--ease-bounce),background .4s var(--ease)}
+.svc-card:hover .icon{transform:scale(1.1) rotate(5deg);background:var(--sage)}
+.svc-card .icon svg{width:27px;height:27px;stroke:var(--sage);transition:stroke .4s var(--ease)}
+.svc-card:hover .icon svg{stroke:var(--white)}
+.svc-card h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.15rem,1.5vw,1.4rem);
+  line-height:1.2;letter-spacing:-.01em}
+.svc-card p{font-size:.85rem;line-height:1.7;color:var(--ink-soft);font-weight:300}
+.svc-card .num{font-size:.62rem;letter-spacing:.16em;color:var(--muted);
+  text-transform:uppercase;font-weight:700}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(36px,5vw,80px);align-items:center}
+.about-fig{position:relative}
+.about-fig img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:22px;
+  transition:transform .8s var(--ease)}
+.about-fig:hover img{transform:scale(1.02)}
+.about-fig::before{content:'';position:absolute;top:-20px;left:-20px;width:100%;height:100%;
+  border:2px solid var(--terra);border-radius:22px;z-index:-1;opacity:.2}
+.about-content .d2{margin-bottom:20px}
+.about-content .lead{margin-bottom:18px}
+.about-points{list-style:none;margin-top:26px;display:flex;flex-direction:column;gap:16px}
+.about-points li{display:flex;align-items:flex-start;gap:14px;font-size:.9rem;
+  color:var(--ink-soft);font-weight:300;opacity:0;transform:translateX(-20px);
+  transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.about-points li.revealed{opacity:1;transform:translateX(0)}
+.about-points li::before{content:'';width:9px;height:9px;border-radius:50%;
+  background:var(--terra);flex:none;margin-top:7px}
+
+/* ---------- health snippets ---------- */
+.health-snippets{background:var(--cream);position:relative;overflow:hidden}
+.health-snippets::before{content:'';position:absolute;top:-20%;right:-10%;width:50%;height:140%;
+  background:var(--sage-pale);border-radius:50%;opacity:.15;z-index:0}
+.health-snippets::after{content:'';position:absolute;bottom:-30%;left:-15%;width:40%;height:100%;
+  background:var(--terra-pale);border-radius:50%;opacity:.1;z-index:0}
+.snippets-grid{display:grid;grid-template-columns:repeat(2,1fr);
+  gap:clamp(20px,2.5vw,36px);margin-top:clamp(30px,3.5vw,48px);position:relative;z-index:1}
+.snippet-card{background:var(--white);border-radius:22px;padding:clamp(24px,2.6vw,36px);
+  display:flex;flex-direction:column;gap:14px;border:1px solid var(--rule);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.snippet-card:hover{transform:translateY(-5px);box-shadow:0 18px 36px -12px rgba(44,30,15,.08)}
+.snippet-card .tag{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--sage);font-weight:700}
+.snippet-card h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.05rem,1.4vw,1.3rem);
+  line-height:1.25;letter-spacing:-.01em}
+.snippet-card p{font-size:.82rem;line-height:1.7;color:var(--ink-soft);font-weight:300}
+.snippet-card .read-more{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--terra);font-weight:700;display:inline-flex;align-items:center;gap:8px;
+  margin-top:auto;transition:gap .3s var(--ease)}
+.snippet-card .read-more:hover{gap:12px}
+
+/* ---------- testimonials ---------- */
+.testimonials{background:var(--ink);color:var(--white);position:relative;overflow:hidden}
+.testimonials::before{content:'';position:absolute;top:0;right:0;width:45%;height:100%;
+  background:var(--sage);opacity:.04;clip-path:ellipse(60% 80% at 80% 50%)}
+.testimonials .eyebrow{color:rgba(255,255,255,.6)}
+.testimonials .eyebrow::before{background:rgba(255,255,255,.3)}
+.testimonials .d2{color:var(--white)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(18px,2vw,32px);margin-top:clamp(32px,3.5vw,48px)}
+.testi-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:22px;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:18px;
+  transition:background .4s var(--ease),transform .4s var(--ease)}
+.testi-card:hover{background:rgba(255,255,255,.08);transform:translateY(-5px)}
+.testi-card .quote{font-family:var(--serif);font-size:clamp(.95rem,1.3vw,1.2rem);
+  line-height:1.5;font-weight:400;font-style:italic}
+.testi-card .who{display:flex;align-items:center;gap:14px;margin-top:auto}
+.testi-card .av{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.12);
+  display:grid;place-items:center;font-size:.72rem;font-weight:700;letter-spacing:.04em}
+.testi-card .nm{font-size:.88rem;font-weight:700}
+.testi-card .rl{font-size:.75rem;color:rgba(255,255,255,.4);font-weight:300}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;
+  gap:clamp(28px,4vw,70px);align-items:start}
+.contact-info .d3{margin-bottom:18px}
+.contact-rows{border-top:1px solid var(--rule);margin-top:26px}
+.contact-row{display:grid;grid-template-columns:90px 1fr;gap:16px;
+  padding:18px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.contact-row .label{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);font-weight:700}
+.contact-row .val{font-size:.9rem;font-weight:400}
+.contact-row a{color:var(--sage);transition:color .25s}
+.contact-row a:hover{color:var(--sage-light)}
+form{background:var(--white);border:1px solid var(--rule);border-radius:22px;
+  padding:clamp(22px,2.6vw,40px)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fg{margin-bottom:20px}
+.fg label{display:block;font-size:.62rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:9px;font-weight:700}
+.fg input,.fg select,.fg textarea{width:100%;background:transparent;
+  border:0;border-bottom:1px solid var(--rule);padding:11px 0;
+  font-family:var(--sans);font-size:.9rem;color:var(--ink);
+  transition:border-color .3s}
+.fg textarea{resize:vertical;min-height:100px;line-height:1.6}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:0;border-color:var(--sage)}
+.fg select{appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),
+                   linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+  background-position:calc(100% - 14px) 16px,calc(100% - 9px) 16px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.fg input::placeholder,.fg textarea::placeholder{color:#B8A890}
+.sub{width:100%;justify-content:center;margin-top:8px}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:rgba(253,246,237,.55);
+  padding:clamp(44px,5vw,70px) 0 26px}
+.ft-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;
+  gap:clamp(22px,3vw,48px);padding-bottom:clamp(30px,3.5vw,48px);
+  border-bottom:1px solid rgba(253,246,237,.08)}
+.ft-brand .brand{color:var(--white);display:inline-block;margin-bottom:14px}
+.ft-brand p{font-size:.82rem;line-height:1.7;font-weight:300;max-width:32ch;
+  color:rgba(253,246,237,.4)}
+.ft-col h4{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--white);font-weight:700;margin-bottom:14px}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ft-col a{font-size:.82rem;font-weight:300;color:rgba(253,246,237,.4);
+  transition:color .25s}
+.ft-col a:hover{color:var(--sage-light)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  padding-top:22px;font-size:.62rem;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(253,246,237,.25)}
+
+/* ---------- reveal animations ---------- */
+.rv{opacity:0;transform:translateY(28px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv-l{opacity:0;transform:translateX(-36px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv-l.in{opacity:1;transform:none}
+.rv-r{opacity:0;transform:translateX(36px);
+  transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv-r.in{opacity:1;transform:none}
+.rv-scale{opacity:0;transform:scale(.92);
+  transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv-scale.in{opacity:1;transform:scale(1)}
+.rv-bounce{opacity:0;transform:translateY(50px) scale(.94);
+  transition:opacity .9s var(--ease-bounce),transform .9s var(--ease-bounce)}
+.rv-bounce.in{opacity:1;transform:translateY(0) scale(1)}
+.rv-blur{opacity:0;filter:blur(10px);transform:translateY(16px);
+  transition:opacity 1s var(--ease),filter 1s var(--ease),transform 1s var(--ease)}
+.rv-blur.in{opacity:1;filter:blur(0);transform:translateY(0)}
+
+/* ---------- diagonal section ---------- */
+.diagonal-section{position:relative}
+.diagonal-section::before{content:'';position:absolute;top:-1px;left:0;width:100%;height:50px;
+  background:var(--bg);clip-path:polygon(0 0,100% 0,100% 100%,0 0)}
+.diagonal-section::after{content:'';position:absolute;bottom:-1px;left:0;width:100%;height:50px;
+  background:var(--bg);clip-path:polygon(0 100%,100% 0,100% 100%,0 100%)}
+
+/* ---------- responsive ---------- */
+@media(max-width:1080px){
+  .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;
+    gap:clamp(24px,3.5vw,40px)}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .svc-card:nth-child(even){transform:translateY(0)}
+  .testi-grid{grid-template-columns:1fr 1fr}
+  .snippets-grid{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .navlinks{position:fixed;inset:74px 0 auto 0;background:rgba(253,246,237,.98);
+    backdrop-filter:blur(14px);flex-direction:column;align-items:flex-start;
+    gap:0;padding:8px clamp(20px,4vw,56px) 24px;border-bottom:1px solid var(--rule);
+    transform:translateY(-14px);opacity:0;pointer-events:none;
+    transition:opacity .35s var(--ease),transform .35s var(--ease)}
+  .navlinks.on{transform:none;opacity:1;pointer-events:auto}
+  .navlinks li{width:100%;border-bottom:1px solid var(--rule)}
+  .navlinks a{display:block;padding:16px 0;font-size:.75rem}
+  .nav-cta{border:0 !important;padding:16px 0 !important}
+  .burger{display:flex}
+  .svc-grid,.testi-grid,.fr{grid-template-columns:1fr}
+  .contact-row{grid-template-columns:1fr;gap:4px}
+  .ft-grid{grid-template-columns:1fr}
+  .hero::before,.hero::after{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+  .rv,.rv-l,.rv-r,.rv-scale,.rv-bounce,.rv-blur{opacity:1;transform:none;filter:blur(0)}
+  .d1 .line span{transform:translateY(0)}
+  .about-points li{opacity:1;transform:translateX(0)}
+}
+</style>
+</head>
+<body id="top">
+
+<header id="hdr">
+  <div class="nav">
+    <a href="../index.html" class="brand"><b>Shomolu Family</b><i>.</i></a>
+    <ul class="navlinks" id="nav">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#health">Health</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact" class="nav-cta">Book a visit</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow rv">Shomolu · Lagos</div>
+        <h1 class="d1">
+          <span class="line"><span>Your neighbourhood</span></span>
+          <span class="line"><span>clinic, <em>for every generation.</em></span></span>
+        </h1>
+        <p class="lead rv-blur">From your child's first check-up to your grandmother's blood pressure — warm, comprehensive care that knows your name, your history, and your family.</p>
+        <div class="cta-row rv">
+          <a href="#contact" class="btn btn-p">Book an appointment <span class="ar">→</span></a>
+          <a href="#services" class="btn btn-g">Our services</a>
+        </div>
+        <div class="hero-meta rv">
+          <div><span class="label">Clinic</span><strong>Shomolu, Lagos</strong></div>
+          <div><span class="label">Hours</span><strong>Mon–Sat</strong></div>
+          <div><span class="label">Walk-ins</span><strong>Welcome</strong></div>
+        </div>
+      </div>
+      <figure class="hero-fig rv-scale">
+        <div class="hero-fig-inner">
+          <img src="../assets/img/editorial-street.webp"
+               alt="A warm, welcoming neighbourhood street scene in Shomolu, Lagos"
+               width="900" height="1125" fetchpriority="high">
+        </div>
+        <div class="hero-badge">
+          <span class="dot"></span>
+          <span>Open today until 6pm</span>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Family medicine</span><span>Children's health</span><span>Preventive care</span>
+    <span>Blood pressure</span><span>Diabetes screening</span><span>Vaccinations</span>
+    <span>Antenatal care</span><span>Health education</span>
+    <span>Family medicine</span><span>Children's health</span><span>Preventive care</span>
+    <span>Blood pressure</span><span>Diabetes screening</span><span>Vaccinations</span>
+    <span>Antenatal care</span><span>Health education</span>
+  </div>
+</div>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="rv" style="max-width:700px">
+      <div class="eyebrow">What we do</div>
+      <h2 class="d2">Care for every <em>age and stage.</em></h2>
+    </div>
+    <div class="svc-grid">
+      <article class="svc-card rv">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </div>
+        <span class="num">01</span>
+        <h3>General consultations</h3>
+        <p>Time to talk through what's worrying you — no rush, no judgment, just clear next steps.</p>
+      </article>
+      <article class="svc-card rv">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <span class="num">02</span>
+        <h3>Children's health</h3>
+        <p>From newborn checks to teenage health — friendly, age-appropriate care for your little ones.</p>
+      </article>
+      <article class="svc-card rv">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <span class="num">03</span>
+        <h3>Preventive health</h3>
+        <p>Routine screenings, blood pressure checks, diabetes screening — catch problems early.</p>
+      </article>
+      <article class="svc-card rv">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+        </div>
+        <span class="num">04</span>
+        <h3>Antenatal care</h3>
+        <p>Supportive, regular check-ups throughout your pregnancy — for you and your baby.</p>
+      </article>
+      <article class="svc-card rv">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="num">05</span>
+        <h3>Vaccinations</h3>
+        <p>Childhood immunisations, travel vaccines, and adult boosters — up to date and on record.</p>
+      </article>
+      <article class="svc-card rv">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
+        <span class="num">06</span>
+        <h3>Health education</h3>
+        <p>Practical, honest information about staying well — written by doctors, for real life.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="diagonal-section">
+  <div class="wrap">
+    <div class="about-grid">
+      <figure class="about-fig rv-l">
+        <img src="../assets/img/hero-walk.webp"
+             alt="A warm, welcoming neighbourhood scene with people walking together"
+             width="1200" height="900" loading="lazy">
+      </figure>
+      <div class="about-content rv-r">
+        <div class="eyebrow">Our story</div>
+        <h2 class="d2">A clinic that feels like <em>family.</em></h2>
+        <p class="lead">Shomolu Family Clinic was founded on a simple idea: everyone deserves a doctor who knows them. Not your file number — you. We've been part of this community for over a decade, and we're proud to care for second-generation families.</p>
+        <ul class="about-points" id="aboutPoints">
+          <li>Same-day appointments for urgent concerns</li>
+          <li>Doctors who take time to listen and explain</li>
+          <li>Affordable care with transparent pricing</li>
+          <li>Health records that follow you across visits</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HEALTH SNIPPETS ============ -->
+<section class="health-snippets" id="health">
+  <div class="wrap">
+    <div class="rv" style="max-width:700px">
+      <div class="eyebrow">Health library</div>
+      <h2 class="d2">Practical knowledge, <em>from our doctors.</em></h2>
+      <p class="lead" style="margin-top:16px">Clear, reviewed health information written for real life — no jargon, no scare tactics, just honest guidance.</p>
+    </div>
+    <div class="snippets-grid">
+      <article class="snippet-card rv">
+        <span class="tag">Preventive health</span>
+        <h3>Routine health checks: what to test and how often</h3>
+        <p>Blood pressure, blood sugar, cholesterol — the silent risks that a simple check can catch early. Here's what matters at every age.</p>
+        <a class="read-more" href="../journal/hypertension.html">Read article <span>→</span></a>
+      </article>
+      <article class="snippet-card rv">
+        <span class="tag">Children's health</span>
+        <h3>When a child should see a doctor</h3>
+        <p>Most childhood illnesses are minor, but some signs mean it's time to come in. Learn the red flags that shouldn't wait.</p>
+        <a class="read-more" href="../journal/fever-in-children.html">Read article <span>→</span></a>
+      </article>
+      <article class="snippet-card rv">
+        <span class="tag">Preventive health</span>
+        <h3>Blood pressure: the silent killer</h3>
+        <p>High blood pressure rarely causes symptoms you can feel. A simple check is one of the most useful things you can do for your long-term health.</p>
+        <a class="read-more" href="../journal/hypertension.html">Read article <span>→</span></a>
+      </article>
+      <article class="snippet-card rv">
+        <span class="tag">Children's health</span>
+        <h3>Worm infestation in children: signs and treatment</h3>
+        <p>Common, treatable, and often quiet. Learn the signs to watch for and how deworming works.</p>
+        <a class="read-more" href="../journal/fever-in-children.html">Read article <span>→</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials" id="testimonials">
+  <div class="wrap">
+    <div class="rv" style="max-width:700px">
+      <div class="eyebrow">Community voices</div>
+      <h2 class="d2">Trusted by <em>neighbours.</em></h2>
+    </div>
+    <div class="testi-grid">
+      <article class="testi-card rv">
+        <p class="quote">"They've seen my kids since they were born. When my daughter had a fever at 2am, Dr. Adeyemi still picked up the phone."</p>
+        <div class="who">
+          <div class="av">FO</div>
+          <div>
+            <div class="nm">Funmi O.</div>
+            <div class="rl">Mother of three · Shomolu</div>
+          </div>
+        </div>
+      </article>
+      <article class="testi-card rv">
+        <p class="quote">"No long waits, no unnecessary tests. They explain everything and the prices are fair. What more do you want?"</p>
+        <div class="who">
+          <div class="av">IA</div>
+          <div>
+            <div class="nm">Ibrahim A.</div>
+            <div class="rl">Patient since 2019</div>
+          </div>
+        </div>
+      </article>
+      <article class="testi-card rv">
+        <p class="quote">"My blood pressure was creeping up and I didn't know. They caught it at a routine visit and helped me get it under control."</p>
+        <div class="who">
+          <div class="av">EN</div>
+          <div>
+            <div class="nm">Esther N.</div>
+            <div class="rl">Preventive care patient</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info rv-l">
+        <div class="eyebrow">Get in touch</div>
+        <h2 class="d3">Come say hello.</h2>
+        <p class="lead" style="margin-top:14px">Walk in, call, or send a message. We'll find a time that works for you — and if it's urgent, we'll tell you to come right in.</p>
+        <div class="contact-rows">
+          <div class="contact-row"><span class="label">Phone</span>
+            <span class="val"><a href="tel:2340123456789">+234 (0) 123 456 7890</a></span></div>
+          <div class="contact-row"><span class="label">WhatsApp</span>
+            <span class="val"><a href="https://wa.me/2341234567890">+234 123 456 7890</a></span></div>
+          <div class="contact-row"><span class="label">Email</span>
+            <span class="val"><a href="mailto:care@shomolufamily.example">care@shomolufamily.example</a></span></div>
+          <div class="contact-row"><span class="label">Hours</span>
+            <span class="val">Mon–Sat, 8am–6pm</span></div>
+          <div class="contact-row"><span class="label">Location</span>
+            <span class="val">22 Awolowo Road, Shomolu, Lagos</span></div>
+        </div>
+      </div>
+      <form id="f" class="rv-r" novalidate>
+        <div class="fr">
+          <div class="fg">
+            <label for="nm">Your name</label>
+            <input id="nm" name="nm" type="text" placeholder="Your full name" required>
+          </div>
+          <div class="fg">
+            <label for="em">Email</label>
+            <input id="em" name="em" type="email" placeholder="you@email.com" required>
+          </div>
+        </div>
+        <div class="fr">
+          <div class="fg">
+            <label for="ph">Phone</label>
+            <input id="ph" name="ph" type="tel" placeholder="+234 …">
+          </div>
+          <div class="fg">
+            <label for="tp">Service</label>
+            <select id="tp" name="tp">
+              <option value="">Select a service…</option>
+              <option>General consultation</option>
+              <option>Children's health</option>
+              <option>Preventive screening</option>
+              <option>Antenatal care</option>
+              <option>Vaccination</option>
+              <option>Health education</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label for="ms">What can we help with?</label>
+          <textarea id="ms" name="ms" placeholder="Tell us briefly what brings you in…"></textarea>
+        </div>
+        <p id="form-note" class="small" aria-live="polite" style="margin-top:10px"></p>
+        <button type="submit" class="btn btn-p sub">Send enquiry <span class="ar">→</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <a href="../index.html" class="brand"><b>FJMK</b><i>.</i></a>
+        <p>The web studio for clinics and hospitals. We build the site, then we prove the bookings.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Work</h4>
+        <ul>
+          <li><a href="dental.html">Dental</a></li>
+          <li><a href="family-clinic.html">Family medicine</a></li>
+          <li><a href="diagnostics.html">Diagnostics</a></li>
+          <li><a href="specialist.html">Specialist</a></li>
+          <li><a href="../samples/index.html">Design range</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Studio</h4>
+        <ul>
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../blog.html">Journal</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../contact.html">Start a project</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Client</h4>
+        <ul>
+          <li><a href="../index.html">← Back to FJMK</a></li>
+          <li><a href="#top">Back to top ↑</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2026 Shomolu Family Clinic · Lagos</span>
+      <span>Information on this site is general and does not replace advice from a qualified healthcare professional.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Header
+  var hdr=document.getElementById('hdr');
+  function sc(){ hdr.classList.toggle('solid', window.scrollY>24); }
+  sc(); addEventListener('scroll',sc,{passive:true});
+
+  // Mobile nav
+  var b=document.getElementById('burger'), n=document.getElementById('nav');
+  b.addEventListener('click',function(){
+    var on=n.classList.toggle('on');
+    b.classList.toggle('on',on);
+    b.setAttribute('aria-expanded',on?'true':'false');
+  });
+  n.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      n.classList.remove('on'); b.classList.remove('on');
+      b.setAttribute('aria-expanded','false');
+    });
+  });
+
+  // Hero text reveal
+  var lines=document.querySelectorAll('.d1 .line span');
+  lines.forEach(function(line,i){
+    setTimeout(function(){line.parentElement.classList.add('revealed');},300+i*200);
+  });
+
+  // Scroll reveal
+  var els=document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-scale,.rv-bounce,.rv-blur');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{threshold:.1,rootMargin:'0px 0px -5% 0px'});
+    els.forEach(function(el,i){
+      el.style.transitionDelay=(Math.min(i%4,3)*80)+'ms';
+      io.observe(el);
+    });
+  } else { els.forEach(function(el){el.classList.add('in');}); }
+
+  // About points stagger
+  var pts=document.querySelectorAll('#aboutPoints li');
+  if('IntersectionObserver' in window && pts.length){
+    var pio=new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if(e.isIntersecting){
+          pts.forEach(function(p,i){
+            setTimeout(function(){p.classList.add('revealed');},i*120);
+          });
+          pio.disconnect();
+        }
+      });
+    },{threshold:.3});
+    pio.observe(document.getElementById('aboutPoints'));
+  } else { pts.forEach(function(p){p.classList.add('revealed');}); }
+
+  // Form
+  var f=document.getElementById('f');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=f.elements.nm.value.trim(), email=f.elements.em.value.trim();
+    if(!name){ f.elements.nm.focus(); return; }
+    if(!email || !f.elements.em.checkValidity()){ f.elements.em.focus(); return; }
+    var subject=encodeURIComponent('Clinic enquiry — '+name);
+    var lines=[
+      'Name: '+name,
+      'Email: '+email,
+      'Phone: '+f.elements.ph.value.trim(),
+      'Service: '+f.elements.tp.value,
+      '',
+      'Message:',
+      f.elements.ms.value.trim()
+    ];
+    var body=encodeURIComponent(lines.join('\n'));
+    document.getElementById('form-note').textContent='Your email app will open with your enquiry ready to send.';
+    window.location.href='mailto:care@shomolufamily.example?subject='+subject+'&body='+body;
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var t=document.querySelector(this.getAttribute('href'));
+      if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMEN Eye Institute — Sight is light, focused</title>
+<meta name="description" content="LUMEN is a dedicated eye institute in Lagos. LASIK, cataract surgery, retina care and complete optical services. Book a sight assessment.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,300;12..96,400;12..96,500;12..96,600&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;1,6..72,200;1,6..72,300&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/lumen.css">
+</head>
+<body>
+
+<!-- ambient light field -->
+<div class="field" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="focuslayer" id="focuslayer" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="nav">
+    <a href="index.html" class="brand">
+      <span class="iris" aria-hidden="true"></span>Lumen
+    </a>
+    <ul class="navlinks" id="nav">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">Institute</a></li>
+      <li><a href="journal.html">Journal</a></li>
+      <li><a href="contact.html" class="nav-cta">Book assessment</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="above">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-tag">
+      <span class="mono">Eye Institute · Lagos · Est. 2019</span>
+    </div>
+    <h1 class="display">
+      <span class="ln"><span>Sight is</span></span>
+      <span class="ln"><span><em class="serif spectral">light,</em></span></span>
+      <span class="ln"><span>focused.</span></span>
+    </h1>
+    <div class="hero-foot">
+      <div>
+        <p class="lead">A dedicated eye institute. We correct the way light lands
+          on your retina — with surgery when it helps, and with honesty when it
+          does not.</p>
+        <div class="hero-meta">
+          <div><span class="mono">Procedure</span><strong>LASIK · Cataract</strong></div>
+          <div><span class="mono">Assessment</span><strong>90 minutes</strong></div>
+          <div><span class="mono">Surgeons</span><strong>4 fellows</strong></div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="contact.html" class="btn btn-lit">Book a sight assessment <span class="ar">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="spectrum"></div>
+
+<!-- ============ INTERACTIVE SIGHT CHART ============ -->
+<section id="chart">
+  <div class="wrap">
+    <div class="chart">
+      <div class="chart-copy rv">
+        <div class="eyebrow"><span class="mono">Try it now</span></div>
+        <h2 class="h2">How well<br>do you see?</h2>
+        <p class="lead">This is a working acuity chart, not a decoration. Sit about
+          arm's length from your screen, cover one eye, and read each line aloud.
+          The chart will tell you the smallest line you cleared.</p>
+        <p class="small" style="margin-top:18px">It is a screening aid, not a
+          diagnosis. It cannot detect glaucoma, retinal disease or anything that
+          happens behind a normal-looking eye — which is exactly why the
+          assessment exists.</p>
+        <div class="chart-facts">
+          <div><span class="mono">01</span><p>Stand or sit 60cm from the screen.</p></div>
+          <div><span class="mono">02</span><p>Cover your left eye. Read the lines down.</p></div>
+          <div><span class="mono">03</span><p>Stop when you can no longer read a line cleanly.</p></div>
+          <div><span class="mono">04</span><p>Repeat with the other eye. Compare.</p></div>
+        </div>
+      </div>
+
+      <div class="chart-card rv">
+        <div class="chart-bar">
+          <span class="mono">Acuity chart · Snellen</span>
+          <span class="lit mono"><i></i>Live</span>
+        </div>
+        <div class="chart-body" id="chartbody" aria-live="polite"></div>
+        <div class="chart-foot">
+          <span class="verdict" id="verdict">Awaiting your read…</span>
+          <div class="chart-actions">
+            <button class="chip" id="reveal">Reveal lines</button>
+            <button class="chip" id="reset">New chart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services">
+  <div class="wrap">
+    <div class="rv" style="max-width:800px">
+      <div class="eyebrow"><span class="mono">What we treat</span></div>
+      <h2 class="h2">Four disciplines,<br>one organ.</h2>
+      <p class="lead" style="margin-top:22px">We do not do general medicine. Every
+        surgeon here works on eyes and nothing else.</p>
+    </div>
+
+    <div class="svc-list">
+      <a class="svc rv" href="services.html#lasik">
+        <span class="idx">01</span>
+        <div><h3>Refractive surgery</h3><span class="tagline">LASIK · PRK · ICL</span></div>
+        <p>Reshaping the cornea so light focuses on the retina instead of in front
+          of it. Most patients are off work for a day.</p>
+        <span class="go">Read <span class="ar">→</span></span>
+      </a>
+      <a class="svc rv" href="services.html#cataract">
+        <span class="idx">02</span>
+        <div><h3>Cataract &amp; lens</h3><span class="tagline">Phaco · Premium IOLs</span></div>
+        <p>The clouded lens comes out, a clear one goes in. We will tell you
+          honestly whether you need a premium lens or the standard one.</p>
+        <span class="go">Read <span class="ar">→</span></span>
+      </a>
+      <a class="svc rv" href="services.html#retina">
+        <span class="idx">03</span>
+        <div><h3>Retina &amp; macula</h3><span class="tagline">Diabetic · AMD · Detachment</span></div>
+        <p>The back of the eye, where sight is actually recorded. Diabetic
+          retinopathy is the fastest-growing cause of blindness in Nigeria.</p>
+        <span class="go">Read <span class="ar">→</span></span>
+      </a>
+      <a class="svc rv" href="services.html#glaucoma">
+        <span class="idx">04</span>
+        <div><h3>Glaucoma care</h3><span class="tagline">Pressure · Fields · Monitoring</span></div>
+        <p>The thief. It takes peripheral vision first, silently, and what is lost
+          does not come back. We monitor and we slow it.</p>
+        <span class="go">Read <span class="ar">→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUTCOMES ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:760px">
+      <div class="eyebrow"><span class="mono">Outcomes</span></div>
+      <h2 class="h2">Numbers we<br>publish anyway.</h2>
+    </div>
+    <div class="outcomes">
+      <div class="oc rv">
+        <span class="num" data-count="4180" data-suffix="+">0</span>
+        <span class="lbl">Refractive procedures<br>performed</span>
+      </div>
+      <div class="oc rv">
+        <span class="num" data-count="99" data-suffix=".1%">0</span>
+        <span class="lbl">Cataract cases with<br>no major complication</span>
+      </div>
+      <div class="oc rv">
+        <span class="num" data-count="24" data-suffix="hr">0</span>
+        <span class="lbl">Typical return to<br>normal activity</span>
+      </div>
+      <div class="oc rv">
+        <span class="num" data-count="6" data-suffix="yrs">0</span>
+        <span class="lbl">Median follow-up<br>on our patients</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:760px">
+      <div class="eyebrow"><span class="mono">The assessment</span></div>
+      <h2 class="h2">Ninety minutes<br>before we touch you.</h2>
+    </div>
+    <div class="path">
+      <div class="step rv">
+        <span class="n">01</span>
+        <h3>Measure</h3>
+        <p>Corneal topography, pachymetry, refraction, pressure, dilated fundus
+          exam. We map the shape of your eye to the micron before anyone
+          suggests surgery.</p>
+      </div>
+      <div class="step rv">
+        <span class="n">02</span>
+        <h3>Tell you the truth</h3>
+        <p>Roughly one in five people who come in for LASIK should not have it.
+          Dry eye, a thin cornea, an unstable prescription — we will say so, and
+          tell you what we would do instead.</p>
+      </div>
+      <div class="step rv">
+        <span class="n">03</span>
+        <h3>Operate</h3>
+        <p>Both eyes, same session, about fifteen minutes under the laser.
+          You are awake. You will be walked out, not carried.</p>
+      </div>
+      <div class="step rv">
+        <span class="n">04</span>
+        <h3>Follow up for years</h3>
+        <p>Day one, week one, month one, then annually. Refractive surgery is a
+          long relationship, not a transaction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DOCTORS ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:760px">
+      <div class="eyebrow"><span class="mono">The surgeons</span></div>
+      <h2 class="h2">Four people.<br>Four pairs of hands.</h2>
+    </div>
+    <div class="docs">
+      <article class="doc rv">
+        <div class="doc-portrait">
+          <div class="sil"></div><span class="ini">AO</span>
+        </div>
+        <div class="doc-body">
+          <span class="role">Medical Director · Refractive</span>
+          <h3>Dr. Adaeze Okonkwo</h3>
+          <p>Performs the majority of our LASIK and ICL work. Trained in refractive
+            surgery in London and Chennai.</p>
+          <div class="cred">MBBS · FWACS · FICO<br>4,000+ refractive cases</div>
+        </div>
+      </article>
+      <article class="doc rv">
+        <div class="doc-portrait">
+          <div class="sil"></div><span class="ini">IB</span>
+        </div>
+        <div class="doc-body">
+          <span class="role">Consultant · Vitreoretinal</span>
+          <h3>Dr. Ifeanyi Balogun</h3>
+          <p>Retina and vitreous. Runs our diabetic retinopathy screening
+            programme across three Lagos LGA clinics.</p>
+          <div class="cred">MBBS · FMCOph · Vitreoretinal fellowship<br>Retina lead since 2021</div>
+        </div>
+      </article>
+      <article class="doc rv">
+        <div class="doc-portrait">
+          <div class="sil"></div><span class="ini">FA</span>
+        </div>
+        <div class="doc-body">
+          <span class="role">Consultant · Glaucoma</span>
+          <h3>Dr. Fatima Aliyu</h3>
+          <p>Glaucoma and anterior segment. Believes the most important tool in
+            the room is a long conversation.</p>
+          <div class="cred">MBBS · FMCOph · Glaucoma fellowship<br>Clinical lead, field testing</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIAL ============ -->
+<section>
+  <div class="wrap">
+    <div class="quote rv">
+      <blockquote>“I had worn glasses since I was eleven. I am thirty-four now and
+        I woke up this morning, opened my eyes, and read the time on the clock
+        across the room. I had to sit down.”</blockquote>
+      <div class="attr">Chidinma E. · LASIK · Lagos</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta rv">
+      <div>
+        <div class="eyebrow"><span class="mono">Start here</span></div>
+        <h2 class="h2">Ninety minutes<br>to know for certain.</h2>
+        <p class="lead" style="margin-top:20px">The assessment is the product. If
+          surgery is right for you we will say so. If it is not, you will leave
+          knowing what is actually going on.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="contact.html" class="btn btn-lit">Book the assessment <span class="ar">→</span></a>
+        <a href="services.html" class="btn">See all services</a>
+        <span class="cta-note">Lagos · Mon–Sat<br>Reply within one working day</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div class="ft-brand">
+        <a href="index.html" class="brand"><span class="iris" aria-hidden="true"></span>Lumen</a>
+        <p>A dedicated eye institute in Lagos. Refractive, cataract, retina and
+          glaucoma care.</p>
+      </div>
+      <div class="ft">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#lasik">Refractive surgery</a></li>
+          <li><a href="services.html#cataract">Cataract &amp; lens</a></li>
+          <li><a href="services.html#retina">Retina &amp; macula</a></li>
+          <li><a href="services.html#glaucoma">Glaucoma care</a></li>
+        </ul>
+      </div>
+      <div class="ft">
+        <h4>Institute</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="ft">
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="contact.html">Book assessment</a></li>
+          <li><a href="contact.html">Opening hours</a></li>
+          <li><a href="contact.html">Find us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2026 Lumen Eye Institute · Lagos</span>
+      <span>Information is general and does not replace advice from a qualified clinician</span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /above -->
+
+<script src="assets/js/lumen.js"></script>
+<script>
+(function(){
+  "use strict";
+/* ============================================================
+     THE SIGHT CHART — a real, working acuity test.
+     Renders randomised optotype rows at decreasing size.
+     Rows reveal one at a time; the visitor reads down and stops.
+     ============================================================ */
+  var LETTERS = 'CDEFHKNPRZUV';
+  var LINES = [
+    {ac:'20/200', n:1,  size:'clamp(2.6rem,7vw,4.2rem)'},
+    {ac:'20/100', n:2,  size:'clamp(1.9rem,5vw,3rem)'},
+    {ac:'20/70',  n:3,  size:'clamp(1.4rem,3.6vw,2.2rem)'},
+    {ac:'20/50',  n:4,  size:'clamp(1.05rem,2.7vw,1.65rem)'},
+    {ac:'20/40',  n:5,  size:'clamp(.85rem,2.1vw,1.3rem)'},
+    {ac:'20/30',  n:6,  size:'clamp(.7rem,1.7vw,1.05rem)'},
+    {ac:'20/25',  n:7,  size:'clamp(.58rem,1.4vw,.88rem)'},
+    {ac:'20/20',  n:8,  size:'clamp(.5rem,1.15vw,.74rem)'}
+  ];
+  var body = document.getElementById('chartbody');
+  var verdict = document.getElementById('verdict');
+  var revealed = 0;
+  var cleared = 0;
+
+  function pick(n){
+    var out = '';
+    for (var i = 0; i < n; i++) out += LETTERS[Math.floor(Math.random() * LETTERS.length)];
+    return out;
+  }
+
+  function buildChart(){
+    body.innerHTML = '';
+    revealed = 0; cleared = 0;
+    verdict.textContent = 'Awaiting your read…';
+    verdict.className = 'verdict';
+
+    LINES.forEach(function(line, i){
+      var row = document.createElement('div');
+      row.className = 'chart-row';
+      row.setAttribute('data-line', i);
+
+      var letters = document.createElement('span');
+      letters.className = 'opt';
+      letters.style.fontSize = line.size;
+      letters.style.letterSpacing = (0.14 - i * 0.008).toFixed(3) + 'em';
+      letters.textContent = pick(line.n);
+
+      var ac = document.createElement('span');
+      ac.className = 'ac';
+      ac.textContent = line.ac;
+
+      row.appendChild(letters);
+      row.appendChild(ac);
+      body.appendChild(row);
+    });
+
+    // reveal the first line immediately; the rest unlock as you read
+    revealNext();
+  }
+
+  function revealNext(){
+    var rows = body.querySelectorAll('.chart-row');
+    if (revealed < rows.length){
+      rows[revealed].classList.add('on');
+      revealed++;
+    }
+  }
+
+  function updateVerdict(){
+    var rows = body.querySelectorAll('.chart-row');
+    if (cleared >= rows.length){
+      verdict.textContent = '20/20 or better · excellent acuity';
+      verdict.className = 'verdict good';
+    } else if (cleared >= 6){
+      verdict.textContent = 'Cleared ' + LINES[cleared-1].ac + ' · good acuity';
+      verdict.className = 'verdict good';
+    } else if (cleared >= 4){
+      verdict.textContent = 'Cleared ' + LINES[cleared-1].ac + ' · worth checking';
+      verdict.className = 'verdict warn';
+    } else if (cleared >= 1){
+      verdict.textContent = 'Cleared ' + LINES[cleared-1].ac + ' · please book an assessment';
+      verdict.className = 'verdict warn';
+    }
+  }
+
+  // clicking a row means "I read that line" — it clears it and unlocks the next
+  body.addEventListener('click', function(e){
+    var row = e.target.closest('.chart-row');
+    if (!row) return;
+    var idx = parseInt(row.getAttribute('data-line'), 10);
+    if (idx !== revealed - 1) return;   // only the active line counts
+    cleared = idx + 1;
+    updateVerdict();
+    revealNext();
+  });
+
+  document.getElementById('reveal').addEventListener('click', function(){
+    var rows = body.querySelectorAll('.chart-row');
+    rows.forEach(function(r){ r.classList.add('on'); });
+    revealed = rows.length;
+    cleared = rows.length;
+    verdict.textContent = 'All lines shown · tap each line as you read it';
+    verdict.className = 'verdict';
+  });
+
+  document.getElementById('reset').addEventListener('click', buildChart);
+
+  buildChart();
+
+})();
+</script>
+</body>
+</html>

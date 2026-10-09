@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sprout Children's Clinic — Lagos. Where children get better.</title>
+<meta name="description" content="Sprout is a children's clinic in Lagos. Well-baby checks, immunisation, growth monitoring and childhood illness. Open six days a week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SPROUT CHILDREN'S CLINIC
+   Design movement: NEO-MEMPHIS / PLAYFUL / JOYFUL
+
+   The governing rule: joy is a design principle.
+   Thick outlines, hard offset shadows, bright flat colour,
+   things that wiggle. A children's clinic must not feel like
+   a hospital, because children can read a room.
+   ============================================================ */
+
+:root{
+  --cream:#FFFBF3;
+  --paper:#FFFFFF;
+  --ink:#1A1A1A;
+  --sun:#FFD447;
+  --coral:#FF6B5B;
+  --sky:#4EA8DE;
+  --mint:#5FD4A5;
+  --grape:#9B7EDE;
+  --line:#1A1A1A;
+  --shadow:6px 6px 0 var(--ink);
+  --shadow-sm:4px 4px 0 var(--ink);
+  --shadow-lg:9px 9px 0 var(--ink);
+
+  --display:'Baloo 2',system-ui,sans-serif;
+  --body:'Nunito',system-ui,sans-serif;
+
+  --ease-bounce:cubic-bezier(.34,1.56,.64,1);
+  --gut:clamp(18px,3.6vw,56px);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--ink);font-family:var(--body);
+  font-weight:500;line-height:1.6;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased}
+::selection{background:var(--sun);color:var(--ink)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.above{position:relative;z-index:2}
+.wrap{max-width:1500px;margin:0 auto;padding:0 var(--gut)}
+
+/* floating confetti shapes */
+.confetti{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.confetti i{position:absolute;border-radius:50%;opacity:.5;
+  border:3px solid var(--ink);animation:float 22s ease-in-out infinite}
+.confetti i:nth-child(1){width:26px;height:26px;background:var(--sun);left:5%;top:14%;
+  animation-duration:19s}
+.confetti i:nth-child(2){width:18px;height:18px;background:var(--coral);right:8%;top:24%;
+  animation-duration:26s;animation-delay:-4s;border-radius:4px}
+.confetti i:nth-child(3){width:22px;height:22px;background:var(--sky);left:12%;bottom:22%;
+  animation-duration:23s;animation-delay:-8s}
+.confetti i:nth-child(4){width:16px;height:16px;background:var(--mint);right:14%;bottom:30%;
+  animation-duration:28s;animation-delay:-12s;border-radius:4px}
+.confetti i:nth-child(5){width:20px;height:20px;background:var(--grape);left:46%;top:8%;
+  animation-duration:24s;animation-delay:-6s}
+.confetti i:nth-child(6){width:14px;height:14px;background:var(--sun);right:36%;bottom:12%;
+  animation-duration:21s;animation-delay:-15s}
+@keyframes float{
+  0%,100%{transform:translate(0,0) rotate(0)}
+  33%{transform:translate(22px,-30px) rotate(140deg)}
+  66%{transform:translate(-18px,20px) rotate(260deg)}
+}
+
+/* ---------- type ---------- */
+.display{font-family:var(--display);font-weight:800;line-height:.98;
+  letter-spacing:-.02em}
+.d1{font-size:clamp(2.4rem,7.2vw,6.4rem)}
+.d2{font-size:clamp(1.9rem,4.6vw,3.6rem)}
+.d3{font-size:clamp(1.2rem,2vw,1.7rem);font-weight:700}
+.mono{font-family:var(--body);font-size:.72rem;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase}
+.lead{font-size:clamp(1rem,1.24vw,1.14rem);line-height:1.72;color:#4A4A4A;
+  max-width:56ch;font-weight:500}
+.small{font-size:.9rem;line-height:1.68;color:#6B6B6B}
+
+/* ---------- nav ---------- */
+header{position:fixed;inset:0 0 auto 0;z-index:80;
+  transition:background .4s var(--ease-bounce),border-color .4s}
+header.solid{background:rgba(255,251,243,.94);backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);border-bottom:3px solid var(--ink)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px;
+  max-width:1500px;margin:0 auto;padding:0 var(--gut)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);
+  font-weight:800;font-size:1.5rem;letter-spacing:-.02em}
+.brand .seed{width:30px;height:30px;flex:none;position:relative}
+.brand .seed svg{width:100%;height:100%;animation:wiggle 4s var(--ease-bounce) infinite}
+@keyframes wiggle{0%,100%{transform:rotate(0)}25%{transform:rotate(-11deg)}
+  75%{transform:rotate(11deg)}}
+.navlinks{display:flex;align-items:center;gap:clamp(12px,1.8vw,28px);list-style:none}
+.navlinks a{font-weight:700;font-size:.86rem;color:var(--ink);padding:6px 0;
+  position:relative;transition:transform .25s var(--ease-bounce)}
+.navlinks a:hover{transform:translateY(-2px)}
+.navlinks a::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:3px;
+  background:var(--sun);border-radius:2px;transform:scaleX(0);
+  transition:transform .3s var(--ease-bounce)}
+.navlinks a:hover::after{transform:scaleX(1)}
+.nav-cta{background:var(--coral);color:#fff !important;padding:11px 20px !important;
+  border:3px solid var(--ink);border-radius:100px;box-shadow:var(--shadow-sm);
+  transition:transform .2s var(--ease-bounce),box-shadow .2s}
+.nav-cta::after{display:none}
+.nav-cta:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.burger{display:none;flex-direction:column;gap:5px;padding:8px;z-index:90}
+.burger span{display:block;width:26px;height:3.5px;background:var(--ink);border-radius:2px;
+  transition:transform .35s var(--ease-bounce),opacity .25s}
+.burger.on span:nth-child(1){transform:translateY(8.5px) rotate(45deg)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){transform:translateY(-8.5px) rotate(-45deg)}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(110px,13vw,170px) 0 clamp(40px,5vw,74px);position:relative}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4.4vw,74px);
+  align-items:center}
+.hero h1{margin:22px 0 26px}
+.hero h1 em{font-style:normal;color:var(--coral);position:relative;display:inline-block}
+.hero h1 em::after{content:"";position:absolute;left:-2%;right:-2%;bottom:.04em;height:.18em;
+  background:var(--sun);z-index:-1;border-radius:4px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-art{position:relative}
+.hero-card{background:var(--sun);border:3px solid var(--ink);border-radius:24px;
+  box-shadow:var(--shadow-lg);padding:clamp(20px,2.6vw,34px);
+  transform:rotate(-2.4deg);transition:transform .4s var(--ease-bounce)}
+.hero-card:hover{transform:rotate(0) scale(1.02)}
+.hero-card .row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.hero-card .row:last-child{margin-bottom:0}
+.hero-card .ico{width:40px;height:40px;border-radius:12px;border:3px solid var(--ink);
+  display:grid;place-items:center;font-size:1.2rem;flex:none;background:var(--paper)}
+.hero-card b{font-family:var(--display);font-size:1.05rem;display:block}
+.hero-card span{font-size:.84rem;color:#5A5A5A}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);
+  font-weight:800;font-size:1rem;padding:16px 28px;border:3px solid var(--ink);
+  border-radius:100px;background:var(--paper);color:var(--ink);
+  box-shadow:var(--shadow);transition:transform .2s var(--ease-bounce),box-shadow .2s}
+.btn:hover{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--ink)}
+.btn:active{transform:translate(7px,7px);box-shadow:0 0 0 var(--ink);
+  transition-duration:.06s}
+.btn-coral{background:var(--coral);color:#fff}
+.btn-sky{background:var(--sky);color:#fff}
+.btn-mint{background:var(--mint)}
+.btn .ar{transition:transform .25s var(--ease-bounce)}
+.btn:hover .ar{transform:translateX(4px)}
+
+/* ---------- sections ---------- */
+section{padding:clamp(56px,7.4vw,118px) 0;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;
+  background:var(--mint);border:3px solid var(--ink);border-radius:100px;
+  padding:7px 16px;box-shadow:var(--shadow-sm)}
+.eyebrow .mono{font-size:.66rem}
+.eyebrow::before{content:"✦";font-size:.8rem}
+
+/* ---------- services ---------- */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,30px);
+  margin-top:clamp(30px,4vw,56px)}
+.scard{border:3px solid var(--ink);border-radius:20px;background:var(--paper);
+  padding:clamp(20px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;
+  box-shadow:var(--shadow);transition:transform .3s var(--ease-bounce),box-shadow .3s}
+.scard:hover{transform:translate(-4px,-4px) rotate(-1.2deg);box-shadow:var(--shadow-lg)}
+.scard .ico{width:52px;height:52px;border-radius:16px;border:3px solid var(--ink);
+  display:grid;place-items:center;font-size:1.5rem;flex:none}
+.scard h3{margin-top:auto}
+.scard p{font-size:.9rem;color:#5A5A5A;line-height:1.66}
+
+/* ---------- vaccination timeline ---------- */
+.vax-sec{background:var(--sky);border-top:3px solid var(--ink);
+  border-bottom:3px solid var(--ink)}
+.vax-sec h2,.vax-sec .lead{color:#fff}
+.vax-sec .lead{color:rgba(255,255,255,.88)}
+.vax-sec .eyebrow{background:var(--sun)}
+.vax{margin-top:clamp(30px,4vw,56px);display:flex;flex-direction:column;gap:14px}
+.vrow{display:grid;grid-template-columns:clamp(90px,11vw,150px) 1fr;gap:clamp(14px,2.2vw,32px);
+  background:var(--paper);border:3px solid var(--ink);border-radius:18px;
+  padding:clamp(16px,2vw,26px);box-shadow:var(--shadow-sm);align-items:center;
+  opacity:0;transform:translateX(-20px);
+  transition:opacity .6s var(--ease-bounce),transform .6s var(--ease-bounce)}
+.vax.in .vrow{opacity:1;transform:none}
+.vax.in .vrow:nth-child(1){transition-delay:.05s}
+.vax.in .vrow:nth-child(2){transition-delay:.15s}
+.vax.in .vrow:nth-child(3){transition-delay:.25s}
+.vax.in .vrow:nth-child(4){transition-delay:.35s}
+.vax.in .vrow:nth-child(5){transition-delay:.45s}
+.vax.in .vrow:nth-child(6){transition-delay:.55s}
+.vrow .age{font-family:var(--display);font-weight:800;font-size:1.1rem;
+  background:var(--sun);border:3px solid var(--ink);border-radius:100px;
+  padding:8px 12px;text-align:center;line-height:1.1}
+.vrow .what b{font-family:var(--display);font-size:1.02rem;display:block;margin-bottom:4px}
+.vrow .what p{font-size:.86rem;color:#5A5A5A;line-height:1.6}
+.vrow .free{display:inline-block;font-size:.68rem;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase;background:var(--mint);
+  border:2px solid var(--ink);border-radius:100px;padding:3px 9px;margin-left:8px}
+
+/* ---------- growth chart ---------- */
+.growth{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(26px,4vw,68px);
+  align-items:center;margin-top:clamp(30px,4vw,56px)}
+.gchart{border:3px solid var(--ink);border-radius:20px;background:var(--paper);
+  box-shadow:var(--shadow);padding:clamp(18px,2.4vw,30px)}
+.gchart svg{width:100%;height:auto;display:block}
+.gline{fill:none;stroke:var(--coral);stroke-width:3;stroke-linecap:round;
+  stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);
+  transition:stroke-dashoffset 2.6s var(--ease-bounce)}
+.gchart.in .gline{stroke-dashoffset:0}
+.gband{fill:var(--mint);opacity:.22}
+.gaxis{stroke:var(--ink);stroke-width:2;opacity:.25}
+.gdot{fill:var(--sun);stroke:var(--ink);stroke-width:2.5;opacity:0;
+  transition:opacity .4s}
+.gchart.in .gdot{opacity:1}
+.gchart.in .gdot:nth-of-type(1){transition-delay:1.2s}
+.gchart.in .gdot:nth-of-type(2){transition-delay:1.6s}
+.gchart.in .gdot:nth-of-type(3){transition-delay:2s}
+.gchart.in .gdot:nth-of-type(4){transition-delay:2.4s}
+
+/* ---------- visit steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,26px);
+  margin-top:clamp(30px,4vw,56px)}
+.step{border:3px solid var(--ink);border-radius:20px;background:var(--paper);
+  padding:clamp(18px,2.4vw,30px);display:flex;flex-direction:column;gap:10px;
+  position:relative;box-shadow:var(--shadow-sm)}
+.step .n{position:absolute;top:-16px;left:20px;width:34px;height:34px;
+  border-radius:50%;border:3px solid var(--ink);background:var(--sun);
+  display:grid;place-items:center;font-family:var(--display);font-weight:800}
+.step h4{font-family:var(--display);font-size:1.05rem;margin-top:12px}
+.step p{font-size:.86rem;color:#5A5A5A;line-height:1.62}
+
+/* ---------- team ---------- */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,30px);
+  margin-top:clamp(30px,4vw,56px)}
+.tc{border:3px solid var(--ink);border-radius:20px;background:var(--paper);
+  overflow:hidden;box-shadow:var(--shadow);
+  transition:transform .3s var(--ease-bounce),box-shadow .3s}
+.tc:hover{transform:translate(-4px,-4px) rotate(1deg);box-shadow:var(--shadow-lg)}
+.tc .face{aspect-ratio:4/3;border-bottom:3px solid var(--ink);position:relative;
+  display:grid;place-items:center}
+.tc .face .ini{font-family:var(--display);font-weight:800;
+  font-size:clamp(2rem,4vw,3rem);color:var(--ink);opacity:.85}
+.tc .face .bub{position:absolute;width:26px;height:26px;border-radius:50%;
+  border:3px solid var(--ink);background:var(--paper)}
+.tc .face .bub:nth-child(2){top:16%;left:14%}
+.tc .face .bub:nth-child(3){bottom:18%;right:16%;width:18px;height:18px}
+.tc-body{padding:clamp(16px,2vw,26px);display:flex;flex-direction:column;gap:7px}
+.tc-body .role{font-size:.68rem;font-weight:800;letter-spacing:.12em;
+  text-transform:uppercase;color:#7A5A00}
+.tc-body h3{font-family:var(--display);font-size:1.16rem}
+.tc-body p{font-size:.86rem;color:#5A5A5A;line-height:1.62}
+
+/* ---------- testimonials ---------- */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,30px);
+  margin-top:clamp(30px,4vw,56px)}
+.q{border:3px solid var(--ink);border-radius:20px;background:var(--paper);
+  padding:clamp(18px,2.4vw,30px);box-shadow:var(--shadow-sm);
+  transform:rotate(-.8deg);transition:transform .3s var(--ease-bounce)}
+.q:nth-child(2){transform:rotate(1deg);background:var(--sun)}
+.q:nth-child(3){transform:rotate(-.4deg)}
+.q:hover{transform:rotate(0) scale(1.02)}
+.q p{font-size:.94rem;line-height:1.7;margin-bottom:14px}
+.q .who{font-weight:800;font-size:.82rem}
+
+/* ---------- fees ---------- */
+.fees{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,30px);
+  margin-top:clamp(30px,4vw,56px)}
+.fee{border:3px solid var(--ink);border-radius:20px;background:var(--paper);
+  padding:clamp(20px,2.6vw,34px);display:flex;flex-direction:column;gap:12px;
+  box-shadow:var(--shadow)}
+.fee.hi{background:var(--mint)}
+.fee .amt{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.2vw,2.6rem);
+  line-height:1;margin:6px 0}
+.fee ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.fee li{font-size:.88rem;display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:baseline}
+.fee li::before{content:"●";font-size:.5rem;color:var(--coral)}
+
+/* ---------- urgent notice ---------- */
+.urgent{border:3px solid var(--ink);border-radius:20px;background:var(--coral);
+  color:#fff;padding:clamp(22px,3vw,40px);box-shadow:var(--shadow);
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,2.6vw,34px);align-items:start}
+.urgent .ico{width:52px;height:52px;border-radius:50%;border:3px solid #fff;
+  display:grid;place-items:center;font-family:var(--display);font-size:1.6rem;flex:none}
+.urgent h3{font-family:var(--display);font-size:1.3rem;margin-bottom:10px;color:#fff}
+.urgent p,.urgent li{color:rgba(255,255,255,.94);font-size:.94rem;line-height:1.7}
+.urgent ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-top:12px}
+.urgent li{display:grid;grid-template-columns:auto 1fr;gap:11px;align-items:baseline}
+.urgent li::before{content:"→"}
+
+/* ---------- booking ---------- */
+.book{background:var(--mint);border-top:3px solid var(--ink)}
+.book-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(26px,4vw,68px);
+  align-items:start}
+form{border:3px solid var(--ink);border-radius:20px;background:var(--paper);
+  padding:clamp(20px,2.8vw,40px);box-shadow:var(--shadow)}
+.fg{margin-bottom:18px}
+.fg label{display:block;font-weight:800;font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:#5A5A5A;margin-bottom:8px}
+.fg input,.fg select,.fg textarea{width:100%;border:3px solid var(--ink);
+  border-radius:12px;background:var(--cream);padding:12px 14px;
+  font-family:var(--body);font-weight:600;font-size:.95rem;color:var(--ink);
+  transition:box-shadow .25s,background .25s}
+.fg textarea{resize:vertical;min-height:92px;line-height:1.6}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:0;background:var(--paper);
+  box-shadow:var(--shadow-sm)}
+.fg input::placeholder,.fg textarea::placeholder{color:#A8A8A8}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.submit{width:100%;justify-content:center;margin-top:6px}
+.fnote{margin-top:14px;font-weight:700;color:#0F6B45}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:rgba(255,255,255,.7);
+  padding:clamp(40px,5vw,74px) 0 22px}
+.ft{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:clamp(18px,2.6vw,44px);
+  padding-bottom:clamp(26px,3.2vw,44px);border-bottom:1px solid rgba(255,255,255,.16)}
+.ft-brand .brand{color:#fff;margin-bottom:14px}
+.ft-brand p{font-size:.86rem;line-height:1.7;color:rgba(255,255,255,.55);max-width:34ch}
+.ft h4{font-family:var(--display);font-size:.94rem;color:#fff;margin-bottom:14px}
+.ft ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ft a{font-size:.86rem;color:rgba(255,255,255,.55);transition:color .25s}
+.ft a:hover{color:var(--sun)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  padding-top:18px;font-size:.74rem;font-weight:700;color:rgba(255,255,255,.4)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(24px);
+  transition:opacity .7s var(--ease-bounce),transform .7s var(--ease-bounce)}
+.rv.in{opacity:1;transform:none}
+:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+
+/* ---------- responsive ---------- */
+@media(max-width:1080px){
+  .hero-grid,.growth,.book-grid{grid-template-columns:1fr;gap:clamp(24px,3.6vw,44px)}
+  .svc,.team,.fees,.quotes{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .navlinks{position:fixed;inset:76px 0 auto 0;background:rgba(255,251,243,.99);
+    flex-direction:column;align-items:flex-start;gap:0;padding:10px var(--gut) 26px;
+    border-bottom:3px solid var(--ink);transform:translateY(-14px);opacity:0;
+    pointer-events:none;transition:opacity .35s var(--ease-bounce),transform .35s var(--ease-bounce)}
+  .navlinks.on{transform:none;opacity:1;pointer-events:auto}
+  .navlinks li{width:100%;border-bottom:2px solid rgba(26,26,26,.1)}
+  .navlinks a{display:block;padding:16px 0}
+  .nav-cta{border-radius:0;box-shadow:none;border:0 !important;padding:16px 0 !important}
+  .burger{display:flex}
+  .svc,.team,.fees,.quotes,.steps,.f2{grid-template-columns:1fr}
+  .vrow{grid-template-columns:1fr;gap:12px}
+  .urgent{grid-template-columns:1fr;gap:16px}
+  .ft{grid-template-columns:1fr 1fr}
+}
+@media(max-width:460px){.ft{grid-template-columns:1fr}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+  .rv,.vrow{opacity:1;transform:none}
+  .gline{stroke-dashoffset:0}
+  .gdot{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<div class="confetti" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<header id="hdr">
+  <div class="nav">
+    <a href="index.html" class="brand">
+      <span class="seed" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none">
+          <path d="M20 34V16" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"/>
+          <path d="M20 20C20 20 12 18 10 10C10 10 19 9 20 20Z" fill="#5FD4A5" stroke="#1A1A1A" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M20 24C20 24 28 22 30 14C30 14 21 13 20 24Z" fill="#FFD447" stroke="#1A1A1A" stroke-width="2.5" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      Sprout
+    </a>
+    <ul class="navlinks" id="nav">
+      <li><a href="#care">What we do</a></li>
+      <li><a href="#vaccines">Vaccines</a></li>
+      <li><a href="#growth">Growth</a></li>
+      <li><a href="#team">Doctors</a></li>
+      <li><a href="#book" class="nav-cta">Book a visit</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="above">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow"><span class="mono">Children's clinic · Lagos</span></span>
+        <h1 class="display d1">Growing up<br>should be <em>fun.</em></h1>
+        <p class="lead">Well-baby checks, immunisations, growth monitoring and
+          everything in between. We built this clinic so that a child who comes in
+          for a vaccination does not learn to be afraid of clinics.</p>
+        <div class="hero-cta">
+          <a href="#book" class="btn btn-coral">Book a visit <span class="ar">&rarr;</span></a>
+          <a href="#vaccines" class="btn">Vaccine schedule</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-card">
+          <div class="row">
+            <span class="ico" aria-hidden="true">🩺</span>
+            <div><b>Open six days a week</b><span>Mon–Fri 8am–6pm · Sat 9am–2pm</span></div>
+          </div>
+          <div class="row">
+            <span class="ico" aria-hidden="true">💉</span>
+            <div><b>Routine immunisation</b><span>Free for eligible children</span></div>
+          </div>
+          <div class="row">
+            <span class="ico" aria-hidden="true">📈</span>
+            <div><b>Growth tracking</b><span>Plotted at every visit</span></div>
+          </div>
+          <div class="row">
+            <span class="ico" aria-hidden="true">☎️</span>
+            <div><b>After-hours advice</b><span>For existing patients</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE DO ============ -->
+<section id="care">
+  <div class="wrap">
+    <div class="rv" style="max-width:760px">
+      <span class="eyebrow"><span class="mono">What we do</span></span>
+      <h2 class="display d2">Everything a<br>child needs.</h2>
+      <p class="lead" style="margin-top:18px">From the first week of life to the
+        teenage years. One clinic, one set of records, one team who knows your
+        child.</p>
+    </div>
+    <div class="svc">
+      <article class="scard rv">
+        <span class="ico" style="background:var(--sun)" aria-hidden="true">👶</span>
+        <h3 class="d3">Well-baby clinic</h3>
+        <p>Newborn checks, feeding support, jaundice monitoring and the first-year
+          milestones. Bring your questions — we expect a lot of them.</p>
+      </article>
+      <article class="scard rv">
+        <span class="ico" style="background:var(--mint)" aria-hidden="true">💉</span>
+        <h3 class="d3">Immunisation</h3>
+        <p>The full national routine schedule, tracked properly, with a card you
+          keep and a reminder when the next one is due.</p>
+      </article>
+      <article class="scard rv">
+        <span class="ico" style="background:var(--sky)" aria-hidden="true">📏</span>
+        <h3 class="d3">Growth &amp; development</h3>
+        <p>Weight, height and head circumference plotted against the WHO curve at
+          every visit, so a trend is caught before it becomes a problem.</p>
+      </article>
+      <article class="scard rv">
+        <span class="ico" style="background:var(--coral)" aria-hidden="true">🌡️</span>
+        <h3 class="d3">Childhood illness</h3>
+        <p>Malaria, fevers, coughs, ear infections, diarrhoea and rashes. Same-day
+          appointments when your child is unwell.</p>
+      </article>
+      <article class="scard rv">
+        <span class="ico" style="background:var(--grape)" aria-hidden="true">🥗</span>
+        <h3 class="d3">Nutrition</h3>
+        <p>Practical feeding advice for Nigerian families — including what to do
+          about a fussy eater, and when poor appetite needs investigating.</p>
+      </article>
+      <article class="scard rv">
+        <span class="ico" style="background:var(--sun)" aria-hidden="true">🧒</span>
+        <h3 class="d3">Adolescent health</h3>
+        <p>A confidential space for teenagers to ask the questions they will not
+          ask a parent. Puberty, mood, and everything else.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VACCINE TIMELINE ============ -->
+<section class="vax-sec" id="vaccines">
+  <div class="wrap">
+    <div class="rv" style="max-width:760px">
+      <span class="eyebrow"><span class="mono">Immunisation schedule</span></span>
+      <h2 class="display d2">When to come in.</h2>
+      <p class="lead" style="margin-top:18px">This follows the Nigerian national
+        routine immunisation schedule. We will keep track and remind you, but it
+        helps to know what is coming.</p>
+    </div>
+    <div class="vax" id="vax">
+      <div class="vrow">
+        <span class="age">At birth</span>
+        <div class="what">
+          <b>BCG · Hepatitis B · OPV 0</b>
+          <p>Tuberculosis, hepatitis B and the first oral polio dose, given before
+            you leave the hospital or at your first visit.</p>
+        </div>
+      </div>
+      <div class="vrow">
+        <span class="age">6 weeks</span>
+        <div class="what">
+          <b>Penta 1 · OPV 1 · Rotavirus 1 · PCV 1</b>
+          <p>Diphtheria, tetanus, pertussis, hepatitis B and Hib in one injection,
+            plus polio, rotavirus and pneumococcal. Four things, two injections.</p>
+        </div>
+      </div>
+      <div class="vrow">
+        <span class="age">10 weeks</span>
+        <div class="what">
+          <b>Penta 2 · OPV 2 · Rotavirus 2 · PCV 2</b>
+          <p>The second round. Expect a slightly grizzly evening — that is normal
+            and it passes.</p>
+        </div>
+      </div>
+      <div class="vrow">
+        <span class="age">14 weeks</span>
+        <div class="what">
+          <b>Penta 3 · OPV 3 · PCV 3 · IPV</b>
+          <p>Completing the primary series. After this, the next routine visit is
+            at nine months.</p>
+        </div>
+      </div>
+      <div class="vrow">
+        <span class="age">9 months</span>
+        <div class="what">
+          <b>Measles 1 · Yellow fever · Meningitis A</b>
+          <p>Three vaccines at once. Measles in particular is worth protecting
+            against early.</p>
+        </div>
+      </div>
+      <div class="vrow">
+        <span class="age">15 months</span>
+        <div class="what">
+          <b>Measles 2 · Meningitis A booster</b>
+          <p>The final routine doses. Bring the immunisation card so we can update
+            it.</p>
+        </div>
+      </div>
+    </div>
+    <p class="small" style="margin-top:18px;color:rgba(255,255,255,.9)">
+      Routine immunisation is free for eligible children under the national
+      programme. We will tell you honestly what is covered and what is not before
+      anything is given.</p>
+  </div>
+</section>
+
+<!-- ============ GROWTH CHART ============ -->
+<section id="growth">
+  <div class="wrap">
+    <div class="rv" style="max-width:760px">
+      <span class="eyebrow"><span class="mono">Growth monitoring</span></span>
+      <h2 class="display d2">We plot the line.</h2>
+    </div>
+    <div class="growth">
+      <div class="gchart" id="gchart">
+        <svg viewBox="0 0 400 260" role="img"
+             aria-label="Illustrative growth chart showing a healthy weight curve">
+          <!-- band = normal range -->
+          <path class="gband" d="M40 200 Q140 150 360 88 L360 140 Q140 200 40 236 Z"/>
+          <!-- axes -->
+          <line class="gaxis" x1="40" y1="20" x2="40" y2="236"/>
+          <line class="gaxis" x1="40" y1="236" x2="380" y2="236"/>
+          <!-- the child's curve -->
+          <path class="gline" style="--len:520"
+                d="M50 214 Q120 186 180 158 Q250 126 320 104"/>
+          <!-- plotted points -->
+          <circle class="gdot" cx="50" cy="214" r="7"/>
+          <circle class="gdot" cx="140" cy="178" r="7"/>
+          <circle class="gdot" cx="230" cy="138" r="7"/>
+          <circle class="gdot" cx="320" cy="104" r="7"/>
+          <!-- labels -->
+          <text x="44" y="16" font-family="Nunito" font-size="10" font-weight="700"
+                fill="#6B6B6B">weight</text>
+          <text x="344" y="252" font-family="Nunito" font-size="10" font-weight="700"
+                fill="#6B6B6B">age</text>
+        </svg>
+      </div>
+      <div class="rv">
+        <h3 class="d3" style="margin-bottom:14px">Why a chart beats a number.</h3>
+        <p class="lead">A single weight tells you almost nothing. A child in the
+          tenth percentile who has always been in the tenth percentile is fine. A
+          child who has dropped from the fiftieth to the tenth over three months
+          needs looking at, even though both numbers are "normal".</p>
+        <p class="lead" style="margin-top:16px">That is why we plot it every single
+          visit, against the WHO reference curve, and why we will show you the
+          chart rather than just telling you a weight.</p>
+        <p class="small" style="margin-top:16px">The chart shown here is
+          illustrative and does not represent a real patient.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT TO EXPECT ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:760px">
+      <span class="eyebrow"><span class="mono">Your first visit</span></span>
+      <h2 class="display d2">What happens<br>when you arrive.</h2>
+    </div>
+    <div class="steps">
+      <div class="step rv"><span class="n">1</span>
+        <h4>Weigh and measure</h4>
+        <p>Weight, height and head circumference, plotted straight onto the chart
+          before you see the doctor.</p></div>
+      <div class="step rv"><span class="n">2</span>
+        <h4>You talk, we listen</h4>
+        <p>The doctor asks about feeding, sleep, development and anything worrying
+          you. No question is too small.</p></div>
+      <div class="step rv"><span class="n">3</span>
+        <h4>Examination</h4>
+        <p>A full check, done at your child's pace. If they need a minute to
+          settle, they get a minute.</p></div>
+      <div class="step rv"><span class="n">4</span>
+        <h4>A written plan</h4>
+        <p>What we found, what to do next, and when to come back. In writing, so
+          you do not have to remember it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section id="team" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:760px">
+      <span class="eyebrow"><span class="mono">Our doctors</span></span>
+      <h2 class="display d2">Who looks<br>after them.</h2>
+    </div>
+    <div class="team">
+      <article class="tc rv">
+        <div class="face" style="background:var(--sun)">
+          <span class="bub"></span><span class="bub"></span>
+          <span class="ini">AO</span>
+        </div>
+        <div class="tc-body">
+          <span class="role">Consultant Paediatrician</span>
+          <h3>Dr. Amaka Obi</h3>
+          <p>Fifteen years in paediatrics. Runs the well-baby clinic and has a
+            particular interest in newborn feeding problems.</p>
+        </div>
+      </article>
+      <article class="tc rv">
+        <div class="face" style="background:var(--mint)">
+          <span class="bub"></span><span class="bub"></span>
+          <span class="ini">TB</span>
+        </div>
+        <div class="tc-body">
+          <span class="role">Paediatrician</span>
+          <h3>Dr. Tunde Bakare</h3>
+          <p>Childhood illness and emergency paediatrics. Believes most parents
+            already know when something is wrong.</p>
+        </div>
+      </article>
+      <article class="tc rv">
+        <div class="face" style="background:var(--sky)">
+          <span class="bub"></span><span class="bub"></span>
+          <span class="ini">NE</span>
+        </div>
+        <div class="tc-body">
+          <span class="role">Paediatric Nutritionist</span>
+          <h3>Ngozi Eze</h3>
+          <p>Feeding, growth faltering and fussy eaters. Practical advice that
+            works in a real Nigerian kitchen.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:760px">
+      <span class="eyebrow"><span class="mono">From other parents</span></span>
+      <h2 class="display d2">Parents, not patients.</h2>
+    </div>
+    <div class="quotes">
+      <div class="q rv">
+        <p>"My daughter used to scream at the sight of a needle. Dr. Amaka spent
+          ten minutes just letting her play with the stethoscope first. Last visit
+          she walked in on her own."</p>
+        <span class="who">— Bisi A., mother of two</span>
+      </div>
+      <div class="q rv">
+        <p>"They caught that my son's weight had flattened out over two visits. I
+          would never have noticed. Turned out to be a feeding issue, sorted in
+          three weeks."</p>
+        <span class="who">— Emeka N., father of one</span>
+      </div>
+      <div class="q rv">
+        <p>"The immunisation card and the reminders are what make it work. I never
+          have to remember which one is due — they just tell me."</p>
+        <span class="who">— Fatima S., mother of three</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEES ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:760px">
+      <span class="eyebrow"><span class="mono">Fees</span></span>
+      <h2 class="display d2">Clear prices.</h2>
+    </div>
+    <div class="fees">
+      <div class="fee rv">
+        <span class="mono">Well-baby visit</span>
+        <div class="amt">&#8358;18,000</div>
+        <ul>
+          <li>Growth measurement and charting</li>
+          <li>Full examination</li>
+          <li>Feeding and development advice</li>
+          <li>Written plan</li>
+        </ul>
+      </div>
+      <div class="fee hi rv">
+        <span class="mono">Sick visit</span>
+        <div class="amt">&#8358;25,000</div>
+        <ul>
+          <li>Same-day appointments available</li>
+          <li>Examination and diagnosis</li>
+          <li>Treatment or prescription</li>
+          <li>Follow-up advice</li>
+        </ul>
+      </div>
+      <div class="fee rv">
+        <span class="mono">Immunisation</span>
+        <div class="amt">Free*</div>
+        <ul>
+          <li>Full national routine schedule</li>
+          <li>Card and reminders</li>
+          <li>Post-vaccine advice</li>
+          <li>Consultation fee still applies</li>
+        </ul>
+      </div>
+    </div>
+    <p class="small" style="margin-top:16px;max-width:70ch">*Routine vaccines are
+      free for eligible children under the national immunisation programme. Some
+      optional vaccines are chargeable — we will always tell you the cost before
+      anything is given.</p>
+  </div>
+</section>
+
+<!-- ============ URGENT ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="urgent rv">
+      <span class="ico" aria-hidden="true">!</span>
+      <div>
+        <h3>When to bring them in tonight</h3>
+        <p>Trust your instinct first. If you are worried, call us — we would rather
+          see a child who turns out to be fine than miss one who is not.</p>
+        <ul>
+          <li>A baby under three months with any fever at all.</li>
+          <li>A child who is unusually sleepy, floppy, or difficult to wake.</li>
+          <li>Fast or laboured breathing, or chest drawing in.</li>
+          <li>Not passing urine, not feeding, or persistent vomiting.</li>
+          <li>A rash that does not fade when you press it.</li>
+          <li>A convulsion, or a fever with a stiff neck.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section class="book" id="book">
+  <div class="wrap">
+    <div class="book-grid">
+      <div class="rv">
+        <span class="eyebrow"><span class="mono">Book a visit</span></span>
+        <h2 class="display d2">Come and see us.</h2>
+        <p class="lead" style="margin-top:18px">Tell us your child's name and age
+          and what you need. We will confirm the appointment by SMS.</p>
+        <p class="small" style="margin-top:18px">Bring the immunisation card if you
+          have one, and any previous records. If you do not have them, come
+          anyway.</p>
+      </div>
+      <form id="sproutform" class="rv" novalidate>
+        <div class="f2">
+          <div class="fg">
+            <label for="pn">Parent's name</label>
+            <input id="pn" name="pn" type="text" placeholder="Bisi Adeyemi" required>
+          </div>
+          <div class="fg">
+            <label for="ph">Phone</label>
+            <input id="ph" name="ph" type="tel" placeholder="0803 000 0000" required>
+          </div>
+        </div>
+        <div class="f2">
+          <div class="fg">
+            <label for="cn">Child's name</label>
+            <input id="cn" name="cn" type="text" placeholder="First name is enough">
+          </div>
+          <div class="fg">
+            <label for="age">Child's age</label>
+            <input id="age" name="age" type="text" placeholder="e.g. 7 months">
+          </div>
+        </div>
+        <div class="fg">
+          <label for="why">What do you need?</label>
+          <select id="why" name="why">
+            <option value="">Select&hellip;</option>
+            <option>Well-baby check</option>
+            <option>Immunisation</option>
+            <option>Child is unwell today</option>
+            <option>Growth or feeding concern</option>
+            <option>Development question</option>
+            <option>First visit to the clinic</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label for="ms">Anything we should know?</label>
+          <textarea id="ms" name="ms" placeholder="She has had a fever since last night and is not feeding well."></textarea>
+        </div>
+        <p id="fnote" class="small fnote" aria-live="polite"></p>
+        <button type="submit" class="btn btn-coral submit">Request appointment <span class="ar">&rarr;</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div class="ft-brand">
+        <a href="index.html" class="brand">
+          <span class="seed" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none">
+              <path d="M20 34V16" stroke="#FFF" stroke-width="3" stroke-linecap="round"/>
+              <path d="M20 20C20 20 12 18 10 10C10 10 19 9 20 20Z" fill="#5FD4A5" stroke="#FFF" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M20 24C20 24 28 22 30 14C30 14 21 13 20 24Z" fill="#FFD447" stroke="#FFF" stroke-width="2.5" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          Sprout
+        </a>
+        <p>A children's clinic in Lagos. Well-baby checks, immunisation, growth
+          monitoring and childhood illness.</p>
+      </div>
+      <div class="ft">
+        <h4>Care</h4>
+        <ul>
+          <li><a href="#care">Well-baby clinic</a></li>
+          <li><a href="#vaccines">Immunisation</a></li>
+          <li><a href="#growth">Growth monitoring</a></li>
+          <li><a href="#care">Childhood illness</a></li>        </ul>
+      </div>
+      <div class="ft">
+        <h4>Clinic</h4>
+        <ul>
+          <li><a href="#team">Our doctors</a></li>
+          <li><a href="#book">Fees</a></li>
+          <li><a href="#book">Book a visit</a></li>
+        </ul>
+      </div>
+      <div class="ft">
+        <h4>If your child is unwell</h4>
+        <ul>
+          <li><a href="#book">Same-day appointment</a></li>
+          <li><a href="#book">After-hours advice</a></li>
+          <li><a href="#book">Urgent guidance</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>&copy; 2026 Sprout Children's Clinic &middot; Lagos</span>
+      <span>Information is general. If your child is seriously unwell, seek care immediately.</span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /above -->
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- nav ---------- */
+  var hdr = document.getElementById('hdr');
+  function sc(){ hdr.classList.toggle('solid', window.scrollY > 30); }
+  sc(); addEventListener('scroll', sc, {passive:true});
+
+  var burger = document.getElementById('burger'), nav = document.getElementById('nav');
+  burger.addEventListener('click', function(){
+    var on = nav.classList.toggle('on');
+    burger.classList.toggle('on', on);
+    burger.setAttribute('aria-expanded', on ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('on'); burger.classList.remove('on');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+
+  /* ---------- reveal (cards, vaccine rows, growth chart) ---------- */
+  var rvs = document.querySelectorAll('.rv, .vax, .gchart');
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.14, rootMargin:'0px 0px -6% 0px'});
+    rvs.forEach(function(el, i){
+      el.style.transitionDelay = (Math.min(i % 3, 2) * 70) + 'ms';
+      io.observe(el);
+    });
+  } else { rvs.forEach(function(el){ el.classList.add('in'); }); }
+
+  /* ---------- wiggle on hover for cards ---------- */
+  if (!reduce){
+    document.querySelectorAll('.scard, .tc').forEach(function(card){
+      card.addEventListener('pointerenter', function(){
+        card.style.transitionTimingFunction = 'cubic-bezier(.34,1.56,.64,1)';
+      });
+    });
+  }
+
+  /* ---------- booking form ---------- */
+  var f = document.getElementById('sproutform');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var note = document.getElementById('fnote');
+    var pn = f.elements.pn.value.trim(), ph = f.elements.ph.value.trim();
+    if (!pn){ f.elements.pn.focus(); note.textContent = 'Please add your name.'; return; }
+    if (!ph){ f.elements.ph.focus(); note.textContent = 'Please add a phone number.'; return; }
+    var ref = 'SPR-' + String(Math.floor(Math.random() * 90000) + 10000);
+    note.textContent = 'Request received — reference ' + ref +
+      '. We will confirm the appointment by SMS shortly.';
+  });
+
+  /* ---------- anchors ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var href = this.getAttribute('href');
+      if (href === '#'){ e.preventDefault(); return; }
+      var t = document.querySelector(href);
+      if (t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas Medical Journeys — Treatment abroad, arranged properly</title>
+<meta name="description" content="Atlas arranges medical treatment abroad for Nigerian patients. Hospital matching, visa support, travel, and someone waiting at the airport. Lagos based.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ATLAS MEDICAL JOURNEYS
+   Design movement: COLLAGE / ATLAS / TRAVEL DOCUMENT
+
+   The governing rule: a journey, documented.
+   Everything is layered, slightly rotated, and stamped. Torn
+   paper edges, dashed flight paths, boarding-pass cards with
+   perforations, rubber stamps, passport-page data fields.
+   ============================================================ */
+
+:root{
+  --navy:#14233D;
+  --navy-2:#1D3153;
+  --parchment:#E8DFC8;
+  --parchment-2:#F2ECDA;
+  --stamp:#C0392B;
+  --ink:#0E1520;
+  --brass:#B8912F;
+  --muted:#8A8574;
+  --hair:rgba(20,35,61,.22);
+
+  --display:'Bebas Neue',Impact,sans-serif;
+  --sans:'Archivo',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --gut:clamp(18px,3.6vw,56px);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--navy);color:var(--ink);font-family:var(--sans);
+  font-weight:400;line-height:1.6;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased}
+::selection{background:var(--stamp);color:var(--parchment)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.above{position:relative;z-index:2}
+.wrap{max-width:1560px;margin:0 auto;padding:0 var(--gut)}
+
+/* ---------- type ---------- */
+.display{font-family:var(--display);font-weight:400;line-height:.9;
+  letter-spacing:.005em;text-transform:uppercase}
+.d1{font-size:clamp(2.8rem,8.6vw,8rem)}
+.d2{font-size:clamp(2rem,5.2vw,4.4rem)}
+.d3{font-size:clamp(1.3rem,2.2vw,1.9rem)}
+.mono{font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;
+  text-transform:uppercase}
+.mono-sm{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+.lead{font-size:clamp(1rem,1.24vw,1.14rem);line-height:1.72;color:#3A3A32;
+  max-width:58ch}
+.small{font-size:.88rem;line-height:1.66;color:#5A5748}
+
+/* ---------- nav ---------- */
+header{position:fixed;inset:0 0 auto 0;z-index:80;
+  transition:background .4s var(--ease),border-color .4s}
+header.solid{background:rgba(20,35,61,.94);backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(232,223,200,.22)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px;
+  max-width:1560px;margin:0 auto;padding:0 var(--gut)}
+.brand{display:flex;align-items:center;gap:11px;font-family:var(--display);
+  font-size:1.6rem;letter-spacing:.06em;color:var(--parchment);
+  text-transform:uppercase}
+.brand .globe{width:28px;height:28px;flex:none;position:relative}
+.brand .globe svg{width:100%;height:100%}
+.navlinks{display:flex;align-items:center;gap:clamp(13px,1.9vw,30px);list-style:none}
+.navlinks a{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(232,223,200,.66);padding:5px 0;
+  position:relative;transition:color .25s}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+  background:var(--stamp);transition:width .3s var(--ease)}
+.navlinks a:hover{color:var(--parchment)}
+.navlinks a:hover::after{width:100%}
+.nav-cta{background:var(--stamp);color:var(--parchment) !important;padding:11px 18px !important;
+  border-radius:2px;transition:background .25s,transform .25s}
+.nav-cta::after{display:none}
+.nav-cta:hover{background:#A93226;transform:translateY(-1px)}
+.burger{display:none;flex-direction:column;gap:5px;padding:8px;z-index:90}
+.burger span{display:block;width:24px;height:2px;background:var(--parchment);
+  transition:transform .34s var(--ease),opacity .24s}
+.burger.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ---------- hero: a passport page ---------- */
+.hero{padding:clamp(104px,12vw,168px) 0 clamp(40px,5vw,72px);
+  background:var(--parchment);position:relative;overflow:hidden}
+.hero::before{
+  /* the guilloche security pattern */
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:
+    repeating-linear-gradient(45deg,rgba(20,35,61,.045) 0 2px,transparent 2px 9px),
+    repeating-linear-gradient(-45deg,rgba(20,35,61,.045) 0 2px,transparent 2px 9px);
+}
+.hero-grid{display:grid;grid-template-columns:1.24fr .76fr;
+  gap:clamp(28px,4.4vw,74px);align-items:center;position:relative;z-index:1}
+.hero h1{margin:20px 0 26px;color:var(--navy)}
+.hero h1 em{font-style:normal;color:var(--stamp)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+
+/* passport data block */
+.passport{border:1px solid var(--hair);background:var(--parchment-2);
+  border-radius:3px;padding:clamp(18px,2.4vw,30px);position:relative;
+  transform:rotate(1.4deg);box-shadow:8px 8px 0 rgba(20,35,61,.16)}
+.passport .ph{display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding-bottom:12px;border-bottom:1px solid var(--hair);margin-bottom:16px}
+.passport .ph .mono{color:var(--navy)}
+.passport .rows{display:flex;flex-direction:column;gap:11px}
+.passport .row{display:grid;grid-template-columns:88px 1fr;gap:12px;
+  align-items:baseline;padding-bottom:9px;border-bottom:1px dotted var(--hair)}
+.passport .row:last-child{border-bottom:0;padding-bottom:0}
+.passport .k{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+.passport .v{font-family:var(--mono);font-size:.76rem;color:var(--navy);font-weight:500}
+/* the rubber stamp */
+.stamp-mark{position:absolute;right:-14px;bottom:-18px;width:112px;height:112px;
+  transform:rotate(-16deg);opacity:.86;pointer-events:none}
+.stamp-mark svg{width:100%;height:100%}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);
+  font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;
+  padding:15px 24px;border:1px solid var(--navy);color:var(--navy);
+  background:transparent;border-radius:2px;
+  transition:background .25s,color .25s,transform .25s var(--ease)}
+.btn:hover{background:var(--navy);color:var(--parchment);transform:translateY(-2px)}
+.btn-stamp{background:var(--stamp);border-color:var(--stamp);color:var(--parchment)}
+.btn-stamp:hover{background:#A93226;border-color:#A93226}
+.btn .ar{transition:transform .28s var(--ease)}
+.btn:hover .ar{transform:translateX(4px)}
+
+/* ---------- sections on parchment ---------- */
+.paper{background:var(--parchment);position:relative}
+.paper::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+  background-image:
+    repeating-linear-gradient(45deg,rgba(20,35,61,.04) 0 2px,transparent 2px 10px);
+}
+.paper > *{position:relative;z-index:1}
+section{padding:clamp(56px,7.4vw,116px) 0}
+.eyebrow{display:inline-flex;align-items:center;gap:11px;margin-bottom:20px;
+  border:1px solid var(--stamp);color:var(--stamp);border-radius:2px;
+  padding:6px 13px;transform:rotate(-.8deg)}
+.eyebrow::before{content:"●";font-size:.5rem}
+
+/* ---------- flight map ---------- */
+.map-sec{background:var(--navy);color:var(--parchment)}
+.map-sec .eyebrow{border-color:var(--parchment);color:var(--parchment)}
+.map-sec .lead{color:rgba(232,223,200,.72)}
+.map-sec h2{color:var(--parchment)}
+.map-grid{display:grid;grid-template-columns:1.3fr .7fr;
+  gap:clamp(26px,4vw,66px);align-items:center;margin-top:clamp(28px,3.6vw,52px)}
+.map-panel{border:1px solid rgba(232,223,200,.24);background:rgba(0,0,0,.16);
+  border-radius:3px;padding:clamp(16px,2.2vw,28px)}
+.map-panel svg{width:100%;height:auto;display:block}
+.route{fill:none;stroke:var(--stamp);stroke-width:1.6;stroke-linecap:round;
+  stroke-dasharray:5 6;opacity:.9}
+.route-anim{stroke-dashoffset:0;animation:fly 3.4s linear infinite}
+@keyframes fly{to{stroke-dashoffset:-44}}
+.city{fill:var(--parchment);stroke:var(--navy);stroke-width:1.5}
+.city-origin{fill:var(--stamp);stroke:var(--parchment);stroke-width:2}
+.landmass{fill:rgba(232,223,200,.14);stroke:rgba(232,223,200,.3);stroke-width:.8}
+.map-label{font-family:'IBM Plex Mono',monospace;font-size:8px;
+  fill:rgba(232,223,200,.8);letter-spacing:.06em}
+.map-legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:18px;
+  padding-top:16px;border-top:1px solid rgba(232,223,200,.2)}
+.map-legend div{display:flex;align-items:center;gap:8px;font-family:var(--mono);
+  font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(232,223,200,.66)}
+.map-legend i{width:9px;height:9px;border-radius:50%;background:var(--stamp)}
+
+/* ---------- destination boarding passes ---------- */
+.dest{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,2.4vw,32px);
+  margin-top:clamp(28px,3.6vw,52px)}
+/* a boarding pass: main body + perforated stub */
+.bp{display:grid;grid-template-columns:1fr clamp(78px,10vw,116px);
+  background:var(--parchment-2);border:1px solid var(--hair);border-radius:3px;
+  overflow:hidden;position:relative;
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.bp:hover{transform:translate(-3px,-3px) rotate(-.5deg);
+  box-shadow:7px 7px 0 rgba(20,35,61,.18)}
+.bp-main{padding:clamp(18px,2.4vw,32px);position:relative}
+.bp-head{display:flex;align-items:baseline;justify-content:space-between;
+  gap:12px;padding-bottom:12px;border-bottom:1px solid var(--hair);margin-bottom:14px}
+.bp-head .to{font-family:var(--display);font-size:clamp(1.5rem,2.6vw,2.2rem);
+  color:var(--navy);letter-spacing:.02em;line-height:1}
+.bp-head .code{font-family:var(--mono);font-size:.62rem;color:var(--stamp);
+  letter-spacing:.1em;font-weight:600}
+.bp-fields{display:grid;grid-template-columns:1fr 1fr;gap:11px 18px}
+.bp-fields div{display:flex;flex-direction:column;gap:3px}
+.bp-fields .k{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+.bp-fields .v{font-family:var(--mono);font-size:.74rem;color:var(--navy);font-weight:500}
+/* the perforated stub */
+.bp-stub{border-left:2px dashed var(--hair);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:8px;padding:14px 8px;
+  background:var(--parchment);position:relative}
+/* punched holes */
+.bp-stub::before,.bp-stub::after{content:"";position:absolute;left:-7px;
+  width:12px;height:12px;border-radius:50%;background:var(--navy)}
+.bp-stub::before{top:-6px}
+.bp-stub::after{bottom:-6px}
+.bp-stub .vert{font-family:var(--mono);font-size:.56rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--navy);writing-mode:vertical-rl;
+  transform:rotate(180deg)}
+.bp-stub .dot{width:22px;height:22px;border:1px solid var(--hair);border-radius:50%;
+  display:grid;place-items:center;font-family:var(--mono);font-size:.5rem;
+  color:var(--muted)}
+
+/* ---------- how it works ---------- */
+.steps{display:flex;flex-direction:column;gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:3px;overflow:hidden;
+  margin-top:clamp(28px,3.6vw,52px)}
+.step{background:var(--parchment);display:grid;
+  grid-template-columns:clamp(56px,7vw,96px) 1fr 1.4fr;gap:clamp(14px,2.4vw,42px);
+  padding:clamp(18px,2.4vw,34px);align-items:start;transition:background .3s}
+.step:hover{background:var(--parchment-2)}
+.step .n{font-family:var(--display);font-size:clamp(1.6rem,2.8vw,2.4rem);
+  color:var(--stamp);line-height:1}
+.step h3{margin-bottom:7px}
+.step .desc{font-size:.9rem;color:#5A5748;line-height:1.64}
+
+/* ---------- cost table ---------- */
+.ctable{width:100%;border-collapse:collapse;background:var(--parchment-2);
+  border:1px solid var(--hair);border-radius:3px;overflow:hidden;
+  margin-top:clamp(28px,3.6vw,52px)}
+.ctable th,.ctable td{padding:13px 16px;text-align:left;
+  border-bottom:1px solid var(--hair);font-size:.88rem}
+.ctable th{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--navy);background:var(--parchment);
+  font-weight:600;border-bottom:1px solid var(--hair)}
+.ctable td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;
+  font-size:.78rem;white-space:nowrap}
+.ctable tr:last-child td{border-bottom:0}
+.ctable .save{color:var(--stamp);font-weight:600}
+.ctable tr.hi{background:rgba(192,57,43,.07)}
+
+/* ---------- hospitals ---------- */
+.hosp{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,28px);
+  margin-top:clamp(28px,3.6vw,52px)}
+.hcard{border:1px solid var(--hair);background:var(--parchment-2);
+  border-radius:3px;padding:clamp(18px,2.4vw,30px);position:relative;
+  transition:transform .35s var(--ease)}
+.hcard:hover{transform:translateY(-4px)}
+.hcard .flag{position:absolute;top:16px;right:16px;width:32px;height:22px;
+  border:1px solid var(--hair);border-radius:2px;overflow:hidden}
+.hcard h3{margin-bottom:8px}
+.hcard p{font-size:.86rem;color:#5A5748;line-height:1.62}
+.hcard .acc{margin-top:14px;padding-top:12px;border-top:1px solid var(--hair);
+  font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);line-height:1.9}
+
+/* ---------- testimonials ---------- */
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,28px);
+  margin-top:clamp(28px,3.6vw,52px)}
+.note{background:var(--parchment-2);border:1px solid var(--hair);
+  border-radius:3px;padding:clamp(18px,2.4vw,30px);
+  box-shadow:4px 4px 0 rgba(20,35,61,.1)}
+.note:nth-child(1){transform:rotate(-1deg)}
+.note:nth-child(2){transform:rotate(.8deg)}
+.note:nth-child(3){transform:rotate(-.5deg)}
+.note p{font-size:.92rem;line-height:1.7;margin-bottom:14px;color:#3A3A32}
+.note .who{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted)}
+
+/* ---------- booking ---------- */
+.book{background:var(--navy);color:var(--parchment)}
+.book .eyebrow{border-color:var(--parchment);color:var(--parchment)}
+.book h2{color:var(--parchment)}
+.book .lead{color:rgba(232,223,200,.72)}
+.book-grid{display:grid;grid-template-columns:.85fr 1.15fr;
+  gap:clamp(26px,4vw,68px);align-items:start}
+form{border:1px solid rgba(232,223,200,.26);background:rgba(0,0,0,.18);
+  border-radius:3px;padding:clamp(20px,2.8vw,40px)}
+.fg{margin-bottom:18px}
+.fg label{display:block;font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;
+  text-transform:uppercase;color:rgba(232,223,200,.7);margin-bottom:8px}
+.fg input,.fg select,.fg textarea{width:100%;background:transparent;border:0;
+  border-bottom:1px solid rgba(232,223,200,.3);padding:10px 0;
+  font-family:var(--sans);font-size:.94rem;color:var(--parchment);
+  transition:border-color .25s}
+.fg textarea{resize:vertical;min-height:92px;line-height:1.6}
+.fg select{appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--parchment) 50%),
+                   linear-gradient(135deg,var(--parchment) 50%,transparent 50%);
+  background-position:calc(100% - 12px) 18px,calc(100% - 7px) 18px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:0;
+  border-color:var(--parchment)}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(232,223,200,.38)}
+.fg option{background:var(--navy);color:var(--parchment)}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.submit{width:100%;justify-content:center;background:var(--stamp);
+  border-color:var(--stamp);color:var(--parchment);margin-top:6px}
+.submit:hover{background:#A93226;border-color:#A93226}
+.fnote{margin-top:12px;color:var(--parchment)}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:rgba(232,223,200,.62);
+  padding:clamp(40px,5vw,74px) 0 22px}
+.ft{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;
+  gap:clamp(18px,2.6vw,44px);padding-bottom:clamp(26px,3.2vw,44px);
+  border-bottom:1px solid rgba(232,223,200,.16)}
+.ft-brand .brand{color:var(--parchment);margin-bottom:14px}
+.ft-brand p{font-size:.86rem;line-height:1.7;color:rgba(232,223,200,.52);
+  max-width:34ch}
+.ft h4{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--parchment);margin-bottom:14px;font-weight:600}
+.ft ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ft a{font-size:.86rem;color:rgba(232,223,200,.52);transition:color .25s}
+.ft a:hover{color:var(--stamp)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  padding-top:18px;font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;
+  text-transform:uppercase;color:rgba(232,223,200,.34)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(22px);
+  transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+/* collage pieces slide in from slightly off-axis */
+.rv-tilt{opacity:0;transform:translateY(24px) rotate(-3deg) scale(.97);
+  transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv-tilt.in{opacity:1;transform:rotate(-1deg) scale(1)}
+:focus-visible{outline:2px solid var(--stamp);outline-offset:3px}
+
+/* ---------- responsive ---------- */
+@media(max-width:1120px){
+  .hero-grid,.map-grid,.book-grid{grid-template-columns:1fr;
+    gap:clamp(24px,3.6vw,44px)}
+  .dest,.hosp,.notes{grid-template-columns:1fr 1fr}
+  .step{grid-template-columns:clamp(46px,6vw,72px) 1fr;gap:14px 20px}
+  .step .desc{grid-column:2}
+}
+@media(max-width:720px){
+  .navlinks{position:fixed;inset:70px 0 auto 0;background:rgba(20,35,61,.99);
+    flex-direction:column;align-items:flex-start;gap:0;padding:10px var(--gut) 26px;
+    border-bottom:1px solid rgba(232,223,200,.22);transform:translateY(-14px);
+    opacity:0;pointer-events:none;
+    transition:opacity .35s var(--ease),transform .35s var(--ease)}
+  .navlinks.on{transform:none;opacity:1;pointer-events:auto}
+  .navlinks li{width:100%;border-bottom:1px solid rgba(232,223,200,.14)}
+  .navlinks a{display:block;padding:16px 0;font-size:.66rem}
+  .nav-cta{border-radius:0;padding:16px 0 !important;text-align:center}
+  .burger{display:flex}
+  .dest,.hosp,.notes,.f2{grid-template-columns:1fr}
+  .step{grid-template-columns:1fr}
+  .step .desc{grid-column:1}
+  .bp{grid-template-columns:1fr}
+  .bp-stub{border-left:0;border-top:2px dashed var(--hair);flex-direction:row;
+    padding:12px}
+  .bp-stub::before,.bp-stub::after{left:auto;top:-6px}
+  .bp-stub::before{left:16px}
+  .bp-stub::after{right:16px;left:auto}
+  .bp-stub .vert{writing-mode:horizontal-tb;transform:none}
+  .ft{grid-template-columns:1fr 1fr}
+  .passport{transform:none}
+}
+@media(max-width:460px){.ft{grid-template-columns:1fr}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+  .rv,.rv-tilt{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="nav">
+    <a href="index.html" class="brand">
+      <span class="globe" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="13" stroke="#E8DFC8" stroke-width="1.6"/>
+          <ellipse cx="16" cy="16" rx="5.5" ry="13" stroke="#E8DFC8" stroke-width="1.2"/>
+          <path d="M3.5 12h25M3.5 20h25" stroke="#E8DFC8" stroke-width="1.2"/>
+          <path d="M9 27.5C13 22 19 22 23 27.5" stroke="#C0392B" stroke-width="1.6"/>
+        </svg>
+      </span>
+      Atlas
+    </a>
+    <ul class="navlinks" id="nav">
+      <li><a href="#destinations">Destinations</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#costs">Costs</a></li>
+      <li><a href="#hospitals">Hospitals</a></li>
+      <li><a href="#book" class="nav-cta">Free consultation</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="above">
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow"><span class="mono">Medical travel · Lagos based</span></span>
+        <h1 class="display d1">Treatment<br>abroad,<br><em>arranged.</em></h1>
+        <p class="lead">We match Nigerian patients to accredited hospitals in
+          India, Turkey, the UAE and the UK. Records reviewed, hospital chosen,
+          visa sorted, and someone waiting for you at the airport.</p>
+        <div class="hero-cta">
+          <a href="#book" class="btn btn-stamp">Book a free consultation <span class="ar">&rarr;</span></a>
+          <a href="#costs" class="btn">Compare costs</a>
+        </div>
+      </div>
+
+      <div class="passport">
+        <div class="ph">
+          <span class="mono">Journey file</span>
+          <span class="mono" style="color:var(--stamp)">ATL-2026</span>
+        </div>
+        <div class="rows">
+          <div class="row"><span class="k">Departure</span><span class="v">LOS — Lagos</span></div>
+          <div class="row"><span class="k">Destinations</span><span class="v">DEL · IST · DXB · LHR</span></div>
+          <div class="row"><span class="k">Specialties</span><span class="v">Cardiac · Ortho · IVF · Oncology</span></div>
+          <div class="row"><span class="k">Hospitals</span><span class="v">34 accredited partners</span></div>
+          <div class="row"><span class="k">Patients sent</span><span class="v">1,140 since 2019</span></div>
+        </div>
+        <span class="stamp-mark" aria-hidden="true">
+          <svg viewBox="0 0 120 120" fill="none">
+            <circle cx="60" cy="60" r="54" stroke="#C0392B" stroke-width="2.5"
+                    stroke-dasharray="4 3" opacity=".9"/>
+            <circle cx="60" cy="60" r="46" stroke="#C0392B" stroke-width="1.2" opacity=".7"/>
+            <text x="60" y="52" text-anchor="middle" font-family="Bebas Neue"
+                  font-size="20" fill="#C0392B" letter-spacing="1">ATLAS</text>
+            <text x="60" y="68" text-anchor="middle" font-family="IBM Plex Mono"
+                  font-size="8" fill="#C0392B" letter-spacing="1">VERIFIED</text>
+            <text x="60" y="80" text-anchor="middle" font-family="IBM Plex Mono"
+                  font-size="7" fill="#C0392B" letter-spacing="1">2026 · LOS</text>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLIGHT MAP ============ -->
+<section class="map-sec" id="destinations">
+  <div class="wrap">
+    <div class="rv" style="max-width:800px">
+      <span class="eyebrow"><span class="mono">Fig. 01 — Route map</span></span>
+      <h2 class="display d2">Four destinations.<br>One departure.</h2>
+      <p class="lead" style="margin-top:18px">Every route below is one we have
+        sent patients on. We do not offer a destination we have not personally
+        vetted and visited.</p>
+    </div>
+
+    <div class="map-grid">
+      <div class="map-panel rv">
+        <svg viewBox="0 0 620 300" role="img"
+             aria-label="World map showing flight routes from Lagos to Delhi, Istanbul, Dubai and London">
+          <!-- stylised landmasses -->
+          <path class="landmass" d="M60 90 Q90 60 130 70 Q160 78 170 100 Q175 130 150 150
+                   Q120 170 95 155 Q65 135 60 90Z"/>
+          <path class="landmass" d="M150 40 Q200 25 240 40 Q255 55 240 72 Q200 88 165 75
+                   Q148 60 150 40Z"/>
+          <path class="landmass" d="M300 60 Q340 45 380 58 Q400 70 392 92 Q360 112 320 100
+                   Q298 84 300 60Z"/>
+          <path class="landmass" d="M330 110 Q365 100 395 115 Q408 140 392 170
+                   Q365 195 340 180 Q322 155 330 110Z"/>
+          <path class="landmass" d="M430 70 Q470 55 505 70 Q520 88 508 110 Q470 126 440 110
+                   Q425 92 430 70Z"/>
+          <path class="landmass" d="M470 170 Q510 158 545 175 Q558 195 542 215
+                   Q505 230 478 214 Q462 194 470 170Z"/>
+
+          <!-- routes -->
+          <path class="route route-anim" d="M118 176 Q160 140 300 120 Q380 108 452 88"/>
+          <path class="route route-anim" d="M118 176 Q200 130 300 104 Q350 92 392 84"/>
+          <path class="route route-anim" d="M118 176 Q220 140 320 108 Q360 96 392 92"/>
+          <path class="route route-anim" d="M118 176 Q170 120 260 90 Q330 66 402 74"/>
+
+          <!-- origin -->
+          <circle class="city-origin" cx="118" cy="176" r="6"/>
+          <text class="map-label" x="128" y="196">LAGOS</text>
+
+          <!-- destinations -->
+          <circle class="city" cx="452" cy="88" r="4.5"/>
+          <text class="map-label" x="440" y="78">LONDON</text>
+
+          <circle class="city" cx="392" cy="84" r="4.5"/>
+          <text class="map-label" x="386" y="74">ISTANBUL</text>
+
+          <circle class="city" cx="392" cy="92" r="4.5"/>
+          <text class="map-label" x="398" y="104">DUBAI</text>
+
+          <circle class="city" cx="402" cy="74" r="4.5"/>
+          <text class="map-label" x="330" y="64">DELHI</text>
+        </svg>
+        <div class="map-legend">
+          <div><i></i>Departure — Lagos</div>
+          <div><i style="background:var(--parchment)"></i>Destination</div>
+          <div><i style="background:none;border:1px dashed var(--stamp)"></i>Active route</div>
+        </div>
+      </div>
+
+      <div class="rv">
+        <h3 class="d3" style="color:var(--parchment);margin-bottom:14px">
+          Why four and not forty.</h3>
+        <p class="lead">We could list thirty destinations. We list four, because
+          these are the four where we have visited the hospitals, met the
+          consultants, and sent enough patients to know how it actually goes.</p>
+        <p class="lead" style="margin-top:16px">India for cardiac and orthopaedic
+          surgery at the lowest cost. Turkey for IVF and hair restoration. The UAE
+          for anything where you want to be four hours from home. The UK for
+          complex oncology and for patients with existing NHS connections.</p>
+        <p class="small" style="margin-top:16px;color:rgba(232,223,200,.6)">We are
+          an agency, not a medical provider. Treatment is delivered by the hospital
+          you choose. We are paid by you, not by the hospitals, so our
+          recommendation is not for sale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DESTINATION BOARDING PASSES ============ -->
+<section class="paper">
+  <div class="wrap">
+    <div class="rv" style="max-width:800px">
+      <span class="eyebrow"><span class="mono">Fig. 02 — Destinations</span></span>
+      <h2 class="display d2" style="color:var(--navy)">The four routes.</h2>
+    </div>
+
+    <div class="dest">
+      <article class="bp rv-tilt">
+        <div class="bp-main">
+          <div class="bp-head">
+            <span class="to">India</span>
+            <span class="code">DEL</span>
+          </div>
+          <div class="bp-fields">
+            <div><span class="k">Flight time</span><span class="v">~13h (1 stop)</span></div>
+            <div><span class="k">Visa</span><span class="v">Medical visa, 3–7 days</span></div>
+            <div><span class="k">Best for</span><span class="v">Cardiac, ortho, oncology</span></div>
+            <div><span class="k">Cost level</span><span class="v">Lowest of the four</span></div>
+            <div><span class="k">Typical saving</span><span class="v">60–70% vs UK private</span></div>
+            <div><span class="k">Companion visa</span><span class="v">Included</span></div>
+          </div>
+        </div>
+        <div class="bp-stub">
+          <span class="vert">DEL · India</span>
+          <span class="dot">01</span>
+        </div>
+      </article>
+
+      <article class="bp rv-tilt">
+        <div class="bp-main">
+          <div class="bp-head">
+            <span class="to">Turkey</span>
+            <span class="code">IST</span>
+          </div>
+          <div class="bp-fields">
+            <div><span class="k">Flight time</span><span class="v">~7h direct</span></div>
+            <div><span class="k">Visa</span><span class="v">e-Visa, 48 hours</span></div>
+            <div><span class="k">Best for</span><span class="v">IVF, hair, bariatric</span></div>
+            <div><span class="k">Cost level</span><span class="v">Low–moderate</span></div>
+            <div><span class="k">Typical saving</span><span class="v">55–65% vs UK private</span></div>
+            <div><span class="k">Companion visa</span><span class="v">Included</span></div>
+          </div>
+        </div>
+        <div class="bp-stub">
+          <span class="vert">IST · Turkey</span>
+          <span class="dot">02</span>
+        </div>
+      </article>
+
+      <article class="bp rv-tilt">
+        <div class="bp-main">
+          <div class="bp-head">
+            <span class="to">UAE</span>
+            <span class="code">DXB</span>
+          </div>
+          <div class="bp-fields">
+            <div><span class="k">Flight time</span><span class="v">~6h direct</span></div>
+            <div><span class="k">Visa</span><span class="v">On arrival for Nigerians</span></div>
+            <div><span class="k">Best for</span><span class="v">Ortho, fertility, diagnostics</span></div>
+            <div><span class="k">Cost level</span><span class="v">Moderate–high</span></div>
+            <div><span class="k">Typical saving</span><span class="v">35–45% vs UK private</span></div>
+            <div><span class="k">Why choose it</span><span class="v">Closest to home</span></div>
+          </div>
+        </div>
+        <div class="bp-stub">
+          <span class="vert">DXB · UAE</span>
+          <span class="dot">03</span>
+        </div>
+      </article>
+
+      <article class="bp rv-tilt">
+        <div class="bp-main">
+          <div class="bp-head">
+            <span class="to">United Kingdom</span>
+            <span class="code">LHR</span>
+          </div>
+          <div class="bp-fields">
+            <div><span class="k">Flight time</span><span class="v">~7h direct</span></div>
+            <div><span class="k">Visa</span><span class="v">Standard visitor, 3–6 weeks</span></div>
+            <div><span class="k">Best for</span><span class="v">Complex oncology, second opinions</span></div>
+            <div><span class="k">Cost level</span><span class="v">Highest of the four</span></div>
+            <div><span class="k">Typical saving</span><span class="v">Baseline for comparison</span></div>
+            <div><span class="k">Why choose it</span><span class="v">Existing NHS or family ties</span></div>
+          </div>
+        </div>
+        <div class="bp-stub">
+          <span class="vert">LHR · United Kingdom</span>
+          <span class="dot">04</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="paper" id="how" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:800px">
+      <span class="eyebrow"><span class="mono">Fig. 03 — The process</span></span>
+      <h2 class="display d2" style="color:var(--navy)">Six steps,<br>start to finish.</h2>
+    </div>
+    <div class="steps">
+      <div class="step rv">
+        <span class="n">01</span>
+        <h3 class="d3">Free consultation</h3>
+        <p class="desc">We listen to what is wrong, look at whatever records you
+          have, and tell you honestly whether travelling is worth it for your
+          case. Sometimes the answer is no, and we say so.</p>
+      </div>
+      <div class="step rv">
+        <span class="n">02</span>
+        <h3 class="d3">Records review</h3>
+        <p class="desc">Your scans, reports and history are sent to two or three
+          shortlisted hospitals for a consultant opinion and a treatment quote.
+          This usually takes five to ten days.</p>
+      </div>
+      <div class="step rv">
+        <span class="n">03</span>
+        <h3 class="d3">Hospital match</h3>
+        <p class="desc">We present the options with the quotes side by side, and
+          our recommendation. You choose. We do not take a commission from the
+          hospital — our fee is paid by you, which is why we can say no.</p>
+      </div>
+      <div class="step rv">
+        <span class="n">04</span>
+        <h3 class="d3">Visa &amp; travel</h3>
+        <p class="desc">Invitation letter, visa application, flights, airport
+          transfer and accommodation. We handle the paperwork and tell you exactly
+          what to bring to the embassy.</p>
+      </div>
+      <div class="step rv">
+        <span class="n">05</span>
+        <h3 class="d3">Treatment</h3>
+        <p class="desc">A named coordinator meets you at the destination airport
+          and takes you to the hospital. They stay reachable for the whole trip,
+          including for your companion.</p>
+      </div>
+      <div class="step rv">
+        <span class="n">06</span>
+        <h3 class="d3">Aftercare</h3>
+        <p class="desc">Discharge summary, medication plan and a follow-up
+          appointment arranged with a Lagos consultant who can take over your
+          care when you are home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COSTS ============ -->
+<section class="paper" id="costs" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:800px">
+      <span class="eyebrow"><span class="mono">Fig. 04 — Indicative costs</span></span>
+      <h2 class="display d2" style="color:var(--navy)">What it costs.</h2>
+      <p class="lead" style="margin-top:18px">Indicative package prices, including
+        hospital fees, our coordination fee, flights for the patient and one
+        companion, and accommodation. Not including visa fees.</p>
+    </div>
+
+    <table class="ctable rv">
+      <thead>
+        <tr>
+          <th>Procedure</th>
+          <th>Nigeria (private)</th>
+          <th>India</th>
+          <th>Turkey</th>
+          <th>UAE</th>
+          <th>UK private</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Coronary bypass (CABG)</td>
+          <td class="num">&#8358;12–18m</td>
+          <td class="num save">&#8358;6.5m</td>
+          <td class="num">&#8358;9m</td>
+          <td class="num">&#8358;14m</td>
+          <td class="num">&#8358;28m</td>
+        </tr>
+        <tr class="hi">
+          <td>Total knee replacement</td>
+          <td class="num">&#8358;7–11m</td>
+          <td class="num save">&#8358;4.2m</td>
+          <td class="num">&#8358;6m</td>
+          <td class="num">&#8358;9.5m</td>
+          <td class="num">&#8358;19m</td>
+        </tr>
+        <tr>
+          <td>IVF cycle (with medication)</td>
+          <td class="num">&#8358;3.5–6m</td>
+          <td class="num save">&#8358;2.6m</td>
+          <td class="num save">&#8358;2.4m</td>
+          <td class="num">&#8358;4.8m</td>
+          <td class="num">&#8358;8m</td>
+        </tr>
+        <tr>
+          <td>Spinal decompression</td>
+          <td class="num">&#8358;5–8m</td>
+          <td class="num save">&#8358;3.4m</td>
+          <td class="num">&#8358;4.8m</td>
+          <td class="num">&#8358;7.5m</td>
+          <td class="num">&#8358;14m</td>
+        </tr>
+        <tr>
+          <td>Bariatric surgery</td>
+          <td class="num">&#8358;4–7m</td>
+          <td class="num save">&#8358;2.8m</td>
+          <td class="num save">&#8358;2.5m</td>
+          <td class="num">&#8358;6m</td>
+          <td class="num">&#8358;11m</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="small" style="margin-top:14px;max-width:76ch">Indicative figures for
+      illustration. Actual quotes depend on the hospital, the consultant, implant
+      choice, length of stay and your individual case. We obtain written quotes
+      before you commit to anything, and you pay the hospital directly.</p>
+  </div>
+</section>
+
+<!-- ============ HOSPITALS ============ -->
+<section class="paper" id="hospitals" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:800px">
+      <span class="eyebrow"><span class="mono">Fig. 05 — Partner hospitals</span></span>
+      <h2 class="display d2" style="color:var(--navy)">Who we send you to.</h2>
+    </div>
+    <div class="hosp">
+      <article class="hcard rv">
+        <span class="flag" style="background:linear-gradient(180deg,#FF9933 33%,#fff 33% 66%,#138808 66%)"></span>
+        <h3 class="d3">Delhi &amp; Chennai</h3>
+        <p>Multi-specialty hospitals with dedicated international patient
+          departments. Cardiac, orthopaedic and oncology centres of excellence.</p>
+        <div class="acc">NABH accredited<br>JCI accredited<br>International desk on site</div>
+      </article>
+      <article class="hcard rv">
+        <span class="flag" style="background:linear-gradient(180deg,#E30A17 50%,#fff 50%);position:relative"></span>
+        <h3 class="d3">Istanbul &amp; Ankara</h3>
+        <p>Strong in fertility, bariatric and reconstructive surgery. Short flight,
+          fast visa, and English-speaking coordinators throughout.</p>
+        <div class="acc">JCI accredited<br>Health tourism certified<br>English-speaking staff</div>
+      </article>
+      <article class="hcard rv">
+        <span class="flag" style="background:linear-gradient(180deg,#00732F 40%,#fff 40% 60%,#000 60%)"></span>
+        <h3 class="d3">Dubai &amp; Abu Dhabi</h3>
+        <p>Closest to home, easiest visa, and the option of a short trip for
+          diagnostics or a second opinion rather than full treatment.</p>
+        <div class="acc">JCI accredited<br>Six-hour direct flight<br>Visa on arrival</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="paper" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv" style="max-width:800px">
+      <span class="eyebrow"><span class="mono">Fig. 06 — Patient journeys</span></span>
+      <h2 class="display d2" style="color:var(--navy)">Who has been.</h2>
+    </div>
+    <div class="notes">
+      <div class="note rv">
+        <p>"I was told I needed a bypass and quoted a price in Lagos that would
+          have taken everything. Atlas got three quotes in nine days. I had the
+          surgery in Chennai and came home in three weeks."</p>
+        <span class="who">— A.O., 58 · Lagos</span>
+      </div>
+      <div class="note rv">
+        <p>"What I did not expect was someone waiting at the airport. After a
+          seven-hour flight, in a country I had never been to, that mattered more
+          than I can explain."</p>
+        <span class="who">— C.N., 41 · Abuja</span>
+      </div>
+      <div class="note rv">
+        <p>"They told me not to travel. My case could be handled here. I was
+          shocked — I had already budgeted for India. That is when I trusted them."</p>
+        <span class="who">— F.B., 34 · Port Harcourt</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ============ -->
+<section class="book" id="book">
+  <div class="wrap">
+    <div class="book-grid">
+      <div class="rv">
+        <span class="eyebrow"><span class="mono">Free consultation</span></span>
+        <h2 class="display d2">Start with<br>a conversation.</h2>
+        <p class="lead" style="margin-top:18px">Thirty minutes, free, no
+          obligation. Bring whatever records you have. We will tell you honestly
+          whether travelling is the right decision for your case.</p>
+        <p class="small" style="margin-top:18px;color:rgba(232,223,200,.6)">
+          Our coordination fee is a fixed percentage of the treatment cost and is
+          agreed in writing before you commit. We do not receive commission from
+          hospitals.</p>
+      </div>
+      <form id="atlasform" class="rv" novalidate>
+        <div class="f2">
+          <div class="fg">
+            <label for="nm">Full name</label>
+            <input id="nm" name="nm" type="text" placeholder="Adaeze Okonkwo" required>
+          </div>
+          <div class="fg">
+            <label for="ph">Phone</label>
+            <input id="ph" name="ph" type="tel" placeholder="0803 000 0000" required>
+          </div>
+        </div>
+        <div class="f2">
+          <div class="fg">
+            <label for="spec">Specialty</label>
+            <select id="spec" name="spec">
+              <option value="">Select&hellip;</option>
+              <option>Cardiac surgery</option>
+              <option>Orthopaedic surgery</option>
+              <option>Fertility / IVF</option>
+              <option>Oncology</option>
+              <option>Bariatric surgery</option>
+              <option>Second opinion only</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="dest">Destination preference</label>
+            <select id="dest" name="dest">
+              <option value="">Open to suggestions</option>
+              <option>India</option>
+              <option>Turkey</option>
+              <option>UAE</option>
+              <option>United Kingdom</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label for="ms">What is the diagnosis or concern?</label>
+          <textarea id="ms" name="ms" placeholder="Told I need a knee replacement. I have an MRI from last month. Want to know what it would cost abroad."></textarea>
+        </div>
+        <p id="fnote" class="small fnote" aria-live="polite"></p>
+        <button type="submit" class="btn submit">Request consultation <span class="ar">&rarr;</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div class="ft-brand">
+        <a href="index.html" class="brand">
+          <span class="globe" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="13" stroke="#E8DFC8" stroke-width="1.6"/>
+              <ellipse cx="16" cy="16" rx="5.5" ry="13" stroke="#E8DFC8" stroke-width="1.2"/>
+              <path d="M3.5 12h25M3.5 20h25" stroke="#E8DFC8" stroke-width="1.2"/>
+              <path d="M9 27.5C13 22 19 22 23 27.5" stroke="#C0392B" stroke-width="1.6"/>
+            </svg>
+          </span>
+          Atlas
+        </a>
+        <p>Medical travel arranged from Lagos. Hospital matching, visa support,
+          travel and aftercare for treatment in India, Turkey, the UAE and the UK.</p>
+      </div>
+      <div class="ft">
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="#destinations">India</a></li>
+          <li><a href="#destinations">Turkey</a></li>
+          <li><a href="#destinations">UAE</a></li>
+          <li><a href="#destinations">United Kingdom</a></li>
+        </ul>
+      </div>
+      <div class="ft">
+        <h4>Journey</h4>
+        <ul>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#costs">Indicative costs</a></li>
+          <li><a href="#hospitals">Partner hospitals</a></li>
+        </ul>
+      </div>
+      <div class="ft">
+        <h4>Start</h4>
+        <ul>
+          <li><a href="#book">Free consultation</a></li>
+          <li><a href="#book">Second opinion</a></li>
+          <li><a href="#book">Records review</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>&copy; 2026 Atlas Medical Journeys &middot; Lagos</span>
+      <span>Atlas is a coordination agency, not a medical provider. Treatment and outcomes are the responsibility of the treating hospital.</span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /above -->
+
+<script>
+(function(){
+  'use strict';
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- nav ---------- */
+  var hdr = document.getElementById('hdr');
+  function sc(){ hdr.classList.toggle('solid', window.scrollY > 30); }
+  sc(); addEventListener('scroll', sc, {passive:true});
+
+  var burger = document.getElementById('burger'), nav = document.getElementById('nav');
+  burger.addEventListener('click', function(){
+    var on = nav.classList.toggle('on');
+    burger.classList.toggle('on', on);
+    burger.setAttribute('aria-expanded', on ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      nav.classList.remove('on'); burger.classList.remove('on');
+      burger.setAttribute('aria-expanded','false');
+    });
+  });
+
+  /* ---------- reveal ---------- */
+  var rvs = document.querySelectorAll('.rv, .rv-tilt');
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+    rvs.forEach(function(el, i){
+      el.style.transitionDelay = (Math.min(i % 4, 3) * 90) + 'ms';
+      io.observe(el);
+    });
+  } else { rvs.forEach(function(el){ el.classList.add('in'); }); }
+
+  /* ---------- collage parallax on the passport block ---------- */
+  var passport = document.querySelector('.passport');
+  var stamp = document.querySelector('.stamp-mark');
+  if (passport && !reduce && window.matchMedia('(pointer:fine)').matches){
+    var ticking = false;
+    function parallax(){
+      var r = passport.getBoundingClientRect();
+      var mid = r.top + r.height / 2 - innerHeight / 2;
+      var offset = Math.max(-24, Math.min(24, -mid * 0.06));
+      passport.style.transform = 'rotate(1.4deg) translateY(' + offset.toFixed(1) + 'px)';
+      if (stamp){
+        stamp.style.transform = 'rotate(' + (-16 - offset * 0.4).toFixed(1) + 'deg)';
+      }
+      ticking = false;
+    }
+    addEventListener('scroll', function(){
+      if (!ticking){ requestAnimationFrame(parallax); ticking = true; }
+    }, {passive:true});
+    parallax();
+  }
+
+  /* ---------- booking form ---------- */
+  var f = document.getElementById('atlasform');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var note = document.getElementById('fnote');
+    var nm = f.elements.nm.value.trim(), ph = f.elements.ph.value.trim();
+    if (!nm){ f.elements.nm.focus(); note.textContent = 'Please add your name.'; return; }
+    if (!ph){ f.elements.ph.focus(); note.textContent = 'Please add a phone number.'; return; }
+    var ref = 'ATL-2026-' + String(Math.floor(Math.random() * 9000) + 1000);
+    note.textContent = 'Journey file opened — reference ' + ref +
+      '. We will call within one working day to arrange your consultation.';
+  });
+
+  /* ---------- anchors ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var href = this.getAttribute('href');
+      if (href === '#'){ e.preventDefault(); return; }
+      var t = document.querySelector(href);
+      if (t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

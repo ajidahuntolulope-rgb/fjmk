@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Axiom Diagnostics — Know the number. Then decide.</title>
+<meta name="description" content="Axiom Diagnostics: 240+ accredited tests, home sample collection, and results in your portal. Book and pay online in Lagos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/axiom.css">
+</head>
+<body>
+
+<div class="above">
+
+<header>
+  <div class="nav">
+    <a href="index.html" class="brand"><span class="mark" aria-hidden="true"></span>Axiom</a>
+    <ul class="navlinks" id="nav">
+      <li><a href="tests.html">Tests</a></li>
+      <li><a href="home-collection.html">Home collection</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#book" class="nav-cta">Book a test</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-top">
+      <div>
+        <div class="eyebrow"><span class="mono">Accredited diagnostics · Lagos</span></div>
+        <h1 class="h1">Know the number.<br><em>Then decide.</em></h1>
+        <p class="lead">240+ accredited tests, home sample collection across Lagos,
+          and results in a portal you can actually read. No queue, no phone calls,
+          no waiting for someone to call you back.</p>
+        <div class="hero-tags">
+          <span class="tag live">● Same-day results on 180 tests</span>
+          <span class="tag">ISO 15189 aligned</span>
+          <span class="tag">Home collection</span>
+          <span class="tag">HMO accepted</span>
+        </div>
+      </div>
+      <div>
+        <p class="small">Book and pay online. A phlebotomist comes to you, or you
+          walk into any of our three Lagos collection centres. Results land in your
+          portal and are released to your doctor at the same time.</p>
+      </div>
+    </div>
+  </div>
+  <div class="strip">
+    <div><span class="k">Tests offered</span><span class="v" data-count="247">0</span></div>
+    <div><span class="k">Median turnaround</span><span class="v" data-count="9" data-suffix="h">0</span></div>
+    <div><span class="k">Collection centres</span><span class="v" data-count="3">0</span></div>
+    <div><span class="k">Home visits / week</span><span class="v" data-count="410" data-suffix="+">0</span></div>
+    <div><span class="k">Result accuracy</span><span class="v" data-count="99" data-suffix=".4%">0</span></div>
+  </div>
+</section>
+
+<!-- ============ BOOKING ENGINE ============ -->
+<section id="book" style="padding-top:clamp(40px,5vw,74px)">
+  <div class="wrap">
+    <div class="eyebrow"><span class="mono">Build your panel</span></div>
+    <h2 class="h2" style="max-width:16ch">Pick your tests.<br>See the price.</h2>
+    <p class="lead" style="margin-top:20px">Everything is transparent before you
+      commit — the test, the price, the turnaround, the total. Select as many as
+      you need.</p>
+
+    <div class="booker">
+      <!-- catalogue -->
+      <div class="cat">
+        <div class="cat-bar">
+          <span class="mono">Test catalogue</span>
+          <div class="search">
+            <input id="search" type="search" placeholder="Search 247 tests…" aria-label="Search tests">
+          </div>
+        </div>
+        <div class="panels">
+          <div class="panel-tabs" id="tabs" role="tablist">
+            <button role="tab" aria-selected="true" data-g="all">All</button>
+            <button role="tab" aria-selected="false" data-g="Panels">Panels</button>
+            <button role="tab" aria-selected="false" data-g="Haematology">Haematology</button>
+            <button role="tab" aria-selected="false" data-g="Chemistry">Chemistry</button>
+            <button role="tab" aria-selected="false" data-g="Hormones">Hormones</button>
+            <button role="tab" aria-selected="false" data-g="Infections">Infections</button>
+            <button role="tab" aria-selected="false" data-g="Wellness">Wellness</button>
+          </div>
+          <div class="testlist" id="testlist"></div>
+        </div>
+      </div>
+
+      <!-- cart -->
+      <div class="cart">
+        <div class="cart-head">
+          <span class="mono">Your order</span>
+          <span class="cnt" id="cnt">0 tests</span>
+        </div>
+
+        <div class="receipt" id="receipt">
+          <div class="ok"><i>✓</i><span>Booking confirmed</span></div>
+          <div class="ref" id="ref"></div>
+        </div>
+
+        <div class="cart-items" id="cartitems">
+          <div class="empty" id="empty">No tests selected<br>Choose from the catalogue</div>
+        </div>
+
+        <div class="cart-foot">
+          <div class="row"><span class="k">Subtotal</span><span class="v num" id="sub">₦0</span></div>
+          <div class="row"><span class="k">Home collection</span><span class="v num" id="coll">₦0</span></div>
+          <div class="row total"><span class="k">Total</span><span class="v num" id="total">₦0</span></div>
+
+          <div class="chooser">
+            <span class="k">Collection</span>
+            <div class="seg" id="mode">
+              <button data-m="lab" aria-pressed="true">Visit a centre</button>
+              <button data-m="home" aria-pressed="false">Home visit</button>
+            </div>
+          </div>
+
+          <div class="chooser">
+            <span class="k">Preferred slot</span>
+            <div class="slots" id="slots">
+              <button data-s="07:00">07:00</button>
+              <button data-s="08:30">08:30</button>
+              <button data-s="10:00">10:00</button>
+              <button data-s="12:30">12:30</button>
+              <button data-s="15:00">15:00</button>
+              <button data-s="17:30">17:30</button>
+            </div>
+          </div>
+
+          <button class="pay" id="pay" disabled>Confirm &amp; pay <span class="ar">→</span></button>
+          <span class="foot-note">Demo checkout · no card is charged</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section>
+  <div class="wrap">
+    <div class="eyebrow"><span class="mono">The process</span></div>
+    <h2 class="h2">Four steps,<br>no phone calls.</h2>
+    <div class="track">
+      <div class="tstep rv"><span class="n">STEP 01</span>
+        <h3>Choose your tests</h3>
+        <p>Browse the full catalogue with prices. Build a panel or pick a single test.</p></div>
+      <div class="tstep rv"><span class="n">STEP 02</span>
+        <h3>Pay online</h3>
+        <p>Card, transfer or USSD. You get a booking reference immediately.</p></div>
+      <div class="tstep rv"><span class="n">STEP 03</span>
+        <h3>Give your sample</h3>
+        <p>A phlebotomist comes to you, or you walk into a centre at your slot.</p></div>
+      <div class="tstep rv"><span class="n">STEP 04</span>
+        <h3>Read your results</h3>
+        <p>In your portal, with reference ranges and flags. Released to your doctor too.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SAMPLE REPORT ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow"><span class="mono">What you get back</span></div>
+    <h2 class="h2" style="max-width:18ch">A report a human<br>can read.</h2>
+    <p class="lead" style="margin-top:20px">Every result carries its reference
+      range, a plain flag, and a note explaining what the number actually means.
+      No wall of unlabelled decimals.</p>
+
+    <div class="report">
+      <div class="report-head">
+        <div class="who">
+          <b>Complete Metabolic Panel</b>
+          <span>REF · AXM-2026-04417 · 12 Mar 2026</span>
+        </div>
+        <div class="status"><i></i>Released</div>
+      </div>
+      <div class="rrow head">
+        <span>Analyte</span><span>Result</span><span>Reference</span><span>Flag</span>
+      </div>
+      <div class="rrow">
+        <span class="t">Fasting glucose</span>
+        <span class="v">5.4 mmol/L</span>
+        <span class="rng">3.9 – 5.5</span>
+        <span><span class="flag norm">Normal</span></span>
+      </div>
+      <div class="rrow">
+        <span class="t">Total cholesterol</span>
+        <span class="v">6.1 mmol/L</span>
+        <span class="rng">&lt; 5.2</span>
+        <span><span class="flag high">Above range</span></span>
+      </div>
+      <div class="rrow">
+        <span class="t">LDL cholesterol</span>
+        <span class="v">4.0 mmol/L</span>
+        <span class="rng">&lt; 3.4</span>
+        <span><span class="flag high">Above range</span></span>
+      </div>
+      <div class="rrow">
+        <span class="t">Alanine aminotransferase</span>
+        <span class="v">48 U/L</span>
+        <span class="rng">10 – 49</span>
+        <span><span class="flag bord">Borderline</span></span>
+      </div>
+      <div class="rrow">
+        <span class="t">Creatinine</span>
+        <span class="v">82 µmol/L</span>
+        <span class="rng">62 – 106</span>
+        <span><span class="flag norm">Normal</span></span>
+      </div>
+      <div class="rrow">
+        <span class="t">Haemoglobin</span>
+        <span class="v">14.2 g/dL</span>
+        <span class="rng">13.0 – 17.0</span>
+        <span><span class="flag norm">Normal</span></span>
+      </div>
+    </div>
+    <p class="small" style="margin-top:16px">Illustrative panel. Values shown are
+      examples, not a real patient record.</p>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow"><span class="mono">Why Axiom</span></div>
+    <h2 class="h2">Built for people<br>who are busy.</h2>
+    <div class="grid3">
+      <article class="card rv">
+        <span class="n">01</span>
+        <h3 class="h3">Home collection, properly staffed</h3>
+        <p>Twelve phlebotomists on the road across Lagos, six days a week. You
+          get a two-hour window, not a whole-day promise, and a name and photo of
+          who is coming.</p>
+      </article>
+      <article class="card rv">
+        <span class="n">02</span>
+        <h3 class="h3">Prices published, not quoted</h3>
+        <p>Every test in the catalogue has a fixed price visible before you book.
+          No "call for pricing", no surprise add-ons on the invoice.</p>
+      </article>
+      <article class="card rv">
+        <span class="n">03</span>
+        <h3 class="h3">Results you can hand to a doctor</h3>
+        <p>Reference ranges, flags and a plain-language note on each analyte. Your
+          doctor gets the same report, at the same time, by email.</p>
+      </article>
+    </div>
+    <div class="trust">
+      <div><span class="n num" data-count="247">0</span>
+        <span class="l">Accredited tests<br>in catalogue</span></div>
+      <div><span class="n num" data-count="99" data-suffix=".4%">0</span>
+        <span class="l">Result concordance<br>on EQA panels</span></div>
+      <div><span class="n num" data-count="9" data-suffix="h">0</span>
+        <span class="l">Median turnaround<br>routine chemistry</span></div>
+      <div><span class="n num" data-count="410" data-suffix="+">0</span>
+        <span class="l">Home collections<br>per week</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta rv">
+      <div>
+        <div class="eyebrow"><span class="mono">Start now</span></div>
+        <h2 class="h2">Book a panel<br>in two minutes.</h2>
+        <p class="lead" style="margin-top:18px">Pick your tests, choose a slot, pay
+          online. A phlebotomist is at your door tomorrow morning.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="#book" class="btn btn-p">Book a test <span class="ar">→</span></a>
+        <a href="tests.html" class="btn">Browse the catalogue</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div class="ft-brand">
+        <a href="index.html" class="brand"><span class="mark" aria-hidden="true"></span>Axiom</a>
+        <p>Accredited diagnostic laboratory services across Lagos. Home collection,
+          same-day results, published prices.</p>
+      </div>
+      <div class="ft">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="tests.html">Test catalogue</a></li>
+          <li><a href="home-collection.html">Home collection</a></li>
+          <li><a href="results.html">Results portal</a></li>
+          <li><a href="tests.html">Wellness panels</a></li>        </ul>
+      </div>
+      <div class="ft">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html">Accreditation</a></li>
+          <li><a href="about.html">Centres</a></li>
+        </ul>
+      </div>
+      <div class="ft">
+        <h4>Book</h4>
+        <ul>
+          <li><a href="#book">Book a test</a></li>
+          <li><a href="home-collection.html">Request a home visit</a></li>
+          <li><a href="results.html">Access my results</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2026 Axiom Diagnostics · Lagos</span>
+      <span>Results must be interpreted by a qualified clinician</span>
+    </div>
+  </div>
+</footer>
+
+</div><!-- /above -->
+
+<script src="assets/js/axiom.js"></script>
+<script>
+(function(){
+  "use strict";
+/* ============================================================
+     TEST CATALOGUE + BOOKING ENGINE
+     ============================================================ */
+  var TESTS = [
+    // Panels
+    {c:'AXM-P01', n:'Complete Metabolic Panel', d:'14 analytes: glucose, renal, hepatic, electrolytes', p:42000, t:'12h', g:'Panels'},
+    {c:'AXM-P02', n:'Full Blood Count + Differential', d:'Haemoglobin, white cells, platelets, indices', p:14500, t:'4h', g:'Panels'},
+    {c:'AXM-P03', n:'Lipid Profile', d:'Total cholesterol, LDL, HDL, triglycerides', p:18500, t:'8h', g:'Panels'},
+    {c:'AXM-P04', n:'Thyroid Function Panel', d:'TSH, free T3, free T4', p:34000, t:'24h', g:'Panels'},
+    {c:'AXM-P05', n:'Liver Function Panel', d:'ALT, AST, ALP, bilirubin, albumin, total protein', p:26500, t:'10h', g:'Panels'},
+    {c:'AXM-P06', n:'Executive Wellness Panel', d:'42 analytes across all major systems', p:98000, t:'24h', g:'Panels'},
+    {c:'AXM-P07', n:'Antenatal Profile', d:'Blood group, FBC, HIV, HBsAg, VDRL, urinalysis', p:39500, t:'12h', g:'Panels'},
+    {c:'AXM-P08', n:'Diabetes Monitoring Panel', d:'Fasting glucose, HbA1c, renal function, lipids', p:31500, t:'12h', g:'Panels'},
+    // Haematology
+    {c:'AXM-H01', n:'Haemoglobin', d:'Single analyte, anaemia screening', p:6500, t:'2h', g:'Haematology'},
+    {c:'AXM-H02', n:'Erythrocyte Sedimentation Rate', d:'Inflammatory marker', p:7800, t:'3h', g:'Haematology'},
+    {c:'AXM-H03', n:'Blood Group & Rhesus', d:'ABO and Rh typing', p:8200, t:'3h', g:'Haematology'},
+    {c:'AXM-H04', n:'Genotype (Hb Electrophoresis)', d:'Sickle cell and haemoglobinopathy screen', p:12500, t:'8h', g:'Haematology'},
+    {c:'AXM-H05', n:'Coagulation Profile', d:'PT, INR, APTT', p:24000, t:'6h', g:'Haematology'},
+    // Chemistry
+    {c:'AXM-C01', n:'Fasting Blood Glucose', d:'Requires 8-hour fast', p:6800, t:'2h', g:'Chemistry'},
+    {c:'AXM-C02', n:'HbA1c', d:'Three-month average glucose control', p:17500, t:'8h', g:'Chemistry'},
+    {c:'AXM-C03', n:'Urea & Electrolytes', d:'Renal function and electrolyte balance', p:15900, t:'6h', g:'Chemistry'},
+    {c:'AXM-C04', n:'Serum Creatinine', d:'Kidney filtration marker', p:8500, t:'4h', g:'Chemistry'},
+    {c:'AXM-C05', n:'Uric Acid', d:'Gout and purine metabolism', p:9200, t:'5h', g:'Chemistry'},
+    {c:'AXM-C06', n:'Serum Calcium', d:'Bone and parathyroid assessment', p:9600, t:'5h', g:'Chemistry'},
+    // Hormones
+    {c:'AXM-R01', n:'Testosterone (Total)', d:'Male and female; morning sample preferred', p:28000, t:'24h', g:'Hormones'},
+    {c:'AXM-R02', n:'Oestradiol', d:'Female reproductive hormone', p:29500, t:'24h', g:'Hormones'},
+    {c:'AXM-R03', n:'Prolactin', d:'Pituitary function', p:26500, t:'24h', g:'Hormones'},
+    {c:'AXM-R04', n:'FSH & LH', d:'Gonadotrophins; fertility and menopause workup', p:41000, t:'24h', g:'Hormones'},
+    {c:'AXM-R05', n:'Progesterone', d:'Ovulation and luteal phase assessment', p:27500, t:'24h', g:'Hormones'},
+    {c:'AXM-R06', n:'Vitamin D (25-OH)', d:'Deficiency is common in Nigeria', p:38500, t:'48h', g:'Hormones'},
+    // Infections
+    {c:'AXM-I01', n:'Malaria Parasite (RDT)', d:'Rapid antigen test, same-day', p:4500, t:'30m', g:'Infections'},
+    {c:'AXM-I02', n:'Malaria Parasite (Microscopy)', d:'Thick and thin film, speciation', p:6200, t:'3h', g:'Infections'},
+    {c:'AXM-I03', n:'Widal Test', d:'Typhoid screening', p:8900, t:'5h', g:'Infections'},
+    {c:'AXM-I04', n:'Hepatitis B Surface Antigen', d:'HBsAg screening', p:11200, t:'6h', g:'Infections'},
+    {c:'AXM-I05', n:'Hepatitis C Antibody', d:'HCV screening', p:11800, t:'6h', g:'Infections'},
+    {c:'AXM-I06', n:'HIV 1 & 2 Screening', d:'Confidential, with counselling', p:10500, t:'3h', g:'Infections'},
+    {c:'AXM-I07', n:'Urine Culture & Sensitivity', d:'Identifies organism and effective antibiotic', p:21500, t:'48h', g:'Infections'},
+    {c:'AXM-I08', n:'Stool Culture & Sensitivity', d:'Enteric pathogen identification', p:20500, t:'48h', g:'Infections'},
+    // Wellness
+    {c:'AXM-W01', n:'Prostate Specific Antigen', d:'Men over 45; prostate screening', p:24500, t:'12h', g:'Wellness'},
+    {c:'AXM-W02', n:'CA-125', d:'Ovarian marker; interpreted with imaging', p:36000, t:'48h', g:'Wellness'},
+    {c:'AXM-W03', n:'Ferritin & Iron Studies', d:'Iron deficiency and overload', p:32000, t:'24h', g:'Wellness'},
+    {c:'AXM-W04', n:'Vitamin B12 & Folate', d:'Neurological and anaemia workup', p:34500, t:'24h', g:'Wellness'},
+    {c:'AXM-W05', n:'Urinalysis (Dipstick + Micro)', d:'Screening for infection, blood, protein', p:7200, t:'2h', g:'Wellness'},
+    {c:'AXM-W06', n:'H. pylori Antigen (Stool)', d:'Peptic ulcer and gastritis screening', p:19800, t:'24h', g:'Wellness'}
+  ];
+
+  var HOME_FEE = 7500;
+  var selected = {};      // code -> test
+  var mode = 'lab';
+  var slot = null;
+  var confirmed = false;
+
+  var listEl = document.getElementById('testlist');
+  var itemsEl = document.getElementById('cartitems');
+  var emptyEl = document.getElementById('empty');
+  var cntEl = document.getElementById('cnt');
+  var subEl = document.getElementById('sub');
+  var collEl = document.getElementById('coll');
+  var totalEl = document.getElementById('total');
+  var payEl = document.getElementById('pay');
+  var receiptEl = document.getElementById('receipt');
+  var refEl = document.getElementById('ref');
+
+  function naira(n){
+    return '\u20A6' + n.toLocaleString('en-NG');
+  }
+
+  function renderList(){
+    var q = document.getElementById('search').value.trim().toLowerCase();
+    var g = document.querySelector('#tabs button[aria-selected="true"]').getAttribute('data-g');
+    var out = [];
+    TESTS.forEach(function(t){
+      if (g !== 'all' && t.g !== g) return;
+      if (q && (t.n + ' ' + t.d + ' ' + t.c + ' ' + t.g).toLowerCase().indexOf(q) === -1) return;
+      out.push(t);
+    });
+    if (!out.length){
+      listEl.innerHTML = '<div class="empty">No tests match that search</div>';
+      return;
+    }
+    listEl.innerHTML = out.map(function(t){
+      var on = selected[t.c] ? 'true' : 'false';
+      return '<div class="test" role="button" tabindex="0" aria-pressed="' + on +
+        '" data-c="' + t.c + '">' +
+        '<div><span class="nm">' + t.n + '<span class="grp">' + t.g + '</span></span>' +
+        '<div class="desc">' + t.d + '</div>' +
+        '<span class="code">' + t.c + ' · result in ' + t.t + '</span></div>' +
+        '<span class="price">' + naira(t.p) + '</span>' +
+        '<span class="box" aria-hidden="true"></span>' +
+        '</div>';
+    }).join('');
+  }
+
+  function renderCart(){
+    var keys = Object.keys(selected);
+    cntEl.textContent = keys.length + (keys.length === 1 ? ' test' : ' tests');
+    if (!keys.length){
+      itemsEl.innerHTML = '<div class="empty">No tests selected<br>Choose from the catalogue</div>';
+    } else {
+      itemsEl.innerHTML = keys.map(function(k){
+        var t = selected[k];
+        return '<div class="ci"><span class="t">' + t.n + '</span>' +
+          '<span class="p">' + naira(t.p) + '</span>' +
+          '<button class="rm" data-c="' + k + '" aria-label="Remove ' + t.n + '">✕</button></div>';
+      }).join('');
+    }
+    var sub = keys.reduce(function(a, k){ return a + selected[k].p; }, 0);
+    var coll = (mode === 'home' && sub > 0) ? HOME_FEE : 0;
+    subEl.textContent = naira(sub);
+    collEl.textContent = naira(coll);
+    totalEl.textContent = naira(sub + coll);
+    payEl.disabled = !(keys.length && slot);
+  }
+
+  function resetReceipt(){
+    confirmed = false;
+    receiptEl.classList.remove('on');
+    payEl.innerHTML = 'Confirm &amp; pay <span class="ar">→</span>';
+  }
+
+  listEl.addEventListener('click', function(e){
+    var row = e.target.closest('.test'); if (!row) return;
+    var code = row.getAttribute('data-c');
+    var t = null;
+    TESTS.forEach(function(x){ if (x.c === code) t = x; });
+    if (!t) return;
+    if (selected[code]) delete selected[code];
+    else selected[code] = t;
+    row.setAttribute('aria-pressed', selected[code] ? 'true' : 'false');
+    resetReceipt();
+    renderCart();
+  });
+  listEl.addEventListener('keydown', function(e){
+    if (e.key === 'Enter' || e.key === ' '){
+      var row = e.target.closest('.test');
+      if (row){ e.preventDefault(); row.click(); }
+    }
+  });
+
+  itemsEl.addEventListener('click', function(e){
+    var b = e.target.closest('.rm'); if (!b) return;
+    delete selected[b.getAttribute('data-c')];
+    resetReceipt();
+    renderList(); renderCart();
+  });
+
+  document.getElementById('search').addEventListener('input', renderList);
+
+  document.getElementById('tabs').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    this.querySelectorAll('button').forEach(function(x){
+      x.setAttribute('aria-selected', String(x === b));
+    });
+    renderList();
+  });
+
+  document.getElementById('mode').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    mode = b.getAttribute('data-m');
+    this.querySelectorAll('button').forEach(function(x){
+      x.setAttribute('aria-pressed', String(x === b));
+    });
+    resetReceipt();
+    renderCart();
+  });
+
+  document.getElementById('slots').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b || b.disabled) return;
+    slot = b.getAttribute('data-s');
+    this.querySelectorAll('button').forEach(function(x){
+      x.setAttribute('aria-pressed', String(x === b));
+    });
+    resetReceipt();
+    renderCart();
+  });
+
+  payEl.addEventListener('click', function(){
+    if (payEl.disabled) return;
+    var keys = Object.keys(selected);
+    var ref = 'AXM-' + new Date().getFullYear() + '-' +
+      String(Math.floor(Math.random() * 90000) + 10000);
+    var sub = keys.reduce(function(a, k){ return a + selected[k].p; }, 0);
+    var coll = (mode === 'home') ? HOME_FEE : 0;
+    refEl.innerHTML =
+      'Ref <b>' + ref + '</b><br>' +
+      keys.length + ' test' + (keys.length === 1 ? '' : 's') + ' · ' +
+      (mode === 'home' ? 'Home visit' : 'Centre visit') + ' · ' + slot + '<br>' +
+      'Total ' + naira(sub + coll) + ' · paid';
+    receiptEl.classList.add('on');
+    payEl.innerHTML = 'Booked ✓';
+    confirmed = true;
+  });
+
+  renderList();
+  renderCart();
+
+  /* ---------- anchors ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var href = this.getAttribute('href');
+      if (href === '#'){ e.preventDefault(); return; }
+      var t = document.querySelector(href);
+      if (t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

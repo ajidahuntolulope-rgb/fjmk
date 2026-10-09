@@ -1,0 +1,20 @@
+# --- dependencies / tooling ---
+node_modules/
+package-lock.json
+__pycache__/
+*.pyc
+
+# --- scratch ---
+*.log
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+
+# --- credentials: never commit ---
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+token.json

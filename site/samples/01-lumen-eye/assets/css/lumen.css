@@ -1,0 +1,485 @@
+
+/* ============================================================
+   LUMEN EYE INSTITUTE
+   Design movement: OPTICAL / LIGHT REFRACTION
+   The entire system is built from one idea: light bending.
+   - Every accent is a light bloom, not a fill
+   - Blur = defocus = the thing we fix
+   - The page literally sharpens as you scroll
+   ============================================================ */
+
+@property --lens {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 0%;
+}
+
+:root{
+  --void:#05070C;
+  --deep:#0A0E17;
+  --slate:#141A26;
+  --mist:rgba(233,240,255,.62);
+  --mist-dim:rgba(233,240,255,.34);
+  --white:#EEF3FF;
+
+  /* spectral accents — light split through a prism */
+  --violet:#7C5CFF;
+  --cyan:#22D3EE;
+  --amber:#FFB020;
+  --rose:#FF4D7D;
+
+  --edge:rgba(233,240,255,.10);
+  --edge-lit:rgba(233,240,255,.22);
+
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --serif:'Newsreader',Georgia,serif;
+  --mono:'Azeret Mono',ui-monospace,monospace;
+
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-io:cubic-bezier(.65,0,.35,1);
+  --gut:clamp(20px,4.5vw,72px);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--void);color:var(--white);
+  font-family:var(--display);font-weight:300;
+  line-height:1.62;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+}
+::selection{background:var(--violet);color:#fff}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* ============================================================
+   LIGHT FIELD — the ambient prism glow behind everything
+   ============================================================ */
+.field{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.field i{
+  position:absolute;border-radius:50%;
+  filter:blur(90px);opacity:.5;
+  will-change:transform;
+}
+.field i:nth-child(1){width:52vw;height:52vw;left:-14vw;top:-10vw;
+  background:radial-gradient(circle,rgba(124,92,255,.55),transparent 66%);
+  animation:drift1 34s var(--ease-io) infinite alternate}
+.field i:nth-child(2){width:44vw;height:44vw;right:-12vw;top:22vh;
+  background:radial-gradient(circle,rgba(34,211,238,.42),transparent 66%);
+  animation:drift2 41s var(--ease-io) infinite alternate}
+.field i:nth-child(3){width:38vw;height:38vw;left:26vw;bottom:-16vw;
+  background:radial-gradient(circle,rgba(255,176,32,.30),transparent 66%);
+  animation:drift3 29s var(--ease-io) infinite alternate}
+.field i:nth-child(4){width:30vw;height:30vw;right:18vw;bottom:8vh;
+  background:radial-gradient(circle,rgba(255,77,125,.26),transparent 66%);
+  animation:drift1 37s var(--ease-io) infinite alternate-reverse}
+@keyframes drift1{to{transform:translate3d(9vw,7vh,0) scale(1.16)}}
+@keyframes drift2{to{transform:translate3d(-11vw,9vh,0) scale(1.2)}}
+@keyframes drift3{to{transform:translate3d(7vw,-8vh,0) scale(1.13)}}
+
+/* film grain over the light field */
+.grain{
+  position:fixed;inset:-200%;z-index:1;pointer-events:none;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:grain 7s steps(6) infinite;
+}
+@keyframes grain{
+  0%{transform:translate(0,0)}   20%{transform:translate(-3%,2%)}
+  40%{transform:translate(2%,-3%)} 60%{transform:translate(-2%,-2%)}
+  80%{transform:translate(3%,1%)}  100%{transform:translate(0,0)}
+}
+
+/* everything above the atmosphere */
+.above{position:relative;z-index:2}
+
+/* ============================================================
+   FOCUS LAYER — a radial mask that follows the pointer.
+   Content inside .focusable is sharp at the centre, soft at
+   the edges — the exact inverse of a vision defect.
+   ============================================================ */
+.focuslayer{
+  position:fixed;inset:0;z-index:3;pointer-events:none;
+  backdrop-filter:blur(7px) saturate(.7);
+  -webkit-backdrop-filter:blur(7px) saturate(.7);
+  -webkit-mask-image:radial-gradient(circle var(--lens) at var(--mx,50%) var(--my,40%),transparent 0%,#000 100%);
+  mask-image:radial-gradient(circle var(--lens) at var(--mx,50%) var(--my,40%),transparent 0%,#000 100%);
+  transition:--lens .5s var(--ease);
+}
+
+/* ============================================================
+   TYPE
+   ============================================================ */
+.wrap{max-width:1500px;margin:0 auto;padding:0 var(--gut)}
+.mono{font-family:var(--mono);font-size:.62rem;font-weight:400;
+  letter-spacing:.24em;text-transform:uppercase}
+.display{
+  font-family:var(--display);font-weight:200;
+  line-height:.9;letter-spacing:-.045em;
+  font-size:clamp(3rem,10.5vw,11rem);
+}
+.serif{font-family:var(--serif);font-weight:200;font-style:italic}
+.h2{font-family:var(--display);font-weight:200;line-height:.96;letter-spacing:-.038em;
+  font-size:clamp(2.1rem,5.6vw,5rem)}
+.h3{font-family:var(--display);font-weight:300;line-height:1.06;letter-spacing:-.025em;
+  font-size:clamp(1.3rem,2.2vw,2rem)}
+.lead{font-size:clamp(1rem,1.28vw,1.2rem);font-weight:300;line-height:1.72;
+  color:var(--mist);max-width:54ch}
+.small{font-size:.88rem;line-height:1.7;color:var(--mist-dim);font-weight:300}
+
+/* spectral text — the word splits into its own colours */
+.spectral{
+  background:linear-gradient(96deg,var(--violet) 0%,var(--cyan) 34%,var(--amber) 66%,var(--rose) 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+header{position:fixed;inset:0 0 auto 0;z-index:60;
+  transition:background .5s var(--ease),backdrop-filter .5s,border-color .5s;
+  border-bottom:1px solid transparent}
+header.solid{background:rgba(5,7,12,.7);backdrop-filter:blur(18px) saturate(1.3);
+  -webkit-backdrop-filter:blur(18px) saturate(1.3);border-bottom-color:var(--edge)}
+.nav{display:flex;align-items:center;justify-content:space-between;
+  height:78px;max-width:1500px;margin:0 auto;padding:0 var(--gut)}
+.brand{display:flex;align-items:center;gap:11px;font-weight:400;
+  font-size:1.05rem;letter-spacing:.16em;text-transform:uppercase}
+.brand .iris{width:22px;height:22px;flex:none;position:relative}
+.brand .iris::before{content:"";position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,var(--violet),var(--cyan),var(--amber),var(--rose),var(--violet));
+  animation:spin 9s linear infinite}
+.brand .iris::after{content:"";position:absolute;inset:5px;border-radius:50%;
+  background:var(--void)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.navlinks{display:flex;align-items:center;gap:clamp(16px,2.3vw,38px);list-style:none}
+.navlinks a{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--mist-dim);position:relative;padding:5px 0;
+  transition:color .3s}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+  background:linear-gradient(90deg,var(--violet),var(--cyan));
+  transition:width .42s var(--ease)}
+.navlinks a:hover{color:var(--white)}
+.navlinks a:hover::after{width:100%}
+.nav-cta{padding:11px 20px !important;border:1px solid var(--edge-lit);border-radius:100px;
+  color:var(--white) !important;transition:background .3s,border-color .3s,box-shadow .4s}
+.nav-cta::after{display:none}
+.nav-cta:hover{background:rgba(124,92,255,.16);border-color:var(--violet);
+  box-shadow:0 0 34px -6px rgba(124,92,255,.6)}
+.burger{display:none;flex-direction:column;gap:5px;padding:8px;z-index:70}
+.burger span{display:block;width:24px;height:1.5px;background:var(--white);
+  transition:transform .4s var(--ease),opacity .3s}
+.burger.on span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.burger.on span:nth-child(2){opacity:0}
+.burger.on span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(120px,15vh,190px) 0 clamp(50px,7vh,90px);position:relative}
+.hero-tag{display:flex;align-items:center;gap:14px;margin-bottom:clamp(24px,3.4vw,46px);
+  color:var(--mist-dim)}
+.hero-tag::before{content:"";width:44px;height:1px;
+  background:linear-gradient(90deg,var(--violet),transparent)}
+.hero h1{margin-bottom:clamp(26px,3.4vw,44px)}
+/* each line rises out of a blur — the eye coming into focus */
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln span{display:block;
+  transform:translateY(105%);
+  animation:rise 1.25s var(--ease) forwards}
+.hero h1 .ln:nth-child(1) span{animation-delay:.15s}
+.hero h1 .ln:nth-child(2) span{animation-delay:.29s}
+.hero h1 .ln:nth-child(3) span{animation-delay:.43s}
+@keyframes rise{to{transform:translateY(0)}}
+.hero-foot{display:grid;grid-template-columns:1fr auto;gap:clamp(26px,4vw,60px);
+  align-items:end;margin-top:clamp(30px,4vw,56px)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:clamp(20px,3.4vw,58px);
+  padding-top:22px;border-top:1px solid var(--edge)}
+.hero-meta div{display:flex;flex-direction:column;gap:7px}
+.hero-meta .mono{color:var(--mist-dim)}
+.hero-meta strong{font-family:var(--display);font-weight:300;font-size:1.4rem;
+  letter-spacing:-.02em;line-height:1}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{display:inline-flex;align-items:center;gap:11px;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  padding:17px 28px;border-radius:100px;border:1px solid var(--edge-lit);
+  position:relative;overflow:hidden;isolation:isolate;
+  transition:border-color .4s,color .4s,transform .4s var(--ease),box-shadow .5s}
+.btn::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(96deg,var(--violet),var(--cyan));
+  transform:translateY(101%);transition:transform .55s var(--ease)}
+.btn:hover{transform:translateY(-2px);border-color:transparent;color:#05070C;
+  box-shadow:0 18px 44px -18px rgba(124,92,255,.75)}
+.btn:hover::before{transform:translateY(0)}
+.btn .ar{transition:transform .4s var(--ease)}
+.btn:hover .ar{transform:translateX(5px)}
+.btn-lit{background:linear-gradient(96deg,var(--violet),var(--cyan));
+  border-color:transparent;color:#05070C}
+.btn-lit::before{display:none}
+.btn-lit:hover{box-shadow:0 20px 54px -16px rgba(124,92,255,.9)}
+
+/* ============================================================
+   SPECTRUM RULE — a thin band of split light
+   ============================================================ */
+.spectrum{height:1px;width:100%;
+  background:linear-gradient(90deg,transparent,var(--violet) 12%,var(--cyan) 38%,
+    var(--amber) 62%,var(--rose) 88%,transparent);
+  opacity:.55}
+
+/* ============================================================
+   SECTION SHELL
+   ============================================================ */
+section{padding:clamp(78px,11vw,168px) 0;position:relative}
+.eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:clamp(22px,3vw,38px)}
+.eyebrow::before{content:"";width:32px;height:1px;
+  background:linear-gradient(90deg,var(--violet),var(--cyan));flex:none}
+.eyebrow .mono{color:var(--cyan)}
+
+/* ============================================================
+   THE EYE CHART — a real interactive sight test.
+   Genuinely functional: it renders randomised optotype rows
+   at decreasing size and tracks what the visitor can read.
+   ============================================================ */
+.chart{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,4.6vw,80px);
+  align-items:start}
+.chart-card{
+  border:1px solid var(--edge);background:rgba(10,14,23,.62);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-radius:4px;overflow:hidden;
+}
+.chart-bar{display:flex;align-items:center;justify-content:space-between;
+  padding:14px 20px;border-bottom:1px solid var(--edge);gap:14px;flex-wrap:wrap}
+.chart-bar .mono{color:var(--mist-dim)}
+.chart-bar .lit{display:flex;align-items:center;gap:8px;color:var(--cyan)}
+.chart-bar .lit i{width:6px;height:6px;border-radius:50%;background:var(--cyan);
+  box-shadow:0 0 12px var(--cyan);animation:pulse 2.2s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35}}
+
+/* the chart surface is white-on-black, like a real acuity chart */
+.chart-body{background:#0B0F18;padding:clamp(24px,3.4vw,44px);
+  display:flex;flex-direction:column;gap:clamp(9px,1.3vw,17px);align-items:center}
+.chart-row{display:flex;align-items:center;justify-content:center;
+  gap:clamp(7px,1.5vw,20px);width:100%;
+  opacity:0;transform:translateY(10px);
+  transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.chart-row.on{opacity:1;transform:none}
+.chart-row .opt{
+  font-family:var(--display);font-weight:400;line-height:1;
+  color:#DCE6FF;user-select:none;
+  text-shadow:0 0 22px rgba(124,92,255,.34);
+}
+.chart-row .ac{
+  font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;
+  color:rgba(233,240,255,.24);width:46px;flex:none;text-align:right}
+.chart-foot{padding:16px 20px;border-top:1px solid var(--edge);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.chart-foot .verdict{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mist-dim);transition:color .4s}
+.chart-foot .verdict.good{color:var(--cyan)}
+.chart-foot .verdict.warn{color:var(--amber)}
+.chart-actions{display:flex;gap:10px;flex-wrap:wrap}
+.chip{font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;
+  padding:9px 15px;border:1px solid var(--edge-lit);border-radius:100px;
+  color:var(--mist);transition:background .3s,border-color .3s,color .3s}
+.chip:hover{background:rgba(34,211,238,.13);border-color:var(--cyan);color:var(--white)}
+.chip.on{background:rgba(124,92,255,.2);border-color:var(--violet);color:var(--white)}
+
+.chart-copy h2{margin-bottom:22px}
+.chart-copy .lead{margin-bottom:26px}
+.chart-facts{border-top:1px solid var(--edge);margin-top:30px}
+.chart-facts div{display:grid;grid-template-columns:auto 1fr;gap:18px;
+  padding:16px 0;border-bottom:1px solid var(--edge);align-items:baseline}
+.chart-facts .mono{color:var(--violet)}
+.chart-facts p{font-size:.9rem;color:var(--mist);font-weight:300}
+
+/* ============================================================
+   SERVICES — a refracted list. Each row bends the light.
+   ============================================================ */
+.svc-list{border-top:1px solid var(--edge);margin-top:clamp(34px,4.4vw,62px)}
+.svc{display:grid;grid-template-columns:clamp(56px,7vw,110px) 1.05fr 1.25fr auto;
+  gap:clamp(14px,2.8vw,50px);padding:clamp(24px,3.1vw,44px) 0;
+  border-bottom:1px solid var(--edge);align-items:center;position:relative;
+  transition:padding-left .55s var(--ease),background .5s var(--ease)}
+.svc::before{content:"";position:absolute;left:0;top:0;bottom:0;width:0;
+  background:linear-gradient(90deg,rgba(124,92,255,.16),transparent);
+  transition:width .6s var(--ease);z-index:-1}
+.svc:hover{padding-left:clamp(12px,1.6vw,30px)}
+.svc:hover::before{width:100%}
+.svc .idx{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;color:var(--violet)}
+.svc h3{font-family:var(--display);font-weight:300;
+  font-size:clamp(1.35rem,2.5vw,2.25rem);line-height:1.04;letter-spacing:-.028em}
+.svc .tagline{font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mist-dim);display:block;margin-top:9px}
+.svc p{font-size:.92rem;color:var(--mist);font-weight:300;max-width:52ch}
+.svc .go{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--mist-dim);display:inline-flex;gap:8px;
+  align-items:center;white-space:nowrap;transition:gap .4s var(--ease),color .3s}
+.svc:hover .go{gap:15px;color:var(--cyan)}
+
+/* ============================================================
+   OUTCOMES — counters that resolve out of blur
+   ============================================================ */
+.outcomes{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--edge);border:1px solid var(--edge);margin-top:clamp(34px,4.4vw,62px)}
+.oc{background:var(--void);padding:clamp(26px,3.2vw,48px);
+  display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
+.oc::after{content:"";position:absolute;inset:auto 0 0 0;height:1px;
+  background:linear-gradient(90deg,var(--violet),var(--cyan));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .7s var(--ease)}
+.oc:hover::after{transform:scaleX(1)}
+.oc .num{font-family:var(--display);font-weight:200;
+  font-size:clamp(2.6rem,5.4vw,4.4rem);line-height:.92;letter-spacing:-.045em}
+.oc .lbl{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mist-dim);line-height:1.7}
+
+/* ============================================================
+   PROCESS — vertical light path
+   ============================================================ */
+.path{position:relative;margin-top:clamp(34px,4.4vw,62px)}
+.path::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;
+  background:linear-gradient(180deg,transparent,var(--violet) 8%,var(--cyan) 45%,
+    var(--amber) 78%,transparent)}
+.step{display:grid;grid-template-columns:clamp(52px,6vw,92px) 1fr 1.2fr;
+  gap:clamp(14px,2.8vw,48px);padding:clamp(24px,3vw,42px) 0
+  clamp(24px,3vw,42px) clamp(20px,3vw,44px);align-items:baseline;position:relative}
+.step::before{content:"";position:absolute;left:-4px;top:clamp(32px,4vw,54px);
+  width:9px;height:9px;border-radius:50%;background:var(--void);
+  border:1px solid var(--cyan);box-shadow:0 0 16px rgba(34,211,238,.6)}
+.step .n{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;color:var(--mist-dim)}
+.step h3{font-family:var(--display);font-weight:300;
+  font-size:clamp(1.25rem,2.2vw,1.95rem);letter-spacing:-.026em;line-height:1.06}
+.step p{font-size:.92rem;color:var(--mist);font-weight:300;max-width:54ch}
+
+/* ============================================================
+   DOCTORS
+   ============================================================ */
+.docs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,32px);
+  margin-top:clamp(34px,4.4vw,62px)}
+.doc{border:1px solid var(--edge);border-radius:4px;overflow:hidden;
+  background:rgba(10,14,23,.5);transition:border-color .5s,transform .6s var(--ease)}
+.doc:hover{border-color:var(--edge-lit);transform:translateY(-5px)}
+.doc-portrait{aspect-ratio:4/5;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,var(--slate),var(--deep))}
+/* portrait rendered as a light-field silhouette */
+.doc-portrait .sil{position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 58% 42% at 50% 30%,rgba(124,92,255,.34),transparent 70%),
+    radial-gradient(ellipse 80% 50% at 50% 100%,rgba(34,211,238,.24),transparent 70%);
+  transition:transform .9s var(--ease)}
+.doc:hover .doc-portrait .sil{transform:scale(1.07)}
+.doc-portrait .ini{position:absolute;inset:0;display:grid;place-items:center;
+  font-family:var(--serif);font-style:italic;font-weight:200;
+  font-size:clamp(3rem,6vw,5rem);color:rgba(233,240,255,.2);letter-spacing:-.04em}
+.doc-body{padding:clamp(20px,2.4vw,32px);display:flex;flex-direction:column;gap:9px}
+.doc-body h3{font-family:var(--display);font-weight:300;
+  font-size:clamp(1.15rem,1.7vw,1.5rem);letter-spacing:-.024em}
+.doc-body .role{font-family:var(--mono);font-size:.56rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--cyan)}
+.doc-body p{font-size:.85rem;color:var(--mist-dim);font-weight:300;line-height:1.65}
+.doc-body .cred{margin-top:12px;padding-top:12px;border-top:1px solid var(--edge);
+  font-family:var(--mono);font-size:.55rem;letter-spacing:.13em;
+  text-transform:uppercase;color:rgba(233,240,255,.3);line-height:1.8}
+
+/* ============================================================
+   TESTIMONIAL
+   ============================================================ */
+.quote{max-width:1000px;margin:0 auto;text-align:center}
+.quote blockquote{font-family:var(--serif);font-style:italic;font-weight:200;
+  font-size:clamp(1.5rem,3.4vw,3rem);line-height:1.24;letter-spacing:-.022em}
+.quote .attr{margin-top:34px;font-family:var(--mono);font-size:.6rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--mist-dim)}
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.cta{border:1px solid var(--edge);border-radius:4px;
+  background:rgba(10,14,23,.6);backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  padding:clamp(34px,5.4vw,86px);display:grid;
+  grid-template-columns:1.25fr .75fr;gap:clamp(26px,4vw,64px);align-items:center;
+  position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:-40% -10% auto auto;width:60%;height:200%;
+  background:radial-gradient(circle,rgba(124,92,255,.3),transparent 62%);
+  filter:blur(50px);pointer-events:none}
+.cta h2{margin-bottom:20px}
+.cta-actions{display:flex;flex-direction:column;gap:14px;align-items:flex-start;
+  position:relative;z-index:2}
+.cta-actions .btn{width:100%;justify-content:center}
+.cta-note{font-family:var(--mono);font-size:.56rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--mist-dim);margin-top:6px;line-height:1.9}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--edge);padding:clamp(46px,6vw,84px) 0 28px;
+  position:relative;z-index:2}
+.ft{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:clamp(22px,3vw,52px);
+  padding-bottom:clamp(32px,4vw,52px);border-bottom:1px solid var(--edge)}
+.ft-brand .brand{margin-bottom:16px}
+.ft-brand p{font-size:.86rem;color:var(--mist-dim);font-weight:300;
+  max-width:34ch;line-height:1.72}
+.ft h4{font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--white);margin-bottom:16px;font-weight:400}
+.ft ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ft a{font-size:.86rem;color:var(--mist-dim);font-weight:300;transition:color .3s}
+.ft a:hover{color:var(--cyan)}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+  padding-top:22px;font-family:var(--mono);font-size:.56rem;letter-spacing:.15em;
+  text-transform:uppercase;color:rgba(233,240,255,.24)}
+
+/* ============================================================
+   REVEAL — content resolves from defocused to sharp
+   ============================================================ */
+.rv{opacity:0;filter:blur(9px);transform:translateY(26px);
+  transition:opacity 1.05s var(--ease),filter 1.05s var(--ease),transform 1.05s var(--ease)}
+.rv.in{opacity:1;filter:blur(0);transform:none}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1080px){
+  .chart,.cta{grid-template-columns:1fr;gap:clamp(26px,4vw,44px)}
+  .outcomes{grid-template-columns:1fr 1fr}
+  .docs{grid-template-columns:1fr 1fr}
+  .svc{grid-template-columns:clamp(46px,6vw,80px) 1fr;gap:14px 20px}
+  .svc p{grid-column:2}
+  .svc .go{grid-column:2}
+  .step{grid-template-columns:clamp(44px,6vw,76px) 1fr;gap:14px 20px}
+  .step p{grid-column:2}
+  .hero-foot{grid-template-columns:1fr}
+  .focuslayer{display:none}
+}
+@media(max-width:720px){
+  .navlinks{position:fixed;inset:78px 0 auto 0;background:rgba(5,7,12,.97);
+    backdrop-filter:blur(20px);flex-direction:column;align-items:flex-start;
+    gap:0;padding:10px var(--gut) 28px;border-bottom:1px solid var(--edge);
+    transform:translateY(-16px);opacity:0;pointer-events:none;
+    transition:opacity .4s var(--ease),transform .4s var(--ease)}
+  .navlinks.on{transform:none;opacity:1;pointer-events:auto}
+  .navlinks li{width:100%;border-bottom:1px solid var(--edge)}
+  .navlinks a{display:block;padding:18px 0;font-size:.66rem}
+  .nav-cta{border:0 !important;padding:18px 0 !important;border-radius:0}
+  .burger{display:flex}
+  .outcomes,.docs{grid-template-columns:1fr}
+  .ft{grid-template-columns:1fr 1fr}
+  .svc,.step{grid-template-columns:1fr}
+  .svc p,.svc .go,.step p{grid-column:1}
+}
+@media(max-width:460px){.ft{grid-template-columns:1fr}}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;filter:none;transform:none}
+  .hero h1 .ln span{transform:none}
+  .chart-row{opacity:1;transform:none}
+  .focuslayer{display:none}
+}

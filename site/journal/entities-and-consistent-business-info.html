@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entity Clarity and Consistent Business Information for AI Search — FJMK</title>
+<meta name="description" content="How AI systems identify your business, why NAP consistency and third-party corroboration decide whether you get cited, and how to audit your entity.">
+<meta property="og:title" content="Entity Clarity and Consistent Business Information for AI Search">
+<meta property="og:description" content="How AI systems identify your business, why NAP consistency and third-party corroboration decide whether you get cited, and how to audit your entity.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/system.css">
+</head>
+<body>
+<header><div class="nav">
+  <a href="../index.html" class="brand">FJMK<i>.</i></a>
+  <a href="../blog.html" class="back">&larr; The journal</a>
+  <a href="../contact.html" class="cta">Start a project</a>
+</div></header>
+<main><article><div class="wrap">
+  <div class="a-head">
+    <div class="eyebrow"><span class="mono">AI search</span></div>
+    <h1>Entity Clarity and Consistent Business Information for AI Search</h1>
+    <div class="byline">
+      <div class="av">OA</div>
+      <div><div class="nm">Oluwatobi Ajidahun</div>
+      <div class="rl">FJMK &middot; AI search</div></div>
+    </div>
+  </div>
+  <div class="body">
+<p>When a patient asks an AI "which clinic treats malaria in Ikeja?", the AI writes an answer. It does not show a ranked list of ten links. It synthesizes a response from the information it can find — and most of the businesses that should be in that answer simply are not.</p>
+<p>This article explains what "entity clarity" means for AI search, why your business must be described the same way everywhere, and what you can actually control to make your information the kind a system can find, understand, and cite.</p>
+<h2>What entity clarity means (and why it matters for AI search)</h2>
+<p>An entity is a thing a machine can identify and hold facts about: a company, a product, a person, a place. Entity clarity is the work of making your entity unambiguous, consistently described, and connected to other entities the model already trusts.</p>
+<p>Three things must be true before a model will name you confidently:</p>
+<p><strong>Identity.</strong> The model can tell which thing you are, and does not confuse you with a similarly named company.</p>
+<p><strong>Attributes.</strong> It knows what you do, who you serve, and what category you sit in, in the words buyers use rather than the words your positioning deck uses.</p>
+<p><strong>Corroboration.</strong> Credible third parties describe you the same way. This is the one nobody budgets for, and it is the one that carries the most weight.</p>
+<p>Research published by arXiv in September 2025 found that AI search shows a systematic bias toward earned media (third-party authoritative sources) over brand-owned and social content — the opposite of Google's more balanced mix. [arXiv 2509.08919, 2025] A separate analysis of more than 25 million cited links across ChatGPT, Claude, and Gemini in May 2026 found that earned media accounted for 84 percent of AI citations. [Muck Rack, May 2026] Your entity is defined mostly by other people's sentences about you, not by the markup on your page.</p>
+<h2>The three things AI systems need to name you consistently</h2>
+<p><strong>1. Consistent, complete business information.</strong> Your name, address, phone number, hours, services, and specialties must be identical everywhere — your website, your Google Business Profile, directories, review platforms, social profiles. Inconsistencies ("Dr. Bello's Clinic" here, "Bello Medical Centre" there) make it harder for any system, human or machine, to be confident you are one real business. This consistency is called NAP (name, address, phone), and it is the foundation of both local SEO and GEO.</p>
+<p><strong>2. Clear, quotable content.</strong> When an AI system looks at your website, it is looking for plain answers to direct questions. A page that says "We provide comprehensive multidisciplinary care in a patient-centered environment" gives an AI nothing to quote. A page that says "We treat malaria, typhoid, and childhood fevers. We are open Monday to Saturday, 8am to 8pm. We accept Hygeia, AXA Mansard, and Reliance HMO" gives it something specific, factual, and citable. Define what you do in plain sentences. Answer the questions patients actually ask, in the words they use.</p>
+<p><strong>3. Third-party presence.</strong> Research on 129,000 domains found that businesses with profiles on major third-party platforms are roughly three times more likely to be cited by ChatGPT. [SE Ranking, Nov 2025] AI systems lean heavily on third-party, authoritative sources — directories, review platforms, news mentions, professional listings — over a business's own website and social media. [arXiv 2509.08919, 2025] Reviews are part of this too: AI systems draw on them when recommending local businesses, which is one more reason a steady flow of recent reviews matters.</p>
+<h2>Why consistency is the workload</h2>
+<p><strong>NAP consistency.</strong> Your business may exist as three different entities to AI systems. When the business name, address, or phone number differs across Google Business Profile, Apple Maps, Bing Places, TripAdvisor, Yelp, and category-relevant directories, the AI system cannot confidently resolve all of those references to the same single entity. An AI Overview for "boutique hospitals in Lagos" may mention a clinic by name, but link to a wrong address from a stale directory listing. A medical practice may not appear in AI recommendations because its Google Business Profile name differs from its website name by a single word. [VERIS]</p>
+<p><strong>Structured data.</strong> Schema.org markup, typically in JSON-LD, is how you state facts unambiguously. Google published its first official guidance on optimising for its AI features in May 2026, and it named structured-data over-optimisation as unnecessary for its AI features, alongside llms.txt, content chunking and AI-specific rewrites. [Google AI Optimization Guide, May 2026] Schema is how you state facts unambiguously, and stating them once, correctly, is worth doing. What Google said is that piling on more of it does not buy additional favour in its AI features.</p>
+<p><strong>sameAs links.</strong> Your Organization schema should reference your profiles elsewhere — Google Maps CID, LinkedIn, industry directories, Wikipedia/Wikidata where eligible — as a consistent @id graph that tells engines your site, person, and brand are connected.</p>
+<h2>How to audit your entity</h2>
+<p><strong>1. Search your exact brand name on ChatGPT, Perplexity, and Google AI Mode.</strong> Does AI describe you accurately, or as a different entity? The failure mode here is "named wrongly" — the model describes you in the wrong category, and no amount of visibility work helps until the description is corrected.</p>
+<p><strong>2. Export your Search Console top 50 pages and tag each page's central entity.</strong> Are your pages resolved to one concept or several competing ones? Two pages claiming the same triple is cannibalization, and it weakens the entity profile.</p>
+<p><strong>3. Check NAP plus name consistency on five high-signal platforms.</strong> Is there one entity or five fragments? Use the VERIS verification questions: search your name on Google (does a Knowledge Panel appear?), search your name plus city on Bing, and visit your listing on TripAdvisor or Yelp to check name, address, and phone against your website exactly, including spacing, abbreviations, and phone format.</p>
+<p><strong>4. Map each page to an Entity, Attribute, Value triple.</strong> Do two pages claim the same triple?</p>
+<p><strong>5. Verify your Organization plus Person schema resolve to one @id graph.</strong> Does Google see your site, person, and brand as connected?</p>
+<h2>Common mistakes</h2>
+<ul><li><strong>Inconsistent naming.</strong> "Dr. Bello's Clinic" on the website, "Bello Medical Centre" in directories, "Bello's House" in one ad. Each name is a separate fragment to an AI system. Pick one canonical name and use it everywhere.</li><li><strong>A NAP that drifts.</strong> A suite number added in one directory but never on the website. An old phone number in a listing. An abbreviation that changes between sources. These are not small differences; they are the difference between one entity and five fragments.</li><li><strong>No third-party presence.</strong> A clinic with a beautiful website, no Google Business Profile, no directory listings, no reviews. The AI system has nothing to corroborate with, so it will not name you.</li><li><strong>Schema as decoration.</strong> Adding Organization schema once, correctly, is worth doing. Adding five nested properties "just in case" is not, and Google's May 2026 guidance confirms that piling on more schema does not buy additional favour in its AI features.</li><li><strong>Treating AI search as a separate channel.</strong> Most of what makes a business visible in AI answers is the same work that makes it visible in Google: clear content, consistent business information, reviews, authority, third-party mentions. SEO and GEO share nearly all their inputs. [arXiv 2509.08919, 2025]</li></ul>
+<h2>Trade-offs and edge cases</h2>
+<p><strong>Local versus multi-location.</strong> A local trade business lives on location, hours, and reviews in regional directories, where matching address and phone across sources often carries more weight than a long article. For a multi-location clinic, each location needs its own authoritative profile with consistent NAP, and the aggregate entity is the parent brand. Listings drift over time, so this is continuous work, not a one-time fix. [VERIS; Five Blocks]</p>
+<p><strong>Entity authority versus page authority.</strong> A page can be highly authoritative on its own topic and still not be cited if the entity is not clear. The entity is the thing the engine resolves; the page is the thing it quotes. Both need work.</p>
+<p><strong>Third-party corroboration is slow.</strong> Directory listings and review platforms are the largest line item in entity work, and they are hard to buy outright. Paid placements are 0.3 percent of AI citations, and credit goes to earned media, not paid placements. [Muck Rack, May 2026]</p>
+<h3>What is entity clarity in AI search?</h3>
+<p>Entity clarity means an AI system can answer three questions about your source in under a second: what are you, what do you know, and who else confirms you? If the model cannot resolve these, it will not name you in an answer.</p>
+<h3>Does Google require a Knowledge Panel for my clinic to appear in AI answers?</h3>
+<p>No. A Knowledge Panel is one signal, but the stronger driver is NAP consistency across the platforms the engine trusts, quotable content on your site, and third-party mentions that corroborate what your site says about itself.</p>
+<h3>How do I fix inconsistent NAP?</h3>
+<p>Pick one canonical name, address, and phone. Put them on the website, in your Google Business Profile, on every directory listing, on your social profiles, and in your schema's sameAs array. Then audit every six months, because listings drift.</p>
+<h3>Is structured data still worth doing for AI search?</h3>
+<p>Yes, at the floor. Get Organization schema right once, correctly, and stop. Google's May 2026 guidance confirms that over-optimising schema does not buy additional favour in its AI features.</p>
+<h3>How fast does entity clarity improve AI recommendations?</h3>
+<p>There is no fixed timeline, because AI engines change their models, their sources, and their policies. The entity work is a portfolio: consistency is the foundation, third-party presence is the amplification, and measurement is how you know if it is working.</p>
+<h2>What to do next</h2>
+<p>Start with the audit. Search your exact brand name on ChatGPT, Perplexity, and Google AI Mode and note whether your business is named, how it is described, and whether any of your pages are cited. Then fix the fundamentals: consistent business information, quotable service pages, a complete Google Business Profile, and a schema that links your site, your person, and your brand as one graph. If you'd like help preparing your website for AI-mediated discovery, talk to FMJK about your website — we'll audit what the engines currently say about you and what needs to change.</p>
+  </div>
+  <div class="meta">
+    <dl>
+      <dt>Reading time</dt><dd>9 minutes</dd>
+      <dt>Category</dt><dd>AI search</dd>
+      <dt>Published</dt><dd>2026</dd>
+    </dl>
+  </div>
+  <div class="related">
+    <div class="eyebrow"><span class="mono">Keep reading</span></div>
+    <div class="rel-grid">
+<a class="rel" href="how-businesses-appear-in-chatgpt-answers-geo.html"><span class="mono">Read next</span><h3>How Businesses Get Recommended by ChatGPT, Perplexity and Gemini: What GEO Actually Means</h3></a>
+<a class="rel" href="freshness-signals-in-ai-search.html"><span class="mono">Read next</span><h3>Freshness Signals: How AI Search Rewards Current Business Information</h3></a>
+<a class="rel" href="clinic-on-google-maps-guide.html"><span class="mono">Read next</span><h3>How to Get Your Clinic on Google Maps: The Complete Guide</h3></a>
+    </div>
+    <div style="margin-top:34px">
+      <div class="eyebrow"><span class="mono">Work with us</span></div>
+      <p class="small">Want a practical review of your clinic's website? Tell us
+        what you do and where you are based.</p>
+      <div style="margin-top:20px">
+        <a class="cta" href="../contact.html">Start a project &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div></article></main>
+<footer><div class="wrap">
+  <div class="ft">
+    <a href="../index.html" class="brand">FJMK<i>.</i></a>
+    <p>Websites and online patient acquisition for clinics and hospitals.</p>
+  </div>
+  <div class="ft-bot">
+    <span>&copy; 2026 FJMK Agency &middot; Lagos</span>
+    <span>Built for clinics only</span>
+  </div>
+</div></footer>
+</body></html>

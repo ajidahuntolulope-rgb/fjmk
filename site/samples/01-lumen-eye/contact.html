@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book — LUMEN Eye Institute</title>
+<meta name="description" content="Book a sight assessment at LUMEN Eye Institute, Lagos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200;12..96,300;12..96,400;12..96,500;12..96,600&family=Newsreader:ital,opsz,wght@0,6..72,200;0,6..72,300;1,6..72,200;1,6..72,300&family=Azeret+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/lumen.css">
+</head>
+<body>
+<div class="field" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="focuslayer" id="focuslayer" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="nav">
+    <a href="index.html" class="brand"><span class="iris" aria-hidden="true"></span>Lumen</a>
+    <ul class="navlinks" id="nav">
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">Institute</a></li>
+      <li><a href="journal.html">Journal</a></li>
+      <li><a href="contact.html" class="nav-cta">Book assessment</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="above">
+
+<section style="padding-top:clamp(130px,17vw,220px)">
+  <div class="wrap">
+    <div class="rv" style="max-width:900px">
+      <div class="eyebrow"><span class="mono">Book</span></div>
+      <h1 class="h2">Ninety minutes<br>to know for<br>certain.</h1>
+      <p class="lead" style="margin-top:26px">Tell us a little and we will call you
+        to arrange the assessment. No deposit, no obligation to proceed with
+        anything.</p>
+    </div>
+  </div>
+</section>
+
+<div class="spectrum"></div>
+
+<section>
+  <div class="wrap">
+    <div class="chart">
+      <div class="chart-copy rv">
+        <div class="eyebrow"><span class="mono">Details</span></div>
+        <h2 class="h2">Where<br>we are.</h2>
+        <div class="chart-facts" style="margin-top:34px">
+          <div><span class="mono">Clinic</span><p>Lumen Eye Institute<br>Victoria Island, Lagos</p></div>
+          <div><span class="mono">Hours</span><p>Mon&ndash;Fri 8:00&ndash;17:00<br>Sat 9:00&ndash;14:00</p></div>
+          <div><span class="mono">Assessment</span><p>Allow 90 minutes. Bring sunglasses &mdash; your pupils will be dilated.</p></div>
+          <div><span class="mono">Bring</span><p>Any existing glasses or lens prescription, and your HMO card if you have one.</p></div>
+          <div><span class="mono">Emergency</span><p>Sudden vision loss, flashes, or a curtain across your vision &mdash; call and come in the same day.</p></div>
+        </div>
+      </div>
+
+      <div class="chart-card rv">
+        <div class="chart-bar">
+          <span class="mono">Assessment request</span>
+          <span class="lit mono"><i></i>Monitored</span>
+        </div>
+        <form id="lumenform" style="padding:clamp(24px,3.4vw,44px)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+            <div class="fg">
+              <label for="nm">Full name</label>
+              <input id="nm" name="nm" type="text" placeholder="Chidinma Eze" required>
+            </div>
+            <div class="fg">
+              <label for="ph">Phone</label>
+              <input id="ph" name="ph" type="tel" placeholder="0803 000 0000" required>
+            </div>
+          </div>
+          <div class="fg">
+            <label for="em">Email</label>
+            <input id="em" name="em" type="email" placeholder="you@example.com">
+          </div>
+          <div class="fg">
+            <label for="why">What brings you in?</label>
+            <select id="why" name="why">
+              <option value="">Select&hellip;</option>
+              <option>Considering LASIK or refractive surgery</option>
+              <option>Cataract &mdash; my vision is going cloudy</option>
+              <option>Glaucoma monitoring or second opinion</option>
+              <option>Diabetic eye screening</option>
+              <option>Sudden change in vision</option>
+              <option>General eye examination</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="ms">Anything we should know?</label>
+            <textarea id="ms" name="ms" placeholder="I wear -4.50 in both eyes and have done for eleven years. I have heard my corneas might be thin."></textarea>
+          </div>
+          <p id="fnote" class="small" style="margin-top:14px" aria-live="polite"></p>
+          <button type="submit" class="btn btn-lit" style="width:100%;justify-content:center;margin-top:8px">
+            Send request <span class="ar">&rarr;</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.fg{margin-bottom:20px}
+.fg label{display:block;font-family:var(--mono);font-size:.56rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--mist-dim);margin-bottom:9px}
+.fg input,.fg select,.fg textarea{width:100%;background:transparent;border:0;
+  border-bottom:1px solid var(--edge);padding:11px 0;font-family:var(--display);
+  font-size:.95rem;font-weight:300;color:var(--white);transition:border-color .3s}
+.fg textarea{resize:vertical;min-height:96px;line-height:1.6}
+.fg select{appearance:none;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,var(--mist-dim) 50%),
+                   linear-gradient(135deg,var(--mist-dim) 50%,transparent 50%);
+  background-position:calc(100% - 12px) 19px,calc(100% - 7px) 19px;
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:0;border-color:var(--cyan)}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(233,240,255,.22)}
+.fg option{background:var(--deep);color:var(--white)}
+@media(max-width:720px){form > div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr !important}}
+</style>
+
+<script>
+(function(){
+  var f = document.getElementById('lumenform');
+  if (!f) return;
+  var INBOX = 'hello' + String.fromCharCode(64) + 'lumeneye.example';
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var note = document.getElementById('fnote');
+    var nm = f.elements.nm.value.trim(), ph = f.elements.ph.value.trim();
+    if (!nm){ f.elements.nm.focus(); note.textContent = 'Please add your name.'; return; }
+    if (!ph){ f.elements.ph.focus(); note.textContent = 'Please add a phone number.'; return; }
+    var subject = encodeURIComponent('Sight assessment request — ' + nm);
+    var lines = [
+      'Name: ' + nm,
+      'Phone: ' + ph,
+      'Email: ' + f.elements.em.value.trim(),
+      'Reason: ' + f.elements.why.value,
+      '',
+      f.elements.ms.value.trim()
+    ];
+    note.textContent = 'Opening your email app with the request ready to send.';
+    window.location.href = 'mailto:' + INBOX + '?subject=' + subject +
+      '&body=' + encodeURIComponent(lines.join('\n'));
+  });
+})();
+</script>
+
+</div><!-- /above -->
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div class="ft-brand">
+        <a href="index.html" class="brand"><span class="iris" aria-hidden="true"></span>Lumen</a>
+        <p>A dedicated eye institute in Lagos. Refractive, cataract, retina and
+          glaucoma care.</p>
+      </div>
+      <div class="ft">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#lasik">Refractive surgery</a></li>
+          <li><a href="services.html#cataract">Cataract &amp; lens</a></li>
+          <li><a href="services.html#retina">Retina &amp; macula</a></li>
+          <li><a href="services.html#glaucoma">Glaucoma care</a></li>        </ul>
+      </div>
+      <div class="ft">
+        <h4>Institute</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="ft">
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="contact.html">Book assessment</a></li>
+          <li><a href="contact.html">Opening hours</a></li>
+          <li><a href="contact.html">Find us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>&copy; 2026 Lumen Eye Institute &middot; Lagos</span>
+      <span>Information is general and does not replace advice from a qualified clinician</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/lumen.js"></script>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscriptions — Script Pharmacy | Lagos</title>
+  <meta name="description" content="Chronic medication subscriptions for hypertension, diabetes, asthma, thyroid, and epilepsy. Automatic refills, pharmacist check-ins, delivered on your schedule.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/script.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="logo"><span class="logo-mark"></span>SCRIPT</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Shop</a></li>
+          <li><a href="index.html#delivery">Delivery</a></li>
+          <li><a href="index.html#rx-policy">Rx Policy</a></li>
+          <li><a href="subscriptions.html" class="active">Subscriptions</a></li>
+        </ul>
+      </nav>
+      <a href="index.html#shop" class="basket-btn" style="text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem;">Shop Products →</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="sub-hero">
+    <div class="container">
+      <div class="section-label">Chronic Care</div>
+      <h1>Medication subscriptions that never let you run out.</h1>
+      <p>Set it once. We handle the rest. Automatic refills, pharmacist check-ins, and delivery on your schedule — for hypertension, diabetes, asthma, thyroid conditions, and epilepsy.</p>
+    </div>
+  </section>
+
+  <!-- Conditions Covered -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Coverage</div>
+      <h2 class="section-title">Conditions We Cover</h2>
+      <div class="conditions-grid">
+        <div class="condition-card">
+          <div class="condition-icon">♥</div>
+          <div class="condition-name">Hypertension</div>
+        </div>
+        <div class="condition-card">
+          <div class="condition-icon">◆</div>
+          <div class="condition-name">Diabetes</div>
+        </div>
+        <div class="condition-card">
+          <div class="condition-icon">○</div>
+          <div class="condition-name">Asthma</div>
+        </div>
+        <div class="condition-card">
+          <div class="condition-icon">△</div>
+          <div class="condition-name">Thyroid</div>
+        </div>
+        <div class="condition-card">
+          <div class="condition-icon">⚡</div>
+          <div class="condition-name">Epilepsy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Process</div>
+      <h2 class="section-title">How Subscriptions Work</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h4>Sign Up</h4>
+          <p>Choose your plan, provide your prescription, and tell us your delivery schedule. Takes 5 minutes.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h4>Pharmacist Onboarding</h4>
+          <p>A dedicated pharmacist reviews your medication history, checks for interactions, and sets up your profile.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h4>Automatic Refills</h4>
+          <p>We dispense and deliver your medication on schedule — weekly, bi-weekly, or monthly. You don't lift a finger.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <h4>Check-Ins</h4>
+          <p>Regular pharmacist check-ins monitor your adherence, side effects, and dosage adjustments. We flag concerns to your doctor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Subscription Plans</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-tier">Essential</div>
+          <div class="pricing-price">₦5,000</div>
+          <div class="pricing-period">per month</div>
+          <ul class="pricing-features">
+            <li>1 chronic medication</li>
+            <li>Monthly delivery</li>
+            <li>Pharmacist review</li>
+            <li>Drug interaction check</li>
+            <li>Email support</li>
+          </ul>
+          <button class="pricing-btn" onclick="selectPlan('Essential')">Choose Essential</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-tier">Complete</div>
+          <div class="pricing-price">₦12,000</div>
+          <div class="pricing-period">per month</div>
+          <ul class="pricing-features">
+            <li>Up to 3 chronic medications</li>
+            <li>Bi-weekly delivery</li>
+            <li>Dedicated pharmacist</li>
+            <li>Quarterly check-ins</li>
+            <li>Priority support</li>
+            <li>Doctor liaison</li>
+          </ul>
+          <button class="pricing-btn" onclick="selectPlan('Complete')">Choose Complete</button>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-tier">Family</div>
+          <div class="pricing-price">₦25,000</div>
+          <div class="pricing-period">per month</div>
+          <ul class="pricing-features">
+            <li>Up to 6 medications</li>
+            <li>Multiple family members</li>
+            <li>Flexible scheduling</li>
+            <li>Monthly pharmacist calls</li>
+            <li>Emergency delivery</li>
+            <li>24/7 pharmacist hotline</li>
+          </ul>
+          <button class="pricing-btn" onclick="selectPlan('Family')">Choose Family</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How Refills Work -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Refills</div>
+      <h2 class="section-title">How Refills Work</h2>
+      <div class="grid grid-2">
+        <div style="background:var(--white); padding:2rem; border:var(--border);">
+          <h3 style="margin-bottom:1rem;">Automatic Dispensing</h3>
+          <p style="color:var(--grey-700); margin-bottom:1rem;">Based on your prescription and schedule, we automatically dispense your next pack before you run out. No reminders needed from you.</p>
+          <p style="color:var(--grey-700);">You'll receive a notification 3 days before each dispatch, with tracking details once your order is on its way.</p>
+        </div>
+        <div style="background:var(--white); padding:2rem; border:var(--border);">
+          <h3 style="margin-bottom:1rem;">Prescription Renewals</h3>
+          <p style="color:var(--grey-700); margin-bottom:1rem;">When your prescription expires, we contact your doctor directly for a renewal. You'll be notified if a new consultation is required.</p>
+          <p style="color:var(--grey-700);">We maintain a direct line to your healthcare provider to ensure zero gaps in your medication supply.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pharmacist Check-Ins -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Monitoring</div>
+      <h2 class="section-title">Pharmacist Check-Ins</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="info-card-number">Monthly</div>
+          <h4>Adherence Review</h4>
+          <p>We review your medication adherence and discuss any missed doses or side effects. Simple, private, over the phone.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-number">Quarterly</div>
+          <h4>Clinical Assessment</h4>
+          <p>A comprehensive review of your condition, medication effectiveness, and any needed dosage adjustments. Shared with your doctor.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-number">Ongoing</div>
+          <h4>Doctor Liaison</h4>
+          <p>We communicate directly with your prescriber about your progress, flag concerns, and coordinate care — so you don't have to.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signup Form -->
+  <section class="section signup-section" id="signup">
+    <div class="container">
+      <div class="section-label">Get Started</div>
+      <h2 class="section-title">Sign Up for a Subscription</h2>
+      <form class="signup-form" id="subscription-form" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="sub-first-name">First Name</label>
+            <input class="form-input" type="text" id="sub-first-name" name="firstName" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="sub-last-name">Last Name</label>
+            <input class="form-input" type="text" id="sub-last-name" name="lastName" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sub-email">Email Address</label>
+          <input class="form-input" type="email" id="sub-email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sub-phone">Phone Number</label>
+          <input class="form-input" type="tel" id="sub-phone" name="phone" placeholder="0801 234 5678" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sub-condition">Condition</label>
+          <select class="form-input" id="sub-condition" name="condition" required>
+            <option value="">Select a condition</option>
+            <option value="hypertension">Hypertension</option>
+            <option value="diabetes">Diabetes</option>
+            <option value="asthma">Asthma</option>
+            <option value="thyroid">Thyroid</option>
+            <option value="epilepsy">Epilepsy</option>
+            <option value="multiple">Multiple conditions</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sub-plan">Plan</label>
+          <select class="form-input" id="sub-plan" name="plan" required>
+            <option value="">Select a plan</option>
+            <option value="essential">Essential — ₦5,000/month</option>
+            <option value="complete">Complete — ₦12,000/month</option>
+            <option value="family">Family — ₦25,000/month</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sub-address">Delivery Address</label>
+          <input class="form-input" type="text" id="sub-address" name="address" placeholder="Street, building, area" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="sub-notes">Additional Notes (optional)</label>
+          <input class="form-input" type="text" id="sub-notes" name="notes" placeholder="Any specific requirements or preferences">
+        </div>
+        <button type="submit" class="submit-btn">Start My Subscription</button>
+        <p style="font-family:var(--font-mono); font-size:0.6875rem; color:var(--grey-500); margin-top:1rem; text-align:center;">A pharmacist will contact you within 24 hours to complete onboarding.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- CTA to Shop -->
+  <section class="section" style="background:var(--ink); color:var(--white);">
+    <div class="container">
+      <div class="section-label" style="color:var(--grey-500);">Also Available</div>
+      <h2 class="section-title" style="color:var(--white);">Need something today?</h2>
+      <p style="max-width:560px; color:var(--grey-300); margin-bottom:2rem;">Browse our full catalogue of OTC medicines, vitamins, and personal care products. Delivery in ~2 hours across Lagos.</p>
+      <a href="index.html" class="mono" style="display:inline-block; padding:0.875rem 1.5rem; background:var(--accent); color:var(--white); text-transform:uppercase; font-size:0.8125rem; letter-spacing:0.06em; border:none;">Shop Now →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand"><span class="logo-mark"></span>SCRIPT</div>
+          <p class="footer-desc">Online pharmacy delivering prescription and OTC medication across Lagos. Licensed by the Pharmacists Council of Nigeria.</p>
+        </div>
+        <div>
+          <div class="footer-heading">Shop</div>
+          <ul class="footer-links">
+            <li><a href="index.html">All Products</a></li>
+            <li><a href="index.html#shop">OTC Medicines</a></li>
+            <li><a href="index.html#shop">Vitamins</a></li>
+            <li><a href="index.html#shop">Personal Care</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Services</div>
+          <ul class="footer-links">
+            <li><a href="subscriptions.html">Subscriptions</a></li>
+            <li><a href="index.html#rx-upload">Upload Prescription</a></li>
+            <li><a href="index.html#delivery">Delivery Info</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-disclaimer">
+        <strong>Disclaimer:</strong> All prescription medicines are dispensed only against a valid prescription issued by a licensed medical practitioner. Pharmacist review applies to all prescription orders. This website is a demonstration and does not constitute medical advice. Always consult your healthcare provider before starting or changing any medication.
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js"></script>
+  <script>
+    function selectPlan(plan) {
+      var select = document.getElementById('sub-plan');
+      if (select) {
+        var map = { 'Essential': 'essential', 'Complete': 'complete', 'Family': 'family' };
+        select.value = map[plan] || '';
+      }
+      document.getElementById('signup').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>

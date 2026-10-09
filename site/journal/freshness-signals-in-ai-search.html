@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freshness Signals: How AI Search Rewards Current Business Information — FJMK</title>
+<meta name="description" content="How AI search systems evaluate content freshness, which platforms weigh it differently, and how to refresh your pages without gaming the system.">
+<meta property="og:title" content="Freshness Signals: How AI Search Rewards Current Business Information">
+<meta property="og:description" content="How AI search systems evaluate content freshness, which platforms weigh it differently, and how to refresh your pages without gaming the system.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/system.css">
+</head>
+<body>
+<header><div class="nav">
+  <a href="../index.html" class="brand">FJMK<i>.</i></a>
+  <a href="../blog.html" class="back">&larr; The journal</a>
+  <a href="../contact.html" class="cta">Start a project</a>
+</div></header>
+<main><article><div class="wrap">
+  <div class="a-head">
+    <div class="eyebrow"><span class="mono">AI search</span></div>
+    <h1>Freshness Signals: How AI Search Rewards Current Business Information</h1>
+    <div class="byline">
+      <div class="av">OA</div>
+      <div><div class="nm">Oluwatobi Ajidahun</div>
+      <div class="rl">FJMK &middot; AI search</div></div>
+    </div>
+  </div>
+  <div class="body">
+<p>AI search systems are built to answer questions about the present moment. A system asked "which clinic treats malaria on a Sunday?" is not asking about what a clinic looked like in 2022. It is asking what you do, where you are, and whether you are available right now. That question shapes every freshness signal the system checks.</p>
+<p>This article explains how AI systems evaluate content freshness, which platforms weigh it differently, and what you can do without gaming the system.</p>
+<h2>What freshness signals are, and why AI systems care</h2>
+<p>Content freshness signals are the date-related indicators that tell an AI model whether your content is current enough to cite. They include your visible publish date, your visible last-updated date, the Schema datePublished and dateModified properties in your structured data, and the frequency with which you update your content. [Conbersa; searchable.com]</p>
+<p>AI models evaluate all of these signals together. The most heavily weighted is the dateModified property in Article schema, followed by the visible last-updated date displayed on the page, and then the original publish date. [Conbersa] A page published in 2024 with a 2026 last-updated date is treated as current content. A page published in 2026 but never updated since may be treated as current initially but will decay faster without updates.</p>
+<p>AI search engines treat content freshness as a first-class ranking signal. Their training data has a fixed cutoff while the world does not. Perplexity explicitly lists freshness as one of three core criteria for its search index, alongside completeness and speed. [Perplexity engineering article, September 2025] Google weights recency for queries where the best answer changes over time through its Query Deserves Freshness signal. [Google Search Central]</p>
+<h2>How different AI systems weigh freshness</h2>
+<p><strong>Perplexity</strong> is the most recency-biased platform. Its engineering documentation describes a retrieval system built around three criteria: completeness, freshness, and speed. Freshness is a documented parameter in its retrieval stack, and the system is designed to maintain an index that meets the mark on both completeness and freshness. [Perplexity engineering article, September 2025] A practical proxy: roughly 50% of citations come from content published in 2025 alone, and about 80% of citations are drawn from 2023 to 2025. [searchable.com]</p>
+<p><strong>Google AI Overviews</strong> pulls from Google's main index, where freshness is a known ranking factor, particularly for queries where information changes frequently. Pages that already rank well on Google and have been recently updated have the strongest advantage. [searchable.com]</p>
+<p><strong>ChatGPT</strong> gives older authoritative content a longer shelf life. Roughly 29% of citations come from older content, including Wikipedia and other long-standing authoritative sources. With strong E-E-A-T signals, even older content has a shot at earning citations. [searchable.com]</p>
+<p><strong>The practical takeaway:</strong> none of the three is the same as the others, and none of them rewards cosmetic date changes. Google explicitly warns against changing dates without substantive updates. AI systems that analyse content semantically can detect the mismatch and will simply ignore your content. [Google Search Central]</p>
+<h2>How to use freshness signals without gaming the system</h2>
+<p><strong>Refresh substantively, not cosmetically.</strong> A real update changes what the page says about the world. Examples: replacing statistics with current figures and updating the citation; adding a section covering a development that did not exist when the post was first written; re-verifying claims against current primary sources; updating screenshots or tool references when UIs or features have changed; adding new examples that reflect the current state of the topic. [searchable.com]</p>
+<p><strong>A cosmetic update changes words without changing claims.</strong> Changing the date label without touching the content, adding filler paragraphs to hit a word count, restructuring headings without changing what each section says. None of these trigger meaningful freshness credit, because the claims the page makes have not changed. [searchable.com]</p>
+<p><strong>Keep every claim current.</strong> Old statistics are one of the easiest things for AI systems to flag as stale. If your article cites a 2020 report and a newer version exists, replace it. If your terminology has drifted from current industry language, rewrite the section. This is semantic drift, and it is one of the biggest drivers of content decay in AI search. [searchable.com]</p>
+<p><strong>Two signals are better than one.</strong> Pages that hide dates or display only the publish date without a last-updated indicator are treated by some AI models as potentially stale. Display both the original publish date and the last-updated date. [Conbersa]</p>
+<p><strong>Match the cadence to the page type.</strong> Trend and news pages decay within 30–60 days, so they should be updated within 30 days or consolidated into an evergreen page. Product and comparison pages maintain citation frequency for 60–90 days before showing measurable decay, so refresh them every 60–90 days. Definitional and how-to pages maintain citation frequency for 6–12 months, so refresh them at least twice a year. [Conbersa]</p>
+<h2>How to measure freshness impact</h2>
+<p>The honest way to measure freshness is to run a controlled audit on a small set of high-traffic pages.</p>
+<p><strong>1. Pick 10 pages.</strong> Run your target queries through ChatGPT, Perplexity, and AI Overviews. Track which pages earn citations and which have dropped off. [searchable.com]</p>
+<p><strong>2. Refresh one group, not the other.</strong> Substantively update 10 pages, and leave 10 unrefreshed as a control. [searchable.com]</p>
+<p><strong>3. Track citation share over 30–60 days.</strong> A meaningful refresh typically shows a citation share increase within 30 days. Pages that were previously out of the citation pool for a query often re-enter within two to four weeks of a substantive update. [searchable.com]</p>
+<p><strong>4. Watch the crawl patterns.</strong> Review your server logs to see how often AI bots visit. Infrequent crawls suggest your pages are not being prioritised. [searchable.com]</p>
+<p><strong>5. Check your dateModified schema.</strong> If your schema says dateModified: 2026-05-01 but the visible text shows no update date and the content itself has not changed, that is a weaker freshness signal than a page where schema, visible timestamp, and actual content change all align. [OrganiKPI]</p>
+<h2>Common mistakes</h2>
+<ul><li><strong>Changing dates without changing anything else.</strong> Google explicitly warns against this, and AI systems that analyse content semantically can spot the mismatch and will ignore your content. [Google Search Central]</li><li><strong>Hiding dates.</strong> A page that displays only the publish date without a last-updated indicator is treated by some AI models as potentially stale. [Conbersa]</li><li><strong>Refreshing too fast or too slow.</strong> A post refreshed every quarter can become shallower if each update replaces old material rather than building on it. A post that grows deeper with each update earns both freshness credit and increased citation surface area. [searchable.com]</li><li><strong>Ignoring the cadence per page type.</strong> Refreshing a trend page every six months is too slow — it will decay in 30–60 days. Refreshing a definitional page every quarter is unnecessary — it will hold citation frequency for 6–12 months. [Conbersa]</li><li><strong>Treating freshness as a GEO-only lever.</strong> Freshness feeds both Google and every AI system. The work is the same: current statistics, current terminology, visible dates, and regular updates that signal active maintenance. [searchable.com]</li></ul>
+<h2>Trade-offs and edge cases</h2>
+<p><strong>Range updates versus full rewrites.</strong> You do not need a full rewrite every time. A targeted update — swapping old statistics, adding a section on a new development, re-verifying a claim — is enough. Most clinics do not need to produce entirely new content; they need to keep existing content honest. [searchable.com]</p>
+<p><strong>Timeliness versus accuracy.</strong> A page updated today with wrong figures is worse than a page updated last month with right figures. AI systems that evaluate content at the claim level, not the word level, will prefer the accurate older page. Replace statistics with current figures; do not just change the date. [Conbersa]</p>
+<p><strong>Velocity versus depth.</strong> High-velocity topics (news, trends, tools) need quarterly refreshes as a minimum. Strategy and framework posts are medium-velocity; the underlying principles change slowly, but the examples, tools, and supporting data need refreshing twice a year. [searchable.com]</p>
+<h3>What are freshness signals in AI search?</h3>
+<p>Dates on the page, dateModified schema, how often you update, and whether your statistics and terminology are current. AI systems evaluate all three together, not one alone.</p>
+<h3>Does ChatGPT care about freshness the same way as Perplexity?</h3>
+<p>No. Perplexity is the most recency-biased platform, drawing roughly 50% of its citations from 2025 content alone. ChatGPT gives older authoritative content a longer shelf life, and roughly 29% of its citations come from older content. [searchable.com]</p>
+<h3>Can I just change the date on a page to make it current?</h3>
+<p>No. Changing a timestamp alone can bump content by 95 ranking positions in LLM results, but AI systems that analyse content semantically can detect the mismatch between a changed date and content that has not changed. Google explicitly warns against cosmetic date changes. [searchable.com; Google Search Central]</p>
+<h3>How often should my service pages be updated?</h3>
+<p>It depends on the page type. Trend and news pages: within 30 days. Product and comparison pages: every 60–90 days. Definitional and how-to pages: at least twice a year. [Conbersa]</p>
+<h3>What is semantic drift?</h3>
+<p>When your terminology falls out of step with current industry language, your content stays pinned where you published it while queries keep moving. A mismatch is one of the biggest drivers of content decay in AI search. [searchable.com]</p>
+<h2>What to do next</h2>
+<p>Pick your ten highest-traffic pages. Run your target queries through ChatGPT, Perplexity, and AI Overviews, and track which pages earn citations and which have dropped off. Then do a substantive refresh on five of them, leaving five unchanged as a control. Measure citation share over 30 days. If the refreshed pages hold or gain citations, make freshness a standing part of your editorial calendar.</p>
+  </div>
+  <div class="meta">
+    <dl>
+      <dt>Reading time</dt><dd>8 minutes</dd>
+      <dt>Category</dt><dd>AI search</dd>
+      <dt>Published</dt><dd>2026</dd>
+    </dl>
+  </div>
+  <div class="related">
+    <div class="eyebrow"><span class="mono">Keep reading</span></div>
+    <div class="rel-grid">
+<a class="rel" href="how-businesses-appear-in-chatgpt-answers-geo.html"><span class="mono">Read next</span><h3>How Businesses Get Recommended by ChatGPT, Perplexity and Gemini: What GEO Actually Means</h3></a>
+<a class="rel" href="entities-and-consistent-business-info.html"><span class="mono">Read next</span><h3>Entity Clarity and Consistent Business Information for AI Search</h3></a>
+<a class="rel" href="reviews-and-patient-decisions.html"><span class="mono">Read next</span><h3>How Online Reviews Affect Patient Decisions (And How to Get More of Them)</h3></a>
+    </div>
+    <div style="margin-top:34px">
+      <div class="eyebrow"><span class="mono">Work with us</span></div>
+      <p class="small">Want a practical review of your clinic's website? Tell us
+        what you do and where you are based.</p>
+      <div style="margin-top:20px">
+        <a class="cta" href="../contact.html">Start a project &rarr;</a>
+      </div>
+    </div>
+  </div>
+</div></article></main>
+<footer><div class="wrap">
+  <div class="ft">
+    <a href="../index.html" class="brand">FJMK<i>.</i></a>
+    <p>Websites and online patient acquisition for clinics and hospitals.</p>
+  </div>
+  <div class="ft-bot">
+    <span>&copy; 2026 FJMK Agency &middot; Lagos</span>
+    <span>Built for clinics only</span>
+  </div>
+</div></footer>
+</body></html>

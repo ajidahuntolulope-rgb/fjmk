@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Axiom Diagnostics</title>
+<meta name="description" content="Axiom Diagnostics: published prices, published ranges, ISO 15189-aligned quality management.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/axiom.css">
+<style>
+.page-head{padding:clamp(44px,5.6vw,84px) 0 clamp(26px,3.4vw,46px);border-bottom:1px solid var(--hair)}
+.page-head h1{font-family:var(--sans);font-weight:600;line-height:.98;letter-spacing:-.042em;
+  font-size:clamp(2.2rem,5.4vw,4.6rem);max-width:18ch;margin-bottom:24px}
+.prose{max-width:760px}
+.prose h2{font-weight:600;font-size:clamp(1.3rem,2.3vw,1.9rem);letter-spacing:-.03em;
+  line-height:1.1;margin:clamp(34px,4vw,52px) 0 16px}
+.prose h3{font-weight:600;font-size:1.05rem;letter-spacing:-.02em;margin:26px 0 10px}
+.prose p{font-size:1rem;line-height:1.78;color:var(--ink-2);margin-bottom:18px}
+.prose ul{margin:0 0 20px 0;padding-left:20px}
+.prose li{font-size:.98rem;line-height:1.72;color:var(--ink-2);margin-bottom:9px}
+.prose li::marker{color:var(--assay)}
+.prose strong{font-weight:600;color:var(--ink)}
+.ctable{width:100%;border:1px solid var(--hair);border-collapse:collapse;margin:clamp(24px,3vw,40px) 0;
+  font-size:.9rem;background:var(--panel)}
+.ctable th,.ctable td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--hair-2)}
+.ctable th{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);background:var(--panel-2);font-weight:500;border-bottom:1px solid var(--hair)}
+.ctable td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ctable tr:last-child td{border-bottom:0}
+.ctable .grp{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--assay-dim);background:var(--assay-wash);padding:2px 6px;border-radius:2px}
+.fg{margin-bottom:20px}
+.fg label{display:block;font-family:var(--mono);font-size:.56rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.fg input,.fg select,.fg textarea{width:100%;border:1px solid var(--hair);background:var(--bg);
+  padding:11px 13px;border-radius:2px;font-family:var(--sans);font-size:.94rem;color:var(--ink);
+  transition:border-color .25s,background .25s}
+.fg textarea{resize:vertical;min-height:96px;line-height:1.6}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:0;border-color:var(--assay);background:var(--panel)}
+.fg input::placeholder,.fg textarea::placeholder{color:#A6B0AA}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panelbox{border:1px solid var(--hair);background:var(--panel);border-radius:3px;
+  padding:clamp(22px,3vw,42px)}
+@media(max-width:720px){.f2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="above">
+<header>
+  <div class="nav">
+    <a href="index.html" class="brand"><span class="mark" aria-hidden="true"></span>Axiom</a>
+    <ul class="navlinks" id="nav">
+      <li><a href="tests.html">Tests</a></li>
+      <li><a href="home-collection.html">Home collection</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
+      <li><a href="index.html#book" class="nav-cta">Book a test</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <div class="eyebrow"><span class="mono">About Axiom</span></div>
+    <h1>A lab built around<br>the person waiting<br>for the result.</h1>
+    <p class="lead">Most diagnostics businesses are designed around the clinician
+      who orders the test. We built ours around the patient who has to wait for it,
+      understand it, and act on it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="prose">
+      <h2>Why we publish prices</h2>
+      <p>The Nigerian diagnostics market largely runs on quoted pricing. You ask
+        what a test costs, and the answer depends on who you asked. We think that is
+        a bad way to run a laboratory, and it is a particularly bad way to run one
+        that people visit when they are worried.</p>
+      <p>Every test we offer has a fixed, published price. It is the same price for
+        everyone, it is visible before you commit, and it does not change when you
+        arrive.</p>
+
+      <h2>Why we publish reference ranges</h2>
+      <p>Because a number without its range is not a result, it is a puzzle. We put
+        the range on the same line as the value, flag it plainly, and write a short
+        note explaining what the flag means.</p>
+
+      <h2>Accreditation and quality</h2>
+      <p>Our laboratory operates to ISO 15189-aligned quality management
+        principles. We participate in external quality assessment schemes for
+        haematology, clinical chemistry and serology, and our concordance on those
+        panels is 99.4%. Internal quality control runs on every analyser every
+        morning before patient samples are loaded.</p>
+      <p>We publish that number because it is the only meaningful measure of whether
+        a laboratory can be trusted with your sample. Any lab can claim accuracy.
+        EQA participation is the evidence.</p>
+
+      <h2>Our centres</h2>
+      <table class="ctable">
+        <thead><tr><th>Centre</th><th>Address</th><th>Hours</th></tr></thead>
+        <tbody>
+          <tr><td>Victoria Island</td><td>Adeola Odeku Street, VI</td>
+            <td class="num">Mon&ndash;Sat 07:00&ndash;18:00</td></tr>
+          <tr><td>Ikeja</td><td>Allen Avenue, Ikeja</td>
+            <td class="num">Mon&ndash;Sat 07:00&ndash;18:00</td></tr>
+          <tr><td>Lekki</td><td>Admiralty Way, Lekki Phase 1</td>
+            <td class="num">Mon&ndash;Sat 08:00&ndash;17:00</td></tr>
+        </tbody>
+      </table>
+
+      <h2>What we are not</h2>
+      <p>We are a laboratory. We do not diagnose, we do not prescribe, and we do not
+        interpret results for you — that is your clinician's role and it is a
+        different skill from running an assay well. What we do is produce a reliable
+        number and explain it clearly enough that your doctor can use it.</p>
+
+      <h2>The team</h2>
+      <h3>Dr. Ngozi Adeyemi &mdash; Laboratory Director</h3>
+      <p>Chemical pathologist. Fifteen years in clinical laboratory medicine, and
+        the reason our quality control protocol is as strict as it is.</p>
+      <h3>Emeka Nwosu &mdash; Head of Operations</h3>
+      <p>Runs the home collection fleet and the centre network. If a collector is
+        late, this is the person who hears about it.</p>
+      <h3>Dr. Sadiq Bello &mdash; Clinical Liaison</h3>
+      <p>Works with referring clinicians on test selection and turnaround
+        expectations. The person who calls a doctor when a result needs a
+        conversation.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="trust">
+      <div><span class="n num" data-count="247">0</span>
+        <span class="l">Accredited tests</span></div>
+      <div><span class="n num" data-count="99" data-suffix=".4%">0</span>
+        <span class="l">EQA concordance</span></div>
+      <div><span class="n num" data-count="3">0</span>
+        <span class="l">Collection centres</span></div>
+      <div><span class="n num" data-count="12">0</span>
+        <span class="l">Home phlebotomists</span></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta rv">
+      <div>
+        <div class="eyebrow"><span class="mono">Start</span></div>
+        <h2 class="h2">Book a test<br>or a home visit.</h2>
+        <p class="lead" style="margin-top:18px">Fixed prices, published turnaround,
+          results you can read.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="index.html#book" class="btn btn-p">Book a test <span class="ar">&rarr;</span></a>
+        <a href="tests.html" class="btn">Browse the catalogue</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div class="ft-brand">
+        <a href="index.html" class="brand"><span class="mark" aria-hidden="true"></span>Axiom</a>
+        <p>Accredited diagnostic laboratory services across Lagos. Home collection,
+          same-day results, published prices.</p>
+      </div>
+      <div class="ft">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="tests.html">Test catalogue</a></li>
+          <li><a href="home-collection.html">Home collection</a></li>
+          <li><a href="results.html">Results portal</a></li>
+          <li><a href="tests.html">Wellness panels</a></li>        </ul>
+      </div>
+      <div class="ft">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html">Accreditation</a></li>
+          <li><a href="about.html">Centres</a></li>
+        </ul>
+      </div>
+      <div class="ft">
+        <h4>Book</h4>
+        <ul>
+          <li><a href="index.html#book">Book a test</a></li>
+          <li><a href="home-collection.html">Request a home visit</a></li>
+          <li><a href="results.html">Access my results</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>&copy; 2026 Axiom Diagnostics &middot; Lagos</span>
+      <span>Results must be interpreted by a qualified clinician</span>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="assets/js/axiom.js"></script>
+</body>
+</html>

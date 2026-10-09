@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hearth Home Nursing — Home Care in Lagos</title>
+<meta name="description" content="Warm, professional home nursing and elderly care in Lagos. Live-in nurses, post-surgical care, dementia support, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@400;0,500;0,600;0,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--oat:#F3EBDD;--cream:#FAF5EC;--clay:#D9A08A;--clay-dark:#C98B75;--clay-light:#E8C4B8;
+--sage:#8FA68A;--sage-light:#B8C9B5;--sage-dark:#6B8A6B;--ink:#3D332B;--ink-light:#5C5045;
+--shadow-soft:0 1px 2px rgba(61,51,43,.04),0 4px 8px rgba(61,51,43,.06),0 8px 16px rgba(61,51,43,.08),0 16px 32px rgba(61,51,43,.10);
+--shadow-lift:0 2px 4px rgba(61,51,43,.06),0 8px 16px rgba(61,51,43,.10),0 16px 32px rgba(61,51,43,.14),0 32px 64px rgba(61,51,43,.18);
+--radius:20px;--radius-sm:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Karla',sans-serif;background:var(--oat);color:var(--ink);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Gelasio',serif;font-weight:600;line-height:1.2}
+.hand{font-family:'Caveat',cursive}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+section{padding:5rem 0;position:relative}
+.section-label{font-family:'Caveat',cursive;font-size:1.3rem;color:var(--clay);display:block;margin-bottom:.5rem}
+.section-title{font-size:2.25rem;margin-bottom:1rem}
+.section-intro{font-size:1.1rem;color:var(--ink-light);max-width:600px;margin-bottom:2.5rem}
+
+/* Focus states */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--clay);outline-offset:3px;border-radius:6px}
+
+/* Header */
+header{position:sticky;top:0;z-index:100;background:rgba(243,235,221,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(61,51,43,.06)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.5rem;max-width:1100px;margin:0 auto}
+.logo{font-family:'Gelasio',serif;font-size:1.4rem;font-weight:700;display:flex;align-items:center;gap:.5rem}
+.logo svg{width:28px;height:28px}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-weight:500;font-size:.95rem;transition:color .2s}
+.nav-links a:hover{color:var(--clay)}
+.nav-cta{background:var(--clay);color:#fff;padding:.6rem 1.4rem;border-radius:999px;font-weight:600;font-size:.9rem;transition:transform .2s,box-shadow .2s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(217,160,138,.4)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:.5rem}
+.hamburger span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:.3s;border-radius:2px}
+
+/* Hero */
+.hero{padding:4rem 0 5rem;overflow:hidden}
+.hero-wash{position:absolute;border-radius:50%;filter:blur(100px);opacity:.45;pointer-events:none;animation:drift 25s ease-in-out infinite alternate}
+.hero-wash-1{width:500px;height:500px;background:var(--clay-light);top:-10%;left:-10%}
+.hero-wash-2{width:400px;height:400px;background:var(--sage-light);bottom:-10%;right:-5%;animation-delay:-8s}
+.hero-wash-3{width:300px;height:300px;background:var(--clay);top:40%;right:20%;opacity:.2;animation-delay:-15s}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(30px,-20px) scale(1.1)}}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:3rem;margin-bottom:1rem}
+.hero h1 .hand{color:var(--clay);font-size:2.2rem;display:block;margin-top:.25rem}
+.hero p.lead{font-size:1.15rem;color:var(--ink-light);margin-bottom:1.5rem;max-width:480px}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 1.75rem;border-radius:999px;font-weight:600;font-size:1rem;cursor:pointer;border:none;transition:transform .2s,box-shadow .2s,background .2s;font-family:'Karla',sans-serif}
+.btn-primary{background:var(--clay);color:#fff;box-shadow:0 1px 2px rgba(61,51,43,.1),0 4px 8px rgba(217,160,138,.3)}
+.btn-primary:hover{transform:translateY(-2px);background:var(--clay-dark);box-shadow:0 2px 4px rgba(61,51,43,.15),0 8px 16px rgba(217,160,138,.4)}
+.btn-secondary{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn-secondary:hover{transform:translateY(-2px);background:var(--ink);color:var(--oat)}
+.trust-bar{display:flex;gap:2rem;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.9rem;color:var(--ink-light)}
+.trust-item svg{width:20px;height:20px;flex-shrink:0}
+.hero-illustration{max-width:450px;margin:0 auto}
+.draw-path{stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset 1.5s ease}
+.draw-path.drawn{stroke-dashoffset:0}
+
+/* Guilt section */
+.guilt{background:var(--cream);border-radius:var(--radius);padding:2.5rem;margin-top:3rem;box-shadow:var(--shadow-soft);position:relative;z-index:1}
+.guilt .hand{font-size:1.4rem;color:var(--sage);margin-bottom:.5rem}
+.guilt p{font-size:1.1rem;color:var(--ink-light);max-width:700px}
+
+/* Services */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.service-card{background:var(--cream);border-radius:var(--radius);padding:1.75rem;box-shadow:var(--shadow-soft);transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift)}
+.service-card .icon{width:56px;height:56px;margin-bottom:1rem}
+.service-card h3{font-size:1.2rem;margin-bottom:.5rem}
+.service-card p{font-size:.95rem;color:var(--ink-light)}
+.service-card .hand{position:absolute;top:1rem;right:1.2rem;font-size:1rem;color:var(--clay-light)}
+
+/* Vetting */
+.vetting{background:var(--cream);border-radius:var(--radius);padding:3rem;box-shadow:var(--shadow-soft)}
+.vetting-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2rem}
+.vetting-step{background:var(--oat);border-radius:var(--radius-sm);padding:1.5rem;position:relative}
+.vetting-step .num{font-family:'Caveat',cursive;font-size:2.5rem;color:var(--clay);line-height:1}
+.vetting-step h3{font-size:1.1rem;margin:.5rem 0}
+.vetting-step p{font-size:.9rem;color:var(--ink-light)}
+
+/* Timeline */
+.timeline{position:relative;max-width:700px;margin:0 auto}
+.timeline::before{content:'';position:absolute;left:24px;top:0;bottom:0;width:3px;background:var(--sage-light);border-radius:2px}
+.timeline-item{display:flex;gap:2rem;margin-bottom:2.5rem;position:relative;opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.timeline-item.visible{opacity:1;transform:translateY(0)}
+.timeline-dot{width:48px;height:48px;border-radius:50%;background:var(--cream);border:3px solid var(--sage);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Gelasio',serif;font-weight:700;font-size:.85rem;color:var(--sage-dark);z-index:1}
+.timeline-content{background:var(--cream);border-radius:var(--radius-sm);padding:1.25rem 1.5rem;box-shadow:var(--shadow-soft);flex:1}
+.timeline-content .time{font-family:'Caveat',cursive;font-size:1.2rem;color:var(--clay)}
+.timeline-content h3{font-size:1.1rem;margin:.25rem 0}
+.timeline-content p{font-size:.9rem;color:var(--ink-light)}
+
+/* Pricing */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.price-card{background:var(--cream);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow-soft);text-align:center;transition:transform .3s,box-shadow .3s;position:relative}
+.price-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lift)}
+.price-card.featured{border:2px solid var(--clay);transform:scale(1.03)}
+.price-card.featured:hover{transform:scale(1.03) translateY(-6px)}
+.price-card .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--clay);color:#fff;padding:.25rem 1rem;border-radius:999px;font-size:.8rem;font-weight:600}
+.price-card .plan{font-family:'Caveat',cursive;font-size:1.3rem;color:var(--sage);margin-bottom:.5rem}
+.price-card .amount{font-family:'Gelasio',serif;font-size:2.5rem;font-weight:700;margin-bottom:.25rem}
+.price-card .per{font-size:.9rem;color:var(--ink-light);margin-bottom:1rem}
+.price-card .save{font-size:.85rem;color:var(--sage);font-weight:600;margin-bottom:1rem}
+.price-card ul{list-style:none;text-align:left;margin-bottom:1.5rem}
+.price-card ul li{padding:.35rem 0;font-size:.9rem;color:var(--ink-light);padding-left:1.5rem;position:relative}
+.price-card ul li::before{content:'✓';position:absolute;left:0;color:var(--sage);font-weight:700}
+
+/* Testimonials */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.testimonial{background:var(--cream);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow-soft);position:relative;font-family:'Caveat',cursive;font-size:1.2rem;line-height:1.6;transform:rotate(-1deg);transition:transform .3s}
+.testimonial:nth-child(2){transform:rotate(1.5deg)}
+.testimonial:nth-child(3){transform:rotate(-.5deg)}
+.testimonial:hover{transform:rotate(0) translateY(-4px)}
+.testimonial::before{content:'';position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(-2deg);width:80px;height:24px;background:rgba(217,160,138,.25);border-radius:2px}
+.testimonial .author{font-family:'Karla',sans-serif;font-size:.85rem;color:var(--ink-light);margin-top:1rem;font-style:normal}
+.testimonial .author strong{color:var(--ink)}
+
+/* Booking */
+.booking{background:var(--cream);border-radius:var(--radius);padding:3rem;box-shadow:var(--shadow-soft)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.form-group{display:flex;flex-direction:column}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-weight:600;font-size:.9rem;margin-bottom:.4rem}
+.form-group input,.form-group select,.form-group textarea{padding:.875rem 1rem;border:2px solid var(--oat);border-radius:var(--radius-sm);background:var(--cream);font-family:'Karla',sans-serif;font-size:1rem;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--clay);box-shadow:0 0 0 4px rgba(217,160,138,.15)}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-submit{grid-column:1/-1;text-align:center;margin-top:.5rem}
+.form-success{display:none;text-align:center;padding:2rem;color:var(--sage-dark);font-weight:600;font-size:1.1rem}
+.form-success.show{display:block}
+
+/* Emergency */
+.emergency{background:linear-gradient(135deg,var(--clay),var(--clay-dark));color:#fff;border-radius:var(--radius);padding:2.5rem;text-align:center;box-shadow:var(--shadow-soft)}
+.emergency h3{font-size:1.5rem;margin-bottom:.5rem}
+.emergency .phone{font-family:'Gelasio',serif;font-size:2rem;font-weight:700;margin:.5rem 0}
+.emergency p{opacity:.9}
+
+/* Footer */
+footer{background:var(--ink);color:var(--oat);padding:3rem 0 1.5rem;margin-top:4rem}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+.footer-grid h4{font-size:1rem;margin-bottom:1rem;color:var(--clay-light)}
+.footer-grid ul{list-style:none}
+.footer-grid ul li{margin-bottom:.5rem}
+.footer-grid ul li a{font-size:.9rem;opacity:.8;transition:opacity .2s}
+.footer-grid ul li a:hover{opacity:1}
+.footer-bottom{border-top:1px solid rgba(243,235,221,.15);padding-top:1.5rem;font-size:.8rem;opacity:.7;text-align:center}
+.disclaimer{font-size:.75rem;opacity:.6;margin-top:.5rem;max-width:600px;margin-left:auto;margin-right:auto}
+
+/* Divider */
+.divider{display:block;width:100%;height:40px;margin:0;opacity:.5}
+
+/* Responsive */
+@media(max-width:768px){
+.hero-grid{grid-template-columns:1fr;text-align:center}
+.hero h1{font-size:2.2rem}
+.hero p.lead{margin:0 auto 1.5rem}
+.hero-ctas{justify-content:center}
+.trust-bar{justify-content:center}
+.hero-illustration{max-width:300px}
+.section-title{font-size:1.8rem}
+.form-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr;text-align:center}
+.vetting{padding:2rem}
+.booking{padding:2rem}
+.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--oat);flex-direction:column;padding:1.5rem;gap:1rem;border-bottom:1px solid rgba(61,51,43,.1)}
+.nav-links.open{display:flex}
+.hamburger{display:block}
+.price-card.featured{transform:scale(1)}
+.price-card.featured:hover{transform:translateY(-6px)}
+}
+@media(max-width:380px){
+.hero h1{font-size:1.9rem}
+section{padding:3rem 0}
+.container{padding:0 1rem}
+.timeline-item{gap:1rem}
+.timeline-dot{width:40px;height:40px;font-size:.75rem}
+.timeline::before{left:20px}
+}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+html{scroll-behavior:auto}
+.timeline-item{opacity:1;transform:none}
+.draw-path{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<header>
+<nav class="nav">
+<a href="#" class="logo">
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-7-4.5-9.5-8.5C.5 8 3 4 7 4c2.5 0 4 1.5 5 3 1-1.5 2.5-3 5-3 4 0 6.5 4 4.5 8.5C19 16.5 12 21 12 21z" fill="#D9A08A"/></svg>
+Hearth Home
+</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#services">Services</a></li>
+<li><a href="#vetting">Our Carers</a></li>
+<li><a href="#timeline">A Day with Us</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#stories">Stories</a></li>
+<li><a href="#book" class="nav-cta">Book a Consultation</a></li>
+</ul>
+<button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
+</nav>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+<div class="hero-wash hero-wash-1"></div>
+<div class="hero-wash hero-wash-2"></div>
+<div class="hero-wash hero-wash-3"></div>
+<div class="container">
+<div class="hero-grid">
+<div>
+<h1>Care that feels like family.<span class="hand">because it should be</span></h1>
+<p class="lead">You're not sending your parent away. You're bringing someone who truly cares into their home — someone who'll know how they take their tea, and what makes them laugh.</p>
+<div class="hero-ctas">
+<a href="#book" class="btn btn-primary">Book a free consultation</a>
+<a href="#vetting" class="btn btn-secondary">See how we vet our carers</a>
+</div>
+<div class="trust-bar">
+<div class="trust-item">
+<svg viewBox="0 0 24 24" fill="none" stroke="#8FA68A" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+500+ families served
+</div>
+<div class="trust-item">
+<svg viewBox="0 0 24 24" fill="none" stroke="#8FA68A" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+CRB-checked carers
+</div>
+<div class="trust-item">
+<svg viewBox="0 0 24 24" fill="none" stroke="#8FA68A" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+24/7 support
+</div>
+</div>
+</div>
+<div>
+<svg class="hero-illustration" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<circle cx="400" cy="70" r="35" stroke="#D9A08A" stroke-width="2.5" stroke-linecap="round" class="draw-path" pathLength="100"/>
+<path d="M400 25v-10M400 115v10M355 70h-10M445 70h10M370 35l-7-7M430 35l7-7M370 105l-7 7M430 105l7 7" stroke="#D9A08A" stroke-width="2" stroke-linecap="round" class="draw-path" pathLength="100"/>
+<path d="M140 240L250 140l110 100" stroke="#3D332B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="draw-path" pathLength="100"/>
+<path d="M160 240v80h180v-80" stroke="#3D332B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="draw-path" pathLength="100"/>
+<path d="M230 320v-45h40v45" stroke="#3D332B" stroke-width="2" stroke-linecap="round" class="draw-path" pathLength="100"/>
+<rect x="185" y="270" width="22" height="22" rx="3" stroke="#8FA68A" stroke-width="2" class="draw-path" pathLength="100"/>
+<rect x="293" y="270" width="22" height="22" rx="3" stroke="#8FA68A" stroke-width="2" class="draw-path" pathLength="100"/>
+<path d="M250 95c0 0-18-18-32-9s-14 27 32 45c46-18 46-36 32-45s-32 9-32 9z" stroke="#D9A08A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="draw-path" pathLength="100"/>
+<path d="M90 290c30-20 60-10 90-25" stroke="#8FA68A" stroke-width="2.5" stroke-linecap="round" class="draw-path" pathLength="100"/>
+<path d="M410 290c-30-20-60-10-90-25" stroke="#8FA68A" stroke-width="2.5" stroke-linecap="round" class="draw-path" pathLength="100"/>
+<path d="M70 345c80-10 180 10 260 0 30-5 60 5 100 0" stroke="#8FA68A" stroke-width="2" stroke-linecap="round" class="draw-path" pathLength="100"/>
+<path d="M120 345v-15l-5-5M120 345v-15l5-5" stroke="#8FA68A" stroke-width="2" stroke-linecap="round" class="draw-path" pathLength="100"/>
+<path d="M380 345v-15l-5-5M380 345v-15l5-5" stroke="#8FA68A" stroke-width="2" stroke-linecap="round" class="draw-path" pathLength="100"/>
+</svg>
+</div>
+</div>
+<div class="guilt">
+<span class="hand">a note from us to you</span>
+<p>We know the guilt. You're far away, or you're busy, and you feel like you should be doing this yourself. But here's the truth: getting help isn't giving up. It's making sure your parent gets the best care — and you get to be their child again, not just their carer.</p>
+</div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<div class="container">
+<span class="section-label">what we do</span>
+<h2 class="section-title">Care, crafted for your home</h2>
+<p class="section-intro">Every service is built around one belief: care is a craft. It takes patience, skill, and a warm heart.</p>
+<div class="services-grid">
+<div class="service-card">
+<span class="hand">round the clock</span>
+<svg class="icon" viewBox="0 0 48 48" fill="none" stroke="#D9A08A" stroke-width="2" stroke-linecap="round"><path d="M8 24L24 10l16 14"/><path d="M12 24v16h24V24"/><path d="M20 40v-8h8v8"/></svg>
+<h3>Live-in Nursing</h3>
+<p>A qualified nurse living in your home, providing round-the-clock care, medication management, and daily support.</p>
+</div>
+<div class="service-card">
+<span class="hand">gentle recovery</span>
+<svg class="icon" viewBox="0 0 48 48" fill="none" stroke="#8FA68A" stroke-width="2" stroke-linecap="round"><path d="M24 6c-6 0-10 4-10 10v8c0 8 6 14 10 18 4-4 10-10 10-18v-8c0-6-4-10-10-10z"/><path d="M18 24h12M24 18v12"/></svg>
+<h3>Post-Surgical Care</h3>
+<p>Specialist recovery support after hospital discharge — wound care, mobility assistance, and rehabilitation.</p>
+</div>
+<div class="service-card">
+<span class="hand">good company</span>
+<svg class="icon" viewBox="0 0 48 48" fill="none" stroke="#D9A08A" stroke-width="2" stroke-linecap="round"><circle cx="16" cy="18" r="6"/><circle cx="32" cy="18" r="6"/><path d="M6 36c0-6 4-10 10-10s10 4 10 10"/><path d="M22 36c0-6 4-10 10-10s10 4 10 10"/></svg>
+<h3>Elderly Companionship</h3>
+<p>Friendship, conversation, and daily help — from reading the newspaper together to sharing a pot of tea.</p>
+</div>
+<div class="service-card">
+<span class="hand">with patience</span>
+<svg class="icon" viewBox="0 0 48 48" fill="none" stroke="#8FA68A" stroke-width="2" stroke-linecap="round"><path d="M24 8c-8 0-14 6-14 14s6 14 14 14 14-6 14-14-6-14-14-14z"/><path d="M18 22c2-4 6-6 10-4s4 6 2 10-8 6-12 2"/><circle cx="24" cy="24" r="2"/></svg>
+<h3>Dementia & Alzheimer's Care</h3>
+<p>Specialised, patient, dignified care for those living with memory loss — at every stage of the journey.</p>
+</div>
+<div class="service-card">
+<span class="hand">with dignity</span>
+<svg class="icon" viewBox="0 0 48 48" fill="none" stroke="#D9A08A" stroke-width="2" stroke-linecap="round"><path d="M24 40s-12-8-12-18c0-6 4-10 10-10 3 0 5 1 6 3 1-2 3-3 6-3 6 0 10 4 10 10 0 10-12 18-12 18z"/><path d="M18 24c2-2 4-2 6 0s4 2 6 0"/></svg>
+<h3>Palliative Care Support</h3>
+<p>Comfort, dignity, and quality of life — supporting both your parent and your family through every stage.</p>
+</div>
+<div class="service-card">
+<span class="hand">move & thrive</span>
+<svg class="icon" viewBox="0 0 48 48" fill="none" stroke="#8FA68A" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="10" r="4"/><path d="M24 14v12M24 18l-8 6M24 18l8 6M24 26l-6 12M24 26l6 12"/></svg>
+<h3>Home Physiotherapy</h3>
+<p>Movement, strength, and mobility — professional physiotherapy sessions in the comfort of home.</p>
+</div>
+<div class="service-card">
+<span class="hand">take a break</span>
+<svg class="icon" viewBox="0 0 48 48" fill="none" stroke="#D9A08A" stroke-width="2" stroke-linecap="round"><path d="M10 20h28v8c0 8-6 14-14 14s-14-6-14-14v-8z"/><path d="M38 22h4a4 4 0 010 8h-4"/><path d="M16 12c0-2 2-2 2-4M24 12c0-2 2-2 2-4M32 12c0-2 2-2 2-4"/></svg>
+<h3>Respite Care</h3>
+<p>When family carers need a break — a few hours, a weekend, or longer. You rest, we care.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- VETTING -->
+<section id="vetting">
+<div class="container">
+<div class="vetting">
+<span class="section-label">this is the good stuff</span>
+<h2 class="section-title">How we vet our carers</h2>
+<p class="section-intro">Trust isn't a promise. It's a process. Here's exactly how we make sure the person who walks into your parent's home is someone you'd trust with your own life.</p>
+<div class="vetting-steps">
+<div class="vetting-step">
+<span class="num">01</span>
+<h3>Background Checks</h3>
+<p>Every carer undergoes a CRB check, identity verification, and reference checks. No exceptions.</p>
+</div>
+<div class="vetting-step">
+<span class="num">02</span>
+<h3>Training & Certification</h3>
+<p>First aid, dementia care, moving & handling, and ongoing professional development.</p>
+</div>
+<div class="vetting-step">
+<span class="num">03</span>
+<h3>Supervision</h3>
+<p>Regular check-ins, monthly care plan reviews, and 24/7 support for our carers and families.</p>
+</div>
+<div class="vetting-step">
+<span class="num">04</span>
+<h3>Replacement Guarantee</h3>
+<p>If it's not the right fit, we find someone who is — free of charge. Your parent's comfort is our priority.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+<div class="container">
+<span class="section-label">a day with us</span>
+<h2 class="section-title">One day in the life of a carer</h2>
+<p class="section-intro">This is what warm, attentive care looks like — hour by hour.</p>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-dot">6am</div>
+<div class="timeline-content">
+<span class="time">early morning</span>
+<h3>Morning medication & breakfast</h3>
+<p>Nurse Adaeze arrives with a smile, checks vitals, and prepares Mum's favourite breakfast.</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot">8am</div>
+<div class="timeline-content">
+<span class="time">morning</span>
+<h3>Gentle exercises & mobility</h3>
+<p>Chair exercises, stretching, and a short walk in the garden — weather permitting.</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot">10am</div>
+<div class="timeline-content">
+<span class="time">mid-morning</span>
+<h3>Companionship & activities</h3>
+<p>Reading the newspaper together, playing cards, or just chatting about the old days.</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot">12pm</div>
+<div class="timeline-content">
+<span class="time">lunch</span>
+<h3>Lunch preparation & feeding</h3>
+<p>A warm, home-cooked meal — exactly how Mum likes it, with all her favourite things.</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot">2pm</div>
+<div class="timeline-content">
+<span class="time">afternoon</span>
+<h3>Rest & quiet time</h3>
+<p>Mum's afternoon nap, with the nurse nearby in case she needs anything at all.</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot">4pm</div>
+<div class="timeline-content">
+<span class="time">late afternoon</span>
+<h3>Physiotherapy or walks</h3>
+<p>Physio sessions or a gentle walk around the estate — keeping Mum active and strong.</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot">6pm</div>
+<div class="timeline-content">
+<span class="time">evening</span>
+<h3>Dinner & evening routine</h3>
+<p>Dinner, medication, and getting ready for bed — a calm, familiar routine.</p>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-dot">8pm</div>
+<div class="timeline-content">
+<span class="time">night</span>
+<h3>Night check & settling in</h3>
+<p>A final check to make sure Mum is comfortable, safe, and settled for the night.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+<div class="container">
+<span class="section-label">honest pricing</span>
+<h2 class="section-title">Packages that fit your family</h2>
+<p class="section-intro">No hidden fees. No surprises. Just warm, professional care at a fair price.</p>
+<div class="pricing-grid">
+<div class="price-card">
+<div class="plan">Daily Rate</div>
+<div class="amount">₦35,000</div>
+<div class="per">per day</div>
+<ul>
+<li>Up to 8 hours of care</li>
+<li>Medication reminders</li>
+<li>Meal preparation</li>
+<li>Companionship & support</li>
+</ul>
+<a href="#book" class="btn btn-primary">Enquire Now</a>
+</div>
+<div class="price-card">
+<div class="plan">Weekly</div>
+<div class="amount">₦210,000</div>
+<div class="per">per week</div>
+<div class="save">Save ₦35,000 vs daily</div>
+<ul>
+<li>5 days of care</li>
+<li>All daily rate features</li>
+<li>Care plan included</li>
+<li>Family updates</li>
+</ul>
+<a href="#book" class="btn btn-primary">Enquire Now</a>
+</div>
+<div class="price-card featured">
+<div class="badge">Most Popular</div>
+<div class="plan">Monthly</div>
+<div class="amount">₦780,000</div>
+<div class="per">per month</div>
+<div class="save">Save ₦120,000 vs daily</div>
+<ul>
+<li>20 days of care</li>
+<li>All weekly features</li>
+<li>Dedicated care manager</li>
+<li>Monthly review meeting</li>
+</ul>
+<a href="#book" class="btn btn-primary">Enquire Now</a>
+</div>
+<div class="price-card">
+<div class="plan">Live-in</div>
+<div class="amount">₦450,000</div>
+<div class="per">per month</div>
+<div class="save">24/7 care in the comfort of home</div>
+<ul>
+<li>Round-the-clock care</li>
+<li>Live-in nurse or carer</li>
+<li>All meals & laundry</li>
+<li>Emergency response</li>
+</ul>
+<a href="#book" class="btn btn-primary">Enquire Now</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="stories">
+<div class="container">
+<span class="section-label">real families, real stories</span>
+<h2 class="section-title">Words from our families</h2>
+<p class="section-intro">These are the notes we receive from the people who matter most — the families who trusted us.</p>
+<div class="testimonials-grid">
+<div class="testimonial">
+"Mum's nurse, Ngozi, is an angel. She sends me photos every morning — Mum laughing, eating well, looking happy. I can finally focus on my job without worrying. Worth every naira."
+<div class="author"><strong>Adesuwa</strong> — daughter in London</div>
+</div>
+<div class="testimonial">
+"After Dad's stroke, we didn't know what to do. Hearth Home sent a physiotherapist within 24 hours. Three months later, Dad is walking again. They didn't just care for him — they cared for all of us."
+<div class="author"><strong>Chidi</strong> — son in Lagos</div>
+</div>
+<div class="testimonial">
+"I felt so guilty about not being there. But the team at Hearth Home made me feel like part of the family. They call me with updates, ask my opinion, and treat my mother like she's their own."
+<div class="author"><strong>Ngozi</strong> — daughter in Toronto</div>
+</div>
+<div class="testimonial">
+"The vetting process is thorough. They did background checks, verified references, and even did a trial period. When I met my father's carer, I knew immediately she was the right fit."
+<div class="author"><strong>Emeka</strong> — son in Abuja</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- BOOKING -->
+<section id="book">
+<div class="container">
+<div class="booking">
+<span class="section-label">let's talk</span>
+<h2 class="section-title">Book a free consultation</h2>
+<p class="section-intro">Tell us about your parent. We'll call you back within 2 hours — usually sooner.</p>
+<form id="bookingForm" class="form-grid">
+<div class="form-group">
+<label for="name">Your name</label>
+<input type="text" id="name" name="name" required placeholder="e.g. Adesuwa Okafor">
+</div>
+<div class="form-group">
+<label for="email">Email address</label>
+<input type="email" id="email" name="email" required placeholder="you@example.com">
+</div>
+<div class="form-group">
+<label for="phone">Phone number</label>
+<input type="tel" id="phone" name="phone" required placeholder="+234 ...">
+</div>
+<div class="form-group">
+<label for="service">Service needed</label>
+<select id="service" name="service" required>
+<option value="">Select a service</option>
+<option value="live-in">Live-in Nursing</option>
+<option value="post-surgical">Post-Surgical Care</option>
+<option value="companionship">Elderly Companionship</option>
+<option value="dementia">Dementia & Alzheimer's Care</option>
+<option value="palliative">Palliative Care Support</option>
+<option value="physiotherapy">Home Physiotherapy</option>
+<option value="respite">Respite Care</option>
+</select>
+</div>
+<div class="form-group">
+<label for="start">Preferred start date</label>
+<input type="date" id="start" name="start">
+</div>
+<div class="form-group">
+<label for="location">Location in Lagos</label>
+<input type="text" id="location" name="location" placeholder="e.g. Lekki, Victoria Island, Ikeja">
+</div>
+<div class="form-group full">
+<label for="message">Tell us about your parent</label>
+<textarea id="message" name="message" placeholder="What do they need help with? Any medical conditions we should know about? What makes them smile?"></textarea>
+</div>
+<div class="form-submit">
+<button type="submit" class="btn btn-primary">Send Enquiry</button>
+</div>
+</form>
+<div class="form-success" id="formSuccess">
+Thank you! We've received your enquiry and will call you back within 2 hours. 💛
+</div>
+</div>
+</div>
+</section>
+
+<!-- EMERGENCY -->
+<section id="emergency">
+<div class="container">
+<div class="emergency">
+<h3>Need urgent care?</h3>
+<p>Our 24/7 line is always open. We'll be there within 2 hours.</p>
+<div class="phone">+234 800 123 4567</div>
+<p>Call us any time — day or night.</p>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="container">
+<div class="footer-grid">
+<div>
+<h4>Hearth Home Nursing</h4>
+<p style="font-size:.9rem;opacity:.8">Home care with heart, in Lagos and beyond. We believe every ageing parent deserves to be cared for with dignity, warmth, and skill — in the comfort of their own home.</p>
+</div>
+<div>
+<h4>Quick Links</h4>
+<ul>
+<li><a href="#services">Services</a></li>
+<li><a href="#vetting">Our Carers</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#stories">Stories</a></li>
+<li><a href="#book">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4>Contact</h4>
+<ul>
+<li>📞 +234 800 123 4567</li>
+<li>📧 hello@hearthhome.com.ng</li>
+<li>📍 12 Admiralty Way, Lekki, Lagos</li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2026 Hearth Home Nursing. All rights reserved.</p>
+<p class="disclaimer">Hearth Home Nursing provides non-medical home care services. We are not a hospital or medical facility. In case of medical emergencies, please call 112 or visit your nearest hospital.</p>
+</div>
+</div>
+</footer>
+
+<script>
+// Mobile menu toggle
+const hamburger=document.getElementById('hamburger');
+const navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',()=>{
+navLinks.classList.toggle('open');
+hamburger.setAttribute('aria-expanded',navLinks.classList.contains('open'));
+});
+
+// Draw-on animation for hero SVG
+const drawPaths=document.querySelectorAll('.draw-path');
+const drawObserver=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('drawn');
+drawObserver.unobserve(entry.target);
+}
+});
+},{threshold:0.3});
+drawPaths.forEach(path=>drawObserver.observe(path));
+
+// Timeline animation
+const timelineItems=document.querySelectorAll('.timeline-item');
+const timelineObserver=new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('visible');
+timelineObserver.unobserve(entry.target);
+}
+});
+},{threshold:0.2});
+timelineItems.forEach(item=>timelineObserver.observe(item));
+
+// Form submission
+const form=document.getElementById('bookingForm');
+const formSuccess=document.getElementById('formSuccess');
+form.addEventListener('submit',(e)=>{
+e.preventDefault();
+form.style.display='none';
+formSuccess.classList.add('show');
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+anchor.addEventListener('click',function(e){
+const target=document.querySelector(this.getAttribute('href'));
+if(target){
+e.preventDefault();
+target.scrollIntoView({behavior:'smooth',block:'start'});
+navLinks.classList.remove('open');
+}
+});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+[
+ {
+  "slug": "how-seo-works-hospitals-clinics",
+  "folder": "01 SEO",
+  "title": "How SEO Works for Hospitals and Clinics: A Plain-Language Explanation",
+  "meta_title": "",
+  "meta_desc": "",
+  "intent": "",
+  "read_min": 8
+ },
+ {
+  "slug": "entities-and-consistent-business-info",
+  "folder": "02 GEO & AI Search",
+  "title": "Entity Clarity and Consistent Business Information for AI Search",
+  "meta_title": "Entity Clarity and Consistent Business Information for AI Search",
+  "meta_desc": "How AI systems identify your business, why NAP consistency and third-party corroboration decide whether you get cited, and how to audit your entity.",
+  "intent": "Informational",
+  "read_min": 9
+ },
+ {
+  "slug": "freshness-signals-in-ai-search",
+  "folder": "02 GEO & AI Search",
+  "title": "Freshness Signals: How AI Search Rewards Current Business Information",
+  "meta_title": "Freshness Signals: How AI Search Rewards Current Business Information",
+  "meta_desc": "How AI search systems evaluate content freshness, which platforms weigh it differently, and how to refresh your pages without gaming the system.",
+  "intent": "Informational",
+  "read_min": 8
+ },
+ {
+  "slug": "how-businesses-appear-in-chatgpt-answers-geo",
+  "folder": "02 GEO & AI Search",
+  "title": "How Businesses Get Recommended by ChatGPT, Perplexity and Gemini: What GEO Actually Means",
+  "meta_title": "How Businesses Get Recommended by ChatGPT, Perplexity and Gemini",
+  "meta_desc": "What GEO actually means: how AI systems decide what to recommend, what businesses can control, and what they can't.",
+  "intent": "Informational",
+  "read_min": 8
+ },
+ {
+  "slug": "why-visitors-dont-book-appointments",
+  "folder": "03 Websites & Conversion",
+  "title": "Why Do People Visit Your Website But Never Book an Appointment?",
+  "meta_title": "",
+  "meta_desc": "",
+  "intent": "",
+  "read_min": 8
+ },
+ {
+  "slug": "clinic-on-google-maps-guide",
+  "folder": "05 Local Search",
+  "title": "How to Get Your Clinic on Google Maps: The Complete Guide",
+  "meta_title": "How to Get Your Clinic on Google Maps (2026 Guide)",
+  "meta_desc": "A step-by-step guide to getting your clinic listed on Google Maps \u2014 category, verification, photos, reviews, and the mistakes that get listings suspended.",
+  "intent": "How-to",
+  "read_min": 8
+ },
+ {
+  "slug": "reviews-and-patient-decisions",
+  "folder": "05 Local Search",
+  "title": "How Online Reviews Affect Patient Decisions (And How to Get More of Them)",
+  "meta_title": "How Online Reviews Affect Patient Decisions (And How to Get More)",
+  "meta_desc": "Reviews decide most close calls between clinics \u2014 and feed Google rankings and AI answers. Here's how to get more of them, ethically.",
+  "intent": "How-to",
+  "read_min": 8
+ },
+ {
+  "slug": "medical-content-and-trust",
+  "folder": "08 Healthcare Marketing",
+  "title": "Medical Content That Builds Trust Without Spreading Misinformation",
+  "meta_title": "Medical Content That Builds Trust Without Spreading Misinformation",
+  "meta_desc": "How to write clinic health content that builds patient trust and stays accurate \u2014 the three rules every clinic site needs.",
+  "intent": "Informational",
+  "read_min": 8
+ },
+ {
+  "slug": "pages-every-clinic-website-needs",
+  "folder": "08 Healthcare Marketing",
+  "title": "What Pages Does Every Clinic Website Need?",
+  "meta_title": "",
+  "meta_desc": "",
+  "intent": "",
+  "read_min": 8
+ },
+ {
+  "slug": "why-clinic-not-getting-patients-from-google",
+  "folder": "08 Healthcare Marketing",
+  "title": "Why Your Clinic Isn't Getting Patients From Google (And Where the Leak Actually Is)",
+  "meta_title": "How a Clinic Site Leaks Patients to Competitors",
+  "meta_desc": "Traffic without bookings is almost never a traffic problem. Find where your clinic website loses patients and how to plug it.",
+  "intent": "Problem-solving",
+  "read_min": 9
+ },
+ {
+  "slug": "website-cost-nigeria-2026",
+  "folder": "10 Website Buying Guides",
+  "title": "How Much Does a Professional Website Cost in Nigeria in 2026?",
+  "meta_title": "How Much Does a Professional Website Cost in Nigeria in 2026?",
+  "meta_desc": "Real 2026 price ranges for Nigerian websites, what drives the price, the recurring costs, and the exchange-rate trap \u2014 before you pay anyone.",
+  "intent": "Commercial investigation",
+  "read_min": 8
+ }
+]

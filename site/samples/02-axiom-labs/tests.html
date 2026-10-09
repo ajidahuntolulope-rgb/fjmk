@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Catalogue — Axiom Diagnostics</title>
+<meta name="description" content="247 accredited diagnostic tests with published prices and turnaround times.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/axiom.css">
+<style>
+.page-head{padding:clamp(44px,5.6vw,84px) 0 clamp(26px,3.4vw,46px);border-bottom:1px solid var(--hair)}
+.page-head h1{font-family:var(--sans);font-weight:600;line-height:.98;letter-spacing:-.042em;
+  font-size:clamp(2.2rem,5.4vw,4.6rem);max-width:18ch;margin-bottom:24px}
+.prose{max-width:760px}
+.prose h2{font-weight:600;font-size:clamp(1.3rem,2.3vw,1.9rem);letter-spacing:-.03em;
+  line-height:1.1;margin:clamp(34px,4vw,52px) 0 16px}
+.prose h3{font-weight:600;font-size:1.05rem;letter-spacing:-.02em;margin:26px 0 10px}
+.prose p{font-size:1rem;line-height:1.78;color:var(--ink-2);margin-bottom:18px}
+.prose ul{margin:0 0 20px 0;padding-left:20px}
+.prose li{font-size:.98rem;line-height:1.72;color:var(--ink-2);margin-bottom:9px}
+.prose li::marker{color:var(--assay)}
+.prose strong{font-weight:600;color:var(--ink)}
+.ctable{width:100%;border:1px solid var(--hair);border-collapse:collapse;margin:clamp(24px,3vw,40px) 0;
+  font-size:.9rem;background:var(--panel)}
+.ctable th,.ctable td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--hair-2)}
+.ctable th{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);background:var(--panel-2);font-weight:500;border-bottom:1px solid var(--hair)}
+.ctable td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ctable tr:last-child td{border-bottom:0}
+.ctable .grp{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--assay-dim);background:var(--assay-wash);padding:2px 6px;border-radius:2px}
+.fg{margin-bottom:20px}
+.fg label{display:block;font-family:var(--mono);font-size:.56rem;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.fg input,.fg select,.fg textarea{width:100%;border:1px solid var(--hair);background:var(--bg);
+  padding:11px 13px;border-radius:2px;font-family:var(--sans);font-size:.94rem;color:var(--ink);
+  transition:border-color .25s,background .25s}
+.fg textarea{resize:vertical;min-height:96px;line-height:1.6}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:0;border-color:var(--assay);background:var(--panel)}
+.fg input::placeholder,.fg textarea::placeholder{color:#A6B0AA}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.panelbox{border:1px solid var(--hair);background:var(--panel);border-radius:3px;
+  padding:clamp(22px,3vw,42px)}
+@media(max-width:720px){.f2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="above">
+<header>
+  <div class="nav">
+    <a href="index.html" class="brand"><span class="mark" aria-hidden="true"></span>Axiom</a>
+    <ul class="navlinks" id="nav">
+      <li><a href="tests.html" aria-current="page">Tests</a></li>
+      <li><a href="home-collection.html">Home collection</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#book" class="nav-cta">Book a test</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <div class="eyebrow"><span class="mono">Catalogue</span></div>
+    <h1>Every test we run,<br>with the price on it.</h1>
+    <p class="lead">247 accredited tests. Fixed prices, published turnaround times,
+      and a reference range on every result. Nothing here requires a phone call to
+      find out what it costs.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <table class="ctable">
+      <thead>
+        <tr><th>Code</th><th>Test</th><th>Category</th><th>Turnaround</th><th>Price</th></tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <p class="small" style="margin-top:16px">Prices include sample collection at any
+      Axiom centre. Home collection adds &#8358;7,500. Prices shown are illustrative
+      for this demonstration.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta rv">
+      <div>
+        <div class="eyebrow"><span class="mono">Ready</span></div>
+        <h2 class="h2">Build a panel<br>and pay online.</h2>
+        <p class="lead" style="margin-top:18px">Select as many tests as you need,
+          choose a slot, and a phlebotomist comes to you or you visit a centre.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="index.html#book" class="btn btn-p">Book a test <span class="ar">&rarr;</span></a>
+        <a href="home-collection.html" class="btn">Home collection</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var TESTS = [
+    {c:'AXM-P01', n:'Complete Metabolic Panel', g:'Panels', t:'12h', p:42000},
+    {c:'AXM-P02', n:'Full Blood Count + Differential', g:'Panels', t:'4h', p:14500},
+    {c:'AXM-P03', n:'Lipid Profile', g:'Panels', t:'8h', p:18500},
+    {c:'AXM-P04', n:'Thyroid Function Panel', g:'Panels', t:'24h', p:34000},
+    {c:'AXM-P05', n:'Liver Function Panel', g:'Panels', t:'10h', p:26500},
+    {c:'AXM-P06', n:'Executive Wellness Panel', g:'Panels', t:'24h', p:98000},
+    {c:'AXM-P07', n:'Antenatal Profile', g:'Panels', t:'12h', p:39500},
+    {c:'AXM-P08', n:'Diabetes Monitoring Panel', g:'Panels', t:'12h', p:31500},
+    {c:'AXM-H01', n:'Haemoglobin', g:'Haematology', t:'2h', p:6500},
+    {c:'AXM-H02', n:'Erythrocyte Sedimentation Rate', g:'Haematology', t:'3h', p:7800},
+    {c:'AXM-H03', n:'Blood Group & Rhesus', g:'Haematology', t:'3h', p:8200},
+    {c:'AXM-H04', n:'Genotype (Hb Electrophoresis)', g:'Haematology', t:'8h', p:12500},
+    {c:'AXM-H05', n:'Coagulation Profile', g:'Haematology', t:'6h', p:24000},
+    {c:'AXM-C01', n:'Fasting Blood Glucose', g:'Chemistry', t:'2h', p:6800},
+    {c:'AXM-C02', n:'HbA1c', g:'Chemistry', t:'8h', p:17500},
+    {c:'AXM-C03', n:'Urea & Electrolytes', g:'Chemistry', t:'6h', p:15900},
+    {c:'AXM-C04', n:'Serum Creatinine', g:'Chemistry', t:'4h', p:8500},
+    {c:'AXM-C05', n:'Uric Acid', g:'Chemistry', t:'5h', p:9200},
+    {c:'AXM-C06', n:'Serum Calcium', g:'Chemistry', t:'5h', p:9600},
+    {c:'AXM-R01', n:'Testosterone (Total)', g:'Hormones', t:'24h', p:28000},
+    {c:'AXM-R02', n:'Oestradiol', g:'Hormones', t:'24h', p:29500},
+    {c:'AXM-R03', n:'Prolactin', g:'Hormones', t:'24h', p:26500},
+    {c:'AXM-R04', n:'FSH & LH', g:'Hormones', t:'24h', p:41000},
+    {c:'AXM-R05', n:'Progesterone', g:'Hormones', t:'24h', p:27500},
+    {c:'AXM-R06', n:'Vitamin D (25-OH)', g:'Hormones', t:'48h', p:38500},
+    {c:'AXM-I01', n:'Malaria Parasite (RDT)', g:'Infections', t:'30m', p:4500},
+    {c:'AXM-I02', n:'Malaria Parasite (Microscopy)', g:'Infections', t:'3h', p:6200},
+    {c:'AXM-I03', n:'Widal Test', g:'Infections', t:'5h', p:8900},
+    {c:'AXM-I04', n:'Hepatitis B Surface Antigen', g:'Infections', t:'6h', p:11200},
+    {c:'AXM-I05', n:'Hepatitis C Antibody', g:'Infections', t:'6h', p:11800},
+    {c:'AXM-I06', n:'HIV 1 & 2 Screening', g:'Infections', t:'3h', p:10500},
+    {c:'AXM-I07', n:'Urine Culture & Sensitivity', g:'Infections', t:'48h', p:21500},
+    {c:'AXM-I08', n:'Stool Culture & Sensitivity', g:'Infections', t:'48h', p:20500},
+    {c:'AXM-W01', n:'Prostate Specific Antigen', g:'Wellness', t:'12h', p:24500},
+    {c:'AXM-W02', n:'CA-125', g:'Wellness', t:'48h', p:36000},
+    {c:'AXM-W03', n:'Ferritin & Iron Studies', g:'Wellness', t:'24h', p:32000},
+    {c:'AXM-W04', n:'Vitamin B12 & Folate', g:'Wellness', t:'24h', p:34500},
+    {c:'AXM-W05', n:'Urinalysis (Dipstick + Micro)', g:'Wellness', t:'2h', p:7200},
+    {c:'AXM-W06', n:'H. pylori Antigen (Stool)', g:'Wellness', t:'24h', p:19800}
+  ];
+  var body = document.getElementById('rows');
+  body.innerHTML = TESTS.map(function(t){
+    return '<tr><td class="num">' + t.c + '</td>' +
+      '<td>' + t.n + '</td>' +
+      '<td><span class="grp">' + t.g + '</span></td>' +
+      '<td class="num">' + t.t + '</td>' +
+      '<td class="num">&#8358;' + t.p.toLocaleString('en-NG') + '</td></tr>';
+  }).join('');
+})();
+</script>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div class="ft-brand">
+        <a href="index.html" class="brand"><span class="mark" aria-hidden="true"></span>Axiom</a>
+        <p>Accredited diagnostic laboratory services across Lagos. Home collection,
+          same-day results, published prices.</p>
+      </div>
+      <div class="ft">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="tests.html">Test catalogue</a></li>
+          <li><a href="home-collection.html">Home collection</a></li>
+          <li><a href="results.html">Results portal</a></li>
+          <li><a href="tests.html">Wellness panels</a></li>        </ul>
+      </div>
+      <div class="ft">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="about.html">Accreditation</a></li>
+          <li><a href="about.html">Centres</a></li>
+        </ul>
+      </div>
+      <div class="ft">
+        <h4>Book</h4>
+        <ul>
+          <li><a href="index.html#book">Book a test</a></li>
+          <li><a href="home-collection.html">Request a home visit</a></li>
+          <li><a href="results.html">Access my results</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>&copy; 2026 Axiom Diagnostics &middot; Lagos</span>
+      <span>Results must be interpreted by a qualified clinician</span>
+    </div>
+  </div>
+</footer>
+</div>
+<script src="assets/js/axiom.js"></script>
+</body>
+</html>
