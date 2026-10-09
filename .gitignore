@@ -18,3 +18,8 @@ Thumbs.db
 *.key
 credentials.json
 token.json
+
+# --- internal strategy: never publish ---
+TARGET-MARKET.md
+SEO-STRATEGY.md
+HANDOFF.md
