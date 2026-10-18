@@ -64,7 +64,7 @@ header.solid{background:rgba(241,237,228,.86);backdrop-filter:blur(14px);
 .brand{font-family:var(--disp);font-size:1.5rem;letter-spacing:-.02em;line-height:1}
 .brand b{font-weight:400}
 .brand i{color:var(--terra);font-style:normal}
-.brand img{display:block;height:30px;width:auto}
+.brand img{display:block;height:32px;width:auto}
 .navlinks{display:flex;align-items:center;gap:clamp(18px,2.4vw,40px);list-style:none}
 .navlinks a{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--ink-soft);position:relative;padding:4px 0;
@@ -239,6 +239,29 @@ header.solid{background:rgba(241,237,228,.86);backdrop-filter:blur(14px);
   text-transform:uppercase;display:inline-flex;gap:7px;align-items:center;
   transition:gap .3s var(--ease)}
 .wcard:hover .wcard-foot .go{gap:13px}
+
+
+/* ---------- work reels: liquid-glass vertical carousel ---------- */
+.reel{aspect-ratio:16/10;overflow:hidden;position:relative;background:#E4DED2;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.22),inset 0 1px 0 rgba(255,255,255,.4)}
+.reel::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.32) 47%,transparent 62%);
+  mix-blend-mode:soft-light;animation:reel-sheen 6.5s ease-in-out infinite}
+.reel-track{position:absolute;inset:0;display:flex;flex-direction:column;
+  animation:reel-drift 15s linear infinite;will-change:transform}
+.reel:hover .reel-track{animation-play-state:paused}
+.reel-slide{position:relative;flex:0 0 100%;height:100%}
+.reel-slide img{width:100%;height:100%;object-fit:cover;display:block;transition:none}
+.reel-slide figcaption{position:absolute;left:14px;bottom:13px;z-index:3;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;text-shadow:0 1px 10px rgba(24,22,20,.55)}
+.reel .badge{z-index:3}
+.reel-veil{position:absolute;inset:auto 0 0 0;height:34%;z-index:2;pointer-events:none;
+  background:linear-gradient(to top,rgba(244,239,231,.62),transparent)}
+.wcard:hover .reel-slide img{transform:none}
+@keyframes reel-drift{to{transform:translateY(-200%)}}
+@keyframes reel-sheen{0%,100%{transform:translateX(-26%)}50%{transform:translateX(26%)}}
+@media (prefers-reduced-motion:reduce){.reel-track{animation:none}.reel::after{animation:none}}
 
 /* ---------- proof ---------- */
 .proof{background:var(--warm);border-top:1px solid var(--rule);
@@ -435,7 +458,7 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
 
 <header id="hdr">
   <div class="nav">
-    <a href="#top" class="brand"><img src="assets/img/brand/fjmk-logo.svg" alt="FJMK — Websites for clinics" width="132" height="45"></a>
+    <a href="#top" class="brand"><img src="assets/img/brand/fjmk-logo-nav.png" alt="FJMK — Websites for clinics" width="128" height="44"></a>
     <ul class="navlinks" id="nav">
       <li><a href="work/index.html">Work</a></li>
       <li><a href="index.html#services">Services</a></li>
@@ -471,12 +494,12 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
         </div>
       </div>
       <figure class="hero-fig">
-        <img src="assets/img/design/01-lumen-eye.jpg"
-             alt="Lumen Eye Institute — a clinic website designed and built by FJMK"
-             width="800" height="500" fetchpriority="high">
+        <img src="assets/img/hero-walk.webp"
+             alt="A woman in cream linen and rust trousers walking past a weathered plaster wall"
+             width="720" height="601" fetchpriority="high">
         <figcaption>
           <span class="mono">Fig. 01</span>
-          <span class="mono n">Lumen Eye · Lagos</span>
+          <span class="mono n">Lagos / NG</span>
         </figcaption>
       </figure>
     </div>
@@ -517,9 +540,9 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
         </ul>
       </div>
       <figure class="prob-fig rv">
-        <img src="assets/img/design/05-maison-aesthetics.jpg"
-             alt="Maison Aesthetics — a clinic website designed and built by FJMK"
-             width="800" height="500" loading="lazy">
+        <img src="assets/img/still-life.webp"
+             alt="A quiet sunlit threshold: weathered plaster, a glazed doorway, linen and warm wood"
+             width="1344" height="768" loading="lazy">
       </figure>
     </div>
   </div>
@@ -668,7 +691,7 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
     <div class="work-head">
       <div class="rv">
         <div class="eyebrow"><span class="mono">Selected work</span></div>
-        <h2 class="d2">Live sites,<br>not screenshots.</h2>
+        <h2 class="d2">Recent builds.</h2>
       </div>
       <p class="small rv" style="max-width:32ch">Four clinic builds, each shaped
         around the practice, its patients and the way people book care.</p>
@@ -676,11 +699,14 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
     <div class="work-grid">
 
       <a class="wcard rv" href="work/dental.html">
-        <div class="wcard-img">
+        <div class="wcard-img reel">
           <span class="badge mono">Dental</span>
-          <img src="assets/img/work/ikeja-dental.svg"
-               alt="Ikeja Dental Studio — website preview"
-               width="1376" height="768" loading="lazy">
+          <div class="reel-track">
+            <figure class="reel-slide"><img src="assets/img/design/12-script-pharmacy.jpg" alt="Script Pharmacy — a clinic website by FJMK" width="800" height="500" loading="lazy"><figcaption>Script Pharmacy</figcaption></figure>
+            <figure class="reel-slide"><img src="assets/img/design/05-maison-aesthetics.jpg" alt="Maison Aesthetics — a clinic website by FJMK" width="800" height="500" loading="lazy"><figcaption>Maison Aesthetics</figcaption></figure>
+            <figure class="reel-slide" aria-hidden="true"><img src="assets/img/design/12-script-pharmacy.jpg" alt="" width="800" height="500" loading="lazy"></figure>
+          </div>
+          <div class="reel-veil" aria-hidden="true"></div>
         </div>
         <div class="wcard-body">
           <h3>Ikeja Dental Studio</h3>
@@ -694,11 +720,14 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
       </a>
 
       <a class="wcard rv" href="work/family-clinic.html">
-        <div class="wcard-img">
+        <div class="wcard-img reel">
           <span class="badge mono">Family medicine</span>
-          <img src="assets/img/work/shomolu-family.svg"
-               alt="Shomolu Family Clinic — website preview"
-               width="1376" height="768" loading="lazy">
+          <div class="reel-track">
+            <figure class="reel-slide"><img src="assets/img/design/07-sprout-paeds.jpg" alt="Sprout Paeds — a clinic website by FJMK" width="800" height="500" loading="lazy"><figcaption>Sprout Paeds</figcaption></figure>
+            <figure class="reel-slide"><img src="assets/img/design/10-hearth-home-care.jpg" alt="Hearth Home Care — a clinic website by FJMK" width="800" height="500" loading="lazy"><figcaption>Hearth Home Care</figcaption></figure>
+            <figure class="reel-slide" aria-hidden="true"><img src="assets/img/design/07-sprout-paeds.jpg" alt="" width="800" height="500" loading="lazy"></figure>
+          </div>
+          <div class="reel-veil" aria-hidden="true"></div>
         </div>
         <div class="wcard-body">
           <h3>Shomolu Family Clinic</h3>
@@ -712,11 +741,14 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
       </a>
 
       <a class="wcard rv" href="work/diagnostics.html">
-        <div class="wcard-img">
+        <div class="wcard-img reel">
           <span class="badge mono">Diagnostics</span>
-          <img src="assets/img/work/meridian-diagnostics.svg"
-               alt="Meridian Diagnostics — website preview"
-               width="1376" height="768" loading="lazy">
+          <div class="reel-track">
+            <figure class="reel-slide"><img src="assets/img/design/02-axiom-labs.jpg" alt="Axiom Labs — a clinic website by FJMK" width="800" height="500" loading="lazy"><figcaption>Axiom Labs</figcaption></figure>
+            <figure class="reel-slide"><img src="assets/img/design/09-terra-derm.jpg" alt="Terra Derm — a clinic website by FJMK" width="800" height="500" loading="lazy"><figcaption>Terra Derm</figcaption></figure>
+            <figure class="reel-slide" aria-hidden="true"><img src="assets/img/design/02-axiom-labs.jpg" alt="" width="800" height="500" loading="lazy"></figure>
+          </div>
+          <div class="reel-veil" aria-hidden="true"></div>
         </div>
         <div class="wcard-body">
           <h3>Meridian Diagnostics</h3>
@@ -730,11 +762,14 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
       </a>
 
       <a class="wcard rv" href="work/specialist.html">
-        <div class="wcard-img">
+        <div class="wcard-img reel">
           <span class="badge mono">Specialist</span>
-          <img src="assets/img/work/lekki-fertility.svg"
-               alt="Lekki Fertility & Women's — website preview"
-               width="1376" height="768" loading="lazy">
+          <div class="reel-track">
+            <figure class="reel-slide"><img src="assets/img/design/03-veil-sexual-health.jpg" alt="Veil Sexual Health — a clinic website by FJMK" width="800" height="500" loading="lazy"><figcaption>Veil Sexual Health</figcaption></figure>
+            <figure class="reel-slide"><img src="assets/img/design/08-axis-ortho.jpg" alt="Axis Ortho — a clinic website by FJMK" width="800" height="500" loading="lazy"><figcaption>Axis Ortho</figcaption></figure>
+            <figure class="reel-slide" aria-hidden="true"><img src="assets/img/design/03-veil-sexual-health.jpg" alt="" width="800" height="500" loading="lazy"></figure>
+          </div>
+          <div class="reel-veil" aria-hidden="true"></div>
         </div>
         <div class="wcard-body">
           <h3>Lekki Fertility &amp; Women's</h3>
@@ -996,7 +1031,7 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
   <div class="wrap">
     <div class="ft-grid">
       <div class="ft-brand">
-        <a href="#top" class="brand"><img src="assets/img/brand/fjmk-logo.svg" alt="FJMK — Websites for clinics" width="132" height="45"></a>
+        <a href="#top" class="brand"><img src="assets/img/brand/fjmk-logo-nav.png" alt="FJMK — Websites for clinics" width="128" height="44"></a>
         <p>The web studio for clinics and hospitals. We build the site, then we
           prove the bookings.</p>
       </div>
