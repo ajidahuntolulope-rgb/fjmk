@@ -1,5 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768" role="img" aria-labelledby="t">
 <title id="t">Meridian Diagnostics — website preview</title>
+<style>
+  .btn-pulse{animation:bp 2.2s ease-in-out infinite;transform-origin:center}
+  @keyframes bp{0%,100%{opacity:1}50%{opacity:.72}}
+  .motif-float{animation:mf 4.5s ease-in-out infinite}
+  @keyframes mf{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  .draw{stroke-dasharray:340;stroke-dashoffset:340;animation:dr 2.6s ease-out forwards}
+  @keyframes dr{to{stroke-dashoffset:0}}
+  .bar{animation:br 3s ease-in-out infinite}
+  @keyframes br{0%,100%{opacity:.5}50%{opacity:1}}
+</style>
 <rect width="1376" height="768" fill="#F4EFE7"/>
 <rect width="1376" height="64" fill="#FFFFFF"/>
 <circle cx="36" cy="32" r="7" fill="#E76B62"/><circle cx="62" cy="32" r="7" fill="#E8B24C"/><circle cx="88" cy="32" r="7" fill="#5FA85C"/>
@@ -7,21 +17,26 @@
 <rect x="0" y="64" width="1376" height="56" fill="#FFFDF8"/>
 <rect x="64" y="84" width="150" height="16" rx="2" fill="#181614"/>
 <rect x="1230" y="78" width="82" height="26" rx="2" fill="#181614"/>
-<rect x="64" y="170" width="700" height="54" rx="3" fill="#181614"/>
-<rect x="64" y="236" width="460" height="26" rx="3" fill="#3E68B0"/>
-<rect x="64" y="274" width="640" height="14" rx="3" fill="#D8D0C0"/>
-<rect x="64" y="298" width="600" height="14" rx="3" fill="#D8D0C0"/>
-<rect x="64" y="322" width="560" height="14" rx="3" fill="#D8D0C0"/>
-<rect x="64" y="372" width="200" height="48" rx="2" fill="#3E68B0"/>
-<rect x="788" y="170" width="524" height="360" rx="4" fill="#3E68B0" opacity="0.16"/>
-<rect x="788" y="170" width="524" height="360" rx="4" fill="none" stroke="#3E68B0" stroke-opacity="0.5"/>
-<rect x="820" y="200" width="460" height="92" rx="3" fill="#3E68B0" opacity="0.45"/>
-<rect x="820" y="310" width="330" height="16" rx="3" fill="#181614"/>
-<rect x="820" y="338" width="420" height="12" rx="3" fill="#C9C0AC"/>
-<rect x="820" y="360" width="400" height="12" rx="3" fill="#C9C0AC"/>
+
+<text x="64" y="196" font-family="Helvetica, Arial, sans-serif" font-size="17" letter-spacing="3" fill="#3E68B0">DIAGNOSTICS · LAGOS</text>
+<text x="64" y="268" font-family="Georgia, 'Times New Roman', serif" font-size="58" fill="#181614">Tests, results, home sampling.</text>
+<rect x="64" y="300" width="560" height="14" rx="3" fill="#C9C0AC"/>
+<rect x="64" y="324" width="500" height="14" rx="3" fill="#C9C0AC"/>
+<rect class="btn-pulse" x="64" y="372" width="220" height="52" rx="3" fill="#3E68B0"/>
+<text x="174" y="404" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="17" letter-spacing="1" fill="#FFFFFF">REQUEST A TEST</text>
+
+<rect x="788" y="150" width="524" height="360" rx="6" fill="#FFFFFF" stroke="#E6DFD0"/>
+<rect x="820" y="182" width="460" height="150" rx="4" fill="#3E68B0" opacity="0.14"/>
+<g class="motif-float" transform="translate(1050 200)" fill="#3E68B0"><path d="M0 0h10v22l4 6c1 2 0 4-2 4H-2c-2 0-3-2-2-4l4-6z"/></g>
+<rect x="820" y="352" width="330" height="16" rx="3" fill="#181614"/>
+<rect x="820" y="380" width="420" height="12" rx="3" fill="#C9C0AC"/>
+<rect x="820" y="402" width="400" height="12" rx="3" fill="#C9C0AC"/>
+<rect class="bar" x="820" y="440" width="180" height="34" rx="3" fill="#3E68B0"/>
+
 <rect x="64" y="470" width="620" height="16" rx="3" fill="#181614"/>
 <rect x="64" y="498" width="700" height="12" rx="3" fill="#C9C0AC"/>
 <rect x="64" y="520" width="660" height="12" rx="3" fill="#C9C0AC"/>
 <rect x="64" y="600" width="1248" height="120" rx="4" fill="#FFFFFF" stroke="#E6DFD0"/>
 <rect x="1100" y="640" width="120" height="40" rx="2" fill="#181614"/>
+<line class="draw" x1="64" y1="660" x2="1248" y2="660" stroke="#3E68B0" stroke-width="3"/>
 </svg>

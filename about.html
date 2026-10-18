@@ -285,6 +285,14 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
   .rv{opacity:1;transform:none}
   .rv.d1{opacity:1}
 }
+.tcard-img a{display:block;position:relative}
+.tcard-img a img{transition:transform .5s var(--ease)}
+.tcard-img a:hover img{transform:scale(1.02)}
+.portrait-link{position:absolute;left:12px;bottom:12px;z-index:2;
+  font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;background:rgba(24,22,20,.62);padding:8px 13px;opacity:0;
+  transition:opacity .3s}
+.tcard-img a:hover .portrait-link{opacity:1}
 </style>
 </head>
 <body id="top">
@@ -530,9 +538,12 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
 
       <article class="tcard rv">
         <div class="tcard-img">
-          <img src="assets/img/portrait-tolu.webp"
-               alt="Dr Tolulope Ajidahun, FJMK's medical reviewer, in a white coat"
-               width="900" height="1125" loading="lazy">
+          <a href="https://drtolu.com" target="_blank" rel="noopener" aria-label="Visit Dr Tolu Ajidahun's site">
+            <img src="assets/img/portrait-tolu.webp"
+                 alt="Dr Tolulope Ajidahun, FJMK's medical reviewer, in a white coat"
+                 width="900" height="1125" loading="lazy">
+            <span class="portrait-link">drtolu.com <span class="ar">&#8599;</span></span>
+          </a>
         </div>
         <div class="tcard-body">
           <span class="rl">Medical review</span>
@@ -541,8 +552,6 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
             education carries our clients' names, so it is checked by a doctor,
             not by a writer with a search engine.</p>
           <div class="cred">Clinical accuracy · Patient education · Editorial review</div>
-          <a class="cred-link" href="https://drtolu.company" target="_blank"
-             rel="noopener me">drtolu.company <span class="ar">&#8599;</span></a>
         </div>
       </article>
 
