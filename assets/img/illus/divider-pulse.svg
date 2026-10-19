@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="120" viewBox="0 0 1600 120" preserveAspectRatio="none">
+  <!-- Pulse trace: a single ECG line used as a section divider.
+       Long flat runs keep it calm; one complex every 400px. -->
+  <g fill="none" stroke="#A9573F" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 60H120
+             l14-6 10 6 8-4 8 4 12-6
+             l10 26 12-52 12 34 10-8 14 6 12-4
+             h26
+             l16-6 10 6 8-4 8 4 12-6
+             l10 26 12-52 12 34 10-8 14 6 12-4
+             h26
+             l16-6 10 6 8-4 8 4 12-6
+             l10 26 12-52 12 34 10-8 14 6 12-4
+             h26
+             l16-6 10 6 8-4 8 4 12-6
+             l10 26 12-52 12 34 10-8 14 6 12-4
+             H1600"/>
+  </g>
+</svg>

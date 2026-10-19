@@ -100,19 +100,38 @@ header.solid{background:rgba(241,237,228,.86);backdrop-filter:blur(14px);
 .case .cbody .meta .mono{color:var(--muted);font-size:.62rem}
 .case .cbody p{font-size:.94rem;color:var(--ink-soft);font-weight:300;
   max-width:56ch;margin-top:14px}
-.case .cfig{overflow:hidden;aspect-ratio:16/10;background:#E4DED2;
-  position:relative;transform:translateZ(0)}
-.case .cfig img{width:100%;height:100%;object-fit:cover;
-  filter:saturate(.94);transition:transform .9s var(--ease),filter .6s}
-.case:hover .cfig img{transform:scale(1.05);filter:saturate(1)}
+.case .cfig{display:flex;flex-direction:column;gap:12px;
+  background:transparent;border:0;overflow:visible;aspect-ratio:auto}
+/* the practice */
+.case .cfig-photo-wrap{position:relative;overflow:hidden;border:1px solid var(--rule);
+  aspect-ratio:16/10;background:#E4DED2}
+.case .cfig-photo{display:block;width:100%;height:100%;object-fit:cover;
+  filter:saturate(.92) contrast(1.02);
+  transition:transform .9s var(--ease),filter .6s}
+.case:hover .cfig-photo{transform:scale(1.04);filter:saturate(1)}
+
 .case .cfig .tag{position:absolute;top:12px;left:12px;background:var(--paper);
-  padding:6px 11px}
+  padding:6px 11px;z-index:2}
 .case .cfig .tag .mono{font-size:.58rem}
 .case .arrow{position:absolute;right:clamp(20px,4vw,64px);top:50%;
   transform:translateY(-50%);opacity:0;transition:opacity .4s var(--ease),right .5s var(--ease);
   font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
   color:var(--terra);z-index:3;pointer-events:none}
 .case:hover .arrow{opacity:1;right:clamp(28px,5vw,80px)}
+
+
+/* ---------- illustration layers ---------- */
+.illus{position:absolute;pointer-events:none;user-select:none}
+.hero{position:relative;overflow:hidden}
+.hero-cells{top:-6%;right:-8%;width:min(58vw,880px);opacity:.5;z-index:0}
+.hero .wrap{position:relative;z-index:1}
+.pulse-rule{margin:clamp(40px,5vw,72px) 0 0;line-height:0;opacity:.85}
+.pulse-rule svg{width:100%;height:60px;display:block}
+.range-pattern{inset:0;opacity:.5;z-index:0;
+  background-image:url('../assets/img/illus/pattern-clinical.svg');
+  background-size:140px 140px}
+#range{position:relative;overflow:hidden}
+#range .wrap{position:relative;z-index:1}
 
 /* note strip */
 .note{background:var(--ink);color:var(--paper);padding:clamp(56px,7vw,104px) 0;
@@ -222,6 +241,7 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
 
 <!-- ============ HERO ============ -->
 <section class="hero">
+  <img class="illus hero-cells" src="../assets/img/illus/motif-cells.svg" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="hero-grid">
       <div>
@@ -263,10 +283,12 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
               The site answers the questions the front desk used to answer by phone.</p>
           </div>
           <div class="cfig">
+            <figure class="cfig-photo-wrap">
+              <img class="cfig-photo" src="../assets/img/work-photos/ikeja-dental.jpg"
+                 alt="Dentist at work in a treatment room"
+                 width="1400" height="875" loading="lazy">
             <span class="tag mono">Dental</span>
-            <img src="../assets/img/work/ikeja-dental.svg"
-                 alt="Ikeja Dental Studio — website preview"
-                 width="1376" height="768" loading="lazy">
+            </figure>
           </div>
         </div>
         <span class="arrow">View site →</span>
@@ -287,10 +309,12 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
               practical information for the families who walk in.</p>
           </div>
           <div class="cfig">
+            <figure class="cfig-photo-wrap">
+              <img class="cfig-photo" src="../assets/img/work-photos/shomolu-family.jpg"
+                 alt="A family doctor in her consulting room"
+                 width="1400" height="875" loading="lazy">
             <span class="tag mono">Family medicine</span>
-            <img src="../assets/img/work/shomolu-family.svg"
-                 alt="Shomolu Family Clinic — website preview"
-                 width="1376" height="768" loading="lazy">
+            </figure>
           </div>
         </div>
         <span class="arrow">View site →</span>
@@ -311,10 +335,12 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
               to ask, answered before they pick up the phone.</p>
           </div>
           <div class="cfig">
+            <figure class="cfig-photo-wrap">
+              <img class="cfig-photo" src="../assets/img/work-photos/meridian-diagnostics.jpg"
+                 alt="A laboratory technician processing samples"
+                 width="1400" height="875" loading="lazy">
             <span class="tag mono">Diagnostics</span>
-            <img src="../assets/img/work/meridian-diagnostics.svg"
-                 alt="Meridian Diagnostics — website preview"
-                 width="1376" height="768" loading="lazy">
+            </figure>
           </div>
         </div>
         <span class="arrow">View site →</span>
@@ -335,10 +361,12 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
               a difficult conversation easier to start.</p>
           </div>
           <div class="cfig">
+            <figure class="cfig-photo-wrap">
+              <img class="cfig-photo" src="../assets/img/work-photos/lekki-fertility.jpg"
+                 alt="An expectant mother"
+                 width="1400" height="875" loading="lazy">
             <span class="tag mono">Specialist</span>
-            <img src="../assets/img/work/lekki-fertility.svg"
-                 alt="Lekki Fertility & Women's — website preview"
-                 width="1376" height="768" loading="lazy">
+            </figure>
           </div>
         </div>
         <span class="arrow">View site →</span>
@@ -347,6 +375,11 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
     </div>
   </div>
 </section>
+
+<!-- ============ PULSE ============ -->
+<div class="wrap"><div class="pulse-rule" aria-hidden="true">
+  <img src="../assets/img/illus/divider-pulse.svg" alt="" style="width:100%;height:60px;display:block">
+</div></div>
 
 <!-- ============ NOTE ============ -->
 <section class="note">
@@ -371,6 +404,7 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
 
   <!-- ============ DESIGN RANGE ============ -->
   <section id="range">
+    <div class="illus range-pattern" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head rv">
         <div class="eyebrow">Design range</div>

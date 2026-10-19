@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768" role="img" aria-labelledby="t">
-<title id="t">Lekki Fertility & Women's — website preview</title>
+<title id="t">Lekki Fertility &amp; Women's — website preview</title>
 <style>
   .btn-pulse{animation:bp 2.2s ease-in-out infinite;transform-origin:center}
   @keyframes bp{0%,100%{opacity:1}50%{opacity:.72}}
