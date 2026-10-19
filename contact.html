@@ -253,6 +253,22 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
   .rv{opacity:1;transform:none}
 }
 </style>
+<!-- seo:start -->
+<link rel="canonical" href="https://drtolu.com/fjmk/contact">
+<meta property="og:title" content="Start a project">
+<meta property="og:description" content="Three quick questions and we open WhatsApp with your message ready to send. Tell us about your clinic and what you want to fix.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://drtolu.com/fjmk/contact">
+<meta property="og:site_name" content="FJMK">
+<meta property="og:locale" content="en_NG">
+<meta property="og:image" content="https://drtolu.com/fjmk/assets/img/brand/og-fjmk.png">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="FJMK — websites for clinics and hospitals in Lagos">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://drtolu.com/fjmk/assets/img/brand/og-fjmk.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","name":"Start a project — FJMK","url":"https://drtolu.com/fjmk/contact","description":"Three quick questions and we open WhatsApp with your message ready to send. Tell us about your clinic and what you want to fix.","isPartOf":{"@id":"https://drtolu.com/fjmk/#org"},"about":{"@id":"https://drtolu.com/fjmk/#org"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"FJMK","item":"https://drtolu.com/fjmk/"},{"@type":"ListItem","position":2,"name":"Start a project","item":"https://drtolu.com/fjmk/contact"}]}</script>
+<!-- seo:end -->
 </head>
 <body id="top">
 
@@ -451,8 +467,10 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
           <textarea id="fms" name="ms"
             placeholder="We are in Shomolu. People find our competitors on Google first and we lose them."></textarea>
         </div>
+        <input type="text" name="_hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <p id="form-note" class="small fnote" aria-live="polite"></p>
         <button type="submit" class="btn btn-p sub">Send enquiry <span class="ar">→</span></button>
+        <p class="small fnote" style="margin-top:14px">Prefer email? <a href="mailto:contact@drtolu.com?subject=Clinic%20website%20enquiry&body=Hello%20FJMK.%0A%0AMy%20clinic%20is%20called%20...%20and%20we%20are%20in%20...%0A%0AThe%20main%20thing%20I%20want%20fixed%20is%20...%0A%0AYou%20can%20reach%20me%20on%20..." style="color:var(--terra);text-decoration:underline;text-underline-offset:2px">Open it in Gmail with your message ready</a>.</p>
       </form>
     </div>
   </div>
@@ -499,7 +517,7 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
     </div>
     <div class="ft-bot">
       <span>© 2026 FJMK Agency · Lagos</span>
-      <span>Built for clinics only</span>
+      <span>Built for clinics only · <a href="mailto:contact@drtolu.com?subject=Clinic%20website%20enquiry&body=Hello%20FJMK.%0A%0AMy%20clinic%20is%20called%20...%20and%20we%20are%20in%20...%0A%0AThe%20main%20thing%20I%20want%20fixed%20is%20...%0A%0AYou%20can%20reach%20me%20on%20..." style="color:inherit;text-decoration:underline;text-underline-offset:2px">Email us</a> · <a href="https://wa.me/2348145580220?text=Hello%20FJMK.%20I%20would%20like%20to%20talk%20about%20a%20website%20for%20my%20clinic." target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:2px">WhatsApp</a></span>
     </div>
   </div>
 </footer>
@@ -509,7 +527,8 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
   /* ---------- WhatsApp number (international format, digits only) ---------- */
   var WA = '2348145580220';
   /* ---------- Enquiry inbox. Never rendered into the page. ---------- */
-  var INBOX = 'hopequasher' + String.fromCharCode(64) + 'gmail.com';
+  /* Enquiries go to contact@drtolu.com via FormSubmit's alias (address never in the page). */
+  var FORM = 'https://formsubmit.co/ajax/de23c2fcc84d70e0fdcf09a669c34494';
 
   var hdr=document.getElementById('hdr');
   function sc(){ hdr.classList.toggle('solid', window.scrollY>24); }
@@ -620,19 +639,21 @@ footer{background:var(--ink);color:rgba(241,237,228,.62);
     if(!em || !f.elements.em.checkValidity()){
       f.elements.em.focus(); note.textContent='Please add a valid email address.'; return;
     }
-    var subject=encodeURIComponent('Clinic website enquiry — '+nm);
-    var lines=[
-      'Name: '+nm,
-      'Email: '+em,
-      'Phone / WhatsApp: '+f.elements.ph.value.trim(),
-      'Clinic: '+f.elements.cl.value.trim(),
-      '',
-      'What they are trying to fix:',
-      f.elements.ms.value.trim()
-    ];
-    var body=encodeURIComponent(lines.join('\n'));
-    note.textContent='Your email app will open with the enquiry ready to send. If nothing opens, message us on WhatsApp instead.';
-    window.location.href='mailto:'+INBOX+'?subject='+subject+'&body='+body;
+    var btn=f.querySelector('button[type=submit]');
+    if(f.elements._hp && f.elements._hp.value){ note.textContent='Thank you. Your enquiry has been sent.'; f.reset(); return; }
+    btn.disabled=true; note.textContent='Sending…';
+    fetch(FORM,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({name:nm,email:em,phone:f.elements.ph.value.trim(),clinic:f.elements.cl.value.trim(),
+        message:f.elements.ms.value.trim(),_subject:'FJMK enquiry — '+nm,_captcha:'false',_template:'basic'})})
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        if(!(j && (j.success===true || j.success==='true'))) throw new Error('not sent');
+        note.textContent='Sent. Thank you — we will be in touch shortly.'; f.reset();
+      })
+      .catch(function(){
+        note.innerHTML='That did not go through. Please message us on WhatsApp or email contact@drtolu.com.';
+      })
+      .then(function(){ btn.disabled=false; });
   });
 })();
 </script>
