@@ -65,7 +65,7 @@ print-to-PDF action. The result counts and finding cards use distinct colors and
 plain-text status labels. Its title and description target clinic website checks
 in Lagos, Nigeria. Production verification after the latest release returned
 HTTP 200 for the Lagos University Teaching Hospital homepage and 13 checks (3 to
-review, 9 good, 1 signal). PageSpeed returned a mobile snapshot of 74 performance,
+review, 9 good, 1 signal). PageSpeed returned a mobile snapshot of 67 performance,
 75 accessibility, 83 SEO and 96 best practices. A reserved `.invalid` address was
 rejected and the prior report cleared without creating a new one.
 Research placeholder proposes a 50-site Lagos study; the proposed 100-site audit
