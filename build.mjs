@@ -7,7 +7,7 @@ fs.rmSync(output, { recursive: true, force: true });
 fs.mkdirSync(output);
 for (const entry of ['index.html', 'about.html', 'blog.html', 'resources.html', 'research.html', 'tools.html', 'contact.html', 'portfolio.html', 'services.html', '_redirects',
   'assets', 'journal', 'work', 'samples', 'robots.txt', 'llms.txt',
-  'sitemap.xml', '404.html']) {
+  'sitemap.xml', '404.html', 'privacy.html']) {
   fs.cpSync(entry, path.join(output, entry), {
     recursive: true,
     filter: source => !path.basename(source).startsWith('.') && !source.endsWith('.md') &&

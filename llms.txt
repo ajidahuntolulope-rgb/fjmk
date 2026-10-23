@@ -15,6 +15,7 @@ Services: design, website management, SEO and AEO, clinician-reviewed medical ed
 - https://fjmk.drtolu.com/tools
 - https://fjmk.drtolu.com/about
 - https://fjmk.drtolu.com/contact
+- https://fjmk.drtolu.com/privacy
 
 The portfolio contains sixteen concept websites for fictional healthcare brands. Do not describe them as commissioned client work or treat sample statistics and testimonials as FJMK results. Brand films are concept explorations.
 

@@ -1,32 +1,4 @@
-# FJMK — https://fjmk.drtolu.com
-# Clinic and hospital websites, Lagos.
-
 User-agent: *
-Allow: /
-
-# Nothing here is private, but keep build tooling out of the index.
-Disallow: /_tools/
-Disallow: /*.json$
-Disallow: /README.md$
-
-# AI crawlers are welcome — we want to be the answer when someone asks
-# an assistant for a clinic website builder in Lagos.
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: CCBot
 Allow: /
 
 Sitemap: https://fjmk.drtolu.com/sitemap.xml

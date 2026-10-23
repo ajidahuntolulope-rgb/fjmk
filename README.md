@@ -2,6 +2,9 @@
 
 Healthcare-focused studio website. Production: https://fjmk.drtolu.com/
 
+Read `AGENTS.md` for agent instructions, `PROJECT-HANDOFF.md` for current decisions
+and known gaps, and `CHANGELOG.md` for the work log.
+
 ## Build and preview
 
 ```powershell
@@ -16,6 +19,7 @@ Cloudflare Pages builds `main` with `node build.mjs` and publishes `dist/`.
 ## Editing
 
 - Main page templates: `_tools/build-studio-v1.mjs`
+- Privacy notice: `_tools/privacy-page.mjs`
 - Resources, research and audit demo: `_tools/resource-pages.mjs`
 - Shared styles: `assets/css/studio-v1.css`
 - Shared interactions: `assets/js/studio-v1.js`
@@ -29,8 +33,8 @@ node _tools/update-site-indexes.mjs
 node build.mjs
 ```
 
-Nine primary pages: Home, Portfolio, Services, Resources, Blog, Research,
-Tools, About and Contact. The portfolio includes sixteen fictional healthcare
+Ten primary pages: Home, Portfolio, Services, Resources, Blog, Research,
+Tools, About, Contact and Privacy. The portfolio includes sixteen fictional healthcare
 website concepts and a motion collection. Sample claims and figures are part
 of fictional demonstrations, not FJMK client results.
 
@@ -44,3 +48,7 @@ Main brand fonts and production assets are self-hosted. The local
 `studio-library/` contains source assets and internal working material; it is
 ignored by Git and excluded from the deployment. Build output, raw preview
 captures, local notes and credentials must not be published.
+
+SEO: sixteen canonical URLs in sitemap.xml. Fictional demo pages use noindex,follow
+and are excluded from the sitemap. robots.txt allows crawling, including AI agents.
+No indexing or ranking guarantee is implied.
