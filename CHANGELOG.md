@@ -85,6 +85,7 @@ notes are not permission to overwrite current user decisions.
 ### Blog SEO refresh
 
 - Reviewed search intent and competitor results qualitatively. Search Console still has no useful FJMK query baseline, so no search volumes or ranking gains are claimed. Added the query map and source review to `BLOG-SEO-RESEARCH.md`.
+- Normalized CSS and JavaScript line endings before generating cache-version hashes so Windows builds and Linux deployments emit the same page metadata.
 - Reframed the six active blog cards as direct questions and wrote six original answers around FJMK's healthcare discovery-to-contact perspective. Kept commercial website-design terms on the Services page.
 - Added static article pages under `/blog/` using the approved FJMK fonts, palette, header and footer. Added canonical URLs, Article and breadcrumb structured data, visible first-paragraph answers, source links, and the six pages to the curated sitemap.
 - Added 301 redirects from the six former active `/journal/` routes, including `.html` variants. Parked legacy article files were not changed.
