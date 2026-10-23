@@ -4,7 +4,7 @@ Prepared 23 October 2026
 
 ## What the evidence can support
 
-Search Console currently has no useful FJMK query baseline: the available hostname-filtered Performance view showed zero impressions and clicks. The searches below are therefore **intent and opportunity hypotheses**, not measured search volumes or confirmed rankings. Search volume, keyword difficulty and current FJMK positions require a keyword-data tool and more Search Console history. Do not convert these phrases into volume claims.
+Search Console currently has no useful FJMK query baseline: the available hostname-filtered Performance view showed zero impressions and clicks. The Ahrefs keyword connector also returned `Insufficient plan`, so exact keyword volumes and difficulty are unavailable in this workspace. The searches below are therefore **intent and opportunity hypotheses**, not measured search volumes or confirmed rankings. Do not convert these phrases into volume claims.
 
 Live result-page review shows commercial Nigerian pages already competing for broad phrases such as “hospital website design in Nigeria” and “healthcare website design Nigeria”. Their offers repeat a familiar feature list: mobile design, service pages, doctor profiles, booking forms and SEO. Searchers also ask practical questions such as how to add a clinic to Google Maps and why clinic websites get visits without enquiries. That makes broad service phrases more competitive and gives question-led articles a better near-term fit, while the main Services page owns the commercial offer.
 

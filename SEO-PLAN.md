@@ -17,6 +17,7 @@ This plan covers the 16 URLs in the current sitemap: ten main pages and six acti
 - The ten main-page titles were too generic to explain the page or healthcare focus. They now use distinct, descriptive titles. The six active articles have been rewritten to answer specific questions and use the approved FJMK fonts, palette, header and footer.
 - The Blog cards, article canonicals and sitemap now use `/blog/{slug}`. The former six active `/journal/` paths, including `.html` forms, redirect to the new article URLs. Parked legacy articles remain unchanged and outside the sitemap.
 - `BLOG-SEO-RESEARCH.md` records the qualitative query map and competitor scan. No exact search volumes or difficulty scores are available; the queries remain hypotheses until Search Console gathers usable impressions and clicks.
+- The Ahrefs keyword connector returned `Insufficient plan`; the query map uses observed SERP intent and buyer questions, not paid-tool volume estimates.
 - With the Performance report filtered to `https://fjmk.drtolu.com/`, the current three-month view returns 0 clicks and 0 impressions. Its chart only contains dates 17-21 October 2026. Record this as an empty starting baseline, not evidence about content quality. Core Web Vitals field data is still unavailable.
 
 ## What the supplied guides support
@@ -36,6 +37,10 @@ This plan covers the 16 URLs in the current sitemap: ten main pages and six acti
 | 3. Validate search intent | Completed a qualitative map for the six active blog pages and kept broad commercial terms on Services. Treat the mapped phrases as hypotheses until Search Console and buyer conversations support them. | Search Console provides a hostname-filtered query baseline; pages are adjusted only when real query and buyer evidence supports it. |
 | 4. Run a small LinkedIn pilot | Start with one focused theme: how healthcare websites help people understand services and take the next step. Use an existing or newly researched site article as the source, then publish two supporting LinkedIn posts from the company and a real subject expert, linking to the FJMK page. Review engagement and site visits after a month; do not adopt the guide's high-frequency cadence by default. | Useful buyer questions and qualified site visits inform the next article. LinkedIn engagement is a leading signal, not proof of AI citation or revenue. |
 | 5. Build trust from real evidence | Use real team expertise, sources, clear authorship and any approved client evidence. Keep fictional concepts clearly labelled as concepts. Seek relevant interviews, partnerships or contributed coverage only where FJMK has a defensible point of view. | Every claim can be traced to a real source or experience; no invented outcomes, clients or reviews. |
+
+## Automation
+
+GitHub Actions runs the build and SEO checks on pushes and pull requests. A weekly Monday run also fetches every public sitemap URL and checks HTTP status, title, canonical, robots directives, and the sitemap-to-robots link. Search Console indexing and Performance reports still require a human review; no Search Console API credential is configured in this project. The automated check verifies technical reachability, not indexing, rankings, traffic, or AI citations.
 
 ## Guardrails
 

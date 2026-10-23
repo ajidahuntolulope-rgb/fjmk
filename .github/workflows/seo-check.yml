@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   pull_request:
+  schedule:
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
 
 jobs:
   verify:
@@ -31,3 +34,6 @@ jobs:
           git diff --exit-code -- '*.html' sitemap.xml llms.txt
           node _tools/verify-seo.mjs
           node _tools/check-review-v2.mjs
+      - name: Check live sitemap pages
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: node _tools/verify-live-seo.mjs
