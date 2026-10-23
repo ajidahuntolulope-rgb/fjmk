@@ -2,11 +2,23 @@
 
 Last updated: 23 October 2026.
 
-Audit response fix: the browser now handles HTML/error responses from the API
-without leaking JSON parser errors. Rate limits request a 15-second wait; blocked
-requests advise refreshing and retrying. Production validation returned JSON for
-an invalid-mode request. The screenshot's original HTML response was not captured,
-so its precise cause is unconfirmed. Do not claim email delivery was verified.
+Report unlock diagnosis (23 October 2026): FormSubmit initially rejected the
+inactive delivery alias. The user activated it, revealing a second issue: the
+server-side fetch omitted Origin/Referer headers. Direct provider requests without
+them fail ("Make sure you open this page through a web server"); the same request
+with the FJMK origin and tools-page referer succeeds. The backend now supplies
+those fixed headers. Lead failures use HTTP 424 JSON because Cloudflare replaced
+the previous 502 response with an HTML gateway page. The browser also handles
+non-JSON responses, blocks and rate limits. Logs contain only failure reasons,
+without the submitted email/report. Regression check (offline, no email):
+`node _tools/check-audit-lead.mjs`. It covers required origin headers, previews,
+provider rejection/HTML/network failure and successful unlock. The user authorised
+future functional test messages. Gmail access currently requires reauthentication;
+provider acceptance does not establish receipt in the destination inbox.
+The corrected handler was exercised with real network requests and provider
+submission: HTTP 200, 13 checks, 93/A for the FJMK homepage. Offline regressions,
+syntax, build, reference and SEO checks passed. Verify the exact deployed commit
+and production unlock after publishing; inbox receipt is not yet verified.
 
 ## Current site
 
@@ -88,8 +100,8 @@ remain separate because they can vary and may be unavailable. Health-site
 eligibility is a lightweight homepage-text heuristic, not a trained classifier;
 unclear or blocked pages may be rejected. The report request performs a fresh
 scan and submits the lead before returning full details, so findings may shift
-from the preview. Real FormSubmit delivery has not been tested. Do not send a test message
-without authorization.
+from the preview. FormSubmit activation and required origin headers were corrected;
+see the diagnosis above. The user has authorised functional test messages.
 
 Research placeholder proposes a 50-site Lagos study; the proposed 100-site audit
 benchmark is unbuilt. Do not present these as completed research.

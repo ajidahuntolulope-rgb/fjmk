@@ -2,6 +2,11 @@
 
 ## 23 October 2026
 
+- Fixed report unlock submissions by supplying the Origin/Referer headers required
+  by FormSubmit for server-side requests. The user also activated the delivery alias.
+  Return HTTP 424 JSON for delivery failures, with a specific inactive-form message
+  and safe server diagnostics. Added offline lead-flow regression checks to CI.
+
 - Handle non-JSON audit API responses, including Cloudflare blocks and rate limits,
   with actionable retry messages instead of exposing a JSON parsing error.
 

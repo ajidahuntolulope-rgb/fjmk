@@ -487,7 +487,14 @@ async function captureAuditLead(email, audit) {
   try {
     const response = await fetch(FORM_SUBMIT_ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        // Server-side submissions do not inherit the browser's origin headers.
+        // FormSubmit requires the form's site even when _url is supplied.
+        "Origin": "https://fjmk.drtolu.com",
+        "Referer": "https://fjmk.drtolu.com/tools"
+      },
       body: JSON.stringify({
         name: "Health website audit report request",
         email,
@@ -504,11 +511,20 @@ async function captureAuditLead(email, audit) {
     });
     const result = await response.json().catch(() => null);
     if (!response.ok || !(result && (result.success === true || result.success === "true"))) {
-      throw new AuditError(502, "We could not confirm your email request, so the detailed report stayed locked. Please try again shortly.");
+      const inactive = typeof result?.message === "string" && /needs activation/i.test(result.message);
+      // Do not log the submitted email or the report. Provider setup failures
+      // need an owner action; repeatedly asking visitors to retry cannot fix them.
+      console.warn("Audit lead delivery failed", { status: response.status, reason: inactive ? "form_not_activated" : "provider_rejected" });
+      throw new AuditError(424, inactive
+        ? "Report requests are not available yet. Please contact FJMK to request your report."
+        : "We could not confirm your email request, so the detailed report stayed locked. Please try again shortly.");
     }
   } catch (error) {
     if (error instanceof AuditError) throw error;
-    throw new AuditError(502, "We could not confirm your email request, so the detailed report stayed locked. Please try again shortly.");
+    console.warn("Audit lead delivery failed", { reason: controller.signal.aborted ? "provider_timeout" : "provider_unreachable" });
+    // A failed delivery dependency uses 424. Cloudflare replaces some 502
+    // responses with its HTML gateway page, hiding the actionable JSON error.
+    throw new AuditError(424, "We could not confirm your email request, so the detailed report stayed locked. Please try again shortly.");
   } finally {
     clearTimeout(timer);
   }

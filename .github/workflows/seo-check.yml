@@ -29,6 +29,8 @@ jobs:
           node _tools/build-studio-v1.mjs
           node _tools/update-site-indexes.mjs
           node build.mjs
+      - name: Verify audit lead gating (offline)
+        run: node _tools/check-audit-lead.mjs
       - name: Verify generated pages and SEO
         run: |
           git diff --exit-code -- '*.html' sitemap.xml llms.txt
