@@ -96,4 +96,5 @@ notes are not permission to overwrite current user decisions.
 - Simplified the approved `/tools` page into a focused clinic and hospital homepage check, preserving the FJMK visual system. Added an animated FJMK loader, a report with expandable evidence, and a print-to-PDF action.
 - Updated the page title and description for clinic website checks in Lagos, Nigeria.
 - Local browser check of the public Lagos University Teaching Hospital homepage returned HTTP 200 and 13 checks: 3 to review, 8 good, and 2 signals. The mobile PageSpeed snapshot completed with scores of 71 performance, 75 accessibility, 83 SEO and 96 best practices; lab scores can vary.
-- A reserved `.invalid` address was rejected before a report was produced.
+- Production verification after the release returned HTTP 200 and 13 checks: 3 to review, 9 good, and 1 signal. Its mobile PageSpeed snapshot returned 70 performance, 75 accessibility, 83 SEO and 96 best practices; lab scores can vary.
+- The reserved `.invalid` address was rejected in the local and production checkers. Production cleared the previous report and did not create a report for the fake site.
