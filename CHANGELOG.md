@@ -63,8 +63,7 @@ notes are not permission to overwrite current user decisions.
   destinations, external script references and selected security headers.
 - Added a Cloudflare Pages Function for POST /api/audit and limited Function
   routing to /api/* in the generated Pages routes manifest. Local preview uses
-  the same scan core. The Function returns HTTP 503 until its rate-limit
-  binding is available, and HTTP 429 when a visitor reaches the limit.
+  the same scan core.
 - Kept the report free and ungated, with print-to-PDF and an optional WhatsApp
   handoff. No scan reports are stored, no composite score is shown and no Lagos
   benchmark is claimed.
@@ -77,11 +76,11 @@ notes are not permission to overwrite current user decisions.
   Cloudflare Pages secret in production or in the ignored local `.dev.vars` file.
   The earlier keyless request returned HTTP 429; an unavailable API now leaves
   the direct homepage report intact.
-- Declared the `AUDIT_RATE_LIMITER` Cloudflare Pages binding in `wrangler.jsonc`
-  (an approximate two requests per minute per key and Cloudflare location).
-  Verify the production deployment
-  received the binding and enforce its configured limit before announcing the
-  live checkup.
+- Configured an approximate Cloudflare zone WAF limit for POST requests to the
+  live checkup endpoints (five requests per ten seconds per source IP and edge
+  location, ten-second block) after verifying Pages Functions do not support
+  the Workers Rate Limit binding. Removed the unsupported Wrangler binding and
+  its fail-closed handler dependency after production verification.
 
 ### Blog SEO refresh
 

@@ -59,13 +59,15 @@ ignored `.dev.vars` file. Never commit or print its value.
 Cloudflare Pages Functions live in the repository-root functions/ directory.
 The build writes dist/_routes.json so only /api/* invokes a Function. The
 /api/* Functions use _tools/clinic-audit-core.mjs; keep local preview and Pages
-entry points aligned. `wrangler.jsonc` declares the `AUDIT_RATE_LIMITER`
-Cloudflare binding with an approximate two-request-per-minute limit per
-Cloudflare location. Verify that the
-production Pages deployment received this binding before considering the
-public endpoints available. The Functions fail closed with HTTP 503 if the
-binding is absent or unavailable. The PageSpeed route uses a separate
-rate-limit key for each visitor.
+entry points aligned. Cloudflare Pages does not support the Rate Limit binding
+used by Workers, so production abuse protection is configured as a zone-level
+Cloudflare WAF rule. The current rule only matches POST requests to
+`fjmk.drtolu.com/api/audit` and `/api/pagespeed`; it blocks after five requests
+in ten seconds per source IP and Cloudflare location for ten seconds. This is
+an approximate, per-location limit, not a global quota. The WAF rule is managed
+in Cloudflare and is not represented in `wrangler.jsonc`; verify it in the zone
+configuration when reviewing production security. The local preview does not
+simulate this edge rule.
 
 ## Assets and sensitive material
 

@@ -135,11 +135,14 @@ checks covered 320, 390, 768, 1169 and 1440px; inspect new changes again as need
 
 - Supply Praise's real portrait.
 - Verify actual enquiry delivery with an authorised test.
-- `wrangler.jsonc` declares an `AUDIT_RATE_LIMITER` binding (an approximate two
-  requests per minute per Cloudflare location) for POST /api/audit and POST
-  /api/pagespeed. The local Pages preview
-  enforces it. Verify that production received the binding and returns the
-  expected limits after deployment; both Functions fail closed if it is absent.
+- Production rate limiting is configured at the Cloudflare zone level because
+  Pages Functions do not support the Workers Rate Limit binding. The current
+  WAF rule matches POST requests to `fjmk.drtolu.com/api/audit` and
+  `/api/pagespeed`, blocks after five requests in ten seconds per source IP and
+  Cloudflare location, and applies for ten seconds. It is approximate and does
+  not emulate a strict global quota. The local preview does not enforce the
+  Cloudflare edge rule. Verify the rule in Cloudflare if the production setup is
+  changed.
 - Add `GOOGLE_PAGESPEED_API_KEY` as a Cloudflare Pages secret before publishing
   if mobile Lighthouse results should appear in production. Local development
   reads the same variable from ignored `.dev.vars`. The keyless PageSpeed test
