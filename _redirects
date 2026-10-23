@@ -1,2 +1,0 @@
-# Keep the production Pages hostname on the canonical domain.
-https://fjmk-529.pages.dev/* https://fjmk.drtolu.com/:splat 301

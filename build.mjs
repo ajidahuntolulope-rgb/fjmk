@@ -7,7 +7,7 @@ fs.rmSync(output, { recursive: true, force: true });
 fs.mkdirSync(output);
 for (const entry of ['index.html', 'about.html', 'blog.html', 'contact.html',
   'assets', 'journal', 'work', 'samples', 'robots.txt', 'llms.txt',
-  'sitemap.xml', '_redirects']) {
+  'sitemap.xml', '404.html']) {
   fs.cpSync(entry, path.join(output, entry), { recursive: true });
 }
 console.log('FJMK static site built in dist/');
