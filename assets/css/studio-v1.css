@@ -77,6 +77,9 @@ body{font-weight:500}.header nav a,.nav-cta,.button,.text-link{font-weight:600}.
 .checkup-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:9vw;padding-bottom:85px}.checkup-start h2{font-size:clamp(40px,4.5vw,65px);margin:25px 0}.checkup-start>p{font-size:15px;max-width:520px}.checkup-start form{margin-top:28px}.checkup-start label{max-width:560px}.input-help{font-size:12px;color:var(--muted)}.checkup-privacy{font-size:11px!important;line-height:1.7;margin-top:18px;max-width:610px}.checkup-status{margin-top:22px;border-top:1px solid var(--rule);padding:15px 0;font-size:14px}.checkup-status.is-error{color:#8e321f}.checkup-scope{background:var(--surface);padding:35px;height:max-content}.checkup-scope ul{list-style:none;padding:0;margin:0}.checkup-scope li{padding:13px 0;border-top:1px solid #c5bcad;font-size:14px}.checkup-limit{padding-top:28px}.checkup-limit h3{font:400 29px/1.15 var(--serif)}.checkup-limit p{font-size:13px;margin-top:12px}.checkup-report{border-top:1px solid var(--rule);padding-top:65px;padding-bottom:95px}.checkup-report[hidden],.checkup-status[hidden]{display:none}.checkup-report-head{display:grid;grid-template-columns:1fr auto;gap:50px;align-items:end}.checkup-report-head h2{font-size:clamp(42px,5vw,72px)}.checkup-host{font:400 24px/1.2 var(--serif);margin-top:18px;overflow-wrap:anywhere}.checkup-url{display:block;margin-top:8px;font-size:12px;color:var(--muted);overflow-wrap:anywhere;text-decoration:underline;text-underline-offset:3px}.checkup-meta{display:grid;grid-template-columns:repeat(3,auto);gap:18px 28px;margin:0}.checkup-meta div{border-left:1px solid var(--rule);padding-left:15px}.checkup-meta dt{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.checkup-meta dd{margin:5px 0 0;font-size:13px}.checkup-summary{margin-block:45px 30px;padding:24px 28px;background:#e8e0d2;border-left:3px solid var(--terra)}.checkup-summary .eyebrow{margin-bottom:8px}.checkup-summary h3{font:400 31px/1.15 var(--serif)}.checkup-summary>p:last-child{font-size:12px;max-width:850px;margin-top:10px}.checkup-report-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:45px}.button-secondary{background:transparent;color:var(--ink);border:1px solid var(--ink)}.button-secondary:hover{background:var(--ink);color:var(--paper)}.checkup-groups{display:grid;grid-template-columns:1fr 1fr;gap:48px 40px}.checkup-group>h3{font:400 32px/1.15 var(--serif);border-bottom:1px solid var(--rule);padding-bottom:12px;margin-bottom:18px}.checkup-finding-list{display:grid;gap:16px}.checkup-finding{padding:18px;background:var(--surface);border-left:3px solid var(--rule)}.checkup-finding--review{border-left-color:var(--terra);background:#eee2d9}.checkup-finding--good{border-left-color:#637a65}.checkup-finding--info{border-left-color:#9a8f7b}.checkup-finding-head{display:flex;gap:15px;justify-content:space-between;align-items:start}.checkup-finding h4{font:400 23px/1.15 var(--serif);margin:0}.checkup-state{flex-shrink:0;font-size:10px;font-weight:700;padding:4px 7px;background:#f4efe7;color:var(--ink)}.checkup-state--review{color:#793822}.checkup-finding-summary,.checkup-next-step{font-size:13px;margin-top:12px}.checkup-next-step strong{font-weight:700}.checkup-evidence-details{margin-top:12px;font-size:11px;color:var(--muted)}.checkup-evidence-details summary{cursor:pointer;text-decoration:underline;text-underline-offset:3px}.checkup-evidence{margin-top:8px;overflow-wrap:anywhere}.checkup-human-review{border-top:1px solid var(--rule);margin-top:65px;padding-top:30px;max-width:900px}.checkup-human-review h3{font:400 35px/1.15 var(--serif)}.checkup-human-review ul{padding-left:20px;margin:20px 0}.checkup-human-review li{padding:7px 0;font-size:14px}.checkup-human-review>p:not(.eyebrow){font-size:14px;margin-top:25px}.checkup-method{max-width:850px;margin-top:45px;font-size:11px;color:var(--muted)}@media(max-width:1000px){.checkup-layout{gap:5vw}.checkup-report-head{grid-template-columns:1fr;gap:25px}.checkup-meta{justify-content:start}}@media(max-width:767px){.checkup-layout{grid-template-columns:1fr;gap:32px;padding-bottom:65px}.checkup-scope{padding:25px}.checkup-report{padding-top:45px;padding-bottom:65px}.checkup-report-head{gap:24px}.checkup-meta{grid-template-columns:1fr 1fr;gap:18px 14px}.checkup-summary{margin-top:32px;padding:20px}.checkup-summary h3{font-size:28px}.checkup-report-actions{flex-direction:column;align-items:stretch}.checkup-report-actions .button{justify-content:center;text-align:center}.checkup-groups{grid-template-columns:1fr;gap:32px}.checkup-group>h3{font-size:29px}.checkup-finding{padding:15px}.checkup-finding-head{align-items:flex-start;flex-direction:column;gap:8px}.checkup-human-review{margin-top:45px}.checkup-human-review h3{font-size:30px}}@media print{body{background:#fff;color:#111;font-size:11pt}.header,.footer,.page-hero,.checkup-layout,.checkup-report-actions,.checkup-human-review .text-link{display:none!important}.checkup-report,.checkup-report[hidden]{display:block!important;border:0;padding:0;margin:0}.checkup-report-head{grid-template-columns:1fr auto}.checkup-meta{grid-template-columns:1fr}.checkup-summary{margin:20px 0;padding:15px;background:#eee}.checkup-groups{grid-template-columns:1fr 1fr;gap:16px}.checkup-finding{break-inside:avoid;background:#f7f7f7}.checkup-group{break-inside:avoid}.checkup-human-review{break-inside:avoid}.checkup-method{color:#444}}
 .checkup-lighthouse{margin-block:0 45px;padding:25px 28px;background:#f0ebe2;border:1px solid var(--rule)}.checkup-lighthouse[hidden]{display:none}.checkup-lighthouse-head{display:flex;justify-content:space-between;align-items:start;gap:24px}.checkup-lighthouse-head h3{font:400 32px/1.1 var(--serif)}.checkup-lighthouse-head>p{font-size:12px;max-width:420px;margin:4px 0;text-align:right}.checkup-lighthouse-scores{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}.checkup-lighthouse-score{display:grid;grid-template-columns:1fr auto;align-items:end;gap:4px 8px;padding:14px;background:var(--paper);border-top:2px solid var(--terra)}.checkup-lighthouse-score span{grid-column:1/-1;font-size:10px;color:var(--muted)}.checkup-lighthouse-score strong{font:400 34px/1 var(--serif)}.checkup-lighthouse-score small{font-size:10px;color:var(--muted)}.checkup-lighthouse-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 0}.checkup-lighthouse-metrics div{padding-top:10px;border-top:1px solid #c5bcad}.checkup-lighthouse-metrics dt{font-size:10px;color:var(--muted)}.checkup-lighthouse-metrics dd{font-size:14px;font-weight:600;margin:4px 0 0}.checkup-lighthouse-note{font-size:11px;color:var(--muted);margin-top:18px;max-width:900px}@media(max-width:767px){.checkup-lighthouse{padding:20px}.checkup-lighthouse-head{display:block}.checkup-lighthouse-head>p{text-align:left;margin-top:12px}.checkup-lighthouse-scores{grid-template-columns:1fr 1fr}.checkup-lighthouse-score{padding:12px}.checkup-lighthouse-metrics{grid-template-columns:1fr 1fr;gap:14px}}
 
+/* Match the shared project action to the rounded desktop navigation pills. */
+.header .nav-cta{border-radius:30px}
+
 /* A compact, app-like workspace for the clinic checkup. */
 .clinic-tool-shell{max-width:1050px;padding-block:clamp(64px,9vw,112px) 74px}
 .clinic-tool-intro{max-width:760px}
@@ -190,4 +193,76 @@ body{font-weight:500}.header nav a,.nav-cta,.button,.text-link{font-weight:600}.
  .clinic-report .checkup-finding-detail{display:block!important}
  .clinic-report .checkup-evidence-details{display:none}
  .clinic-report-note{color:#444}
+}
+
+/* Keep the utility feeling like a focused diagnostic app within the FJMK system. */
+body[data-page="tools"] .clinic-tool-intro h1{font-family:var(--sans);font-weight:650;letter-spacing:-.045em;line-height:1.08}
+body[data-page="tools"] .clinic-tool-panel{border-top:3px solid var(--terra)}
+body[data-page="tools"] .clinic-tool-status{max-width:720px;line-height:1.55}
+body[data-page="tools"] .clinic-progress{grid-template-columns:130px minmax(100px,220px);}
+body[data-page="tools"] .clinic-progress-copy{grid-column:1/-1;max-width:560px;font-size:11px;line-height:1.5;color:var(--muted)}
+body[data-page="tools"] .clinic-report{max-width:1120px;padding-top:22px}
+body[data-page="tools"] .clinic-report-head{gap:24px;padding-bottom:17px}
+body[data-page="tools"] .clinic-report-title .eyebrow{font-size:10px;margin-bottom:9px}
+body[data-page="tools"] .clinic-report-title h2{font:650 clamp(30px,3.3vw,40px)/1.12 var(--sans);letter-spacing:-.035em}
+body[data-page="tools"] .clinic-report-host{font:600 17px/1.35 var(--sans);margin-top:8px}
+body[data-page="tools"] .clinic-report-url{font-size:11px}
+body[data-page="tools"] .clinic-report-meta{gap:15px}
+body[data-page="tools"] .clinic-report-meta div{padding-left:10px}
+body[data-page="tools"] .clinic-report-meta dt,body[data-page="tools"] .clinic-report-counts dt{font:700 9px/1.35 var(--sans);letter-spacing:.08em}
+body[data-page="tools"] .clinic-report-meta dd{font:600 12px/1.4 var(--sans);font-variant-numeric:tabular-nums}
+body[data-page="tools"] .clinic-report-overview{padding:15px 18px;gap:18px}
+body[data-page="tools"] .clinic-report-overview .eyebrow{font-size:9px;margin-bottom:5px}
+body[data-page="tools"] .clinic-report-summary{font:600 15px/1.45 var(--sans)}
+body[data-page="tools"] .clinic-report-counts{gap:15px}
+body[data-page="tools"] .clinic-report-counts div{min-width:58px}
+body[data-page="tools"] .clinic-report-counts dd{font:700 22px/1.1 var(--sans);font-variant-numeric:tabular-nums}
+body[data-page="tools"] .clinic-report-actions{margin:12px 0 20px;align-items:center}
+body[data-page="tools"] .clinic-report-actions .button{min-height:44px;font-family:var(--sans);font-weight:650}
+body[data-page="tools"] .clinic-report-actions [data-report-whatsapp]{border-radius:3px}
+body[data-page="tools"] .clinic-report-actions [data-report-print]{border-radius:3px}
+body[data-page="tools"] .clinic-report .checkup-lighthouse{margin:18px 0 22px;padding:16px 18px}
+body[data-page="tools"] .clinic-report .checkup-lighthouse-head h3{font:650 20px/1.25 var(--sans);letter-spacing:-.02em}
+body[data-page="tools"] .clinic-report .checkup-lighthouse-head>p{font-size:10px;line-height:1.5}
+body[data-page="tools"] .clinic-report .checkup-lighthouse-score{border-top-width:2px}
+body[data-page="tools"] .clinic-report .checkup-lighthouse-score strong{font:700 27px/1 var(--sans);font-variant-numeric:tabular-nums}
+body[data-page="tools"] .clinic-report .checkup-lighthouse-metrics dd{font-variant-numeric:tabular-nums}
+body[data-page="tools"] .clinic-checks{margin-top:24px}
+body[data-page="tools"] .clinic-checks-head{margin-bottom:12px}
+body[data-page="tools"] .clinic-checks-head h3{font:650 22px/1.25 var(--sans);letter-spacing:-.02em}
+body[data-page="tools"] .clinic-checks-head p{font-size:10px}
+body[data-page="tools"] .clinic-report .checkup-groups{gap:20px}
+body[data-page="tools"] .clinic-report .checkup-group>h3{font:650 16px/1.3 var(--sans);letter-spacing:-.01em;padding-bottom:7px;margin-bottom:9px}
+body[data-page="tools"] .clinic-report .checkup-finding-list{gap:6px}
+body[data-page="tools"] .clinic-report .checkup-finding{border-radius:2px}
+body[data-page="tools"] .clinic-report .checkup-finding>summary{padding:10px 12px;align-items:center}
+body[data-page="tools"] .clinic-report .checkup-finding-title{font-size:12px;line-height:1.4}
+body[data-page="tools"] .clinic-report .checkup-state{font-size:9px;white-space:nowrap}
+body[data-page="tools"] .clinic-report .checkup-finding-summary{font-size:10px;line-height:1.5}
+body[data-page="tools"] .clinic-report .checkup-finding-detail{padding:0 12px 11px}
+body[data-page="tools"] .clinic-report .checkup-next-step{font-size:10px;line-height:1.55}
+body[data-page="tools"] .clinic-report .checkup-evidence-details{font-size:10px}
+body[data-page="tools"] .clinic-report-note{font-size:10px}
+@media(max-width:767px){
+ body[data-page="tools"] .clinic-tool-shell{padding-block:48px 44px}
+ body[data-page="tools"] .clinic-tool-intro h1{font-size:clamp(36px,10vw,52px)}
+ body[data-page="tools"] .clinic-tool-panel{margin-top:24px}
+ body[data-page="tools"] .clinic-report{padding-top:17px}
+ body[data-page="tools"] .clinic-report-head{gap:13px}
+ body[data-page="tools"] .clinic-report-title h2{font-size:29px}
+ body[data-page="tools"] .clinic-report-meta{gap:12px}
+ body[data-page="tools"] .clinic-report-overview{gap:13px}
+ body[data-page="tools"] .clinic-report-summary{font-size:14px}
+ body[data-page="tools"] .clinic-report-counts{gap:8px}
+ body[data-page="tools"] .clinic-report-counts div{min-width:0}
+ body[data-page="tools"] .clinic-report-counts dd{font-size:20px}
+ body[data-page="tools"] .clinic-report-actions{display:grid;grid-template-columns:1fr}
+ body[data-page="tools"] .clinic-report-actions .button{width:100%;justify-content:center}
+ body[data-page="tools"] .clinic-progress{grid-template-columns:115px minmax(70px,1fr);gap:10px}
+ body[data-page="tools"] .clinic-progress img{width:115px}
+}
+@media print{
+ body[data-page="tools"] .clinic-report-title h2{font-size:26pt}
+ body[data-page="tools"] .clinic-report-counts dd{font-size:18pt}
+ body[data-page="tools"] .clinic-report .checkup-group>h3{font-size:12pt}
 }

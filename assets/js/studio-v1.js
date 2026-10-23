@@ -395,12 +395,13 @@
   });
   const topFindings=sorted.filter(check=>check.status==='review').slice(0,3);
   const message=[
-   'Hello FJMK. I used the clinic website checkup.',
+   'Hello FJMK. I ran the free clinic website check.',
    'Website: '+data.finalUrl,
-   topFindings.length?'Items I would like to review: '+topFindings.map(check=>check.title).join('; '):'Could you take a closer look at my clinic website and patient journey?',
-   'Please let me know what a practical review could cover.'
+   topFindings.length?'Could you help me prioritise these findings: '+topFindings.map(check=>check.title).join('; ')+'?':'The automated check did not flag items for review. Could you help me review this website and the route patients use to contact the clinic?'
   ].join('\n');
-  report.querySelector('[data-report-whatsapp]').href='https://wa.me/2348145580220?text='+encodeURIComponent(message);
+  const whatsapp=report.querySelector('[data-report-whatsapp]');
+  whatsapp.href='https://wa.me/2348145580220?text='+encodeURIComponent(message);
+  whatsapp.querySelector('[data-report-whatsapp-label]').textContent=topFindings.length?'Get help prioritising these findings':'Talk through your website';
   report.querySelector('#clinic-checks-title').textContent='Checks · '+data.checks.length;
   report.hidden=false;
   status.hidden=true;
@@ -423,12 +424,13 @@
   }
   input.setCustomValidity('');
   report.hidden=true;
+  document.title=defaultTitle;
   const submitLabel=button.innerHTML;
   form.setAttribute('aria-busy','true');
   progress.hidden=false;
   button.disabled=true;
   button.textContent='Checking…';
-  setStatus('Checking homepage…',false);
+  setStatus('Reading the public homepage and checking its response, search signals and patient contact routes…',false);
   const controller=new AbortController();
    const timer=setTimeout(()=>controller.abort(),28000);
   try{

@@ -14,7 +14,7 @@ export const tools = [
         </div>
         <p class="clinic-tool-note">Public homepage only. Don’t enter sign-in or patient pages. <a href="/privacy">Privacy</a></p>
         <p id="clinic-audit-status" class="clinic-tool-status" role="status" aria-live="polite" hidden></p>
-        <div id="clinic-audit-progress" class="clinic-progress" aria-hidden="true" hidden><img src="/assets/img/brand/fjmk-logo-v1.svg" width="130" height="36" alt=""><span class="clinic-progress-line"></span></div>
+        <div id="clinic-audit-progress" class="clinic-progress" aria-hidden="true" hidden><img src="/assets/img/brand/fjmk-logo-v1.svg" width="130" height="36" alt=""><span class="clinic-progress-line"></span><span class="clinic-progress-copy">Reading the public homepage · checking response, search signals and patient contact routes</span></div>
         <noscript><p class="clinic-tool-status">This check needs JavaScript enabled in your browser.</p></noscript>
       </form>
     </div>
@@ -23,7 +23,7 @@ export const tools = [
     <header class="clinic-report-head">
       <div class="clinic-report-title">
         <p class="eyebrow">Website report <span aria-hidden="true">·</span> <span data-report-date></span></p>
-        <h2 id="clinic-audit-report-title">Homepage check</h2>
+        <h2 id="clinic-audit-report-title">Website check report</h2>
         <p class="clinic-report-host" data-report-host></p>
         <a class="clinic-report-url" data-report-url target="_blank" rel="noopener"></a>
       </div>
@@ -32,10 +32,6 @@ export const tools = [
         <div><dt>Time</dt><dd data-report-time></dd></div>
       </dl>
     </header>
-    <div class="clinic-report-actions">
-      <button class="button" type="button" data-report-print>Save report as PDF</button>
-      <a class="button button-secondary" data-report-whatsapp target="_blank" rel="noopener">Discuss this report <span aria-hidden="true">↗</span></a>
-    </div>
     <section class="clinic-report-overview" aria-label="Check summary">
       <div><p class="eyebrow">First-page scan</p><p class="clinic-report-summary" data-report-summary></p></div>
       <dl class="clinic-report-counts">
@@ -44,6 +40,10 @@ export const tools = [
         <div><dt>Signals</dt><dd data-report-info-count></dd></div>
       </dl>
     </section>
+    <div class="clinic-report-actions">
+      <a class="button" data-report-whatsapp target="_blank" rel="noopener"><span data-report-whatsapp-label>Get help prioritising these findings</span><span aria-hidden="true">↗</span></a>
+      <button class="button button-secondary" type="button" data-report-print>Save report as PDF</button>
+    </div>
     <section class="checkup-lighthouse" data-lighthouse hidden aria-labelledby="clinic-lighthouse-title">
       <div class="checkup-lighthouse-head">
         <div><p class="eyebrow">Mobile performance</p><h3 id="clinic-lighthouse-title">Google PageSpeed</h3></div>
