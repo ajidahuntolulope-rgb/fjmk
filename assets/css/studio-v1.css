@@ -139,20 +139,32 @@ body{font-weight:500}.header nav a,.nav-cta,.button,.text-link{font-weight:600}.
 .clinic-report .checkup-group>h3{font-size:22px;padding-bottom:9px;margin-bottom:12px}
 .clinic-report .checkup-finding-list{gap:8px}
 .clinic-report .checkup-finding{padding:0;background:var(--surface);border-left:2px solid var(--rule)}
-.clinic-report .checkup-finding--review{border-left-color:var(--terra);background:#eee2d9}
-.clinic-report .checkup-finding--good{border-left-color:#637a65}
-.clinic-report .checkup-finding--info{border-left-color:#9a8f7b}
+.clinic-report .checkup-finding--review{border-left:4px solid #a4472c;background:#f4e5dc}
+.clinic-report .checkup-finding--good{border-left:4px solid #3f7653;background:#e7efe8}
+.clinic-report .checkup-finding--info{border-left:4px solid #85734f;background:#f0ecdf}
 .clinic-report .checkup-finding>summary{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:5px 12px;padding:12px 14px;list-style:none;cursor:pointer}
 .clinic-report .checkup-finding>summary::-webkit-details-marker{display:none}
 .clinic-report .checkup-finding-title{font-size:13px;font-weight:650}
 .clinic-report .checkup-finding>summary::after{grid-column:3;grid-row:1;content:'+';font-size:17px;line-height:1;color:var(--terra)}
 .clinic-report .checkup-finding[open]>summary::after{content:'−'}
-.clinic-report .checkup-state{grid-column:2;grid-row:1;font-size:9px;padding:3px 6px}
+.clinic-report .checkup-state{grid-column:2;grid-row:1;font-size:9px;font-weight:700;padding:4px 8px;border-radius:2px}
+.clinic-report .checkup-state--review{color:#762c1a;background:#f8d9ca}
+.clinic-report .checkup-state--good{color:#24563a;background:#d3e7d7}
+.clinic-report .checkup-state--info{color:#5d4c2e;background:#e5dcc0}
 .clinic-report .checkup-finding-summary{grid-column:1/-1;font-size:11px;line-height:1.5;margin:0;color:var(--muted)}
 .clinic-report .checkup-finding-detail{padding:0 14px 13px}
 .clinic-report .checkup-next-step{font-size:11px;line-height:1.5;margin:0}
 .clinic-report .checkup-evidence-details{font-size:10px;margin-top:8px}
 .clinic-report .checkup-evidence{margin-top:5px}
+.clinic-report-counts .clinic-count{min-width:76px;padding:7px 10px;border-top:3px solid transparent}
+.clinic-report-counts .clinic-count dt{font-size:9px;letter-spacing:.07em}
+.clinic-report-counts .clinic-count dd{font-weight:650;font-size:29px}
+.clinic-report-counts .clinic-count--review{border-color:#a4472c;background:#f4e5dc}
+.clinic-report-counts .clinic-count--review dt,.clinic-report-counts .clinic-count--review dd{color:#762c1a}
+.clinic-report-counts .clinic-count--good{border-color:#3f7653;background:#e7efe8}
+.clinic-report-counts .clinic-count--good dt,.clinic-report-counts .clinic-count--good dd{color:#24563a}
+.clinic-report-counts .clinic-count--info{border-color:#85734f;background:#f0ecdf}
+.clinic-report-counts .clinic-count--info dt,.clinic-report-counts .clinic-count--info dd{color:#5d4c2e}
 .clinic-report-note{margin-top:28px;padding-top:12px;border-top:1px solid var(--rule);font-size:10px;color:var(--muted)}
 @media(max-width:767px){
  .clinic-tool-shell{padding-block:54px 58px}
@@ -164,7 +176,7 @@ body{font-weight:500}.header nav a,.nav-cta,.button,.text-link{font-weight:600}.
  .clinic-report-meta{gap:18px}
  .clinic-report-overview{align-items:flex-start;flex-direction:column;padding:16px}
  .clinic-report-counts{width:100%;justify-content:space-between;gap:10px}
- .clinic-report-counts div{min-width:0}
+ .clinic-report-counts .clinic-count{min-width:0;flex:1;padding:7px}
  .clinic-report .checkup-lighthouse{padding:16px}
  .clinic-report .checkup-lighthouse-head{display:block}
  .clinic-report .checkup-lighthouse-head>p{text-align:left;margin-top:8px}

@@ -35,9 +35,9 @@ export const tools = [
     <section class="clinic-report-overview" aria-label="Check summary">
       <div><p class="eyebrow">First-page scan</p><p class="clinic-report-summary" data-report-summary></p></div>
       <dl class="clinic-report-counts">
-        <div><dt>To review</dt><dd data-report-review-count></dd></div>
-        <div><dt>Looks good</dt><dd data-report-good-count></dd></div>
-        <div><dt>Signals</dt><dd data-report-info-count></dd></div>
+        <div class="clinic-count clinic-count--review"><dt>To review</dt><dd data-report-review-count></dd></div>
+        <div class="clinic-count clinic-count--good"><dt>Looks good</dt><dd data-report-good-count></dd></div>
+        <div class="clinic-count clinic-count--info"><dt>Signals</dt><dd data-report-info-count></dd></div>
       </dl>
     </section>
     <div class="clinic-report-actions">
