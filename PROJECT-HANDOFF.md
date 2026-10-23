@@ -59,7 +59,10 @@ Google PageSpeed Insights for an emulated mobile Lighthouse run. Its lab scores
 can vary, are not field measurements from Lagos users and do not establish WCAG
 compliance. The WhatsApp action is optional and sends nothing until the visitor
 chooses to send its prefilled message. No Lagos comparison dataset exists, and
-the report shows no composite healthcare score.
+the report shows no composite healthcare score. The tool page uses a single
+homepage input, an FJMK loading animation, an expandable findings report and a
+print-to-PDF action. Its title and description target clinic website checks in
+Lagos, Nigeria.
 Research placeholder proposes a 50-site Lagos study; the proposed 100-site audit
 benchmark is unbuilt. Do not present these as completed research.
 
@@ -143,11 +146,9 @@ checks covered 320, 390, 768, 1169 and 1440px; inspect new changes again as need
   not emulate a strict global quota. The local preview does not enforce the
   Cloudflare edge rule. Verify the rule in Cloudflare if the production setup is
   changed.
-- Add `GOOGLE_PAGESPEED_API_KEY` as a Cloudflare Pages secret before publishing
-  if mobile Lighthouse results should appear in production. Local development
-  reads the same variable from ignored `.dev.vars`. The keyless PageSpeed test
-  returned HTTP 429 in this environment; the optional keyed request now fails
-  gracefully so the homepage report remains available.
+- `GOOGLE_PAGESPEED_API_KEY` is configured as a Cloudflare Pages production
+  secret. Local development reads the same variable from ignored `.dev.vars`.
+  Keep the key server-side and out of Git. Scores remain separate lab signals.
 - Consider rendered-page axe-core checks as a later service decision.
 - Collect real research and benchmark data before adding any Lagos comparison.
 - After normal crawl time, recheck the homepage in URL Inspection and review

@@ -90,3 +90,10 @@ notes are not permission to overwrite current user decisions.
 - Added static article pages under `/blog/` using the approved FJMK fonts, palette, header and footer. Added canonical URLs, Article and breadcrumb structured data, visible first-paragraph answers, source links, and the six pages to the curated sitemap.
 - Added 301 redirects from the six former active `/journal/` routes, including `.html` variants. Parked legacy article files were not changed.
 - Build, SEO verifier (16 unique sitemap URLs; 33 demos noindex), reference checker (382 references, no errors), local clean routes and old-route redirects passed. Search demand remains a hypothesis until Search Console and buyer conversations provide evidence.
+
+### Clinic website check tool UX (23 October 2026)
+
+- Simplified the approved `/tools` page into a focused clinic and hospital homepage check, preserving the FJMK visual system. Added an animated FJMK loader, a report with expandable evidence, and a print-to-PDF action.
+- Updated the page title and description for clinic website checks in Lagos, Nigeria.
+- Local browser check of the public Lagos University Teaching Hospital homepage returned HTTP 200 and 13 checks: 3 to review, 8 good, and 2 signals. The mobile PageSpeed snapshot completed with scores of 71 performance, 75 accessibility, 83 SEO and 96 best practices; lab scores can vary.
+- A reserved `.invalid` address was rejected before a report was produced.

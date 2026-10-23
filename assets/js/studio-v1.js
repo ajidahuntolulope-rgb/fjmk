@@ -272,27 +272,32 @@
  const input=form.querySelector('#clinic-audit-url');
  const button=form.querySelector('button[type="submit"]');
  const status=document.querySelector('#clinic-audit-status');
+ const progress=document.querySelector('#clinic-audit-progress');
  const report=document.querySelector('#clinic-audit-report');
  const findings=document.querySelector('#clinic-audit-findings');
  const printButton=document.querySelector('[data-report-print]');
+ const defaultTitle=document.title;
  let pageSpeedController;
  function setStatus(message,error){status.hidden=false;status.textContent=message;status.classList.toggle('is-error',Boolean(error));}
  function element(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;}
  function findingCard(check){
-  const article=element('article','checkup-finding checkup-finding--'+check.status);
-  const header=element('div','checkup-finding-head');
-  const title=element('h4','',check.title);
-  const state=element('span','checkup-state checkup-state--'+check.status,check.status==='review'?'Needs a look':check.status==='good'?'Found':'Signal only');
-  header.append(title,state);
-  article.append(header,element('p','checkup-finding-summary',check.summary));
+  const article=element('details','checkup-finding checkup-finding--'+check.status);
+  article.open=check.status==='review';
+  const header=element('summary','checkup-finding-summaryline');
+  const title=element('span','checkup-finding-title',check.title);
+  const state=element('span','checkup-state checkup-state--'+check.status,check.status==='review'?'To review':check.status==='good'?'Looks good':'Signal only');
+  header.append(title,state,element('span','checkup-finding-summary',check.summary));
+  article.append(header);
+  const detail=element('div','checkup-finding-detail');
   const next=element('p','checkup-next-step');
   const label=element('strong','', 'Next step: ');
   next.append(label,document.createTextNode(check.nextStep));
-  article.append(next);
+  detail.append(next);
   const details=element('details','checkup-evidence-details');
-  details.append(element('summary','', 'What the scan found'));
+  details.append(element('summary','', 'Evidence'));
   details.append(element('p','checkup-evidence',check.evidence));
-  article.append(details);
+  detail.append(details);
+  article.append(detail);
   return article;
  }
  function renderPageSpeed(snapshot){
@@ -304,18 +309,18 @@
   metrics.replaceChildren();
   panel.hidden=false;
   if(!snapshot||snapshot.status==='not_configured'){
-   status.textContent='The mobile Lighthouse snapshot is not configured in this environment.';
+   status.textContent='Mobile snapshot not configured.';
    return;
   }
   if(snapshot.status==='pending'){
-   status.textContent='Google is running the mobile lab check. You can read the homepage findings while it finishes; this may take about a minute.';
+   status.textContent='Running the mobile lab check…';
    return;
   }
   if(snapshot.status!=='available'){
-   status.textContent='Google did not return a mobile Lighthouse snapshot. The homepage check below is complete.';
+   status.textContent='Mobile snapshot unavailable. Homepage checks are complete.';
    return;
   }
-  status.textContent='Emulated mobile lab run · '+new Date(snapshot.fetchedAt).toLocaleString('en-NG',{dateStyle:'medium',timeStyle:'short'});
+  status.textContent='Mobile lab snapshot · '+new Date(snapshot.fetchedAt).toLocaleString('en-NG',{dateStyle:'medium',timeStyle:'short'});
   const labels=[['performance','Performance'],['accessibility','Accessibility signal'],['seo','SEO'],['bestPractices','Best practices']];
   labels.forEach(([key,label])=>{
    const value=snapshot.scores?.[key];
@@ -355,6 +360,7 @@
  function renderReport(data){
   pageSpeedController?.abort();
   const host=new URL(data.finalUrl).hostname;
+  document.title=host+' website check | FJMK';
   report.querySelector('[data-report-host]').textContent=host;
   const link=report.querySelector('[data-report-url]');
   link.href=data.finalUrl;
@@ -364,9 +370,14 @@
   report.querySelector('[data-report-response]').textContent='HTTP '+data.responseStatus;
   report.querySelector('[data-report-time]').textContent=data.responseTimeMs+' ms';
   const reviewCount=Number(data.reviewCount)||0;
+  const goodCount=data.checks.filter(check=>check.status==='good').length;
+  const infoCount=data.checks.filter(check=>check.status==='info').length;
   report.querySelector('[data-report-summary]').textContent=reviewCount
-   ? reviewCount+' item'+(reviewCount===1?'':'s')+' to check in this first-page scan.'
-   : 'No automatic review flags in the homepage response.';
+   ? reviewCount+' item'+(reviewCount===1?'':'s')+' to review across '+data.checks.length+' checks.'
+   : 'No automatic review flags across '+data.checks.length+' checks.';
+  report.querySelector('[data-report-review-count]').textContent=String(reviewCount);
+  report.querySelector('[data-report-good-count]').textContent=String(goodCount);
+  report.querySelector('[data-report-info-count]').textContent=String(infoCount);
   renderPageSpeed(data.pageSpeed);
   findings.replaceChildren();
   const sorted=[...data.checks].sort((a,b)=>(a.priority||3)-(b.priority||3));
@@ -390,6 +401,7 @@
    'Please let me know what a practical review could cover.'
   ].join('\n');
   report.querySelector('[data-report-whatsapp]').href='https://wa.me/2348145580220?text='+encodeURIComponent(message);
+  report.querySelector('#clinic-checks-title').textContent='Checks · '+data.checks.length;
   report.hidden=false;
   status.hidden=true;
   report.focus({preventScroll:true});
@@ -411,8 +423,12 @@
   }
   input.setCustomValidity('');
   report.hidden=true;
+  const submitLabel=button.innerHTML;
+  form.setAttribute('aria-busy','true');
+  progress.hidden=false;
   button.disabled=true;
-   setStatus('Checking the public homepage. This can take a few seconds.',false);
+  button.textContent='Checking…';
+  setStatus('Checking homepage…',false);
   const controller=new AbortController();
    const timer=setTimeout(()=>controller.abort(),28000);
   try{
@@ -425,9 +441,13 @@
    setStatus(message,true);
   }finally{
    clearTimeout(timer);
+   form.removeAttribute('aria-busy');
+   progress.hidden=true;
    button.disabled=false;
+   button.innerHTML=submitLabel;
   }
  });
  input.addEventListener('input',()=>input.setCustomValidity(''));
  printButton?.addEventListener('click',()=>window.print());
+ window.addEventListener('afterprint',()=>{document.title=defaultTitle;});
 })();

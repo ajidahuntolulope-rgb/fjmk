@@ -1,5 +1,60 @@
 export const tools = [
-  '<section class="page-hero wrap"><p class="eyebrow">A practical tool for clinics</p><h1>A better first<br>look at your <em>website.</em></h1><p class="lede">A free live check for clinics in Lagos and across Nigeria. See the patient contact routes, search details and basic signals on the page they land on first.</p></section>',
-  '<section class="checkup-layout wrap" aria-labelledby="checkup-title"><div class="checkup-start"><span class="status-pill">Free homepage check · No sign-up</span><h2 id="checkup-title">Start with the<br><em>front door.</em></h2><p>Enter the public address for your clinic, hospital or pharmacy. We check the page people land on first.</p><form id="clinic-audit-form"><label for="clinic-audit-url">Website address<input id="clinic-audit-url" name="website" type="text" inputmode="url" autocomplete="url" placeholder="clinicname.com" required><span class="input-help">A public page anyone can open. You can leave off https://.</span></label><button class="button" type="submit">Run the free check <span aria-hidden="true">↗</span></button><p class="checkup-privacy">The public address goes to FJMK’s scan service and, when available, Google PageSpeed Insights for a mobile Lighthouse lab snapshot. FJMK does not save a copy of the report. Cloudflare, Google and the website may process or record technical request data. Do not enter a patient portal, sign-in link or URL containing a private token.</p><p id="clinic-audit-status" class="checkup-status" role="status" aria-live="polite" hidden></p><noscript><p class="checkup-status">This live check needs JavaScript enabled in your browser.</p></noscript></form></div><aside class="checkup-scope"><p class="eyebrow">What the first check covers</p><ul><li>HTTPS and whether the homepage answers</li><li>Phone, WhatsApp and booking routes</li><li>Page title, description and indexing signals</li><li>Mobile viewport and image descriptions</li><li>Google PageSpeed mobile Lighthouse snapshot</li><li>Forms, outside scripts and browser security headers</li></ul><div class="checkup-limit"><h3>One page. A useful first look.</h3><p>This reads the homepage’s initial HTML and response headers, then requests an emulated mobile Lighthouse lab snapshot from Google PageSpeed Insights. Scores can vary and are not a measure of Lagos users’ experience. The check does not click through the site, test a form, or decide legal compliance. Lighthouse accessibility is not a WCAG audit.</p></div></aside></section>',
-  '<section id="clinic-audit-report" class="checkup-report wrap" hidden aria-labelledby="clinic-audit-report-title" tabindex="-1"><header class="checkup-report-head"><div><p class="eyebrow">Live homepage check</p><h2 id="clinic-audit-report-title">Your website,<br><em>at first glance.</em></h2><p class="checkup-host" data-report-host></p><a class="checkup-url" data-report-url target="_blank" rel="noopener"></a></div><dl class="checkup-meta"><div><dt>Checked</dt><dd data-report-date></dd></div><div><dt>Response</dt><dd data-report-response></dd></div><div><dt>Time to response</dt><dd data-report-time></dd></div></dl></header><div class="checkup-summary" role="status"><p class="eyebrow">What to look at first</p><h3 data-report-summary></h3><p data-report-disclosure>These are observable signals from one page request. A finding is a prompt to check, not a compliance verdict or a guarantee about what every patient sees.</p></div><section class="checkup-lighthouse" data-lighthouse hidden aria-labelledby="clinic-lighthouse-title"><div class="checkup-lighthouse-head"><div><p class="eyebrow">Google PageSpeed Insights · Mobile</p><h3 id="clinic-lighthouse-title">Lighthouse lab snapshot</h3></div><p data-lighthouse-status role="status"></p></div><div class="checkup-lighthouse-scores" data-lighthouse-scores></div><dl class="checkup-lighthouse-metrics" data-lighthouse-metrics></dl><p class="checkup-lighthouse-note">Emulated lab results can vary between runs. They are not field data from Lagos patients. The accessibility score is a signal for review, not a WCAG or legal compliance result.</p></section><div class="checkup-report-actions"><button class="button button-secondary" type="button" data-report-print>Print or save as PDF</button><a class="button" data-report-whatsapp target="_blank" rel="noopener">Talk through this with FJMK <span aria-hidden="true">↗</span></a></div><div id="clinic-audit-findings" class="checkup-groups"></div><section class="checkup-human-review"><p class="eyebrow">A person should still check</p><h3>Three questions the scanner cannot answer.</h3><ul><li>Can a patient on a phone find the right service, location and opening hours quickly?</li><li>Can they ask for an appointment without putting sensitive health details in a general form or chat?</li><li>Are the clinicians, services and claims on the page current and verifiable?</li></ul><p>FJMK can review the full patient journey and turn the findings into a practical fix list.</p><a class="text-link" href="/contact">See how to work with FJMK ↗</a></section><p class="checkup-method">No single healthcare score or Lagos benchmark is shown. Findings cover the first page’s initial HTML and response headers. Google PageSpeed scores are emulated mobile lab results. This check does not establish WCAG, HIPAA, NDPA or other legal compliance.</p></section>'
+  `<section class="clinic-tool-shell wrap" aria-labelledby="clinic-tool-title">
+    <div class="clinic-tool-intro">
+      <p class="eyebrow">FJMK · Practical tool</p>
+      <h1 id="clinic-tool-title">Free clinic website check in Lagos, Nigeria</h1>
+      <p>A first-page report on technical SEO, mobile performance and patient contact routes for clinics and hospitals.</p>
+    </div>
+    <div class="clinic-tool-panel">
+      <form id="clinic-audit-form" class="clinic-tool-form">
+        <label for="clinic-audit-url">Website address</label>
+        <div class="clinic-tool-entry">
+          <input id="clinic-audit-url" name="website" type="text" inputmode="url" autocomplete="url" placeholder="yourclinic.com" required>
+          <button class="button" type="submit">Run free check <span aria-hidden="true">↗</span></button>
+        </div>
+        <p class="clinic-tool-note">Public homepage only. Don’t enter sign-in or patient pages. <a href="/privacy">Privacy</a></p>
+        <p id="clinic-audit-status" class="clinic-tool-status" role="status" aria-live="polite" hidden></p>
+        <div id="clinic-audit-progress" class="clinic-progress" aria-hidden="true" hidden><img src="/assets/img/brand/fjmk-logo-v1.svg" width="130" height="36" alt=""><span class="clinic-progress-line"></span></div>
+        <noscript><p class="clinic-tool-status">This check needs JavaScript enabled in your browser.</p></noscript>
+      </form>
+    </div>
+  </section>`,
+  `<section id="clinic-audit-report" class="clinic-report wrap" hidden aria-labelledby="clinic-audit-report-title" tabindex="-1">
+    <header class="clinic-report-head">
+      <div class="clinic-report-title">
+        <p class="eyebrow">Website report <span aria-hidden="true">·</span> <span data-report-date></span></p>
+        <h2 id="clinic-audit-report-title">Homepage check</h2>
+        <p class="clinic-report-host" data-report-host></p>
+        <a class="clinic-report-url" data-report-url target="_blank" rel="noopener"></a>
+      </div>
+      <dl class="clinic-report-meta">
+        <div><dt>Response</dt><dd data-report-response></dd></div>
+        <div><dt>Time</dt><dd data-report-time></dd></div>
+      </dl>
+    </header>
+    <div class="clinic-report-actions">
+      <button class="button" type="button" data-report-print>Save report as PDF</button>
+      <a class="button button-secondary" data-report-whatsapp target="_blank" rel="noopener">Discuss this report <span aria-hidden="true">↗</span></a>
+    </div>
+    <section class="clinic-report-overview" aria-label="Check summary">
+      <div><p class="eyebrow">First-page scan</p><p class="clinic-report-summary" data-report-summary></p></div>
+      <dl class="clinic-report-counts">
+        <div><dt>To review</dt><dd data-report-review-count></dd></div>
+        <div><dt>Looks good</dt><dd data-report-good-count></dd></div>
+        <div><dt>Signals</dt><dd data-report-info-count></dd></div>
+      </dl>
+    </section>
+    <section class="checkup-lighthouse" data-lighthouse hidden aria-labelledby="clinic-lighthouse-title">
+      <div class="checkup-lighthouse-head">
+        <div><p class="eyebrow">Mobile performance</p><h3 id="clinic-lighthouse-title">Google PageSpeed</h3></div>
+        <p data-lighthouse-status role="status"></p>
+      </div>
+      <div class="checkup-lighthouse-scores" data-lighthouse-scores></div>
+      <dl class="checkup-lighthouse-metrics" data-lighthouse-metrics></dl>
+    </section>
+    <section class="clinic-checks" aria-labelledby="clinic-checks-title">
+      <div class="clinic-checks-head"><h3 id="clinic-checks-title">Checks</h3><p>Select a check for its next step and evidence.</p></div>
+      <div id="clinic-audit-findings" class="checkup-groups"></div>
+    </section>
+  </section>`
 ].join("");
