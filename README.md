@@ -38,8 +38,11 @@ Tools, About, Contact and Privacy. The portfolio includes sixteen fictional heal
 website concepts and a motion collection. Sample claims and figures are part
 of fictional demonstrations, not FJMK client results.
 
-The audit is a labelled interactive demo. It does not scan the submitted address
-or provide a real Lagos benchmark. Research is marked coming soon.
+The clinic check at `/tools` scans one public homepage and returns observable
+signals plus an optional Google PageSpeed mobile Lighthouse snapshot. It does
+not establish legal compliance or provide a Lagos benchmark. For local
+PageSpeed results, add `GOOGLE_PAGESPEED_API_KEY` to ignored `.dev.vars`.
+Research is marked coming soon.
 
 Current team: Tolu (Team lead), Tobi (Creative director), Praise (Marketing).
 Praise's portrait space is empty until a real photo is supplied.

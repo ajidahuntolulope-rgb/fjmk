@@ -11,9 +11,10 @@ Contact: contact@drtolu.com. No new fjmk@drtolu.com mailbox was created.
 
 Ten main pages: Home, Portfolio, Services, Resources, Blog, Research, Tools,
 About, Contact, Privacy. Resources dropdown links writing, research and tools.
-Portfolio dropdown links websites and motion. Six curated blog posts retain their
-original article bodies. There are sixteen working fictional website concepts.
-The sitemap has sixteen indexable URLs: ten main pages plus six selected articles.
+Portfolio dropdown links websites and motion. The Blog has six active, question-
+led articles about healthcare digital practice. There are sixteen working
+fictional website concepts. The sitemap has sixteen curated URLs: ten main pages
+plus six selected articles.
 Fictional sample sites remain usable via the portfolio but carry noindex,follow.
 
 ## Visual and content decisions
@@ -45,8 +46,20 @@ link is prefilled from the brief. Failure/retry and success were tested with moc
 responses earlier; real mailbox delivery has NOT been tested in the redesign.
 The live three-step UI was tested without sending an enquiry.
 
-The audit tool displays clearly labelled fixed example findings. The entered URL
-stays in the current browser page. No actual scan or comparison dataset exists.
+The /tools check makes one live request to a public page, follows up to five
+public redirects and reads up to 1.2 MB of initial HTML plus response headers.
+It reports signals for availability, HTTPS, patient contact routes, location
+text, mobile viewport, image alt attributes, search metadata, forms, external
+script references and selected browser security headers. It does not execute
+JavaScript, crawl the site, test form submissions, run Lighthouse or axe, or
+establish accessibility, security or legal compliance. FJMK does not store
+reports. Cloudflare resolves and requests the target page, and the target site
+may log the request. When configured, the validated final URL is also sent to
+Google PageSpeed Insights for an emulated mobile Lighthouse run. Its lab scores
+can vary, are not field measurements from Lagos users and do not establish WCAG
+compliance. The WhatsApp action is optional and sends nothing until the visitor
+chooses to send its prefilled message. No Lagos comparison dataset exists, and
+the report shows no composite healthcare score.
 Research placeholder proposes a 50-site Lagos study; the proposed 100-site audit
 benchmark is unbuilt. Do not present these as completed research.
 
@@ -122,7 +135,18 @@ checks covered 320, 390, 768, 1169 and 1440px; inspect new changes again as need
 
 - Supply Praise's real portrait.
 - Verify actual enquiry delivery with an authorised test.
-- Collect real research and benchmark data before implementing the audit backend.
+- `wrangler.jsonc` declares an `AUDIT_RATE_LIMITER` binding (an approximate two
+  requests per minute per Cloudflare location) for POST /api/audit and POST
+  /api/pagespeed. The local Pages preview
+  enforces it. Verify that production received the binding and returns the
+  expected limits after deployment; both Functions fail closed if it is absent.
+- Add `GOOGLE_PAGESPEED_API_KEY` as a Cloudflare Pages secret before publishing
+  if mobile Lighthouse results should appear in production. Local development
+  reads the same variable from ignored `.dev.vars`. The keyless PageSpeed test
+  returned HTTP 429 in this environment; the optional keyed request now fails
+  gracefully so the homepage report remains available.
+- Consider rendered-page axe-core checks as a later service decision.
+- Collect real research and benchmark data before adding any Lagos comparison.
 - After normal crawl time, recheck the homepage in URL Inspection and review
   Page indexing and Performance reports filtered to `fjmk.drtolu.com`. Do not
   resubmit the same indexing request. Check Core Web Vitals if field data appears.
@@ -130,3 +154,11 @@ checks covered 320, 390, 768, 1169 and 1440px; inspect new changes again as need
 
 Local DESIGN-NOTES.md contains older iteration history but is not required by a
 fresh checkout. This file and AGENTS.md are the shared, current handoff.
+
+## Blog SEO refresh (23 October 2026)
+
+- The six active Blog cards now target question-led articles at `/blog/{slug}`. The old active `/journal/{slug}` routes and `.html` forms redirect to their new canonical pages. Parked legacy article files remain outside the sitemap and unchanged.
+- Each new article is static HTML using the approved FJMK fonts, cream/ink/terracotta design, shared header and footer. Each has a direct answer near the top, unique title/description/canonical, BlogPosting and breadcrumb JSON-LD, and authoritative source links where relevant.
+- Keyword research is qualitative because Search Console has no useful query baseline and no paid keyword-volume tool is connected. See `BLOG-SEO-RESEARCH.md`; it records the intent hypotheses, search-result scan, source review and FJMK editorial position. Do not report estimated search volume or guaranteed rankings.
+- Build and local clean-route/redirect checks passed. SEO verifier: 16 unique sitemap URLs and 33 demos marked noindex. Reference checker: 382 references, no errors.
+- The six active `/journal/` destinations redirect to the new `/blog/` pages; the other parked legacy articles remain unchanged. The sitemap is already submitted in Search Console, so retain the existing property and entry rather than adding duplicates. Search Console crawl and indexing are not guaranteed.

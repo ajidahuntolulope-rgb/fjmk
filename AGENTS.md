@@ -51,6 +51,21 @@ node _tools/preview.mjs
 
 Preview uses port 3220; reuse an existing process instead of starting duplicates.
 The preview handles clean URLs, redirects, real 404s and video byte ranges.
+The clinic check APIs also run in this preview at POST /api/audit and
+POST /api/pagespeed.
+For local PageSpeed Insights results, place `GOOGLE_PAGESPEED_API_KEY` in the
+ignored `.dev.vars` file. Never commit or print its value.
+
+Cloudflare Pages Functions live in the repository-root functions/ directory.
+The build writes dist/_routes.json so only /api/* invokes a Function. The
+/api/* Functions use _tools/clinic-audit-core.mjs; keep local preview and Pages
+entry points aligned. `wrangler.jsonc` declares the `AUDIT_RATE_LIMITER`
+Cloudflare binding with an approximate two-request-per-minute limit per
+Cloudflare location. Verify that the
+production Pages deployment received this binding before considering the
+public endpoints available. The Functions fail closed with HTTP 503 if the
+binding is absent or unavailable. The PageSpeed route uses a separate
+rate-limit key for each visitor.
 
 ## Assets and sensitive material
 
@@ -73,7 +88,12 @@ Hero film autoplays muted, loops, resumes when visible, and has no Play film but
 
 Contact: three steps; keep the existing FormSubmit delivery alias and WhatsApp
 number unless instructed. Do not send test messages without authorisation.
-The audit is a local-only demo, not a live scan. No real Lagos benchmark exists.
+The /tools check makes a live request to one public page and reads its initial
+HTML and response headers. When configured, it also sends the validated final
+URL to Google PageSpeed Insights for a mobile Lighthouse lab snapshot. It does
+not crawl the site, test forms, or establish accessibility, security or legal
+compliance. FJMK does not store scan reports. Cloudflare, Google and the target
+site may process or record technical request data. No real Lagos benchmark exists.
 Research remains coming soon; do not manufacture findings or sample sizes.
 
 ## Verification and release

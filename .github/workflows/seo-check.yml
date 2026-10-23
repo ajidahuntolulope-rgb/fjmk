@@ -1,0 +1,33 @@
+name: Site and SEO checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check JavaScript syntax
+        run: |
+          node --check build.mjs
+          node --check _tools/build-studio-v1.mjs
+          node --check _tools/update-site-indexes.mjs
+          node --check _tools/clinic-audit-core.mjs
+          node --input-type=module --check < functions/api/audit.js
+          node --input-type=module --check < functions/api/pagespeed.js
+      - name: Build site
+        run: |
+          node _tools/build-studio-v1.mjs
+          node _tools/update-site-indexes.mjs
+          node build.mjs
+      - name: Verify generated pages and SEO
+        run: |
+          git diff --exit-code -- '*.html' sitemap.xml llms.txt
+          node _tools/verify-seo.mjs
+          node _tools/check-review-v2.mjs

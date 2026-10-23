@@ -253,7 +253,7 @@
  document.querySelectorAll('.sound-control').forEach(button=>{const video=document.getElementById(button.getAttribute('aria-controls'));const sync=()=>{button.textContent=video.muted?'Sound on ↗':'Mute sound';button.setAttribute('aria-label',video.muted?'Turn sound on':'Mute film');button.setAttribute('aria-pressed',String(!video.muted));};button.addEventListener('click',()=>{video.muted=!video.muted;sync();});video.addEventListener('volumechange',sync);sync();});
 })();
 
-// Resources navigation and local-only audit demonstration.
+// Resources navigation and live clinic website checkup.
 (() => {
  const menus=[...document.querySelectorAll('.resource-menu')];
  menus.forEach(menu=>menu.addEventListener('toggle',()=>{if(menu.open)menus.forEach(other=>{if(other!==menu)other.open=false;});}));
@@ -262,6 +262,172 @@
  document.addEventListener('keydown',e=>{if(e.key==='Escape')menus.forEach(m=>{if(m.open){m.open=false;m.querySelector('summary').focus();}});});
  const rail=document.querySelector('.motion-rail');
  if(rail){const move=direction=>rail.scrollBy({left:direction*rail.clientWidth*.8,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});document.querySelector('[data-motion-prev]').addEventListener('click',()=>move(-1));document.querySelector('[data-motion-next]').addEventListener('click',()=>move(1));rail.addEventListener('keydown',e=>{if(e.target===rail&&['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();move(e.key==='ArrowRight'?1:-1);}});const videos=[...rail.querySelectorAll('video')];videos.forEach(v=>v.addEventListener('play',()=>{videos.forEach(other=>{if(other!==v)other.pause();});document.querySelectorAll('video[autoplay]').forEach(other=>other.pause());}));if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(!e.isIntersecting)e.target.pause();}),{threshold:.1});videos.forEach(v=>observer.observe(v));}}
- document.querySelector('#audit-demo')?.addEventListener('submit',e=>{e.preventDefault();const url=document.querySelector('#audit-url');if(!url.reportValidity())return;const report=document.querySelector('#audit-report');report.querySelector('[data-audit-address]').textContent='Address entered: '+url.value;report.hidden=false;report.focus({preventScroll:true});report.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});});
 })();
 (()=>{const rail=document.querySelector('.motion-rail');if(!rail)return;let paused=false,last=0,remainder=0;const reduce=matchMedia('(prefers-reduced-motion:reduce)');const button=document.querySelector('[data-board-pause]');button?.addEventListener('click',()=>{paused=!paused;button.textContent=paused?'▷':'Ⅱ';button.setAttribute('aria-label',paused?'Resume moving films':'Pause moving films');});const originals=[...rail.children];for(const card of originals){const copy=card.cloneNode(true);copy.dataset.boardCopy='';rail.append(copy);}const videos=[...rail.querySelectorAll('video')];const player=document.createElement('dialog');player.className='motion-player';player.setAttribute('aria-label','Fullscreen film player');player.innerHTML='<button type="button" aria-label="Close film">Close ×</button><video controls playsinline></video>';document.body.append(player);const fullVideo=player.querySelector('video');player.querySelector('button').addEventListener('click',()=>player.close());player.addEventListener('close',()=>{fullVideo.pause();fullVideo.removeAttribute('src');fullVideo.load();});const expand=v=>{v.pause();fullVideo.src=v.currentSrc||v.querySelector('source').src;player.showModal();fullVideo.play().catch(()=>{});if(player.requestFullscreen)player.requestFullscreen().catch(()=>{});};videos.forEach(v=>{v.addEventListener('click',()=>{v.play().catch(()=>{});expand(v);});v.addEventListener('play',()=>{videos.forEach(o=>{if(o!==v)o.pause();});});});rail.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)videos.forEach(v=>v.pause());});function tick(t){const dt=Math.min(80,t-last||0);last=t;if(!paused&&!player.open&&!document.hidden&&!reduce.matches&&!videos.some(v=>!v.paused)){remainder+=dt*.0198;const step=Math.floor(remainder);remainder-=step;rail.scrollLeft+=step;const edge=rail.querySelector('[data-board-copy]').offsetLeft-originals[0].offsetLeft;if(edge>0&&rail.scrollLeft>=edge)rail.scrollLeft-=edge;}requestAnimationFrame(tick);}requestAnimationFrame(tick);})();
+
+// Run and render the one-page clinic website check.
+(() => {
+ const form=document.querySelector('#clinic-audit-form');
+ if(!form)return;
+ const input=form.querySelector('#clinic-audit-url');
+ const button=form.querySelector('button[type="submit"]');
+ const status=document.querySelector('#clinic-audit-status');
+ const report=document.querySelector('#clinic-audit-report');
+ const findings=document.querySelector('#clinic-audit-findings');
+ const printButton=document.querySelector('[data-report-print]');
+ let pageSpeedController;
+ function setStatus(message,error){status.hidden=false;status.textContent=message;status.classList.toggle('is-error',Boolean(error));}
+ function element(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;}
+ function findingCard(check){
+  const article=element('article','checkup-finding checkup-finding--'+check.status);
+  const header=element('div','checkup-finding-head');
+  const title=element('h4','',check.title);
+  const state=element('span','checkup-state checkup-state--'+check.status,check.status==='review'?'Needs a look':check.status==='good'?'Found':'Signal only');
+  header.append(title,state);
+  article.append(header,element('p','checkup-finding-summary',check.summary));
+  const next=element('p','checkup-next-step');
+  const label=element('strong','', 'Next step: ');
+  next.append(label,document.createTextNode(check.nextStep));
+  article.append(next);
+  const details=element('details','checkup-evidence-details');
+  details.append(element('summary','', 'What the scan found'));
+  details.append(element('p','checkup-evidence',check.evidence));
+  article.append(details);
+  return article;
+ }
+ function renderPageSpeed(snapshot){
+  const panel=report.querySelector('[data-lighthouse]');
+  const status=panel.querySelector('[data-lighthouse-status]');
+  const scores=panel.querySelector('[data-lighthouse-scores]');
+  const metrics=panel.querySelector('[data-lighthouse-metrics]');
+  scores.replaceChildren();
+  metrics.replaceChildren();
+  panel.hidden=false;
+  if(!snapshot||snapshot.status==='not_configured'){
+   status.textContent='The mobile Lighthouse snapshot is not configured in this environment.';
+   return;
+  }
+  if(snapshot.status==='pending'){
+   status.textContent='Google is running the mobile lab check. You can read the homepage findings while it finishes; this may take about a minute.';
+   return;
+  }
+  if(snapshot.status!=='available'){
+   status.textContent='Google did not return a mobile Lighthouse snapshot. The homepage check below is complete.';
+   return;
+  }
+  status.textContent='Emulated mobile lab run · '+new Date(snapshot.fetchedAt).toLocaleString('en-NG',{dateStyle:'medium',timeStyle:'short'});
+  const labels=[['performance','Performance'],['accessibility','Accessibility signal'],['seo','SEO'],['bestPractices','Best practices']];
+  labels.forEach(([key,label])=>{
+   const value=snapshot.scores?.[key];
+   if(!Number.isFinite(value))return;
+   const card=element('div','checkup-lighthouse-score');
+   card.append(element('span','',label),element('strong','',String(value)),element('small','','/ 100'));
+   scores.append(card);
+  });
+  const metricLabels=[['lcp','Largest contentful paint'],['cls','Layout shift'],['tbt','Blocking time'],['fcp','First contentful paint']];
+  metricLabels.forEach(([key,label])=>{
+   const value=snapshot.metrics?.[key];
+   if(!value)return;
+   const item=element('div','');
+   item.append(element('dt','',label),element('dd','',value));
+   metrics.append(item);
+  });
+ }
+ async function loadPageSpeed(url){
+  pageSpeedController?.abort();
+  pageSpeedController=new AbortController();
+  const controller=pageSpeedController;
+  const timer=setTimeout(()=>controller.abort(),80000);
+  try{
+   const response=await fetch('/api/pagespeed',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url}),signal:controller.signal});
+   const data=await response.json();
+   if(!response.ok){
+    renderPageSpeed({status:response.status===503&&/not configured/i.test(data.error||'')?'not_configured':'unavailable'});
+    return;
+   }
+   renderPageSpeed(data.pageSpeed);
+  }catch{
+   renderPageSpeed({status:'unavailable'});
+  }finally{
+   clearTimeout(timer);
+  }
+ }
+ function renderReport(data){
+  pageSpeedController?.abort();
+  const host=new URL(data.finalUrl).hostname;
+  report.querySelector('[data-report-host]').textContent=host;
+  const link=report.querySelector('[data-report-url]');
+  link.href=data.finalUrl;
+  link.textContent=data.finalUrl;
+  const fetched=new Date(data.fetchedAt);
+  report.querySelector('[data-report-date]').textContent=fetched.toLocaleString('en-NG',{dateStyle:'medium',timeStyle:'short'});
+  report.querySelector('[data-report-response]').textContent='HTTP '+data.responseStatus;
+  report.querySelector('[data-report-time]').textContent=data.responseTimeMs+' ms';
+  const reviewCount=Number(data.reviewCount)||0;
+  report.querySelector('[data-report-summary]').textContent=reviewCount
+   ? reviewCount+' item'+(reviewCount===1?'':'s')+' to check in this first-page scan.'
+   : 'No automatic review flags in the homepage response.';
+  renderPageSpeed(data.pageSpeed);
+  findings.replaceChildren();
+  const sorted=[...data.checks].sort((a,b)=>(a.priority||3)-(b.priority||3));
+  const groups=new Map();
+  sorted.forEach(check=>{
+   if(!groups.has(check.category)){
+    const section=element('section','checkup-group');
+    section.append(element('h3','',check.category));
+    const list=element('div','checkup-finding-list');
+    section.append(list);
+    groups.set(check.category,list);
+    findings.append(section);
+   }
+   groups.get(check.category).append(findingCard(check));
+  });
+  const topFindings=sorted.filter(check=>check.status==='review').slice(0,3);
+  const message=[
+   'Hello FJMK. I used the clinic website checkup.',
+   'Website: '+data.finalUrl,
+   topFindings.length?'Items I would like to review: '+topFindings.map(check=>check.title).join('; '):'Could you take a closer look at my clinic website and patient journey?',
+   'Please let me know what a practical review could cover.'
+  ].join('\n');
+  report.querySelector('[data-report-whatsapp]').href='https://wa.me/2348145580220?text='+encodeURIComponent(message);
+  report.hidden=false;
+  status.hidden=true;
+  report.focus({preventScroll:true});
+  report.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  if(data.pageSpeed?.status==='pending')loadPageSpeed(data.finalUrl);
+ }
+ form.addEventListener('submit',async event=>{
+  event.preventDefault();
+  if(!form.reportValidity())return;
+  const raw=input.value.trim();
+  const normalized=/^[a-z][a-z\d+.-]*:/i.test(raw)?raw:'https://'+raw;
+  try{
+   const parsed=new URL(normalized);
+   if(!['https:','http:'].includes(parsed.protocol))throw new Error();
+  }catch{
+   input.setCustomValidity('Enter a public website address, such as clinicname.com.');
+   input.reportValidity();
+   return;
+  }
+  input.setCustomValidity('');
+  report.hidden=true;
+  button.disabled=true;
+   setStatus('Checking the public homepage. This can take a few seconds.',false);
+  const controller=new AbortController();
+   const timer=setTimeout(()=>controller.abort(),28000);
+  try{
+   const response=await fetch('/api/audit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:normalized}),signal:controller.signal});
+   const data=await response.json();
+   if(!response.ok)throw new Error(data.error||'The check could not be completed.');
+   renderReport(data);
+  }catch(error){
+   const message=error.name==='AbortError'?'The check took too long. Try again in a moment.':error.message||'The website could not be checked. Try again shortly.';
+   setStatus(message,true);
+  }finally{
+   clearTimeout(timer);
+   button.disabled=false;
+  }
+ });
+ input.addEventListener('input',()=>input.setCustomValidity(''));
+ printButton?.addEventListener('click',()=>window.print());
+})();

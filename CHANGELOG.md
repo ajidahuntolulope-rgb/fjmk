@@ -54,3 +54,39 @@
 
 Refer to Git history for exact implementation and release commits. Historical
 notes are not permission to overwrite current user decisions.
+
+### Clinic website checkup
+
+- Replaced the fixed audit example with a live one-page check for public clinic
+  websites. The report covers homepage response, HTTPS, contact links, location
+  signals, mobile viewport, image alt attributes, search metadata, form
+  destinations, external script references and selected security headers.
+- Added a Cloudflare Pages Function for POST /api/audit and limited Function
+  routing to /api/* in the generated Pages routes manifest. Local preview uses
+  the same scan core. The Function returns HTTP 503 until its rate-limit
+  binding is available, and HTTP 429 when a visitor reaches the limit.
+- Kept the report free and ungated, with print-to-PDF and an optional WhatsApp
+  handoff. No scan reports are stored, no composite score is shown and no Lagos
+  benchmark is claimed.
+- Added an optional Google PageSpeed Insights mobile Lighthouse snapshot with
+  performance, accessibility, SEO and best-practices scores plus lab metrics.
+  It runs as a separate request so the direct homepage report appears first.
+  The report keeps those scores separate from direct findings and labels them
+  as emulated results, not WCAG or Lagos field measurements.
+- The PageSpeed key is server-side only: set `GOOGLE_PAGESPEED_API_KEY` as a
+  Cloudflare Pages secret in production or in the ignored local `.dev.vars` file.
+  The earlier keyless request returned HTTP 429; an unavailable API now leaves
+  the direct homepage report intact.
+- Declared the `AUDIT_RATE_LIMITER` Cloudflare Pages binding in `wrangler.jsonc`
+  (an approximate two requests per minute per key and Cloudflare location).
+  Verify the production deployment
+  received the binding and enforce its configured limit before announcing the
+  live checkup.
+
+### Blog SEO refresh
+
+- Reviewed search intent and competitor results qualitatively. Search Console still has no useful FJMK query baseline, so no search volumes or ranking gains are claimed. Added the query map and source review to `BLOG-SEO-RESEARCH.md`.
+- Reframed the six active blog cards as direct questions and wrote six original answers around FJMK's healthcare discovery-to-contact perspective. Kept commercial website-design terms on the Services page.
+- Added static article pages under `/blog/` using the approved FJMK fonts, palette, header and footer. Added canonical URLs, Article and breadcrumb structured data, visible first-paragraph answers, source links, and the six pages to the curated sitemap.
+- Added 301 redirects from the six former active `/journal/` routes, including `.html` variants. Parked legacy article files were not changed.
+- Build, SEO verifier (16 unique sitemap URLs; 33 demos noindex), reference checker (382 references, no errors), local clean routes and old-route redirects passed. Search demand remains a hypothesis until Search Console and buyer conversations provide evidence.

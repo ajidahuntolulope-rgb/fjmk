@@ -1,10 +1,35 @@
 import http from 'node:http';
+import { Readable } from 'node:stream';
+import { handleClinicAuditRequest, handleClinicPageSpeedRequest } from './clinic-audit-core.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
+const localVars = path.resolve('.dev.vars');
+if (fs.existsSync(localVars)) {
+  for (const line of fs.readFileSync(localVars, 'utf8').split(/\r?\n/)) {
+    const match = line.match(/^\s*([A-Z][A-Z0-9_]*)\s*=\s*(.*?)\s*$/);
+    if (match && !process.env[match[1]]) process.env[match[1]] = match[2].replace(/^(["'])(.*)\1$/, '$2');
+  }
+}
 const root = path.resolve('dist');
 const types = {'.html':'text/html; charset=utf-8','.css':'text/css','.js':'application/javascript','.svg':'image/svg+xml','.jpg':'image/jpeg','.png':'image/png','.webp':'image/webp','.mp4':'video/mp4','.woff2':'font/woff2','.txt':'text/plain','.xml':'application/xml'};
-http.createServer((req,res) => {
+http.createServer(async(req,res) => {
   const pathname = decodeURIComponent(new URL(req.url,'http://localhost').pathname);
+  if (pathname === '/api/audit' || pathname === '/api/pagespeed') {
+    try {
+      const init = { method: req.method, headers: { 'content-type': req.headers['content-type'] || '', origin: req.headers.origin || '' } };
+      if (req.method !== 'GET' && req.method !== 'HEAD') { init.body = Readable.toWeb(req); init.duplex = 'half'; }
+      const request = new Request('http://localhost' + pathname, init);
+      const handler = pathname === '/api/pagespeed' ? handleClinicPageSpeedRequest : handleClinicAuditRequest;
+      const response = await handler(request, { pageSpeedApiKey: process.env.GOOGLE_PAGESPEED_API_KEY });
+      const body = Buffer.from(await response.arrayBuffer());
+      res.writeHead(response.status, Object.fromEntries(response.headers.entries()));
+      res.end(body);
+    } catch {
+      res.writeHead(500, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' });
+      res.end(JSON.stringify({ error: 'The local scanner could not complete the request.' }));
+    }
+    return;
+  }
   const redirectFile=path.join(root,'_redirects');
   const redirect=fs.existsSync(redirectFile)?fs.readFileSync(redirectFile,'utf8').split(/\r?\n/).filter(line=>line.trim()&&!line.startsWith('#')).map(line=>line.trim().split(/\s+/)).find(rule=>rule[0]===pathname):null;
   if(redirect){res.writeHead(Number(redirect[2])||302,{Location:redirect[1]});return res.end();}
