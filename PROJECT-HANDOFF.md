@@ -2,6 +2,12 @@
 
 Last updated: 23 October 2026.
 
+Audit response fix: the browser now handles HTML/error responses from the API
+without leaking JSON parser errors. Rate limits request a 15-second wait; blocked
+requests advise refreshing and retrying. Production validation returned JSON for
+an invalid-mode request. The screenshot's original HTML response was not captured,
+so its precise cause is unconfirmed. Do not claim email delivery was verified.
+
 ## Current site
 
 FJMK is a healthcare-focused creative studio with design/websites, motion/content,

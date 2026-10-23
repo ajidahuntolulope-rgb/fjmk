@@ -2,6 +2,9 @@
 
 ## 23 October 2026
 
+- Handle non-JSON audit API responses, including Cloudflare blocks and rate limits,
+  with actionable retry messages instead of exposing a JSON parsing error.
+
 - Split FJMK from the personal portfolio into its own repo and Cloudflare Pages
   site. Retained concept sites and deep redirects.
 - Copied source brand assets, videos and licensed fonts into a local-only library;

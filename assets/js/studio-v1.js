@@ -283,6 +283,17 @@
  let activeUrl='';
  let pageSpeedController;
  function setStatus(node,message,error){node.hidden=false;node.textContent=message;node.classList.toggle('is-error',Boolean(error));}
+ async function readAuditResponse(response){
+  if(response.status===429)throw new Error('Too many requests. Wait 15 seconds, then try again.');
+  if(response.status===403)throw new Error('The request was blocked. Wait a moment, refresh this page, then try again.');
+  let data;
+  try{data=await response.json();}catch{
+   throw new Error('The report service returned an unexpected response. Wait a moment, refresh this page, then try again.');
+  }
+  if(!data||typeof data!=='object'||Array.isArray(data))throw new Error('The report service is temporarily unavailable. Please try again shortly.');
+  if(!response.ok)throw new Error(typeof data.error==='string'?data.error:'The report service is temporarily unavailable. Please try again shortly.');
+  return data;
+ }
  function element(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;}
  function renderScore(score){
   const card=report.querySelector('[data-score-card]');
@@ -390,7 +401,7 @@
   const timer=setTimeout(()=>controller.abort(),80000);
   try{
    const response=await fetch('/api/pagespeed',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url}),signal:controller.signal});
-   const data=await response.json();
+   const data=await readAuditResponse(response);
    if(!response.ok){
     renderPageSpeed({status:response.status===503&&/not configured/i.test(data.error||'')?'not_configured':'unavailable'});
     return;
@@ -486,7 +497,7 @@
   const timer=setTimeout(()=>controller.abort(),28000);
   try{
    const response=await fetch('/api/audit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:activeUrl,mode:'preview'}),signal:controller.signal});
-   const data=await response.json();
+   const data=await readAuditResponse(response);
    if(!response.ok)throw new Error(data.error||'The audit could not be completed.');
    renderPreview(data);
   }catch(error){
@@ -514,7 +525,7 @@
   setStatus(gateStatus,'Sending your email request and preparing the detailed report…',false);
   try{
    const response=await fetch('/api/audit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:activeUrl,mode:'report',email}),signal:controller.signal});
-   const data=await response.json();
+   const data=await readAuditResponse(response);
    if(!response.ok)throw new Error(data.error||'The detailed report could not be prepared.');
    renderFullReport(data);
   }catch(error){
