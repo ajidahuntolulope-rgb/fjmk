@@ -8,6 +8,9 @@ fs.mkdirSync(output);
 for (const entry of ['index.html', 'about.html', 'blog.html', 'contact.html',
   'assets', 'journal', 'work', 'samples', 'robots.txt', 'llms.txt',
   'sitemap.xml', '404.html']) {
-  fs.cpSync(entry, path.join(output, entry), { recursive: true });
+  fs.cpSync(entry, path.join(output, entry), {
+    recursive: true,
+    filter: source => !path.basename(source).startsWith('.') && !source.endsWith('.md'),
+  });
 }
 console.log('FJMK static site built in dist/');
