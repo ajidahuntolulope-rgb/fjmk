@@ -1,5 +1,9 @@
 {
   "name": "fjmk",
   "pages_build_output_dir": "./dist",
-  "compatibility_date": "2026-10-23"
+  "compatibility_date": "2026-10-23",
+  "kv_namespaces": [
+    { "binding": "AUDIT_LEADS", "id": "ad12c070329a4bf48ececf1b43572b6f" }
+  ],
+  "env": { "preview": { "kv_namespaces": [] } }
 }

@@ -55,7 +55,7 @@ export const tools = [
         <input id="clinic-report-email-address" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required>
         <button class="button" type="submit">Unlock detailed report <span aria-hidden="true">↗</span></button>
       </div>
-      <p class="clinic-report-gate-note">Submitting sends your email, the public website address, score and grade to FJMK. The team uses them to unlock the detailed report and follow up about this audit. You won’t be added to a general mailing list. <a href="/privacy">Privacy details</a>.</p>
+      <p class="clinic-report-gate-note">Submitting saves your email, public website address, score and grade with FJMK for 30 days and sends an email notification. The team uses these details to follow up about this audit. You won’t be added to a general mailing list. <a href="/privacy">Privacy details</a>.</p>
       <p id="clinic-report-gate-status" class="clinic-tool-status" role="status" aria-live="polite" hidden></p>
     </form>
     <p class="clinic-report-unlocked" data-report-unlocked role="status" hidden></p>

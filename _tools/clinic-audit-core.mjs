@@ -481,7 +481,26 @@ function previewHighlights(checks) {
   return selected.map(({ category, status, title, summary }) => ({ category, status, title, summary }));
 }
 
-async function captureAuditLead(email, audit) {
+async function captureAuditLead(email, audit, options = {}) {
+  if (options.leadStore) {
+    try {
+      const createdAt = new Date().toISOString();
+      const key = "audit:" + createdAt + ":" + crypto.randomUUID();
+      await options.leadStore.put(key, JSON.stringify({
+        email, website: audit.finalUrl.href, score: audit.score.value,
+        grade: audit.score.grade, reviewCount: audit.reviewCount, createdAt
+      }), { expirationTtl: 30 * 24 * 60 * 60 });
+      return "browser";
+    } catch {
+      console.warn("Audit lead capture failed", { reason: "storage_unavailable" });
+      throw new AuditError(424, "Your email request could not be saved. Please try again shortly.");
+    }
+  }
+  if (options.requireLeadStore) {
+    throw new AuditError(424, "Report requests are temporarily unavailable. Please contact FJMK.");
+  }
+  // Local preview fallback; production captures leads in KV. FormSubmit rejects
+  // Cloudflare's shared outbound IPs, so production notifications use the browser.
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 9000);
   try {
@@ -659,7 +678,8 @@ export async function handleClinicAuditRequest(request, options = {}) {
         highlights: audit.highlights
       }, 200);
     }
-    await captureAuditLead(email, { finalUrl: result.url, score, reviewCount });
+    const notification = await captureAuditLead(email, { finalUrl: result.url, score, reviewCount }, options);
+    if (notification === "browser") audit.leadNotification = "browser";
     return jsonResponse(audit, 200);
   } catch (error) {
     if (error instanceof AuditError) return jsonResponse({ error: error.message }, error.status);

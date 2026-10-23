@@ -91,6 +91,13 @@ Hero film autoplays muted, loops, resumes when visible, and has no Play film but
 Contact: three steps; keep the existing FormSubmit delivery alias and WhatsApp
 number unless instructed. The user authorised functional test messages on
 23 October 2026; clearly identify test submissions.
+Production report requests require the AUDIT_LEADS KV binding (namespace
+`fjmk-audit-leads`, declared in wrangler.jsonc). Save only the lead email, public
+URL, score, grade, review count and date, with a 30-day TTL, before returning the
+full report. Never store page HTML or full findings in the lead records. Browser
+FormSubmit notifications are best effort: the provider rate-limits Cloudflare's
+shared server IP. Node preview retains direct provider submission. Pages previews
+have no production lead-store binding and cannot unlock reports.
 The /tools check makes a live request to one public page and reads its initial
 HTML and response headers. When configured, it also sends the validated final
 URL to Google PageSpeed Insights for a mobile Lighthouse lab snapshot. It does

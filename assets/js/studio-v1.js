@@ -294,6 +294,24 @@
   if(!response.ok)throw new Error(typeof data.error==='string'?data.error:'The report service is temporarily unavailable. Please try again shortly.');
   return data;
  }
+ async function notifyAuditLead(email,data){
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),10000);
+  try{
+   const response=await fetch('https://formsubmit.co/ajax/de23c2fcc84d70e0fdcf09a669c34494',{
+    method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},signal:controller.signal,
+    body:JSON.stringify({name:'Health website audit report request',email,_replyto:email,
+     _url:'https://fjmk.drtolu.com/tools',website:data.finalUrl,score:data.score.value+'/100',
+     grade:data.score.grade,review_items:data.reviewCount,_subject:'FJMK health website audit report request',_captcha:'false'})
+   });
+   const result=await response.json();
+   if(!response.ok||!(result.success===true||result.success==='true'))throw new Error('Notification rejected');
+  }catch{
+   // The lead is already saved server-side. Email notification cannot revoke
+   // access to a report after successful capture.
+   console.warn('Audit email notification unavailable; the request was saved.');
+  }finally{clearTimeout(timer);}
+ }
  function element(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;}
  function renderScore(score){
   const card=report.querySelector('[data-score-card]');
@@ -528,6 +546,7 @@
    const data=await readAuditResponse(response);
    if(!response.ok)throw new Error(data.error||'The detailed report could not be prepared.');
    renderFullReport(data);
+   if(data.leadNotification==='browser')void notifyAuditLead(email,data);
   }catch(error){
    const message=error.name==='AbortError'?'This took too long. Try again shortly.':error.message||'The report request could not be completed. Try again shortly.';
    setStatus(gateStatus,message,true);

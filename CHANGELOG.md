@@ -2,6 +2,11 @@
 
 ## 23 October 2026
 
+- Made production lead capture independent of FormSubmit's rate limit on shared
+  Cloudflare server IPs. Save lead details in private KV for 30 days before
+  unlocking, and send a best-effort email notification from the browser. Added
+  storage failure/gating tests and aligned privacy/gate copy with actual storage.
+
 - Fixed report unlock submissions by supplying the Origin/Referer headers required
   by FormSubmit for server-side requests. The user also activated the delivery alias.
   Return HTTP 424 JSON for delivery failures, with a specific inactive-form message

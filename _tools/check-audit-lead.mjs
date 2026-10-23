@@ -56,6 +56,28 @@ try {
     assert.ok((await response.json()).checks.length);
   }
   assert.equal(providerCalls, 6);
+  const saved = [];
+  const leadStore = { put: async (key, value, options) => saved.push({ key, value: JSON.parse(value), options }) };
+  const storedResponse = await handleClinicAuditRequest(request("report"), { leadStore, requireLeadStore: true });
+  assert.equal(storedResponse.status, 200);
+  const storedReport = await storedResponse.json();
+  assert.equal(storedReport.leadNotification, "browser");
+  assert.ok(storedReport.checks.length);
+  assert.equal(saved.length, 1);
+  assert.equal(saved[0].value.email, "test@example.com");
+  assert.equal(saved[0].value.checks, undefined);
+  assert.equal(saved[0].options.expirationTtl, 2592000);
+  assert.equal(providerCalls, 6, "Production capture must not depend on a server-side email request");
+  const failedStore = { put: async () => { throw new Error("Storage unavailable"); } };
+  const failedResponse = await handleClinicAuditRequest(request("report"), { leadStore: failedStore, requireLeadStore: true });
+  assert.equal(failedResponse.status, 424);
+  assert.equal((await failedResponse.json()).checks, undefined);
+  const missingStore = await handleClinicAuditRequest(request("report"), { requireLeadStore: true });
+  assert.equal(missingStore.status, 424);
+  assert.equal((await missingStore.json()).checks, undefined);
+  const storedPreview = await handleClinicAuditRequest(request("preview"), { leadStore, requireLeadStore: true });
+  assert.equal(storedPreview.status, 200);
+  assert.equal(saved.length, 1, "Previews must not create a lead");
   console.log("Audit lead checks passed: preview, inactive form, rejection, HTML, connection failure and successful unlock.");
 } finally {
   globalThis.fetch = originalFetch;

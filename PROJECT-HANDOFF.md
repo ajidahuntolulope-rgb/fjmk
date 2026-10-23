@@ -2,6 +2,20 @@
 
 Last updated: 23 October 2026.
 
+Production correction: FormSubmit still rejects Cloudflare-origin submissions
+with HTTP 429, even after activation and origin-header correction. Production
+now saves leads into private Workers KV `fjmk-audit-leads` (AUDIT_LEADS binding in
+wrangler.jsonc, namespace ad12c070329a4bf48ececf1b43572b6f) before returning full
+findings. Fields: email, public URL, score, grade, review count and creation date;
+KV TTL is 30 days. No report or scanned HTML is stored. The browser sends the
+FormSubmit notification after capture; notification failure does not lock a
+successfully captured request. Leads remain accessible through the authenticated
+Cloudflare KV API/dashboard, never a public listing endpoint. Privacy notice and
+gate copy describe the storage and notification flow. If storage fails or the
+production binding is missing, no full report is returned. Pages previews have no
+production binding; local Node preview retains the direct provider fallback.
+The diagnostic paragraphs below describe the superseded direct-email approach.
+
 Report unlock diagnosis (23 October 2026): FormSubmit initially rejected the
 inactive delivery alias. The user activated it, revealing a second issue: the
 server-side fetch omitted Origin/Referer headers. Direct provider requests without
