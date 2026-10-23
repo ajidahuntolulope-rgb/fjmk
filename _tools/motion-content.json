@@ -1,0 +1,116 @@
+[
+  {
+    "name": "fjmk-empty-slots-34s",
+    "vertical": false,
+    "duration": 34,
+    "audio": true
+  },
+  {
+    "name": "fjmk-film-34s-with-voice",
+    "vertical": false,
+    "duration": 34,
+    "audio": true
+  },
+  {
+    "name": "fjmk-hero-30s-master",
+    "vertical": false,
+    "duration": 30,
+    "audio": false
+  },
+  {
+    "name": "fjmk-motion-vertical-v1",
+    "vertical": true,
+    "duration": 10,
+    "audio": true
+  },
+  {
+    "name": "fjmk-showcase-60s-v03",
+    "vertical": false,
+    "duration": 60,
+    "audio": true
+  },
+  {
+    "name": "fjmk-social-15s-v01",
+    "vertical": true,
+    "duration": 15,
+    "audio": true
+  },
+  {
+    "name": "fjmk-time-to-find-booked-10s",
+    "vertical": true,
+    "duration": 10,
+    "audio": true
+  },
+  {
+    "name": "fjmk-zoomthrough-30s-silent",
+    "vertical": false,
+    "duration": 30,
+    "audio": true
+  },
+  {
+    "name": "fjmk-zoomthrough-30s-voice-austin",
+    "vertical": false,
+    "duration": 30,
+    "audio": true
+  },
+  {
+    "name": "fjmk-zoomthrough-30s-voice-autumn",
+    "vertical": false,
+    "duration": 30,
+    "audio": true
+  },
+  {
+    "name": "concept-atlas-32s",
+    "vertical": false,
+    "duration": 32,
+    "audio": true
+  },
+  {
+    "name": "concept-haven-28s",
+    "vertical": false,
+    "duration": 28,
+    "audio": true
+  },
+  {
+    "name": "concept-haven-mind-30s",
+    "vertical": false,
+    "duration": 30,
+    "audio": true
+  },
+  {
+    "name": "concept-hospital-website-171s",
+    "vertical": false,
+    "duration": 171,
+    "audio": true
+  },
+  {
+    "name": "concept-kinetic-21s",
+    "vertical": false,
+    "duration": 20,
+    "audio": true
+  },
+  {
+    "name": "concept-sprout-29s",
+    "vertical": false,
+    "duration": 28,
+    "audio": true
+  },
+  {
+    "name": "concept-sprout-39s-tight",
+    "vertical": false,
+    "duration": 38,
+    "audio": true
+  },
+  {
+    "name": "concept-sprout-52s-silent",
+    "vertical": false,
+    "duration": 52,
+    "audio": true
+  },
+  {
+    "name": "concept-veil-21s",
+    "vertical": false,
+    "duration": 21,
+    "audio": true
+  }
+]

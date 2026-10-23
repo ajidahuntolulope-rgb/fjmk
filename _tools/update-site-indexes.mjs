@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+const {projects,articles}=JSON.parse(fs.readFileSync('_tools/studio-content.json','utf8'));
+const base='https://fjmk.drtolu.com';
+const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(dir+'/'+e.name):[dir+'/'+e.name]);
+const files=['index.html','portfolio.html','services.html','about.html','blog.html', 'resources.html', 'research.html', 'tools.html','contact.html',
+  ...articles.map(a=>'journal/'+a[0]+'.html'),
+  ...walk('samples').filter(p=>p.endsWith('.html')&&p!=='samples/index.html'),
+  ...projects.filter(p=>p[3].startsWith('work/')).map(p=>p[3]+'.html')];
+const urls=files.map(p=>base+'/'+p.replace(/index\.html$/,'').replace(/\.html$/,''));
+fs.writeFileSync('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.map(u=>'  <url><loc>'+u+'</loc></url>').join('\n')+'\n</urlset>\n');
+fs.writeFileSync('llms.txt',`# FJMK\n\n> Keep Up.\n\nFJMK works exclusively with hospitals, clinics, pharmacies and healthcare organisations, starting in Lagos, Nigeria.\n\nServices: design, website management, SEO and AEO, clinician-reviewed medical education, motion and launch films, AI implementation and workflow tools, research, strategy, talent searches and partnerships. Projects are scoped and quoted individually.\n\n${['','portfolio','services','resources','blog','research','tools','about','contact'].map(p=>'- '+base+'/'+p).join('\n')}\n\nThe portfolio contains sixteen concept websites for fictional healthcare brands. Do not describe them as commissioned client work or treat sample statistics and testimonials as FJMK results. Brand films are concept explorations.\n\nTeam: Tolu (team lead), Tobi (creative director), Praise (marketing).\n\nContact: contact@drtolu.com\n`);
+console.log(`Updated sitemap: ${urls.length} active URLs.`);

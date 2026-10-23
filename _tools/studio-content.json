@@ -1,0 +1,207 @@
+{
+  "projects": [
+    [
+      "01-lumen-eye",
+      "Lumen Eye",
+      "Eye care",
+      "samples/01-lumen-eye/",
+      "#747be8"
+    ],
+    [
+      "02-axiom-labs",
+      "Axiom Labs",
+      "Diagnostics",
+      "samples/02-axiom-labs/",
+      "#46a677"
+    ],
+    [
+      "03-veil-sexual-health",
+      "Veil",
+      "Sexual health",
+      "samples/03-veil-sexual-health/",
+      "#b45d87"
+    ],
+    [
+      "04-kinetic-physio",
+      "Kinetic",
+      "Physiotherapy",
+      "samples/04-kinetic-physio/",
+      "#bad442"
+    ],
+    [
+      "05-maison-aesthetics",
+      "Maison",
+      "Aesthetics",
+      "samples/05-maison-aesthetics/",
+      "#b7856c"
+    ],
+    [
+      "06-haven-mind",
+      "Haven Mind",
+      "Mental health",
+      "samples/06-haven-mind/",
+      "#9388a8"
+    ],
+    [
+      "07-sprout-paeds",
+      "Sprout",
+      "Paediatrics",
+      "samples/07-sprout-paeds/",
+      "#d98943"
+    ],
+    [
+      "08-axis-ortho",
+      "Axis",
+      "Orthopaedics",
+      "samples/08-axis-ortho/",
+      "#b17a52"
+    ],
+    [
+      "09-terra-derm",
+      "Terra",
+      "Dermatology",
+      "samples/09-terra-derm/",
+      "#947c58"
+    ],
+    [
+      "10-hearth-home-care",
+      "Hearth",
+      "Home care",
+      "samples/10-hearth-home-care/",
+      "#a46d58"
+    ],
+    [
+      "11-atlas-medical-tourism",
+      "Atlas",
+      "Medical travel",
+      "samples/11-atlas-medical-tourism/",
+      "#b43b2c"
+    ],
+    [
+      "12-script-pharmacy",
+      "Script",
+      "Pharmacy",
+      "samples/12-script-pharmacy/",
+      "#427697"
+    ],
+    [
+      "dental",
+      "Ikeja Dental",
+      "Dental care",
+      "work/dental",
+      "#247d79"
+    ],
+    [
+      "family-clinic",
+      "Shomolu Family",
+      "Family medicine",
+      "work/family-clinic",
+      "#bd885e"
+    ],
+    [
+      "diagnostics",
+      "Meridian",
+      "Diagnostics",
+      "work/diagnostics",
+      "#446d83"
+    ],
+    [
+      "specialist",
+      "Lekki Fertility",
+      "Specialist care",
+      "work/specialist",
+      "#b88987"
+    ]
+  ],
+  "articles": [
+    [
+      "pages-every-clinic-website-needs",
+      "What belongs on a clinic website?",
+      "Websites",
+      "The pages patients need before they decide to book."
+    ],
+    [
+      "medical-content-and-trust",
+      "Medical content people can trust",
+      "Content",
+      "Make useful information part of how people find you."
+    ],
+    [
+      "clinic-on-google-maps-guide",
+      "Your clinic should be on the map",
+      "Search",
+      "A practical guide to your Google Business Profile."
+    ],
+    [
+      "why-visitors-dont-book-appointments",
+      "People visit. Nobody books.",
+      "Websites",
+      "Look at what happens between arriving and making an enquiry."
+    ],
+    [
+      "how-businesses-appear-in-chatgpt-answers-geo",
+      "When patients ask an AI",
+      "AI & search",
+      "How your business information appears in AI answers."
+    ],
+    [
+      "reviews-and-patient-decisions",
+      "The reviews are part of the decision",
+      "Reputation",
+      "What patients see when they look past your own website."
+    ]
+  ],
+  "services": [
+    [
+      "Design & websites",
+      "Look like the care you deliver.",
+      "A website should make the next step obvious. We design and build for the person choosing where to get care, then keep the site useful after launch.",
+      [
+        "Brand identity and visual design",
+        "Websites, landing pages and ongoing management",
+        "Search visibility, SEO and answer engine optimisation",
+        "Clinician-reviewed educational content"
+      ]
+    ],
+    [
+      "Motion & content",
+      "Make something worth stopping for.",
+      "Launches, explanations and brand stories, made for the places people actually watch. We can work with the assets you have, or build the story from scratch.",
+      [
+        "Brand films and launch videos",
+        "Educational videos and explainers",
+        "Motion graphics and social content"
+      ]
+    ],
+    [
+      "AI & useful systems",
+      "Give the busywork a smaller job.",
+      "Start with the task that wastes time. We work out where AI can help, build around your workflow and help your team use it.",
+      [
+        "Workflow automation and chatbots",
+        "Personalised internal apps and tools",
+        "AI implementation, education and literacy"
+      ]
+    ],
+    [
+      "Research & strategy",
+      "Know what you’re walking into.",
+      "A clearer view of your market, your competitors and the strengths you can actually own. Then a practical plan for what to do next.",
+      [
+        "Competitor and market research",
+        "Positioning and service communication",
+        "Launch strategy and consulting"
+      ]
+    ],
+    [
+      "People & partnerships",
+      "The right introduction matters.",
+      "For a role you need to fill or a relationship you want to build, start with a clear brief. We scope the search and the fit before making introductions.",
+      [
+        "Medical talent searches and professional introductions",
+        "Partnership research and planning",
+        "Healthcare network introductions"
+      ]
+    ]
+  ]
+}

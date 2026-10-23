@@ -1,47 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://fjmk.drtolu.com/</loc></url>
+  <url><loc>https://fjmk.drtolu.com/portfolio</loc></url>
+  <url><loc>https://fjmk.drtolu.com/services</loc></url>
   <url><loc>https://fjmk.drtolu.com/about</loc></url>
   <url><loc>https://fjmk.drtolu.com/blog</loc></url>
+  <url><loc>https://fjmk.drtolu.com/resources</loc></url>
+  <url><loc>https://fjmk.drtolu.com/research</loc></url>
+  <url><loc>https://fjmk.drtolu.com/tools</loc></url>
   <url><loc>https://fjmk.drtolu.com/contact</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/antenatal-care-nigeria</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/chest-pain</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/choosing-a-hospital-nigeria</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/clinic-on-google-maps-guide</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/endometriosis</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/entities-and-consistent-business-info</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/erectile-dysfunction</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/female-infertility</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/fever-in-children</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/freshness-signals-in-ai-search</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/how-businesses-appear-in-chatgpt-answers-geo</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/how-seo-works-hospitals-clinics</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/hypertension</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/ivf-in-nigeria</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/malaria</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/medical-content-and-trust</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/menopause</loc></url>
   <url><loc>https://fjmk.drtolu.com/journal/pages-every-clinic-website-needs</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/pcos</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/reviews-and-patient-decisions</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/website-cost-nigeria-2026</loc></url>
-  <url><loc>https://fjmk.drtolu.com/journal/why-clinic-not-getting-patients-from-google</loc></url>
+  <url><loc>https://fjmk.drtolu.com/journal/medical-content-and-trust</loc></url>
+  <url><loc>https://fjmk.drtolu.com/journal/clinic-on-google-maps-guide</loc></url>
   <url><loc>https://fjmk.drtolu.com/journal/why-visitors-dont-book-appointments</loc></url>
-  <url><loc>https://fjmk.drtolu.com/samples/</loc></url>
-  <url><loc>https://fjmk.drtolu.com/samples/01-lumen-eye/</loc></url>
+  <url><loc>https://fjmk.drtolu.com/journal/how-businesses-appear-in-chatgpt-answers-geo</loc></url>
+  <url><loc>https://fjmk.drtolu.com/journal/reviews-and-patient-decisions</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/01-lumen-eye/about</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/01-lumen-eye/contact</loc></url>
-  <url><loc>https://fjmk.drtolu.com/samples/01-lumen-eye/journal</loc></url>
+  <url><loc>https://fjmk.drtolu.com/samples/01-lumen-eye/</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/01-lumen-eye/journal-diabetic-retinopathy-screening</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/01-lumen-eye/journal-glaucoma-peripheral-vision</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/01-lumen-eye/journal-lasik-screening</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/01-lumen-eye/journal-myopia-children-screen-time</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/01-lumen-eye/journal-retinal-tear-warning-signs</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/01-lumen-eye/journal-standard-vs-premium-lens</loc></url>
+  <url><loc>https://fjmk.drtolu.com/samples/01-lumen-eye/journal</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/01-lumen-eye/services</loc></url>
-  <url><loc>https://fjmk.drtolu.com/samples/02-axiom-labs/</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/02-axiom-labs/about</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/02-axiom-labs/home-collection</loc></url>
+  <url><loc>https://fjmk.drtolu.com/samples/02-axiom-labs/</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/02-axiom-labs/results</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/02-axiom-labs/tests</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/03-veil-sexual-health/</loc></url>
@@ -55,9 +42,8 @@
   <url><loc>https://fjmk.drtolu.com/samples/11-atlas-medical-tourism/</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/12-script-pharmacy/</loc></url>
   <url><loc>https://fjmk.drtolu.com/samples/12-script-pharmacy/subscriptions</loc></url>
-  <url><loc>https://fjmk.drtolu.com/work/</loc></url>
   <url><loc>https://fjmk.drtolu.com/work/dental</loc></url>
-  <url><loc>https://fjmk.drtolu.com/work/diagnostics</loc></url>
   <url><loc>https://fjmk.drtolu.com/work/family-clinic</loc></url>
+  <url><loc>https://fjmk.drtolu.com/work/diagnostics</loc></url>
   <url><loc>https://fjmk.drtolu.com/work/specialist</loc></url>
 </urlset>

@@ -26,3 +26,9 @@ HANDOFF.md
 
 # Cloudflare Pages build output
 /dist/
+
+# Local source library and contact sheets, never upload
+/studio-library/
+/_tools/*-contact.jpg
+/assets/previews/*.png
+/assets/previews/*.jpg
