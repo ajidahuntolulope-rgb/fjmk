@@ -3,6 +3,18 @@ const MAX_HTML_BYTES = 1200000;
 const MAX_REDIRECTS = 5;
 const REQUEST_TIMEOUT_MS = 14000;
 const PAGESPEED_TIMEOUT_MS = 60000;
+const FORM_SUBMIT_ENDPOINT = "https://formsubmit.co/ajax/de23c2fcc84d70e0fdcf09a669c34494";
+
+const HEALTH_IDENTITY_TERMS = /\b(?:health(?:care)?|medical|clinical|clinics?|hospitals?|doctors?|physicians?|nurses?|dental|dentists?|pharmacy|pharmacists?|pharma(?:ceutical)?|medicines?|diagnostics?|laborator(?:y|ies)|telehealth|telemedicine|physiotherap(?:y|ist|ists)|physical therapy|rehabilitation|mental health|paediatr(?:ic|ics)|pediatr(?:ic|ics)|health ?tech|medtech|biotech|biomedical|medical devices?|home ?care|care home|nursing home|hospice|optometr(?:y|ist|ists)|ophthalmolog(?:y|ist)|radiolog(?:y|ist)|fertility|midwif(?:e|ery)|veterinar(?:y|ian)|nutrition|wellness)\b/i;
+const HEALTH_PAGE_TERMS = /\b(?:patients?|clinical|diagnos(?:is|tic|tics)|treatments?|prescriptions?|medicines?|doctors?|physicians?|nurses?|pharmac(?:y|ies)|hospitals?|clinics?|healthcare|health|medical|therap(?:y|ies)|therapists?|surger(?:y|ies)|laborator(?:y|ies)|screenings?|vaccinations?|rehabilitation|caregivers?)\b/gi;
+const SCORE_WEIGHTS = { 1: 4, 2: 3, 3: 2, 4: 1 };
+const SCORE_GRADES = [
+  { min: 90, grade: "A", label: "Strong homepage signals" },
+  { min: 80, grade: "B", label: "A solid foundation with a few fixes" },
+  { min: 70, grade: "C", label: "Mixed signals; several improvements would help" },
+  { min: 60, grade: "D", label: "Several issues need attention" },
+  { min: 0, grade: "F", label: "Needs substantial improvement" }
+];
 
 class AuditError extends Error {
   constructor(status, message) {
@@ -420,6 +432,88 @@ function buildChecks(html, response, finalUrl, responseMs, truncated) {
   return checks;
 }
 
+function isHealthRelatedSite(html, finalUrl) {
+  const titleTag = html.match(/<title\b[^>]*>([\s\S]*?)<\/title\s*>/i);
+  const title = titleTag ? stripMarkup(titleTag[1]) : "";
+  const description = metaContent(html, "description");
+  const headings = tagList(html, "h1").map(stripMarkup).join(" ");
+  const identity = [finalUrl.hostname, finalUrl.pathname, title, description, headings].join(" ");
+  if (HEALTH_IDENTITY_TERMS.test(identity)) return true;
+
+  const readableText = stripMarkup(
+    html
+      .replace(/<script\b[^>]*>[\s\S]*?<\/script\s*>/gi, " ")
+      .replace(/<style\b[^>]*>[\s\S]*?<\/style\s*>/gi, " ")
+  ).toLowerCase();
+  const pageSignals = new Set([...readableText.matchAll(HEALTH_PAGE_TERMS)].map(match => match[0]));
+  return pageSignals.size >= 3;
+}
+
+function scoreClinicChecks(checks) {
+  const scoredChecks = checks.filter(check => check.status === "good" || check.status === "review");
+  const totalWeight = scoredChecks.reduce((sum, check) => sum + (SCORE_WEIGHTS[check.priority] || 1), 0);
+  const earnedWeight = scoredChecks
+    .filter(check => check.status === "good")
+    .reduce((sum, check) => sum + (SCORE_WEIGHTS[check.priority] || 1), 0);
+  let value = totalWeight ? Math.round((earnedWeight / totalWeight) * 100) : 0;
+  const criticalFindings = checks.filter(check => check.status === "review" && check.priority === 1);
+  const capped = criticalFindings.length > 0;
+  if (capped) value = Math.min(value, 59);
+  const band = SCORE_GRADES.find(item => value >= item.min) || SCORE_GRADES[SCORE_GRADES.length - 1];
+  return {
+    value,
+    grade: band.grade,
+    label: band.label,
+    criticalCap: capped ? 59 : null,
+    scoredChecks: scoredChecks.length,
+    method: "Weighted snapshot of homepage checks. Higher-priority findings count more; context signals are excluded.",
+    formula: "Good checks earn points; review flags earn none. Priority 1, 2, 3 and 4 checks carry 4, 3, 2 and 1 points. Information-only checks are excluded. Any unresolved priority 1 finding caps the score at 59. Grades are A (90–100), B (80–89), C (70–79), D (60–69) and F (below 60). PageSpeed lab scores are reported separately.",
+    limitation: "Not a clinical, legal, security or accessibility verdict, or a Lagos benchmark. PageSpeed is optional and reported separately."
+  };
+}
+
+function previewHighlights(checks) {
+  const priorityOrder = (a, b) => (a.priority || 3) - (b.priority || 3);
+  const review = checks.filter(check => check.status === "review").sort(priorityOrder);
+  const selected = review.length
+    ? review.slice(0, 3)
+    : checks.filter(check => check.status === "good").sort(priorityOrder).slice(0, 3);
+  return selected.map(({ category, status, title, summary }) => ({ category, status, title, summary }));
+}
+
+async function captureAuditLead(email, audit) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 9000);
+  try {
+    const response = await fetch(FORM_SUBMIT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        name: "Health website audit report request",
+        email,
+        _replyto: email,
+        _url: "https://fjmk.drtolu.com/tools",
+        website: audit.finalUrl.href,
+        score: audit.score.value + "/100",
+        grade: audit.score.grade,
+        review_items: audit.reviewCount,
+        _subject: "FJMK health website audit report request",
+        _captcha: "false"
+      }),
+      signal: controller.signal
+    });
+    const result = await response.json().catch(() => null);
+    if (!response.ok || !(result && (result.success === true || result.success === "true"))) {
+      throw new AuditError(502, "We could not confirm your email request, so the detailed report stayed locked. Please try again shortly.");
+    }
+  } catch (error) {
+    if (error instanceof AuditError) throw error;
+    throw new AuditError(502, "We could not confirm your email request, so the detailed report stayed locked. Please try again shortly.");
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 async function pageSpeedSnapshot(pageUrl, apiKey) {
   if (!apiKey) return { status: "not_configured" };
   const endpoint = new URL("https://www.googleapis.com/pagespeedonline/v5/runPagespeed");
@@ -483,6 +577,17 @@ export async function handleClinicAuditRequest(request, options = {}) {
   } catch (error) {
     return jsonResponse({ error: error instanceof AuditError ? error.message : "Enter a valid website address." }, error instanceof AuditError ? error.status : 400);
   }
+  const mode = payload && payload.mode !== undefined ? payload.mode : "preview";
+  if (mode !== "preview" && mode !== "report") {
+    return jsonResponse({ error: "Choose a preview or report request." }, 400);
+  }
+  let email = "";
+  if (mode === "report") {
+    email = typeof payload.email === "string" ? payload.email.trim() : "";
+    if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return jsonResponse({ error: "Enter a valid email address to unlock the detailed report." }, 400);
+    }
+  }
   let target;
   try {
     target = normalizePublicUrl(payload && payload.url);
@@ -496,10 +601,20 @@ export async function handleClinicAuditRequest(request, options = {}) {
     const response = result.response;
     const contentType = response.headers.get("content-type") || "";
     const body = await readHtml(response);
+    if (!isHealthRelatedSite(body.html, result.url)) {
+      return jsonResponse({
+        error: "This checker is for health and health-related websites. Try a clinic, hospital, pharmacy, health service or health technology homepage."
+      }, 422);
+    }
     const checks = buildChecks(body.html, response, result.url, result.responseMs, body.truncated);
     const reviewCount = checks.filter(check => check.status === "review").length;
     const goodCount = checks.filter(check => check.status === "good").length;
-    return jsonResponse({
+    const score = scoreClinicChecks(checks);
+    const summary = reviewCount
+      ? reviewCount + " of " + checks.length + " homepage checks need review. The preview shows the highest-priority findings."
+      : "No review flags were detected in the checks available on this homepage.";
+    const highlights = previewHighlights(checks);
+    const audit = {
       requestedUrl: target.href,
       finalUrl: result.url.href,
       fetchedAt: new Date().toISOString(),
@@ -509,10 +624,27 @@ export async function handleClinicAuditRequest(request, options = {}) {
       htmlPage: /text\/html|application\/xhtml\+xml/i.test(contentType),
       truncated: body.truncated,
       pageSpeed: { status: options.pageSpeedApiKey ? "pending" : "not_configured" },
+      score,
+      summary,
+      highlights,
       reviewCount,
       goodCount,
       checks
-    }, 200);
+    };
+    if (mode === "preview") {
+      return jsonResponse({
+        requestedUrl: audit.requestedUrl,
+        finalUrl: audit.finalUrl,
+        fetchedAt: audit.fetchedAt,
+        responseStatus: audit.responseStatus,
+        responseTimeMs: audit.responseTimeMs,
+        score,
+        summary: audit.summary,
+        highlights: audit.highlights
+      }, 200);
+    }
+    await captureAuditLead(email, { finalUrl: result.url, score, reviewCount });
+    return jsonResponse(audit, 200);
   } catch (error) {
     if (error instanceof AuditError) return jsonResponse({ error: error.message }, error.status);
     if (controller.signal.aborted) return jsonResponse({ error: "The website took too long to answer. Try again in a moment." }, 504);
@@ -557,9 +689,15 @@ export async function handleClinicPageSpeedRequest(request, options = {}) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
   try {
-    await assertPublicDns(target.hostname, controller.signal);
+    const result = await fetchPublicPage(target, controller.signal);
+    const body = await readHtml(result.response);
+    if (!isHealthRelatedSite(body.html, result.url)) {
+      return jsonResponse({
+        error: "This checker is for health and health-related websites. Try a clinic, hospital, pharmacy, health service or health technology homepage."
+      }, 422);
+    }
     clearTimeout(timer);
-    const pageSpeed = await pageSpeedSnapshot(target.href, options.pageSpeedApiKey);
+    const pageSpeed = await pageSpeedSnapshot(result.url.href, options.pageSpeedApiKey);
     return jsonResponse({ pageSpeed }, 200);
   } catch (error) {
     if (error instanceof AuditError) return jsonResponse({ error: error.message }, error.status);

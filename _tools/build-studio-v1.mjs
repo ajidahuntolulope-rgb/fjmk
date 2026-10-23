@@ -76,7 +76,7 @@ for(const[key,title,description,body]of[
  ['blog','Healthcare Website and Search Guides | FJMK','Practical answers on clinic websites, local search, healthcare content and patient enquiries from FJMK.',blog],
  ['resources','Healthcare Resources, Research and Tools | FJMK','Writing, research and practical tools for healthcare businesses.',resources],
  ['research','Lagos Healthcare Website Research | FJMK','Upcoming FJMK research into 50 healthcare websites in Lagos, Nigeria.',research],
- ['tools','Free Clinic Website Check in Lagos, Nigeria | FJMK','Check a clinic or hospital homepage in Lagos for technical SEO, mobile performance and patient contact routes. Get a free first-page report.',tools],
+ ['tools','Free Health Website Audit | FJMK','Check a healthcare website’s public homepage for patient routes, mobile, search, privacy and security signals. Get a weighted score and detailed PDF.',tools],
  ['about','About FJMK | Healthcare Creative Studio in Lagos','Meet the team behind FJMK. Design, motion, medical content and practical AI for healthcare businesses, starting in Lagos.',about],
  ['privacy','Privacy Policy | FJMK','How FJMK handles website information and project enquiries, and how to contact us about privacy.',privacy],
  ['contact','Start a Healthcare Project | FJMK','Tell FJMK what you want to build or improve. Discuss a website, content, motion or AI project for your healthcare business.',contact],

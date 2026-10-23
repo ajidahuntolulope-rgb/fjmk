@@ -300,3 +300,72 @@ body[data-page="tools"] .clinic-report-note{font-size:10px}
 .choice[aria-pressed="true"]{background:var(--terra);border-color:var(--terra);color:var(--paper)}
 .menu-toggle:hover span,.menu-toggle:active span{background:var(--paper)}
 .project-open:hover,.project-open:active{background:var(--terra);border-color:var(--terra);color:var(--paper)}
+
+/* Compact audit preview, weighted score and email gate. */
+body[data-page="tools"] .clinic-score-card{
+ display:grid;grid-template-columns:minmax(150px,.34fr) 1fr;align-items:center;gap:24px;
+ margin:26px 0 22px;padding:22px 26px;background:var(--surface);
+ border:1px solid var(--rule);border-left:4px solid var(--score-color,#9c4530);
+}
+body[data-page="tools"] .clinic-score-card--a,body[data-page="tools"] .clinic-score-card--b{--score-color:#3f7653;--score-bg:#e7efe8;--score-ink:#24563a}
+body[data-page="tools"] .clinic-score-card--c{--score-color:#85734f;--score-bg:#f0ecdf;--score-ink:#5d4c2e}
+body[data-page="tools"] .clinic-score-card--d,body[data-page="tools"] .clinic-score-card--f{--score-color:#a4472c;--score-bg:#f4e5dc;--score-ink:#762c1a}
+body[data-page="tools"] .clinic-score-result{display:flex;align-items:baseline;gap:8px;color:var(--score-ink,#762c1a)}
+body[data-page="tools"] .clinic-score-value{font:650 clamp(52px,7vw,78px)/.95 var(--sans);letter-spacing:-.06em;font-variant-numeric:tabular-nums}
+body[data-page="tools"] .clinic-score-denominator{font-size:13px;color:var(--muted)}
+body[data-page="tools"] .clinic-score-grade{margin-left:auto;padding:7px 11px;background:var(--score-bg,#f4e5dc);font:700 23px/1 var(--sans)}
+body[data-page="tools"] .clinic-score-copy .eyebrow{margin-bottom:7px}
+body[data-page="tools"] .clinic-score-copy h3{font:600 22px/1.25 var(--sans);letter-spacing:-.02em}
+body[data-page="tools"] .clinic-score-copy>p:last-child{max-width:720px;margin-top:8px;font-size:11px;line-height:1.55;color:var(--muted)}
+body[data-page="tools"] .clinic-report-preview{padding:23px 0 25px;border-top:1px solid var(--rule)}
+body[data-page="tools"] .clinic-preview-intro h3{font:600 25px/1.2 var(--sans);letter-spacing:-.02em}
+body[data-page="tools"] .clinic-preview-intro>p:last-child{margin-top:8px;font-size:14px}
+body[data-page="tools"] .clinic-preview-highlights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:0;margin:18px 0 0;list-style:none}
+body[data-page="tools"] .clinic-preview-item{min-width:0;padding:14px 15px;background:var(--surface);border-left:3px solid var(--rule)}
+body[data-page="tools"] .clinic-preview-item--review{border-left-color:#a4472c;background:#f4e5dc}
+body[data-page="tools"] .clinic-preview-item--good{border-left-color:#3f7653;background:#e7efe8}
+body[data-page="tools"] .clinic-preview-item-head{display:flex;justify-content:space-between;align-items:start;gap:10px}
+body[data-page="tools"] .clinic-preview-category{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+body[data-page="tools"] .clinic-preview-item .checkup-state{font-size:9px;white-space:nowrap}
+body[data-page="tools"] .clinic-preview-item h4{margin:10px 0 0;font:600 15px/1.3 var(--sans)}
+body[data-page="tools"] .clinic-preview-item>p{margin-top:7px;font-size:11px;line-height:1.5}
+body[data-page="tools"] .clinic-score-limitation{margin-top:15px;font-size:10px;line-height:1.55;color:var(--muted)}
+body[data-page="tools"] .clinic-report-gate{margin:0 0 25px;padding:20px 22px;background:#e8e0d2;border-top:2px solid var(--terra)}
+body[data-page="tools"] .clinic-report-gate>label{display:block;font:600 15px/1.35 var(--sans)}
+body[data-page="tools"] .clinic-report-email-entry{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;margin-top:10px}
+body[data-page="tools"] .clinic-report-email-entry input{width:100%;min-height:48px;padding:10px 12px;border:1px solid var(--ink);border-radius:0;background:var(--paper);color:var(--ink);font:inherit}
+body[data-page="tools"] .clinic-report-gate-note{margin-top:10px;font-size:10px;line-height:1.55;color:var(--muted)}
+body[data-page="tools"] .clinic-report-gate-note a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+body[data-page="tools"] .clinic-report-unlocked{margin:0 0 18px;padding:12px 14px;background:#e7efe8;border-left:3px solid #3f7653;font-size:13px}
+body[data-page="tools"] .clinic-full-report-title{font:600 24px/1.2 var(--sans);letter-spacing:-.02em;margin:25px 0 14px}
+body[data-page="tools"] .clinic-score-formula{margin:0 0 16px;padding:10px 13px;background:#f0ecdf;border-left:3px solid #85734f;font-size:10px;line-height:1.55;color:#5d4c2e}
+body[data-page="tools"] .clinic-full-report .clinic-report-overview{flex-wrap:wrap}
+body[data-page="tools"] .clinic-full-report .clinic-report-meta{margin-left:auto}
+body[data-page="tools"] .clinic-print-note{align-self:center;font-size:10px;color:var(--muted)}
+body[data-page="tools"] .clinic-report .checkup-group>h5{font:650 16px/1.3 var(--sans);letter-spacing:-.01em;padding-bottom:7px;margin-bottom:9px}
+
+@media(max-width:767px){
+ body[data-page="tools"] .clinic-score-card{grid-template-columns:1fr;gap:14px;padding:18px}
+ body[data-page="tools"] .clinic-score-result{max-width:250px}
+ body[data-page="tools"] .clinic-score-value{font-size:58px}
+ body[data-page="tools"] .clinic-score-copy h3{font-size:19px}
+ body[data-page="tools"] .clinic-preview-highlights{grid-template-columns:1fr;gap:8px}
+ body[data-page="tools"] .clinic-report-gate{padding:17px}
+ body[data-page="tools"] .clinic-report-email-entry{grid-template-columns:1fr}
+ body[data-page="tools"] .clinic-report-email-entry .button{width:100%;justify-content:center}
+ body[data-page="tools"] .clinic-full-report .clinic-report-meta{margin-left:0}
+ body[data-page="tools"] .clinic-print-note{align-self:start}
+}
+
+@media print{
+ body[data-page="tools"] .clinic-report-gate,body[data-page="tools"] .clinic-report-unlocked{display:none!important}
+ body[data-page="tools"] .clinic-score-card{grid-template-columns:150px 1fr;padding:12px 16px;margin:12px 0}
+ body[data-page="tools"] .clinic-score-value{font-size:42pt}
+ body[data-page="tools"] .clinic-score-grade{font-size:18pt}
+ body[data-page="tools"] .clinic-preview-highlights{grid-template-columns:repeat(3,1fr);gap:8px}
+ body[data-page="tools"] .clinic-preview-item{break-inside:avoid;padding:9px}
+ body[data-page="tools"] .clinic-preview-item h4{font-size:10pt}
+ body[data-page="tools"] .clinic-preview-item>p{font-size:8pt}
+ body[data-page="tools"] .clinic-full-report-title{font-size:16pt}
+ body[data-page="tools"] .clinic-report .checkup-group>h5{font-size:11pt}
+}

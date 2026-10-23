@@ -262,7 +262,7 @@
 })();
 (()=>{const rail=document.querySelector('.motion-rail');if(!rail)return;let paused=false,last=0,remainder=0;const reduce=matchMedia('(prefers-reduced-motion:reduce)');const button=document.querySelector('[data-board-pause]');button?.addEventListener('click',()=>{paused=!paused;button.textContent=paused?'▷':'Ⅱ';button.setAttribute('aria-label',paused?'Resume moving films':'Pause moving films');});const originals=[...rail.children];for(const card of originals){const copy=card.cloneNode(true);copy.dataset.boardCopy='';rail.append(copy);}const videos=[...rail.querySelectorAll('video')];const player=document.createElement('dialog');player.className='motion-player';player.setAttribute('aria-label','Fullscreen film player');player.innerHTML='<button type="button" aria-label="Close film">Close ×</button><video controls playsinline></video>';document.body.append(player);const fullVideo=player.querySelector('video');player.querySelector('button').addEventListener('click',()=>player.close());player.addEventListener('close',()=>{fullVideo.pause();fullVideo.removeAttribute('src');fullVideo.load();});const expand=v=>{v.pause();fullVideo.src=v.currentSrc||v.querySelector('source').src;player.showModal();fullVideo.play().catch(()=>{});if(player.requestFullscreen)player.requestFullscreen().catch(()=>{});};videos.forEach(v=>{v.addEventListener('click',()=>{v.play().catch(()=>{});expand(v);});v.addEventListener('play',()=>{videos.forEach(o=>{if(o!==v)o.pause();});});});rail.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)videos.forEach(v=>v.pause());});function tick(t){const dt=Math.min(80,t-last||0);last=t;if(!paused&&!player.open&&!document.hidden&&!reduce.matches&&!videos.some(v=>!v.paused)){remainder+=dt*.0198;const step=Math.floor(remainder);remainder-=step;rail.scrollLeft+=step;const edge=rail.querySelector('[data-board-copy]').offsetLeft-originals[0].offsetLeft;if(edge>0&&rail.scrollLeft>=edge)rail.scrollLeft-=edge;}requestAnimationFrame(tick);}requestAnimationFrame(tick);})();
 
-// Run and render the one-page clinic website check.
+// Run the health-only homepage audit and unlock full findings after email capture.
 (() => {
  const form=document.querySelector('#clinic-audit-form');
  if(!form)return;
@@ -271,12 +271,62 @@
  const status=document.querySelector('#clinic-audit-status');
  const progress=document.querySelector('#clinic-audit-progress');
  const report=document.querySelector('#clinic-audit-report');
+ const gateForm=document.querySelector('#clinic-report-email');
+ const gateButton=gateForm.querySelector('button[type="submit"]');
+ const gateInput=gateForm.querySelector('input[type="email"]');
+ const gateStatus=document.querySelector('#clinic-report-gate-status');
+ const unlockedMessage=report.querySelector('[data-report-unlocked]');
+ const fullReport=report.querySelector('[data-full-report]');
  const findings=document.querySelector('#clinic-audit-findings');
  const printButton=document.querySelector('[data-report-print]');
  const defaultTitle=document.title;
+ let activeUrl='';
  let pageSpeedController;
- function setStatus(message,error){status.hidden=false;status.textContent=message;status.classList.toggle('is-error',Boolean(error));}
+ function setStatus(node,message,error){node.hidden=false;node.textContent=message;node.classList.toggle('is-error',Boolean(error));}
  function element(tag,className,text){const node=document.createElement(tag);if(className)node.className=className;if(text!==undefined)node.textContent=text;return node;}
+ function renderScore(score){
+  const card=report.querySelector('[data-score-card]');
+  card.className='clinic-score-card clinic-score-card--'+String(score.grade||'F').toLowerCase();
+  card.querySelector('[data-score-value]').textContent=String(score.value);
+  card.querySelector('[data-score-grade]').textContent=score.grade;
+  card.querySelector('[data-score-label]').textContent=score.label;
+  card.querySelector('[data-score-method]').textContent=score.method;
+  report.querySelector('[data-score-formula]').textContent=score.formula;
+  report.querySelector('[data-score-limitation]').textContent=score.limitation;
+  card.querySelector('.clinic-score-result').setAttribute('aria-label','Score '+score.value+' out of 100, grade '+score.grade+'. '+score.label);
+ }
+ function renderHighlights(highlights){
+  const list=report.querySelector('[data-preview-highlights]');
+  list.replaceChildren();
+  highlights.forEach(highlight=>{
+   const item=element('li','clinic-preview-item clinic-preview-item--'+highlight.status);
+   const heading=element('div','clinic-preview-item-head');
+   heading.append(element('span','clinic-preview-category',highlight.category),element('span','checkup-state checkup-state--'+highlight.status,highlight.status==='review'?'To review':'Looks good'));
+   item.append(heading,element('h4','',highlight.title),element('p','',highlight.summary));
+   list.append(item);
+  });
+ }
+ function renderPreview(data){
+  const host=new URL(data.finalUrl).hostname;
+  document.title=host+' health website audit | FJMK';
+  report.querySelector('[data-report-host]').textContent=host;
+  const link=report.querySelector('[data-report-url]');
+  link.href=data.finalUrl;
+  link.textContent=data.finalUrl;
+  report.querySelector('[data-report-date]').textContent=new Date(data.fetchedAt).toLocaleString('en-NG',{dateStyle:'medium',timeStyle:'short'});
+  report.querySelector('[data-report-summary]').textContent=data.summary;
+  renderScore(data.score);
+  renderHighlights(data.highlights);
+  fullReport.hidden=true;
+  gateForm.hidden=false;
+  gateStatus.hidden=true;
+  gateInput.value='';
+  unlockedMessage.hidden=true;
+  report.hidden=false;
+  status.hidden=true;
+  report.focus({preventScroll:true});
+  report.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+ }
  function findingCard(check){
   const article=element('details','checkup-finding checkup-finding--'+check.status);
   article.open=check.status==='review';
@@ -287,37 +337,35 @@
   article.append(header);
   const detail=element('div','checkup-finding-detail');
   const next=element('p','checkup-next-step');
-  const label=element('strong','', 'Next step: ');
-  next.append(label,document.createTextNode(check.nextStep));
+  next.append(element('strong','','Next step: '),document.createTextNode(check.nextStep));
   detail.append(next);
-  const details=element('details','checkup-evidence-details');
-  details.append(element('summary','', 'Evidence'));
-  details.append(element('p','checkup-evidence',check.evidence));
-  detail.append(details);
+  const evidence=element('details','checkup-evidence-details');
+  evidence.append(element('summary','','Evidence'),element('p','checkup-evidence',check.evidence));
+  detail.append(evidence);
   article.append(detail);
   return article;
  }
  function renderPageSpeed(snapshot){
   const panel=report.querySelector('[data-lighthouse]');
-  const status=panel.querySelector('[data-lighthouse-status]');
+  const message=panel.querySelector('[data-lighthouse-status]');
   const scores=panel.querySelector('[data-lighthouse-scores]');
   const metrics=panel.querySelector('[data-lighthouse-metrics]');
   scores.replaceChildren();
   metrics.replaceChildren();
   panel.hidden=false;
   if(!snapshot||snapshot.status==='not_configured'){
-   status.textContent='Mobile snapshot not configured.';
+   message.textContent='Mobile snapshot not configured.';
    return;
   }
   if(snapshot.status==='pending'){
-   status.textContent='Running the mobile lab check…';
+   message.textContent='Running the mobile lab check…';
    return;
   }
   if(snapshot.status!=='available'){
-   status.textContent='Mobile snapshot unavailable. Homepage checks are complete.';
+   message.textContent='Mobile snapshot unavailable. Homepage checks are complete.';
    return;
   }
-  status.textContent='Mobile lab snapshot · '+new Date(snapshot.fetchedAt).toLocaleString('en-NG',{dateStyle:'medium',timeStyle:'short'});
+  message.textContent='Mobile lab snapshot · '+new Date(snapshot.fetchedAt).toLocaleString('en-NG',{dateStyle:'medium',timeStyle:'short'});
   const labels=[['performance','Performance'],['accessibility','Accessibility signal'],['seo','SEO'],['bestPractices','Best practices']];
   labels.forEach(([key,label])=>{
    const value=snapshot.scores?.[key];
@@ -354,22 +402,24 @@
    clearTimeout(timer);
   }
  }
- function renderReport(data){
+ function renderFullReport(data){
   pageSpeedController?.abort();
   const host=new URL(data.finalUrl).hostname;
-  document.title=host+' website check | FJMK';
+  document.title=host+' health website audit | FJMK';
   report.querySelector('[data-report-host]').textContent=host;
   const link=report.querySelector('[data-report-url]');
   link.href=data.finalUrl;
   link.textContent=data.finalUrl;
-  const fetched=new Date(data.fetchedAt);
-  report.querySelector('[data-report-date]').textContent=fetched.toLocaleString('en-NG',{dateStyle:'medium',timeStyle:'short'});
+  report.querySelector('[data-report-date]').textContent=new Date(data.fetchedAt).toLocaleString('en-NG',{dateStyle:'medium',timeStyle:'short'});
+  report.querySelector('[data-report-summary]').textContent=data.summary;
+  renderHighlights(data.highlights);
   report.querySelector('[data-report-response]').textContent='HTTP '+data.responseStatus;
   report.querySelector('[data-report-time]').textContent=data.responseTimeMs+' ms';
+  renderScore(data.score);
   const reviewCount=Number(data.reviewCount)||0;
   const goodCount=data.checks.filter(check=>check.status==='good').length;
   const infoCount=data.checks.filter(check=>check.status==='info').length;
-  report.querySelector('[data-report-summary]').textContent=reviewCount
+  report.querySelector('[data-full-report-summary]').textContent=reviewCount
    ? reviewCount+' item'+(reviewCount===1?'':'s')+' to review across '+data.checks.length+' checks.'
    : 'No automatic review flags across '+data.checks.length+' checks.';
   report.querySelector('[data-report-review-count]').textContent=String(reviewCount);
@@ -382,7 +432,7 @@
   sorted.forEach(check=>{
    if(!groups.has(check.category)){
     const section=element('section','checkup-group');
-    section.append(element('h3','',check.category));
+    section.append(element('h5','',check.category));
     const list=element('div','checkup-finding-list');
     section.append(list);
     groups.set(check.category,list);
@@ -392,18 +442,21 @@
   });
   const topFindings=sorted.filter(check=>check.status==='review').slice(0,3);
   const message=[
-   'Hello FJMK. I ran the free clinic website check.',
+   'Hello FJMK. I ran the health website audit.',
    'Website: '+data.finalUrl,
-   topFindings.length?'Could you help me prioritise these findings: '+topFindings.map(check=>check.title).join('; ')+'?':'The automated check did not flag items for review. Could you help me review this website and the route patients use to contact the clinic?'
+   topFindings.length?'Could you help me prioritise these findings: '+topFindings.map(check=>check.title).join('; ')+'?':'The automated audit did not flag items for review. Could you help me review this website and the route patients use to contact the organisation?'
   ].join('\n');
   const whatsapp=report.querySelector('[data-report-whatsapp]');
   whatsapp.href='https://wa.me/2348145580220?text='+encodeURIComponent(message);
   whatsapp.querySelector('[data-report-whatsapp-label]').textContent=topFindings.length?'Get help prioritising these findings':'Talk through your website';
   report.querySelector('#clinic-checks-title').textContent='Checks · '+data.checks.length;
-  report.hidden=false;
-  status.hidden=true;
-  report.focus({preventScroll:true});
-  report.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  fullReport.hidden=false;
+  gateForm.hidden=true;
+  gateStatus.hidden=true;
+  unlockedMessage.textContent='Your email request was received. The detailed report is ready below.';
+  unlockedMessage.hidden=false;
+  fullReport.focus({preventScroll:true});
+  fullReport.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
   if(data.pageSpeed?.status==='pending')loadPageSpeed(data.finalUrl);
  }
  form.addEventListener('submit',async event=>{
@@ -420,6 +473,7 @@
    return;
   }
   input.setCustomValidity('');
+  activeUrl=normalized;
   report.hidden=true;
   document.title=defaultTitle;
   const submitLabel=button.innerHTML;
@@ -427,23 +481,50 @@
   progress.hidden=false;
   button.disabled=true;
   button.textContent='Checking…';
-  setStatus('Reading the public homepage and checking its response, search signals and patient contact routes…',false);
+  setStatus(status,'Reading the public homepage and checking its health-related signals…',false);
   const controller=new AbortController();
-   const timer=setTimeout(()=>controller.abort(),28000);
+  const timer=setTimeout(()=>controller.abort(),28000);
   try{
-   const response=await fetch('/api/audit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:normalized}),signal:controller.signal});
+   const response=await fetch('/api/audit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:activeUrl,mode:'preview'}),signal:controller.signal});
    const data=await response.json();
-   if(!response.ok)throw new Error(data.error||'The check could not be completed.');
-   renderReport(data);
+   if(!response.ok)throw new Error(data.error||'The audit could not be completed.');
+   renderPreview(data);
   }catch(error){
-   const message=error.name==='AbortError'?'The check took too long. Try again in a moment.':error.message||'The website could not be checked. Try again shortly.';
-   setStatus(message,true);
+   const message=error.name==='AbortError'?'The audit took too long. Try again in a moment.':error.message||'The website could not be checked. Try again shortly.';
+   setStatus(status,message,true);
   }finally{
    clearTimeout(timer);
    form.removeAttribute('aria-busy');
    progress.hidden=true;
    button.disabled=false;
    button.innerHTML=submitLabel;
+  }
+ });
+ gateForm.addEventListener('submit',async event=>{
+  event.preventDefault();
+  if(!gateForm.reportValidity())return;
+  const email=gateInput.value.trim();
+  const submitLabel=gateButton.innerHTML;
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),32000);
+  gateForm.setAttribute('aria-busy','true');
+  gateButton.disabled=true;
+  gateButton.textContent='Preparing report…';
+  gateStatus.hidden=true;
+  setStatus(gateStatus,'Sending your email request and preparing the detailed report…',false);
+  try{
+   const response=await fetch('/api/audit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:activeUrl,mode:'report',email}),signal:controller.signal});
+   const data=await response.json();
+   if(!response.ok)throw new Error(data.error||'The detailed report could not be prepared.');
+   renderFullReport(data);
+  }catch(error){
+   const message=error.name==='AbortError'?'This took too long. Try again shortly.':error.message||'The report request could not be completed. Try again shortly.';
+   setStatus(gateStatus,message,true);
+  }finally{
+   clearTimeout(timer);
+   gateForm.removeAttribute('aria-busy');
+   gateButton.disabled=false;
+   gateButton.innerHTML=submitLabel;
   }
  });
  input.addEventListener('input',()=>input.setCustomValidity(''));

@@ -106,3 +106,11 @@ notes are not permission to overwrite current user decisions.
 - Removed the footer’s “Pause motion” control while keeping operating-system reduced-motion preferences in effect.
 - Added visible borders to site CTAs, contact routes, contact-form choices and navigation controls. Hover and pressed states use FJMK terracotta.
 - Live verification after this update confirmed the footer control is gone and contact actions are bordered. The LUTH homepage check returned HTTP 200 and 13 checks (3 to review, 9 good, 1 signal); mobile PageSpeed returned 60 performance, 75 accessibility, 83 SEO and 96 best practices. Lab scores vary between runs.
+
+### Health-only score and email-gated report (local source, 23 October 2026)
+
+- Changed the audit to reject homepages that do not show health or healthcare signals. The same eligibility check now applies to the separate PageSpeed endpoint.
+- The first result shows a weighted score and letter grade, a short summary and up to three color-coded highlights. Priority 1/2/3/4 findings carry weights of 4/3/2/1; information-only checks do not count. A priority 1 review finding caps the score at 59. Grade bands are A 90–100, B 80–89, C 70–79, D 60–69 and F below 60.
+- The score covers observable homepage checks. Optional PageSpeed lab scores remain separate because they can vary and may be unavailable. The page labels the result as a snapshot, not a compliance verdict or Lagos benchmark.
+- The detailed findings are returned only after a valid email is accepted by the existing FormSubmit flow. FJMK receives the email, public website address, score and grade; the visitor can then save the unlocked report as a PDF from the browser.
+- Updated the privacy notice and project handoff for the email flow, score method and heuristic health-site check. This source change has not been deployed or live-verified. FormSubmit delivery has not been tested.
