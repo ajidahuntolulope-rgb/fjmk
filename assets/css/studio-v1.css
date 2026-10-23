@@ -278,3 +278,25 @@ body[data-page="tools"] .clinic-report-note{font-size:10px}
  body[data-page="tools"] .clinic-report-counts dd{font-size:18pt}
  body[data-page="tools"] .clinic-report .checkup-group>h3{font-size:12pt}
 }
+
+/* Clear borders and one terracotta interaction state for site actions. */
+.nav-cta,.button,.round-link,.footer-top>a:last-child,.contact-options a,
+.form-navigation .back-button,.choice,.menu-toggle,.film-control,.icon-button{
+ border:1px solid var(--ink);
+ transition:background-color .2s,color .2s,border-color .2s;
+}
+.footer-top>a:last-child,.contact-options a{
+ display:inline-flex;align-items:center;gap:14px;padding:11px 16px;
+}
+.form-navigation .back-button{padding:9px 15px;background:transparent;color:var(--ink)}
+.menu-toggle{border-radius:0}
+.nav-cta:hover,.nav-cta:active,.button:hover,.button:active,
+.round-link:hover,.round-link:active,.footer-top>a:last-child:hover,.footer-top>a:last-child:active,
+.contact-options a:hover,.contact-options a:active,.form-navigation .back-button:hover,.form-navigation .back-button:active,
+.choice:hover,.choice:active,.menu-toggle:hover,.menu-toggle:active,.film-control:hover,.film-control:active,
+.icon-button:hover,.icon-button:active{
+ background:var(--terra);border-color:var(--terra);color:var(--paper);
+}
+.choice[aria-pressed="true"]{background:var(--terra);border-color:var(--terra);color:var(--paper)}
+.menu-toggle:hover span,.menu-toggle:active span{background:var(--paper)}
+.project-open:hover,.project-open:active{background:var(--terra);border-color:var(--terra);color:var(--paper)}

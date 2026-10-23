@@ -62,9 +62,12 @@ chooses to send its prefilled message. No Lagos comparison dataset exists, and
 the report shows no composite healthcare score. The tool page uses a single
 homepage input, an FJMK loading animation, an expandable findings report and a
 print-to-PDF action. The result counts and finding cards use distinct colors and
-plain-text status labels. Its title and description target clinic website checks
-in Lagos, Nigeria. Production verification after the latest release returned
-HTTP 200 for the Lagos University Teaching Hospital homepage and 13 checks (3 to
+plain-text status labels. Site action buttons and contact routes have visible
+borders with terracotta hover and pressed states. The footer no longer includes
+the Pause motion toggle; reduced-motion preferences remain respected. The tool
+title and description target clinic website checks in Lagos, Nigeria. Production
+verification after the latest release returned HTTP 200 for the Lagos University
+Teaching Hospital homepage and 13 checks (3 to
 review, 9 good, 1 signal). PageSpeed returned a mobile snapshot of 67 performance,
 75 accessibility, 83 SEO and 96 best practices. A reserved `.invalid` address was
 rejected and the prior report cleared without creating a new one.

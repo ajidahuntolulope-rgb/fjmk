@@ -1,6 +1,5 @@
 (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  let pageMotion=true;
   const menu = document.querySelector('.menu-toggle');
   const navigation = document.querySelector('#navigation');
   function closeMenu() {navigation?.classList.remove('open');menu?.setAttribute('aria-expanded','false');menu?.setAttribute('aria-label','Open menu');}
@@ -182,7 +181,7 @@
           }
           if (Math.abs(velocity) < .0005) { velocity = 0; if (Math.abs(Math.round(position) - position) < .01) position = Math.round(position); }
           }
-          if (automatic && pageMotion && !reduced.matches && !hovered && !focused) {
+          if (automatic && !reduced.matches && !hovered && !focused) {
             autoClock += elapsed;
             if (autoClock > 4800) { target=Math.round(position)+1; velocity=0; autoClock = 0; }
           }
@@ -195,8 +194,6 @@
     metrics(); render(); requestAnimationFrame(tick);
   }
 
-  const motionToggle=document.querySelector('[data-motion-toggle]');
-  motionToggle?.addEventListener('click',()=>{pageMotion=!pageMotion;document.body.classList.toggle('motion-paused',!pageMotion);motionToggle.textContent=pageMotion?'Pause motion':'Resume motion';motionToggle.setAttribute('aria-pressed',String(!pageMotion));});
   const mosaicImage=document.querySelector('.tile-a img');
   if(mosaicImage&&window.gsap){const tiles=[['01-lumen-eye','Lumen Eye'],['05-maison-aesthetics','Maison'],['06-haven-mind','Haven Mind'],['02-axiom-labs','Axiom Labs']];let tile=0;setInterval(()=>{if(reduced.matches||!pageMotion||document.hidden||scrollY>innerHeight)return;tile=(tile+1)%tiles.length;const next=new Image();next.onload=()=>{gsap.to(mosaicImage,{opacity:0,duration:.35,onComplete:()=>{mosaicImage.src=next.src;mosaicImage.alt=tiles[tile][1]+' concept website';gsap.to(mosaicImage,{opacity:1,duration:.6});}});};next.src='/assets/previews/'+tiles[tile][0]+'.webp';},6500);}
   reduced.addEventListener('change',()=>{if(reduced.matches){automatic=false;updateToggle();document.querySelectorAll('video').forEach(v=>v.pause());}});

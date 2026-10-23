@@ -100,3 +100,8 @@ notes are not permission to overwrite current user decisions.
 - The reserved `.invalid` address was rejected in the local and production checkers. Production cleared the previous report and did not create a report for the fake site.
 - Color-coded the report totals and finding cards with terracotta review, sage good and ochre signal states; each state remains explicitly named in text.
 - Live verification after the color update returned HTTP 200 for the Lagos University Teaching Hospital homepage and 13 checks (3 to review, 9 good, 1 signal). The mobile PageSpeed snapshot completed at 67 performance, 75 accessibility, 83 SEO and 96 best practices; lab scores can vary.
+
+### Site-wide actions and footer
+
+- Removed the footer’s “Pause motion” control while keeping operating-system reduced-motion preferences in effect.
+- Added visible borders to site CTAs, contact routes, contact-form choices and navigation controls. Hover and pressed states use FJMK terracotta.
