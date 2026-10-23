@@ -38,7 +38,7 @@ pharmacy.
 
 ## Selected work
 
-- [Sample sites](https://fjmk.agency/samples/) — twelve complete clinic websites,
+- [Sample sites](https://fjmk.drtolu.com/samples/) — twelve complete clinic websites,
   each with a different design system. LUMEN Eye Institute, Axiom Diagnostics,
   Veil Sexual Health, Kinetic Physiotherapy, Maison Aesthetics, Haven Mental
   Health, Sprout Children's Clinic, Axis Orthopaedic, Terra Dermatology,

@@ -23,3 +23,6 @@ token.json
 TARGET-MARKET.md
 SEO-STRATEGY.md
 HANDOFF.md
+
+# Cloudflare Pages build output
+/dist/
