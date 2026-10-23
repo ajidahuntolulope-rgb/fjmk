@@ -20,6 +20,37 @@
 - Added privacy notice and footer contact/privacy links, strengthened truthful
   structured data, simplified robots.txt and regenerated the canonical sitemap.
 - Marked fictional demo sites noindex,follow and excluded them from the sitemap.
+- Submitted the current subdomain sitemap in Search Console; Google processed it
+  successfully and discovered 16 URLs. The homepage live test passed, but the
+  homepage indexing request failed: Search Console could not connect to its
+  reCAPTCHA service and showed a "try again later" error.
+- Found 16 live, self-canonical legacy article pages outside the sitemap, including
+  eight with no internal links. No indexability changes were made pending review.
+- Ran `node _tools/verify-seo.mjs`; all 16 sitemap URLs and 33 noindex demo pages
+  passed the project checker.
+
+### SEO follow-up
+
+- Updated the Search Console record: a later user-supplied screenshot confirms the
+  homepage indexing request was added to Google's priority crawl queue. The URL
+  still showed "URL is not on Google" in that screenshot, so indexing is not
+  confirmed. Do not repeat the same request.
+- Rechecked Search Console directly: the sitemap is still Success with 16
+  discovered URLs. The Performance report filtered to the FJMK hostname shows 0
+  clicks and 0 impressions for its available dates, 17-21 October; Core Web
+  Vitals still has no field data.
+- The user confirmed the legacy articles outside the 16-URL sitemap are parked;
+  they remain outside this SEO scope.
+- Replaced generic titles on the ten main pages with unique, descriptive titles
+  aligned to each page and FJMK's healthcare focus. No visible copy or design
+  changed.
+- Changed internal links in the six selected journal articles from `.html`
+  variants to clean routes. The parked article destinations were not edited.
+- Added `SEO-PLAN.md` with the current baseline, source assessment and prioritized
+  Search Console, content and distribution plan.
+- Rebuilt the static site. `node _tools/verify-seo.mjs` passed with 16 unique
+  sitemap URLs and 33 noindex demo pages; `node _tools/check-review-v2.mjs`
+  passed with 382 references and no errors.
 
 Refer to Git history for exact implementation and release commits. Historical
 notes are not permission to overwrite current user decisions.

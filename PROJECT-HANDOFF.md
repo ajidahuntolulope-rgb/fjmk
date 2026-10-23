@@ -75,13 +75,57 @@ and full-window player open/close. Browser fullscreen itself was unavailable in
 the embedded browser, so the full-window dialog is required. Existing responsive
 checks covered 320, 390, 768, 1169 and 1440px; inspect new changes again as needed.
 
+## Google Search Console and SEO status (23 October 2026)
+
+- The existing `sc-domain:drtolu.com` property is accessible. Its ownership
+  verification method was not inspected. Submitted
+  `https://fjmk.drtolu.com/sitemap.xml` on 23 October; Search Console processed it
+  successfully, last read it the same day and discovered 16 URLs, with no videos.
+- Live checks returned 200 for the FJMK homepage, `robots.txt` and `sitemap.xml`;
+  robots.txt allows crawling and references the current sitemap.
+- The homepage URL Inspection initially said it was unknown to Google. Its live
+  test passed: available to Google, can be indexed, and a video was detected.
+  The first request failed with a reCAPTCHA connection error; a later user-
+  supplied screenshot confirmed a successful request, as recorded below.
+- The two older submitted sitemap URLs, `https://drtolu.com/fjmk` and its
+  trailing-slash version, are HTML pages, not sitemaps. Each reports an error and
+  zero discovered pages. Leave these entries unchanged for now.
+- The 16 October domain-wide indexing snapshot showed 4 indexed and 8 not indexed;
+  all four indexed examples were on `drtolu.com`, not the FJMK subdomain. Core Web
+  Vitals had no data. These counts do not describe FJMK alone.
+- In the current Search Console Performance report, filtering page URLs to
+  `https://fjmk.drtolu.com/` returns 0 clicks and 0 impressions for the available
+  three-month view (chart dates 17-21 October). Treat this as an empty starting
+  baseline, not a content-quality signal. Core Web Vitals still has no field data.
+- `node _tools/verify-seo.mjs` passed: 16 unique sitemap URLs and 33 demo pages
+  marked noindex.
+- A later user-supplied URL Inspection screenshot supersedes the failed request
+  recorded earlier: it still showed "URL is not on Google", but confirmed
+  "Indexing requested" and that the URL was added to Google's priority crawl
+  queue. This is a queued request, not confirmation of indexing. Do not resubmit
+  the same URL to try to change its queue position.
+- Ten main-page title tags were made descriptive of their page and healthcare
+  focus. Six selected journal articles now link to clean URLs rather than `.html`
+  variants that redirect. No visual design or approved page copy changed. See
+  `SEO-PLAN.md` for the assessment, rationale and next steps.
+- There are 17 article files outside the selected sitemap. One URL redirects to
+  `/services`; the other 16 return 200, are self-canonical and have no noindex
+  directive. The user has confirmed these legacy articles are parked. Keep them
+  outside the active sitemap and do not revise their content, indexability or
+  redirects unless the user reopens that scope.
+- The older submitted sitemap entries `https://drtolu.com/fjmk` and its
+  trailing-slash version are HTML pages in the parent-domain property, not the
+  FJMK sitemap. Both report errors and zero discovered URLs; the FJMK subdomain
+  sitemap is a separate successful entry with 16 discovered URLs.
+
 ## Next work, not completed
 
 - Supply Praise's real portrait.
 - Verify actual enquiry delivery with an authorised test.
 - Collect real research and benchmark data before implementing the audit backend.
-- Full editorial/SEO review of legacy articles, fictional sample content and links.
-- Search Console ownership/submission and field Core Web Vitals are not verified.
+- After normal crawl time, recheck the homepage in URL Inspection and review
+  Page indexing and Performance reports filtered to `fjmk.drtolu.com`. Do not
+  resubmit the same indexing request. Check Core Web Vitals if field data appears.
 - No claim that a privacy page, robots.txt, schema or llms.txt guarantees rankings.
 
 Local DESIGN-NOTES.md contains older iteration history but is not required by a
