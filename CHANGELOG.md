@@ -105,3 +105,4 @@ notes are not permission to overwrite current user decisions.
 
 - Removed the footer’s “Pause motion” control while keeping operating-system reduced-motion preferences in effect.
 - Added visible borders to site CTAs, contact routes, contact-form choices and navigation controls. Hover and pressed states use FJMK terracotta.
+- Live verification after this update confirmed the footer control is gone and contact actions are bordered. The LUTH homepage check returned HTTP 200 and 13 checks (3 to review, 9 good, 1 signal); mobile PageSpeed returned 60 performance, 75 accessibility, 83 SEO and 96 best practices. Lab scores vary between runs.
