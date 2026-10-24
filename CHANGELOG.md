@@ -4,7 +4,7 @@
 
 - Published “How Many Clinics in Lagos Have a Website?” as the seventh active Blog article, with a direct answer, search-derived sample framing, area comparison, phone-viewport findings, author attribution and the existing FJMK article layout.
 - Added the article to the Blog page and sitemap. Updated the `/research` page and its source template to link to the published article instead of advertising a planned 50-site study.
-- Verified local build, 17 canonical sitemap URLs, 33 noindex demo pages, 385 local references, JSON-LD parsing, and article/blog/research pages at 390px with no horizontal overflow. Live deployment pending.
+- Verified production after commit `518325a`: the article, Blog index, `/research` and `sitemap.xml` all returned HTTP 200; the new article is linked from the Blog and Research pages and appears in the sitemap (17 URLs).
 
 ## 23 October 2026
 
