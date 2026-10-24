@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+
 export const blogArticles = [
   {
     slug: 'pages-every-clinic-website-needs',
@@ -167,5 +169,16 @@ export const blogArticles = [
 <p>Choose who monitors reviews, which concerns need escalation and which private contact route is safe and staffed. Train that person not to confirm patient status in public. If a review appears to violate platform rules, use Google’s reporting process rather than arguing about it in the reply.</p>
 <p>For a clinic, the strongest response is a calm public boundary followed by a real private follow-up. The reply cannot repair the underlying experience by itself; the clinic’s process has to do that work.</p>
 <p class="article-source">Further reading: <a href="https://support.google.com/business/answer/3474122">Google’s tips for getting and responding to reviews</a>, <a href="https://support.google.com/business/answer/7091">local ranking factors</a> and <a href="https://support.google.com/business/answer/7400114">prohibited and restricted content</a>.</p>`
+  },
+  {
+    slug: 'how-many-lagos-clinics-have-a-website',
+    title: 'How Many Clinics in Lagos Have a Website?',
+    cardDescription: 'A search-derived review of website availability and phone usability across 20 Lagos local government areas.',
+    category: 'Research',
+    description: 'Public searches found no website candidate for 316 of 388 Lagos healthcare listings. See the area breakdown and phone-screen results.',
+    keyword: 'how many clinics in Lagos have a website',
+    author: { name: 'Dr Tolulope Ajidahun', jobTitle: 'Physician' },
+    byline: 'Dr Tolulope Ajidahun · Physician, Lagos',
+    body: fs.readFileSync('_tools/lagos-clinic-website-gap-body.html', 'utf8')
   }
 ];

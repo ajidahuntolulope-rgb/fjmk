@@ -117,8 +117,7 @@ scan and submits the lead before returning full details, so findings may shift
 from the preview. FormSubmit activation and required origin headers were corrected;
 see the diagnosis above. The user has authorised functional test messages.
 
-Research placeholder proposes a 50-site Lagos study; the proposed 100-site audit
-benchmark is unbuilt. Do not present these as completed research.
+The published Lagos healthcare website article reports search-derived website availability and technical phone-viewport checks from public listings. Treat it as an exploratory search sample, not a census or provider-confirmed website count.
 
 Privacy is an operational notice for current hosting, enquiry, messaging and demo
 flows, not a claim of regulatory certification. Recheck it when analytics,
@@ -219,4 +218,6 @@ fresh checkout. This file and AGENTS.md are the shared, current handoff.
 - Each new article is static HTML using the approved FJMK fonts, cream/ink/terracotta design, shared header and footer. Each has a direct answer near the top, unique title/description/canonical, BlogPosting and breadcrumb JSON-LD, and authoritative source links where relevant.
 - Keyword research is qualitative because Search Console has no useful query baseline and no paid keyword-volume tool is connected. See `BLOG-SEO-RESEARCH.md`; it records the intent hypotheses, search-result scan, source review and FJMK editorial position. Do not report estimated search volume or guaranteed rankings.
 - Build and local clean-route/redirect checks passed. SEO verifier: 16 unique sitemap URLs and 33 demos marked noindex. Reference checker: 382 references, no errors.
-- The six active `/journal/` destinations redirect to the new `/blog/` pages; the other parked legacy articles remain unchanged. The sitemap is already submitted in Search Console, so retain the existing property and entry rather than adding duplicates. Search Console crawl and indexing are not guaranteed.
+- The 2026 Lagos healthcare website article is published at `/blog/how-many-lagos-clinics-have-a-website`; the Blog index now has seven active articles. Its 388-record sample is search-derived, and 47 candidate page rows were checked in a 390 × 844 browser viewport; neither result is a census or human usability study.
+- `/research` now links to the published article instead of describing a planned 50-site study. The generator source, metadata, blog listing and sitemap are aligned; the sitemap now contains 17 canonical URLs.
+- Local build, SEO verifier (17 unique sitemap URLs; 33 demos noindex), reference checker (385 references, no errors), JSON-LD parsing and 390px browser overflow checks passed. Live deployment is not yet verified.
