@@ -180,5 +180,58 @@ export const blogArticles = [
     author: { name: 'Dr Tolulope Ajidahun', jobTitle: 'Physician' },
     byline: 'Dr Tolulope Ajidahun · Physician, Lagos',
     body: fs.readFileSync('_tools/lagos-clinic-website-gap-body.html', 'utf8')
+  },
+  {
+    slug: 'ai-vs-google-clinics-lagos',
+    title: 'AI vs Google for Clinics in Lagos: Google First, AI Second',
+    seoTitle: 'AI vs Google for Lagos Clinics: Google First',
+    cardDescription: 'Where Lagos clinics should focus first: Google fundamentals, with AI discovery as a supporting channel.',
+    category: 'Search',
+    description: 'A Google-first plan for Lagos clinics, using Nigeria search data, a local website screen and Google’s guidance on local and AI search.',
+    keyword: 'AI vs Google for clinics in Lagos',
+    datePublished: '2026-10-25',
+    body: `
+<p class="blog-article-answer"><strong>Short answer:</strong> If you are weighing AI vs Google for clinics in Lagos, do the Google work first. Claim and verify your Google Business Profile, set the right category, correct the address and opening hours, add a working phone, and link the profile to that branch’s page. Check it on a phone. Then put the same service and location details in readable text on your website. That order matters: AI visibility builds on clear, accessible information, not a separate trick.</p>
+<h2>Why Google comes first</h2>
+<p>In StatCounter’s <a href="https://gs.statcounter.com/search-engine-market-share/all/nigeria">September 2026 Nigeria panel</a>, Google accounted for 98.28% of search-engine traffic. That is not a survey of patients or clinic choices. It does show which search engine dominates when people use web search.</p>
+<p>Google’s <a href="https://support.google.com/business/answer/7091?hl=en">local-ranking guidance</a> says local results mainly reflect relevance, distance and prominence. It recommends verifying your profile and keeping your category, address and hours accurate. A complete profile helps Google match a clinic to relevant searches. For Lagos, get the exact branch and neighbourhood right before adding anything else.</p>
+<h2>What the lead data says</h2>
+<p>A 2026 <a href="https://gogoodjuju.com/property-management-lead-source-report-2026/">Goodjuju Marketing report</a> analysed 115,676 visits and 1,975 converted leads across 31 US property-management companies over 90 days. The lead data came from 25 accounts: Google Search, Map Pack and Direct/Maps accounted for 88.4% of leads; AI/LLM search produced 1.6%. AI visitors converted more often but brought far fewer leads. That is Google-first evidence for that sample, not Lagos healthcare. For a Lagos clinic, it points to a practical priority: complete the Google profile and the matching location page before investing in separate AI tactics.</p>
+<h2>What our Lagos check found</h2>
+<p>We checked the home pages of 20 Lagos provider websites. Twelve responded. Seven could not be retrieved and one returned a bot block, so they are not counted either way.</p>
+<p>Of the twelve that responded, eleven had a page title, six had a meta description, ten had a phone-friendly viewport setting, and one carried structured data naming the business for search engines. Two had no canonical tag.</p>
+<p>These are technical observations from public home pages on one day, not a ranking measurement, and they say nothing about the standard of care. Read narrowly, they show the machine-readable basics of a clinic site are often unfinished, which is the layer Google and AI systems read first.</p>
+<h2>The same groundwork helps AI</h2>
+<p>Google’s <a href="https://developers.google.com/search/docs/appearance/ai-features">guidance for AI Overviews and AI Mode</a> is clear: the same core SEO practices used for ordinary Google Search apply; there is no separate AI schema. That is a Google product statement, not a guarantee about ChatGPT or another chatbot. For clinic owners, it is a good reason to fix crawlable pages and accurate Business Profile details before paying for a separate “AI optimisation” package.</p>
+<h2>What to do this week</h2>
+<ol><li>Search the clinic’s exact name in Maps and claim or verify the existing profile; do not create a duplicate.</li><li>Check each Lagos branch’s address pin, primary category, hours, phone and appointment route.</li><li>Link the profile to that branch’s location or service page. On a phone, tap the website and call links to confirm they open the right place.</li><li>Put the same service, location and contact details in readable text on the site, then review your profile and actual enquiries each month.</li></ol>
+<p>For profile setup, use the <a href="https://fjmk.drtolu.com/blog/clinic-on-google-maps-guide">FJMK Google Maps guide</a>. The <a href="https://fjmk.drtolu.com/tools">free health website audit</a> checks public homepage signals, including patient routes and search basics.</p>
+<p>The practical decision is clear: put effort into the Google Business Profile and the pages behind it first. That work improves the clinic’s basic local-search presence and gives AI systems more accurate public information to work with.</p>
+<p class="article-source">Sources: <a href="https://gs.statcounter.com/search-engine-market-share/all/nigeria">StatCounter Nigeria search-engine traffic share</a>; <a href="https://support.google.com/business/answer/7091?hl=en">Google local-ranking guidance</a>; <a href="https://gogoodjuju.com/property-management-lead-source-report-2026/">Goodjuju 2026 lead-source report</a>; <a href="https://developers.google.com/search/docs/appearance/ai-features">Google guidance on AI features</a>.</p>`
+  },
+  {
+    slug: 'lagos-clinic-privacy-and-contact-links',
+    title: 'Do Lagos Clinic Websites Publish a Privacy Policy and a Working Contact Route?',
+    seoTitle: 'Lagos Clinic Privacy Policies and Contact Links',
+    cardDescription: 'A 20-provider Lagos screen found gaps in visible contact routes and privacy-policy links.',
+    category: 'Research',
+    description: 'In a 20-provider Lagos screen, 18 displayed a contact route and seven linked to a privacy policy. Here is what clinic owners can check on their own sites.',
+    keyword: 'Lagos clinic website privacy policy',
+    datePublished: '2026-10-25',
+    body: `
+<p class="blog-article-answer"><strong>Short answer:</strong> Open your own site and check two things. First, is there a privacy notice that a patient can actually reach, explaining what happens to the information they type into a booking or contact form? Second, is there a phone, WhatsApp or booking route visible without hunting? These are separate checks. A clinic can have one and not the other, and in our sample several did.</p>
+<h2>What we checked</h2>
+<p>On 24 October 2026 we opened the home pages of 20 Lagos healthcare providers: seven general hospitals, three specialist clinics, five fertility clinics and five dental clinics. We recorded whether the captured page source contained a contact link (a phone, WhatsApp, booking or appointment link) and whether it contained a privacy-policy link.</p>
+<table><thead><tr><th>Home-page check</th><th>Result</th></tr></thead><tbody><tr><td>Pages that loaded</td><td>20 / 20</td></tr><tr><td>Named a Lagos location or area</td><td>20 / 20</td></tr><tr><td>Exposed a phone, WhatsApp, booking or appointment link</td><td>18 / 20</td></tr><tr><td>Included a privacy-policy link</td><td>7 / 20</td></tr></tbody></table>
+<h2>The contact gap sat in the hospitals</h2>
+<p>Both pages that did not expose a contact link were general hospitals. Dental clinics, fertility clinics and specialist clinics in the sample all exposed one. With 20 providers that is a small observation rather than a citywide finding, but it points at something worth a second look: the larger and more complex the facility, the more likely the front page assumes the patient already knows how to reach the right department.</p>
+<p>For a patient arriving from a Google search, that assumption costs the enquiry. They land, they cannot see who to call, and they go back to the results.</p>
+<h2>Most pages had no privacy link at all</h2>
+<p>Thirteen of the 20 pages had no privacy-policy link in the captured source. Five of the seven hospitals were among them.</p>
+<p>Read that carefully. A missing link on a home page does not mean the clinic has no privacy notice, and it certainly does not mean the clinic is breaking the law. The notice may sit in a footer, on a subpage or in patient forms. The result shows that a patient looking from the front page would not have found a link in most of these cases.</p>
+<p>A clinic site that takes a name, phone number and a description of a medical concern through a booking form is collecting personal information. Nigeria’s <a href="https://ndpc.gov.ng/download/nigeria-data-protection-act-2023">Data Protection Act 2023</a> provides the legal framework for processing personal information.</p>
+<h2>What to do about it</h2>
+<ol><li>Open your site as a patient would, on a phone, and look for a privacy link without scrolling to the footer. If you cannot find it quickly, your patients cannot either.</li><li>Check what your privacy notice says about enquiry forms: what you collect, where it goes, how long you keep it and who to contact.</li><li>Make sure the contact route is visible on the first screen, pointed at a number or inbox someone actually monitors.</li><li>If you run more than one location, check each site or branch page separately. A group page does not cover a branch.</li></ol>
+<p class="article-source">Research basis: FJMK’s 20-provider Lagos website screen, conducted 24 October 2026. See the <a href="https://ndpc.gov.ng/download/nigeria-data-protection-act-2023">Nigeria Data Protection Act 2023</a> from the Nigeria Data Protection Commission.</p>`
   }
 ];
